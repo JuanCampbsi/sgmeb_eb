@@ -14,7 +14,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.engine.SessionFactoryImplementor;;
 /**
- * Responsavel por estabelecer a conexão do hibernate
+ *  Responsavel por estabelecer a conexão do hibernate
  * @author Juan Campos
  */
 @ApplicationScoped
