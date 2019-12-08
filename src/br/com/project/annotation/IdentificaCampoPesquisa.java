@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Annotation para identificar os campos que podem aparecer na pesquisa das
+ * Annotation  para identificar os campos que podem aparecer na pesquisa das
  * telas
  * 
  * @author Juan Campos

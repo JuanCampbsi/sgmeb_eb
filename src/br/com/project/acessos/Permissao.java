@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Responsável pela permissao dos usuarios no sistema
+ * Responsável  pela permissao dos usuarios no sistema
  * Usuários ADMINISTRADOR, AUXILIAR, MÉDICO
  * @author Juan Campos
  *
