@@ -1,4 +1,4 @@
-package br.com.project.util.all;
+ package br.com.project.util.all;
 
 import java.io.Serializable;
 
