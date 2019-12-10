@@ -10,7 +10,7 @@ import org.hibernate.envers.Audited;
 
 @Audited
 @Entity
-public class Usuario implements Serializable {
+public class Entidade implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

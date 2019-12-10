@@ -33,13 +33,13 @@ public class InformacaoRevisao extends DefaultRevisionEntity implements
 	@ManyToOne
 	@ForeignKey(name = "entidade_fk")
 	@JoinColumn(nullable = false, name = "entidade")
-	private Usuario entidade;
+	private Entidade entidade;
 
-	public Usuario getEntidade() {
+	public Entidade getEntidade() {
 		return entidade;
 	}
 
-	public void setEntidade(Usuario entidade) {
+	public void setEntidade(Entidade entidade) {
 		this.entidade = entidade;
 	}
 	

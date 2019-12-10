@@ -8,6 +8,7 @@ import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+
 @ApplicationScoped
 public class ContextLoaderListenerGsmebUtils extends ContextLoaderListener implements Serializable {
 
