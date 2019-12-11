@@ -10,17 +10,21 @@
 	<h:outputScript name="jquery.js" library="primefaces/jquery" />
 	<h:outputStylesheet name="estilo.css" library="css" />
 	<h:outputScript name="scripty.js" library="javascript" />
+	<link href="main.css?version=12" />
+
 </h:head>
 
 <h:body>
 
-	<div style="height: 70px; position: relative; top: -30px">
-		<h:graphicImage library="img" name="mapa.png" />
 
-	</div>
+	<!-- 	<div id="imagemlogin">
+		<h:graphicImage library="img" name="21bia.png" styleClass="bordaImagem" />
+	</div>     -->
+
 
 	<div id="keyslogin">
-		<h:graphicImage library="img" name="keys.png" styleClass="bordaImagem" />
+		<h:graphicImage library="img" name="medicomilitar.png"
+			styleClass="bordaImagem" />
 	</div>
 	<div id="formlogin">
 		<br />
@@ -48,7 +52,7 @@
 			onsubmit="return validarSenhaLogin();" name="formulario"
 			action="#{request.contextPath}/j_spring_security_check">
 
-			<span style="display: block; padding-top: 2px; text-align: right">
+			<span style="display: block; padding-top: 30px; text-align: right">
 				<span style="display: inline-block; width: 50px; text-align: left">
 					Login </span> <input type="text" name="j_username" id="j_username" />
 			</span> <span style="display: block; padding-top: 2px; text-align: right">

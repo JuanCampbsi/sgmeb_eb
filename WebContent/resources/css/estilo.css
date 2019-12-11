@@ -1,3 +1,5 @@
+@CHARSET "ISO-8859-1";
+
 * {
 	margin: 0px;
 	padding: 0px;
@@ -225,26 +227,27 @@ a:focus {
 
 #imagemlogin {
 	position: absolute;
-	top: 250px;
-	right: 1px;
+	top:15px;
+	right:60px;
 }
+
 
 #keyslogin {
 	position: absolute;
-	bottom: 35px;
-	right: 240px;
+	bottom: -3px;
+	right: 215px;
 	z-index: 999;
 }
 
 #formlogin {
 	position: absolute;
 	bottom: 60px;
-	right: 60px;
-	left: 0px;
-	background-color: #e5e5e5;
+	right:60px;
+	left:0px;
+	background-color: #E6E6FA;
 	display: block;
-	-webkit-border-top-right-radius: 8px;
-	-webkit-border-bottom-right-radius: 8px;
+	-webkit-border-top-right-radius: 20px;
+	-webkit-border-bottom-right-radius: 20px;
 	-moz-border-radius-topright: 8px;
 	-moz-border-radius-bottomright: 8px;
 	border-top-right-radius: 8px;
