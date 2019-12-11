@@ -11,19 +11,21 @@
 	<h:outputStylesheet name="estilo.css" library="css" />
 	<h:outputScript name="scripty.js" library="javascript" />
 	<link href="main.css?version=12" />
+	
+	<h:graphicImage library="img" name="fundopqd.png" styleClass="bordaImagem" />
 
 </h:head>
 
-<h:body>
+<h:body>	 
 
-
-	<!-- 	<div id="imagemlogin">
-		<h:graphicImage library="img" name="21bia.png" styleClass="bordaImagem" />
-	</div>     -->
+<div id="imagemlogin">
+		<h:graphicImage library="img" name="medicomilitar.png"
+			styleClass="bordaImagem" />
+	</div>
 
 
 	<div id="keyslogin">
-		<h:graphicImage library="img" name="medicomilitar.png"
+		<h:graphicImage library="img" name="entrar.png"
 			styleClass="bordaImagem" />
 	</div>
 	<div id="formlogin">
@@ -49,22 +51,36 @@
 		</h:panelGroup>
 		<br />
 		<form id="formulario" method="post"
-			onsubmit="return validarSenhaLogin();" name="formulario"
-			action="#{request.contextPath}/j_spring_security_check">
-
-			<span style="display: block; padding-top: 30px; text-align: right">
-				<span style="display: inline-block; width: 50px; text-align: left">
-					Login </span> <input type="text" name="j_username" id="j_username" />
-			</span> <span style="display: block; padding-top: 2px; text-align: right">
-				<span style="display: inline-block; width: 50px; text-align: left">
-					Senha </span> <input type="password" name="j_password" id="j_password" />
-			</span> <span style="display: block; padding-top: 2px; text-align: right">
+					onsubmit="return validarSenhaLogin();"
+					name="formulario" 
+					action="#{request.contextPath}/j_spring_security_check">
+			
+				<span style="display: block; 
+				     padding-top: 2px; 
+					 text-align: right">
+				<span style="display: inline-block;
+					 width: 50px; text-align: left">
+					 Login
+				</span>
+					<input type="text" name="j_username" id="j_username"/>
+				</span> 
+				<span style="display: block;
+					 padding-top: 2px; text-align: right">
+				<span style="display: inline-block;
+					 width: 50px; text-align: left">
+					 Senha
+				</span>
+					<input type="password" name="j_password" id="j_password"/>
+				</span> 
+				<span style="display: block;
+					 padding-top: 2px; text-align: right">
 				<span id="enviando"></span>
-				<button type="submit" class="blue"
-					style="height: 40px; width: 100px; background: #CDCDC1; border: 1px;"
-					id="buttonLogin">Entrar</button>
-			</span>
-		</form>
+					<button type="submit" class="blue" style="height:40px;width:100px;background:#CDCDC1;border: 1px;"
+						id="buttonLogin">
+						Entrar
+				 	</button>
+				</span>
+			</form>
 		<script type="text/javascript">
 			$("#j_username").focus();
 

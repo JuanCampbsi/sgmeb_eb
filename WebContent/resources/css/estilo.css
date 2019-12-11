@@ -232,22 +232,24 @@ a:focus {
 }
 
 
+
+
 #keyslogin {
 	position: absolute;
-	bottom: -3px;
-	right: 215px;
+	bottom: -25px;
+	right: 260px;
 	z-index: 999;
 }
 
 #formlogin {
 	position: absolute;
 	bottom: 60px;
-	right:60px;
-	left:0px;
-	background-color: #E6E6FA;
+	right: 60px;
+	left: 0px;
+	background-color: #e5e5e5;
 	display: block;
-	-webkit-border-top-right-radius: 20px;
-	-webkit-border-bottom-right-radius: 20px;
+	-webkit-border-top-right-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
 	-moz-border-radius-topright: 8px;
 	-moz-border-radius-bottomright: 8px;
 	border-top-right-radius: 8px;
