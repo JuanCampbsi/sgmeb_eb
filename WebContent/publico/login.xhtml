@@ -4,53 +4,67 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<h:head>	
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><ui:insert name="titulo">SGMEB</ui:insert></title>
 	<h:outputScript name="jquery.js" library="primefaces/jquery" />
 	<h:outputStylesheet name="estilo.css" library="css" />
 	<h:outputScript name="scripty.js" library="javascript" />
-	<link href="main.css?version=12" />
 	
-	<h:graphicImage library="img" name="fundopqd.png" styleClass="bordaImagem" />
-
 </h:head>
 
-<h:body>	 
+<h:body>
 
-<div id="imagemlogin">
+		<div id="imagemlogin">
 		<h:graphicImage library="img" name="medicomilitar.png"
-			styleClass="bordaImagem" />
-	</div>
-
-
-	<div id="keyslogin">
-		<h:graphicImage library="img" name="entrar.png"
-			styleClass="bordaImagem" />
-	</div>
+			styleClass="bordaImagem" /></div>
+	
 	<div id="formlogin">
+	
 		<br />
 		<h:panelGroup rendered="#{!empty param.login_error}">
-
+			
 			<!--Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}  -->
-
-			<h:outputLabel
-				rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">
-				<span class="estiloSpan">Permissão Negada, login ou senha
-					incorretos. </span>
-			</h:outputLabel>
-
-			<h:outputLabel
-				rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Maximum sessions of 1 for this principal exceeded'}">
-				<span class="estiloSpan">Você está logado em outra sessão. </span>
-				<h:commandButton value="Encerrar"
-					style="height:40px;width:100px;background:#CDCDC1;border: 1px;"
-					onclick="invalidarSession('#{request.contextPath}', '/publico/invalidateSession')" />
-			</h:outputLabel>
-
-		</h:panelGroup>
+			
+			  <h:outputLabel rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">
+				<span class="estiloSpan">Permissão Negada, login ou senha incorretos.
+				</span>
+			  </h:outputLabel> 
+			  
+			  <h:outputLabel rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Maximum sessions of 1 for this principal exceeded'}">
+				<span class="estiloSpan">Você está logado em outra sessão.
+				</span>
+				<h:commandButton value="Encerrar" style="height:40px;width:100px;background:#CDCDC1;border: 1px;"
+				 onclick="invalidarSession('#{request.contextPath}', '/publico/invalidateSession')"/>
+			  </h:outputLabel>
+				
+			</h:panelGroup>
 		<br />
+		<div class="login-page">
+		<div class="form">
 		<form id="formulario" method="post"
+					onsubmit="return validarSenhaLogin();"
+					name="formulario" 
+					action="#{request.contextPath}/j_spring_security_check">			
+				
+					 Login 				
+					<input type="text" name="j_username" id="j_username"/>				
+				
+					 Senha				
+					<input type="password" name="j_password" id="j_password"/>
+				
+				<span style="display: block;
+					 padding-top: 2px; text-align: right">
+				<span id="enviando"></span>
+					<button type="submit" class="blue"	id="buttonLogin">
+						Entrar
+				 	</button>
+				</span>				
+			</form>
+		</div>
+	</div>
+		
+		<!-- <form id="formulario" method="post"
 					onsubmit="return validarSenhaLogin();"
 					name="formulario" 
 					action="#{request.contextPath}/j_spring_security_check">
@@ -80,7 +94,12 @@
 						Entrar
 				 	</button>
 				</span>
-			</form>
+			</form> -->
+	
+				
+	
+		
+	
 		<script type="text/javascript">
 			$("#j_username").focus();
 
