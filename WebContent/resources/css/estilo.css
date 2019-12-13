@@ -92,10 +92,10 @@
 }
 body {
   background:#CDCDC1; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #CDCDC1, #F0F8FF);
-  background: -moz-linear-gradient(right, #CDCDC1, #F0F8FF);
-  background: -o-linear-gradient(right, #CDCDC1,#F0F8FF);
-  background: linear-gradient(to left, #CDCDC1, #F0F8FF);
+  background: -webkit-linear-gradient(right, #F0F8FF, #F0F8FF);
+  background: -moz-linear-gradient(right, #7FFFD4, #F0F8FF);
+  background: -o-linear-gradient(right, #7FFFD4,#F0F8FF);
+  background: linear-gradient(to left, #F0F8FF, #7FFFD4);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
@@ -321,11 +321,15 @@ a:focus {
 
 #imagemlogin {
 	position: absolute;
-	top:50px;
-	right:60px;
+	top:200px;
+	right:1199px;
 }
 
-
+#imagemlogin2 {
+	position: absolute;
+	top:12px;
+	right:1150px;
+}
 
 
 #keyslogin {

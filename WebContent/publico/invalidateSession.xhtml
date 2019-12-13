@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputScript name="primefaces.js" library="primefaces" id="jsPrime" />
+	<h:outputScript name="jquery.js" library="primefaces/jquery"
+		id="jsJquery" />
+	<h:outputScript name="jquery-plugins.js" library="primefaces/jquery"
+		id="jsJqueryPlugin" />
+	<h:outputScript name="jquery.cookie.js" library="javascript"
+		id="jsJaqueryCookie" />
+	<h:outputStylesheet name="jquery-ui.css" library="primefaces/jquery/ui"
+		id="jsJqueryUi" />
+	<h:outputStylesheet name="primefaces.css" library="primefaces"
+		id="jdPrimeCss" />
+	<h:outputScript name="jquery.maskMoney.min.js" library="javascript"
+		id="jsMaskMoneySistema" />
+	<h:outputScript name="jquery.maskedinput.js" library="javascript"
+		id="jsMaskInputSistema" />
+	<h:outputScript name="scripty.js" library="javascript"
+		id="jsScriptSistema" />
+	<h:outputStylesheet name="estilo.css" library="css" id="cssStiloSistema"/> 	
+</h:head>
+<h:form prependId="false" id="form"> 
+		<script type="text/javascript" charset="UTF-8">
+			$.noConflict();
+		</script>
+		
+	<h:body>
+	
+		<div id="msgError" class="espacoMensagem">
+			<p:growl id="msg" showDetail="false" sticky="true" 
+			redisplay="true" autoUpdate="true" life="500" />  
+		</div>
+	
+		<p:dialog header="Encerrar sessão" widgetVar="dlg" 
+			resizable="false" modal="true" closable="false">
+		        <h:panelGrid columns="2" cellpadding="5">
+		            <h:outputLabel for="username" value="Login:" />
+		            <p:inputText id="username" value="#{loginBeanView.username}" 
+		            	required="true" label="username" requiredMessage="Informe o login." /> 
+		 
+		            <h:outputLabel for="password" value="Senha:" />
+		            <p:password id="password" value="#{loginBeanView.password}" 
+		            	required="true" label="password" requiredMessage="Informe a senha."/>
+		 
+		            <f:facet name="footer">
+		                <p:commandButton value="Encerrar"  style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
+		                update="form:msg" actionListener="#{loginBeanView.invalidar}"
+		                                 oncomplete="handleLoginRequest(xhr, status, args)" ajax="true"  />
+		            </f:facet> 
+		        </h:panelGrid>
+   		 </p:dialog>
+		
+	</h:body>		 
+</h:form>
+<script>
+
+
+$(function() {
+	PF('dlg').show(); 
+});
+
+function handleLoginRequest(xhr, status, args) {
+    if(!args.loggedIn) {
+        PF('dlg').jq.effect("shake", {times:5}, 100);
+    }
+    else {
+        PF('dlg').hide();
+        logout('#{request.contextPath}');
+    }
+}   
+
+</script>
+</html>

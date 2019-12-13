@@ -16,10 +16,15 @@
 <h:body>
 
 		<div id="imagemlogin">
-		<h:graphicImage library="img" name="medicomilitar.png"
+		<h:graphicImage library="img" name="logo1.png"
+			styleClass="bordaImagem" /></div>
+			
+			<div id="imagemlogin2">
+		<h:graphicImage library="img" name="pqdEB.png"
 			styleClass="bordaImagem" /></div>
 	
 	<div id="formlogin">
+			
 	
 		<br />
 		<h:panelGroup rendered="#{!empty param.login_error}">
@@ -41,7 +46,7 @@
 			</h:panelGroup>
 		<br />
 		<div class="login-page">
-		<div class="form">
+		<div class="form">	
 		<form id="formulario" method="post"
 					onsubmit="return validarSenhaLogin();"
 					name="formulario" 
@@ -62,42 +67,7 @@
 				</span>				
 			</form>
 		</div>
-	</div>
-		
-		<!-- <form id="formulario" method="post"
-					onsubmit="return validarSenhaLogin();"
-					name="formulario" 
-					action="#{request.contextPath}/j_spring_security_check">
-			
-				<span style="display: block; 
-				     padding-top: 2px; 
-					 text-align: right">
-				<span style="display: inline-block;
-					 width: 50px; text-align: left">
-					 Login
-				</span>
-					<input type="text" name="j_username" id="j_username"/>
-				</span> 
-				<span style="display: block;
-					 padding-top: 2px; text-align: right">
-				<span style="display: inline-block;
-					 width: 50px; text-align: left">
-					 Senha
-				</span>
-					<input type="password" name="j_password" id="j_password"/>
-				</span> 
-				<span style="display: block;
-					 padding-top: 2px; text-align: right">
-				<span id="enviando"></span>
-					<button type="submit" class="blue" style="height:40px;width:100px;background:#CDCDC1;border: 1px;"
-						id="buttonLogin">
-						Entrar
-				 	</button>
-				</span>
-			</form> -->
-	
-				
-	
+	</div>	
 		
 	
 		<script type="text/javascript">
