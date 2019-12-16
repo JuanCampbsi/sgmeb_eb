@@ -43,7 +43,7 @@
 			<value>java:comp/env/jdbc/datasouce</value> 
 		</property>
 	</bean>
-	
+
 	
 	
 	
@@ -102,7 +102,7 @@
 	</bean>
 
 	<!-- Bean de contexto application -->
-	
+	<bean id="contextoBean" class=" br.com.project.bean.view.ContextoBean" scope="session" lazy-init="false"/>
 	
 	<bean id="reportUtil" class="br.com.project.report.util.ReportUtil"/>
 	<bean id="utilFramework" class="br.com.framework.utils.UtilFramework" scope="session"/>

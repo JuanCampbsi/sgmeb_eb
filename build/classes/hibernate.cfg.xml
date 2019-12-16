@@ -30,6 +30,7 @@
 		
 		
 		<mapping class="br.com.project.model.classes.Entidade" />
+		<mapping class="br.com.project.model.classes.InformacaoRevisao" />
 
 		
 		

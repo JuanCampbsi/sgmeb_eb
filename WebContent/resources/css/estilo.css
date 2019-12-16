@@ -90,7 +90,7 @@
 .container .info span .fa {
   color: #EF3B3A;
 }
-body {
+.bodycss {
   background:#CDCDC1; /* fallback for old browsers */
   background: -webkit-linear-gradient(right, #F0F8FF, #6B8E23);
   background: -moz-linear-gradient(right, #7FFFD4, #6B8E23);
@@ -145,6 +145,14 @@ a:focus {
 	right: 260px;
 	z-index: 50;
 }
+.estiloSpan2 {
+	COLOR: red;
+	font-size: 14px;
+	position: absolute;
+	right: 240px;
+	z-index: 300;
+	top: 120px;
+}
 
 #topo {
 	position: absolute;
@@ -152,7 +160,7 @@ a:focus {
 	left: 0px;
 	right: 0px;
 	height: 80px;
-	background-color: #F7F6F5;
+	background-color:#F0F8FF;
 }
 
 #menu {
@@ -161,7 +169,7 @@ a:focus {
 	left: 0px;
 	right: 0px;
 	height: 30px;
-	background-color: #F7F6F5;
+	background-color:#F0F8FF;
 }
 
 #menupop {
@@ -312,7 +320,7 @@ a:focus {
 
 #barramenu {
 	display: block;
-	background-color: #F7F6F5;
+	background-color:  	#F5FFFA;
 	position: absolute;
 	top: 110px;
 	width: 200px;
@@ -320,6 +328,8 @@ a:focus {
 	left: 0px;
 	padding-top: 5px;
 	padding-left: 5px;
+	font-size: 13px;
+	font-face: sans-serif;
 }
 
 #imagemlogin {
@@ -368,10 +378,10 @@ a:focus {
 	background-image: linear-gradient(rgba(255, 255, 255, .3),
 		rgba(255, 255, 255, 0) );
 	position: absolute;
-	right: 20px;
-	top: 14px;
-	width: 200px;
-	padding: 4px;
+	right: 25px;
+	top: 7px;
+	width:228px;
+	padding: 2px;
 	background-color: #61c0e0;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
@@ -488,7 +498,9 @@ input[type=submit] {
 
 .bordaImagem {
 	border: 0;
+	
 }
+
 
 .espacoBranco {
 	height: 10px;

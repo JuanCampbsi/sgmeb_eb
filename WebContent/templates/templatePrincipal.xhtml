@@ -6,71 +6,77 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:sec="http://www.springframework.org/security/facelets/tags"
 	xmlns:p="http://primefaces.org/ui">
-	
+
 <sec:isAuthenticated>
-<h:head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<title> 
-			<ui:insert name="titulo">SGMEB</ui:insert>
-		</title>
-		<h:outputScript name="primefaces.js" library="primefaces" id="jsPrime"/>
-		<h:outputScript name="jquery.js" library="primefaces/jquery" id="jsJquery"/>
-		<h:outputScript name="jquery-plugins.js" library="primefaces/jquery" id="jsJqueryPlugin"/>
-		<h:outputScript name="jquery.cookie.js" library="javascript" id="jsJaqueryCookie"/>
-		<h:outputStylesheet name="jquery-ui.css" library="primefaces/jquery/ui" id="jsJqueryUi"/>
-		<h:outputStylesheet name="primefaces.css" library="primefaces" id="jdPrimeCss"/>
-		<h:outputScript name="jquery.maskMoney.min.js" library="javascript" id="jsMaskMoneySistema"/>
-		<h:outputScript name="jquery.maskedinput.js" library="javascript" id="jsMaskInputSistema"/>
-		<h:outputScript name="scripty.js" library="javascript" id="jsScriptSistema"/>
-		<h:outputScript name="jsf.js" library="javax.faces"/>
-		<h:outputScript name="googlechart.js" library="javascript"/> 
-		<h:outputScript name="deployJava.js"  library="javascript" />
-</h:head>
-<h:form id="formTemplate" prependId="false">
-		<h:outputStylesheet name="estilo.css" library="css" id="cssStiloSistema"/>
-  <h:body >
- 	 <script type="text/javascript" charset="UTF-8">    
- 	    $.noConflict();
- 	  	localeData_pt_br();
-	    initTamplete();
-		ocultarMenu();  
-		
-		$(document).keydown(function(e) {
-			if (e.which == 116) {
-				return false;
-			}
-		});
-		
-		/*$(window).bind('beforeunload', function(e){// peder confirmação para atualizar ou sair da pagina
-			e = e || window.event;
-			var message = "Deseja realmente sair do sistema?";
-			
-			if(e) e.returnValue = message;
-				return message;	
-		});*/
-		
-	</script>
-		<ui:include src="/templates/barraProgresso.xhtml" />
-		<div id="msgError" class="espacoMensagem">
-			<p:growl id="msg" showDetail="false" sticky="true" redisplay="true" autoUpdate="true" life="500" />  
-			<p:tooltip id="toolTipFocus" globalSelector="a,:input,:button" showEvent="focus" hideEvent="blur" />
-		</div>
-		<div id="container">
-			<div id="topo">
-				<span style="position: absolute; left: 20px; top: 14px" id="spanLogo">
-					<h:graphicImage library="img" name="logo.png" id="logoImg"
-						styleClass="bordaImagem" />
-				</span> 
-				<span id="dadoslogin"> Usu&aacute;rio:
-					#{entidadeBeanView.usuarioLogadoSecurity}
-					<br id="quebraUser"/> 
-						&Uacute;ltimo login: 
-						<h:outputLabel value="#{entidadeBeanView.ultimoAcesso}" id="saidaUltimoAcesso">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title><ui:insert name="titulo">Caixaki</ui:insert></title>
+		<h:outputScript name="primefaces.js" library="primefaces" id="jsPrime" />
+		<h:outputScript name="jquery.js" library="primefaces/jquery"
+			id="jsJquery" />
+		<h:outputScript name="jquery-plugins.js" library="primefaces/jquery"
+			id="jsJqueryPlugin" />
+		<h:outputScript name="jquery.cookie.js" library="javascript"
+			id="jsJaqueryCookie" />
+		<h:outputStylesheet name="jquery-ui.css"
+			library="primefaces/jquery/ui" id="jsJqueryUi" />
+		<h:outputStylesheet name="primefaces.css" library="primefaces"
+			id="jdPrimeCss" />
+		<h:outputScript name="jquery.maskMoney.min.js" library="javascript"
+			id="jsMaskMoneySistema" />
+		<h:outputScript name="jquery.maskedinput.js" library="javascript"
+			id="jsMaskInputSistema" />
+		<h:outputScript name="scripty.js" library="javascript"
+			id="jsScriptSistema" />
+		<h:outputScript name="jsf.js" library="javax.faces" />
+		<h:outputScript name="googlechart.js" library="javascript" />
+		<h:outputScript name="deployJava.js" library="javascript" />
+	</h:head>
+	<h:form id="formTemplate" prependId="false">
+		<h:outputStylesheet name="estilo.css" library="css"
+			id="cssStiloSistema" />
+		<h:body>
+			<script type="text/javascript" charset="UTF-8">
+				$.noConflict();
+				localeData_pt_br();
+				initTamplete();
+				ocultarMenu();
+
+				$(document).keydown(function(e) {
+					if (e.which == 116) {
+						return false;
+					}
+				});
+
+				/*$(window).bind('beforeunload', function(e){// peder confirmação para atualizar ou sair da pagina
+					e = e || window.event;
+					var message = "Deseja realmente sair do sistema?";
+					
+					if(e) e.returnValue = message;
+						return message;	
+				});*/
+			</script>
+			<ui:include src="/templates/barraProgresso.xhtml" />
+			<div id="msgError" class="espacoMensagem">
+				<p:growl id="msg" showDetail="false" sticky="true" redisplay="true"
+					autoUpdate="true" life="500" />
+				<p:tooltip id="toolTipFocus" globalSelector="a,:input,:button"
+					showEvent="focus" hideEvent="blur" />
+			</div>
+			<div id="container">
+				<div id="topo">
+					<span style="position: absolute; left: 7px; top: 3px" id="spanLogo">
+						<h:graphicImage library="img" name="ebreduzido(1).png"
+							id="logoImg" styleClass="bordaImagem" />
+					</span> <span id="dadoslogin"> Usuário:
+						#{entidadeBeanView.usuarioLogadoSecurity} <br id="quebraUser" />
+						Último login: <h:outputLabel value="#{entidadeBeanView.ultimoAcesso}" id="saidaUltimoAcesso">
 							<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss"
 							dateStyle="long" timeStyle="full" timeZone="GMT-03:00"/>
 						</h:outputLabel>
 					<br id="quebraUltimoAcesso"/> 
 					<a href="#" id="logoutSuperior" onclick="javascript:logout('#{request.contextPath}');">Sair</a>
+							
 				</span> 
 					<span id="menuSistema" style="position: absolute; right: 25px; top: 48px; width: 20px">
 					<a href="#" onclick="abrirMenupop()">
@@ -80,8 +86,9 @@
 				</span> 
 			</div>
 			
+			
 			<div id="menu">
-   				 <span id="iniciarmenu">
+   				 <span id="iniciarmenu" >
    				 <h:graphicImage library="img" name="iconemenu.png"
 						styleClass="bordaImagem" id="iconemenu">
 					Menu
@@ -89,223 +96,55 @@
    				 </span>
  		    </div>
  		    
- 		    <div id="corpo" class="corpo">
+
+				<div id="corpo" class="corpo">
 				<ui:insert name="corpo" />
+				
 			</div>
 			
-			<div id="menupop">
-				<sec:ifAnyGranted roles="MENSAGENS_ENVIAR_ACESSAR, ADMIN">		
-					<p:commandLink actionListener="#{mensagemBeanView.novo}" onsuccess ="enviarMsgDialog.show();"
-					value="Enviar mensagem" immediate="true"
-					 style="display:block" id="enviarMensagem" ajax="true"  process="@this">
-					 	<p:ajax immediate="true" listener="#{mensagemBeanView.novo}"/>
-					 </p:commandLink>
-				 </sec:ifAnyGranted>
+			
+			<div id="menupop">				
    			 <a href='#' onclick="alterarSenhaDialog.show();" style="display:block" id="alterarSenha">
    			 	<span style="display:block" id="spanAlterarSenha">Alterar senha</span>
    			 </a>
   			</div>
   			
-				<div id="barramenu">
-					<p:tieredMenu
-						style="width: 185px;border: none;background: none;color: #000;"
+  			<p:dialog widgetVar="alterarSenhaDialog" id="alterarSenhaDialog" width="240"
+				modal="true" resizable="false" height="170"
+				header="Alterar senha" appendToBody="false" dynamic="true">
+				Corpo					
+			</p:dialog>
+  			
+  			
+  			
+  			<div id="barramenu">
+  				<p:tieredMenu
+						style="width: 185px;border: none;background:none;color: #000;"
 						 id="menuEsquerdo">
 						 
-					<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">	 
-						<p:submenu label="Cadastros" id="subMenuCadastro">
-						
-						<sec:ifAnyGranted roles="CONSTRUTORA_ACESSAR, ADMIN">	 
-							<p:menuitem value="Construtora" id="menuentidade"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_entidade')"
-								ajax="true" />
-						</sec:ifAnyGranted>
-						
-						<sec:ifAnyGranted roles="CLIENTE_ACESSAR, ADMIN">
-							<p:menuitem value="Cliente" id="menucliente"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_cliente')"
-								ajax="true" />
-					     </sec:ifAnyGranted>			
-								
-						<sec:ifAnyGranted roles="FORNECEDOR_ACESSAR, ADMIN">		
-							<p:menuitem value="Fornecedor" id="menufornecedor"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_fornecedor')"
-								ajax="true" />
-						</sec:ifAnyGranted>	
-					   
-					   <sec:ifAnyGranted roles="VENDEDOR_ACESSAR, ADMIN">			
-							<p:menuitem value="Vendedor" id="menuvendeor"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_vendedor')"
-								ajax="true" />	
-						</sec:ifAnyGranted>
-						
-						<sec:ifAnyGranted roles="FUNCIONARIO_ACESSAR, ADMIN">		
-							<p:menuitem value="Funcionário" id="menufuncionario"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_funcionario')"
-								ajax="true" />			
-						</sec:ifAnyGranted>		
-						
-						<sec:ifAnyGranted roles="EMPREENDIMENTO_ACESSAR, ADMIN">	
-							<p:menuitem value="Empreendimento" id="menuempreendimento"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_empreendimento')"
-								ajax="true" />	
-						</sec:ifAnyGranted>		
-								
-						<sec:ifAnyGranted roles="FILIAL_ACESSAR, ADMIN">		
-							<p:menuitem value="Filial" id="menufilial"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_filial')"
-								ajax="true" />
-						</sec:ifAnyGranted>		
-								
-						<sec:ifAnyGranted roles="PRODUTO_ACESSAR, ADMIN">		
-							<p:menuitem value="Produto" id="menuproduto"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_produto')"
-								ajax="true" />
-						</sec:ifAnyGranted>		
-						
-						<sec:ifAnyGranted roles="SERIE_ACESSAR, ADMIN">		
-							<p:menuitem value="Série" id="menuserie"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_serie')"
-								ajax="true" />
-						</sec:ifAnyGranted>		
-								
-					 <sec:ifAnyGranted roles="OCULTA_ITEM">				
-						<sec:ifAnyGranted roles="ASSOCIAR_VENDEDORES_ACESSAR, ADMIN">		
-							<p:menuitem value="Associar vendedores" id="menuassociarvendedores"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_associar_vendedor')"
-								ajax="true" />	
-						</sec:ifAnyGranted>		
-					</sec:ifAnyGranted>	
-								
-						<sec:ifAnyGranted roles="CIDADE_ACESSAR, ADMIN">		
-							<p:menuitem value="Cidade" id="menucidade"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_cidade')"
-								ajax="true"  />
-						</sec:ifAnyGranted>
-							
-							<sec:ifAnyGranted roles="OCULTA_ITEM">	
-								<p:menuitem value="Países" id="menupais"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_pais')"
-								ajax="true" />
-							</sec:ifAnyGranted>
-							
-							<sec:ifAnyGranted roles="OCULTA_ITEM">	
-								<p:menuitem value="Estado" id="menuestado"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_estado')"
-								ajax="true" />
-							</sec:ifAnyGranted>
-							
-						 <sec:ifAnyGranted roles="BAIRRO_ACESSAR, ADMIN">		
-							<p:menuitem value="Bairro"  id="menubairro"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_bairro')"
-								ajax="true" />	
-						 </sec:ifAnyGranted>		
-						</p:submenu>
-					</sec:ifAnyGranted>
-					
-					<sec:ifAnyGranted roles="FINANCIERO_ACESSAR, ADMIN">
-						<p:submenu label="Financeiro" id="subMenuFinanceiro">
-							<sec:ifAnyGranted roles="TITULO_ACESSAR, ADMIN">
-								<p:menuitem value="Titulo" id="menutitulo"
-									onclick="redirecionarPage('#{request.contextPath}','/cadastro/financeiro/', 'find_titulo')"
-									ajax="true" />	
-							</sec:ifAnyGranted>
-							
-							<sec:ifAnyGranted roles="BAIXA_ACESSAR, ADMIN">		
-								<p:menuitem value="Baixa de título" id="menubaixatitulo"
-									onclick="redirecionarPage('#{request.contextPath}','/cadastro/financeiro/', 'find_baixa_titulo')"
-									ajax="true" />		
-							</sec:ifAnyGranted>	
-						</p:submenu>
-						
-					</sec:ifAnyGranted>	
-					
-						<sec:ifAnyGranted roles="MENSAGEM_ACESSAR, ADMIN">
-								<p:submenu label="Mensagens" id="subMenuMsg">
-									 <sec:ifAnyGranted roles="MENSAGEM_ACESSAR, ADMIN">
-										<p:menuitem value="Mensagens recebidas" id="menumsg"
-											onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'msg_recebidas')"
-											ajax="true" />	
-									</sec:ifAnyGranted>		
-									<sec:ifAnyGranted roles="MENSAGENS_ENVIAR_ACESSAR, ADMIN">		
-										<p:menuitem value="Enviar mensagem" id="menumensagem"
-											onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_mensagem')"
-											ajax="true" />	
-									</sec:ifAnyGranted>		
-							</p:submenu>
-						</sec:ifAnyGranted>
-						
-						<sec:ifAnyGranted roles="COMISSAO_ACESSAR, ADMIN">
-							<p:menuitem value="Comissão" id="menucomissao"
-									onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_comissao')"
-									ajax="true" />	
-						</sec:ifAnyGranted>
-						
-						<sec:ifAnyGranted roles="APPLET_FILE_LOCAL">
-							<p:menuitem value="Teste ler arquivo local applet" id="menuAppletFileLocal"
-								onclick="invocaAppletFileLocal('#{request.contextPath}');"
-								ajax="true" async="false" oncomplete="PF('statusDialog').hide()"/>
-								
-							<p:menuitem value="Impressão local web" id="menuImpressaoLocalWeb"
-								onclick="invocaApplet('#{request.contextPath}');"
-								ajax="true" async="false" oncomplete="PF('statusDialog').hide()"/>	
-						</sec:ifAnyGranted>
-						
-					   	<p:menuitem value="Enviar mensagem" id="menuenviarmensagem" actionListener="#{mensagemBeanView.novo}"
-							onclick="redirecionarPagina('#{request.contextPath}','/cadastro/cad_mensagem');" 
-							ajax="true" />
-							
-						<p:menuitem value="Alterar senha" id="menualterarsenha"
-							onclick="alterarSenha('#{request.contextPath}');" 
-							ajax="true" />	
-						
-						<p:menuitem value="Início" id="menuinicio"
+						 <p:menuitem value="Início" id="menuinicio"
 							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"  
 							ajax="true" />
+							
+						 <p:menuitem value="Alterar senha" id="menualterarsenha"
+							onclick="alterarSenha('#{request.contextPath}');" 
+							ajax="true" />							
 						
 						<p:menuitem value="Sair" id="menusair"
 							onclick="javascript:logout('#{request.contextPath}');"
 							ajax="true" />
-					</p:tieredMenu>
+						 
+						 </p:tieredMenu>
 				</div>
+  			
+  			
+  			
+  			
+
 			</div>
-			
-			
-			<p:dialog widgetVar="alterarSenhaDialog" id="alterarSenhaDialog" width="240"
-				modal="true" resizable="false" height="170"
-				header="Alterar senha" appendToBody="false" dynamic="true">
-				
-					<ui:include src="/cadastro/dialog_alterar_senha.xhtml"/>
-			</p:dialog>
-			
-			
-			<p:dialog widgetVar="enviarMsgDialog" id="alterarMsgDialog" width="800"
-				modal="true" resizable="false" height="360"
-				header="Enviar menssagem" appendToBody="false" dynamic="true">
-				<ui:include src="/cadastro/dialog_enviar_msg.xhtml"/>
-			</p:dialog>
-			
 		</h:body>
-</h:form>
-	<h:form id="formVerificaMsg" prependId="false" >
-	  <sec:ifAnyGranted roles="MENSAGEM_ACESSAR, ADMIN">
-		<p:poll interval="600" listener="#{mensagemBeanView.verificar}" onsuccess="verificaMsgNaoLidas();"
-				async="true" update=":formTemplate:msg" id="verificaMsg"/> 
-			<span style="position: absolute; right: 250px; top: 14px"
-				id="avisomensagem"> 
-				<a href="#" id="mensagem"> 
-				<span
-					style="display: inline-block; position: absolute; top: 4px; left: 35px; font-weight: bold"
-					id="contadormensagem">&nbsp;
-				 </span> 
-					 <p:commandLink action="#{mensagemBeanView.msgRecebidas}" ajax="true" process="@this">
-					 	 <h:graphicImage library="img"
-							name="mail.png" id="mail" styleClass="bordaImagem" /> 
-					 </p:commandLink>
-				 </a> 
-			</span>
-		</sec:ifAnyGranted>
 	</h:form>
-	 <script type="text/javascript" charset="UTF-8">
+	<script type="text/javascript" charset="UTF-8">
 		carregarIdElementosPagina();
 		verificaMsgNaoLidas();
 	</script>

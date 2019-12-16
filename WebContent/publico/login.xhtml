@@ -13,7 +13,7 @@
 
 </h:head>
 
-<h:body>
+<h:body styleClass="bodycss">
 
 	<div id="imagemlogin">
 		<h:graphicImage library="img" name="keys.png"
@@ -39,10 +39,10 @@
 
 			<h:outputLabel
 				rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Maximum sessions of 1 for this principal exceeded'}">
-				<span class="estiloSpan">Você está logado em outra sessão. </span>
+				<span class="estiloSpan2">Você está logado em outra sessão.
 				<h:commandButton value="Encerrar"
 					style="height:40px;width:100px;background:#CDCDC1;border: 1px;"
-					onclick="invalidarSession('#{request.contextPath}', '/publico/invalidateSession')" />
+					onclick="invalidarSession('#{request.contextPath}', '/publico/invalidateSession')" /> </span>
 			</h:outputLabel>
 		</h:panelGroup>
 		<br />
@@ -50,8 +50,8 @@
 
 		<div class="login-page">
 			<div class="form">
-				<form id="formulario" method="post"
-					onsubmit="return validarSenhaLogin();" name="formulario"
+				<form id="formulario" method="post" name="formulario"
+					onsubmit="return validarSenhaLogin();" 
 					action="#{request.contextPath}/j_spring_security_check">
 
 					Login <input type="text" name="j_username" id="j_username" />
