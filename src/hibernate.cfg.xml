@@ -15,8 +15,8 @@
 		<property name="hibernate.cache.use_second_level_cache">true</property>
 		<property name="hibernate.transaction.auto_close_session">true</property>
 		
-		<!-- A PROPRIEDADE hibernate.hbm2ddl.auto CRIA AUTOMATICAMENTE AS TABELAS NO BANCO DE DADOS 
-		<property name="hibernate.hbm2ddl.auto">update</property>  -->
+		<!-- A PROPRIEDADE hibernate.hbm2ddl.auto CRIA AUTOMATICAMENTE AS TABELAS NO BANCO DE DADOS -->
+		<property name="hibernate.hbm2ddl.auto">update</property>  
 		
 		<property name="hibernate.show_sql">false</property>
 		<property name="hibernate.format_sql">true</property>

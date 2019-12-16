@@ -10,7 +10,7 @@
 <sec:isAuthenticated>
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title><ui:insert name="titulo">Caixaki</ui:insert></title>
+		<title><ui:insert name="titulo">SGMEB</ui:insert></title>
 		<h:outputScript name="primefaces.js" library="primefaces" id="jsPrime" />
 		<h:outputScript name="jquery.js" library="primefaces/jquery"
 			id="jsJquery" />
@@ -29,7 +29,13 @@
 		<h:outputScript name="scripty.js" library="javascript"
 			id="jsScriptSistema" />
 		<h:outputScript name="jsf.js" library="javax.faces" />
-		<h:outputScript name="googlechart.js" library="javascript" />
+		
+		
+		
+		<!-- <h:outputScript name="googlechart.js" library="javascript" /> -->
+		
+		
+		
 		<h:outputScript name="deployJava.js" library="javascript" />
 	</h:head>
 	<h:form id="formTemplate" prependId="false">
@@ -122,9 +128,24 @@
 						style="width: 185px;border: none;background:none;color: #000;"
 						 id="menuEsquerdo">
 						 
+						 
+						 <p:submenu label="Cadastrar">	
+						 <p:menuitem value="Usuários" id="permissaousuarios" />
+						 					 
+						 <p:menuitem value="Militares" id="cadmilitares" />		
+						 
+						 <p:menuitem value="Produtos" id="cadmilitares" />					 
+						 </p:submenu>
+						 
+						<p:submenu label="Permissões Gerais">						 
+						<p:menuitem value="Usuários" id="permissaousuarios" />					 
+						 </p:submenu>
+						 
+						 
+						 
 						 <p:menuitem value="Início" id="menuinicio"
 							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"  
-							ajax="true" />
+							ajax="true"  />
 							
 						 <p:menuitem value="Alterar senha" id="menualterarsenha"
 							onclick="alterarSenha('#{request.contextPath}');" 
@@ -146,7 +167,7 @@
 	</h:form>
 	<script type="text/javascript" charset="UTF-8">
 		carregarIdElementosPagina();
-		verificaMsgNaoLidas();
+		
 	</script>
 </sec:isAuthenticated>
 </html>
