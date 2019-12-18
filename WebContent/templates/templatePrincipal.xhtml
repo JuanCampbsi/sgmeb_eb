@@ -138,6 +138,11 @@
 								ajax="true" />
 						</sec:ifAnyGranted>
 						
+						<sec:ifAnyGranted roles="PACIENTE_ACESSAR, ADMIN">	 
+							<p:menuitem value="Paciente" id="menupaciente"
+								action = "/cadastro/cad_paciente.jsf?faces-redirect=true" />
+						</sec:ifAnyGranted>
+						
 						<sec:ifAnyGranted roles="PRODUTO_ACESSAR, ADMIN">	 
 							<p:menuitem value="Produtos" id="menuprodutos"
 								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_entidade')"

@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/components"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/templatePrincipal.xhtml">
+	<ui:define name="corpo">
+		<h:form id="formCadastro" prependId="false">
+		 <c:set var="isCadastro" value="true" scope="view"/>
+		<p:panel header="Cadastro de Paciente" id="panelCadastro">
+		
+		<h:panelGrid id="gridPaciente" columns="3">
+		<h:outputLabel for="id" value="Código : " id="labelId" />
+					<p:inputText id="id" styleClass="estiloIdCadastro"
+						 />
+					<h:outputLabel />
+		
+		</h:panelGrid>
+		
+		</p:panel>		
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
+</html>
