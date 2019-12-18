@@ -19,35 +19,33 @@ import org.hibernate.envers.Audited;
 
 import br.com.project.annotation.IdentificaCampoPesquisa;
 
-
-
 @Audited
-@Entity(name="paciente")
-@SequenceGenerator(name="paci_seq", sequenceName="paci_seq", initialValue=1, allocationSize=1)
+@Entity(name = "paciente")
+@SequenceGenerator(name = "paci_seq", sequenceName = "paci_seq", initialValue = 1, allocationSize = 1)
 public class Paciente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "paci_id")
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "paci_seq")
 	private Long paci_id;
-	
+
 	@Column(nullable = false, length = 20)
 	private float peso;
-	
+
 	@Column(nullable = false, length = 20)
 	private float altura;
-	
+
 	@Column(nullable = false, length = 20)
 	private float imc;
-		
 
-	@Audited 
+	@Audited
 	@OneToMany(mappedBy = "paciente", orphanRemoval = false)
-	@Cascade(value = {org.hibernate.annotations.CascadeType.SAVE_UPDATE, CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-	private List<Consulta> consultlist = new ArrayList<Consulta>(); 
-	
+	@Cascade(value = { org.hibernate.annotations.CascadeType.SAVE_UPDATE,
+			CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
+	private List<Consulta> consultlist = new ArrayList<Consulta>();
+
 	@Version
 	@Column(name = "versionNum")
 	private int versionNum;
@@ -124,10 +122,5 @@ public class Paciente implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
 
 }

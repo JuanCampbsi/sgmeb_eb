@@ -16,7 +16,7 @@ public class SrvLoginImpl implements SrvLogin {
 	private static final long serialVersionUID = 1L;
 	@Resource
 	private RepositoryLogin repositoryLogin;
-	
+
 	private BufferedReader bufferedReader;
 
 	public void setRepositoryLogin(RepositoryLogin repositoryLogin) {
@@ -36,7 +36,8 @@ public class SrvLoginImpl implements SrvLogin {
 
 			if (fileSql.contains(".sql") && fileSql.equals("v_1.sql")) {
 				sqlText = obterConteudo(path, fileSql);
-				if (!sqlText.trim().isEmpty() && !repositoryLogin.contemTabela("arquivoversao")) {
+				if (!sqlText.trim().isEmpty()
+						&& !repositoryLogin.contemTabela("arquivoversao")) {
 					repositoryLogin.atualizaBanco(sqlText, fileSql);
 				}
 			} else if (fileSql != null && fileSql.contains(".sql")
@@ -53,8 +54,7 @@ public class SrvLoginImpl implements SrvLogin {
 	private String obterConteudo(String path, String fileSql)
 			throws FileNotFoundException, IOException {
 		String sqlText = "";
-		bufferedReader = new BufferedReader(new FileReader(path
-				+ fileSql));
+		bufferedReader = new BufferedReader(new FileReader(path + fileSql));
 		if (bufferedReader != null) {
 			while (bufferedReader.ready()) {
 				String linha = bufferedReader.readLine();

@@ -19,7 +19,6 @@ import org.hibernate.envers.Audited;
 
 import br.com.project.annotation.IdentificaCampoPesquisa;
 
-
 @Audited
 @Entity
 @Table(name = "entidade")
@@ -32,7 +31,7 @@ public class Entidade implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "entidade_seq")
 	private Long ent_codigo;
-	
+
 	@Column(length = 20, nullable = true, unique = true)
 	@Index(name = "xlogin")
 	private String ent_login = null;
@@ -45,15 +44,14 @@ public class Entidade implements Serializable {
 
 	@Column(nullable = false)
 	private Boolean ent_inativo = false;
-	
+
 	@Column(nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ent_datacadastro = new Date();
-	
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ent_ultimoacesso;
-	
+
 	@Version
 	@Column(name = "versionNum")
 	private int versionNum;
@@ -89,7 +87,7 @@ public class Entidade implements Serializable {
 	public void setEnt_codigo(Long ent_codigo) {
 		this.ent_codigo = ent_codigo;
 	}
-	
+
 	public Boolean getEnt_mudarsenha() {
 		return ent_mudarsenha;
 	}
@@ -97,7 +95,7 @@ public class Entidade implements Serializable {
 	public void setEnt_mudarsenha(Boolean ent_mudarsenha) {
 		this.ent_mudarsenha = ent_mudarsenha;
 	}
-	
+
 	public Boolean getEnt_inativo() {
 		return ent_inativo;
 	}
@@ -105,7 +103,7 @@ public class Entidade implements Serializable {
 	public void setEnt_inativo(Boolean ent_inativo) {
 		this.ent_inativo = ent_inativo;
 	}
-	
+
 	public Date getEnt_ultimoacesso() {
 		return ent_ultimoacesso;
 	}
@@ -113,6 +111,5 @@ public class Entidade implements Serializable {
 	public void setEnt_ultimoacesso(Date ent_ultimoacesso) {
 		this.ent_ultimoacesso = ent_ultimoacesso;
 	}
-	
-	
+
 }

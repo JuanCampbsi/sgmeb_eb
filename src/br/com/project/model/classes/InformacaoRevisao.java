@@ -13,8 +13,6 @@ import org.hibernate.envers.RevisionEntity;
 
 import br.com.project.listener.CustomListener;
 
-
-
 /**
  * Reprensenta a tabela de revision log em nivel de aplicação do hibernate
  * envers
@@ -42,7 +40,5 @@ public class InformacaoRevisao extends DefaultRevisionEntity implements
 	public void setEntidade(Entidade entidade) {
 		this.entidade = entidade;
 	}
-	
-	
 
 }

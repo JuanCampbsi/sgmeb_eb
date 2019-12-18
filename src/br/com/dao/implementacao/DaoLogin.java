@@ -26,18 +26,19 @@ public class DaoLogin extends ImplementacaoCrud<Object> implements
 		sql.append(fileSql);
 		sql.append("' limit 1");
 		List<Object[]> temVersao = super.getListSQLDinamica(sql.toString());
-		if (temVersao != null && !temVersao.isEmpty()) { 
+		if (temVersao != null && !temVersao.isEmpty()) {
 			for (Object object : temVersao.toArray()) {
 				return object.equals(fileSql);
 			}
-		}	
+		}
 		return false;
 	}
 
 	@Override
 	public boolean contemTabela(String tabela) {
 		String sql = "SELECT table_name FROM information_schema.tables where table_name  = ?";
-		SqlRowSet sqlRowSet = super.getJdbcTemplate().queryForRowSet(sql,tabela);
+		SqlRowSet sqlRowSet = super.getJdbcTemplate().queryForRowSet(sql,
+				tabela);
 		return sqlRowSet.next();
 
 	}
@@ -45,7 +46,8 @@ public class DaoLogin extends ImplementacaoCrud<Object> implements
 	@Override
 	public boolean autentico(String login, String senha) throws Exception {
 		String sql = "SELECT count(1) as autentica FROM entidade where ent_login  = ? and ent_senha = ? ";
-		SqlRowSet sqlRowSet = super.getJdbcTemplate().queryForRowSet(sql,new Object[]{login, senha});
+		SqlRowSet sqlRowSet = super.getJdbcTemplate().queryForRowSet(sql,
+				new Object[] { login, senha });
 		return sqlRowSet.next() ? sqlRowSet.getInt("autentica") > 0 : false;
 	}
 

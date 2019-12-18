@@ -89,8 +89,4 @@ public class Receituario implements Serializable {
 		return true;
 	}
 
-	
-
-
-
 }
