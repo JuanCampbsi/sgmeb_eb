@@ -2,11 +2,10 @@ package br.com.project.enums;
 
 public enum TipoCadastro {
 
-	TIPO_CADASTRO_CONSTRUTORA("Construtora"),
-	TIPO_CADASTRO_CLIENTE("Cliente"),
-	TIPO_CADASTRO_FORNECEDOR("Fornecedor"),
-	TIPO_CADASTRO_FUNCIONARIO("Funcionário"),
-	TIPO_CADASTRO_VENDEDOR("Vendedor");
+	TIPO_CADASTRO_USUARIO("Usuario"),
+	TIPO_CADASTRO_PACIENTE("Paciente"),
+	TIPO_CADASTRO_PRODUTO("Produto");
+	
 
 	private String tipo = "";
 

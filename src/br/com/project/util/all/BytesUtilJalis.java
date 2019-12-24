@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 /**
- * Classe utilitaria para convers√£o de byte[]
+ * Classe utilitaria para convers„o de byte[]
  * @author Juan Campos
  *
  */

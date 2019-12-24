@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ForeignKey;
@@ -28,17 +27,17 @@ public class InformacaoRevisao extends DefaultRevisionEntity implements
 
 	private static final long serialVersionUID = 1L;
 
-	@ManyToOne
-	@ForeignKey(name = "entidade_fk")
-	@JoinColumn(nullable = false, name = "entidade")
-	private Entidade entidade;
+	
+	@ForeignKey(name = "pessoa_fk")
+	@JoinColumn(nullable = false, name = "pessoa")
+	private Pessoa pessoa;
 
-	public Entidade getEntidade() {
-		return entidade;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setEntidade(Entidade entidade) {
-		this.entidade = entidade;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 }

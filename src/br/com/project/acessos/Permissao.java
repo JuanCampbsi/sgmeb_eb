@@ -26,10 +26,10 @@ public enum Permissao {
 	PRODUTO_EXCLUIR("PRODUTO_EXCLUIR", "Produto - Excluir"),
 	
 	
-	AUXILIAR_ACESSAR("AUXILIAR_ACESSAR", "Auxiliar - Acessar"),
-	AUXILIAR_NOVO("AUXILIAR_NOVO", "Auxiliar - Novo"),
-	AUXILIAR_EDITAR("AUXILIAR_EDITAR", "Auxiliar - Editar"),
-	AUXILIAR_EXCLUIR("AUXILIAR_EXCLUIR", "Auxiliar - Excluir"),
+	USUARIO_ACESSAR("USUARIO_ACESSAR", "Usuario - Acessar"),
+	USUARIO_NOVO("USUARIO_NOVO", "Usuario - Novo"),
+	USUARIO_EDITAR("USUARIO_EDITAR", "Usuario  - Editar"),
+	USUARIO_EXCLUIR("USUARIO_EXCLUIR", "Usuario  - Excluir"),
 	
 	PACIENTE_ACESSAR("PACIENTE_ACESSAR", "Paciente - Acessar"),
 	PACIENTE_NOVO("PACIENTE_NOVO", "Paciente - Novo"),

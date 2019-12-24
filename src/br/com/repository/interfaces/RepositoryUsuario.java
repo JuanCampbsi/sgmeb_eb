@@ -8,12 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Repository
-public interface RepositoryEntidade extends Serializable {
+public interface RepositoryUsuario extends Serializable {
 
-	Date getUltimoAcessoEntidadeLogada(String name);
+	Date getUltimoAcessoUsuarioLogado(String name);
 
 	void updateUltimoAcessoUser(String login);
 
-	boolean existeUsuario(String ent_login);
+	boolean existeUsuario(String user_login);
 
 }

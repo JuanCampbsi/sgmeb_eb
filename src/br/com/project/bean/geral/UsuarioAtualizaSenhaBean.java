@@ -2,7 +2,7 @@ package br.com.project.bean.geral;
 
 import java.io.Serializable;
 
-public class EntidadeAtualizaSenhaBean implements Serializable {
+public class UsuarioAtualizaSenhaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private String senhaAtual;

@@ -59,7 +59,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 
 	private HtmlInputHidden htmlInputHiddenTitulo;
 
-	protected String tipoEntidadeTemp;
+	protected String tipoUsuarioTemp;
 
 	/**
 	 * 
@@ -289,13 +289,13 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 
 	}
 
-	public void setTipoEntidadeTemp(String tipoEntidadeTemp) {
-		this.tipoEntidadeTemp = tipoEntidadeTemp;
+	public void setTipoUsuarioTemp(String tipoUsuarioTemp) {
+		this.tipoUsuarioTemp = tipoUsuarioTemp;
 	}
 
-	public TipoCadastro getTipoEntidadeTemp() {
+	public TipoCadastro getTipoUsuarioTemp() {
 
-		String tipoEntidade = null;
+		String tipoUsuario = null;
 
 		if (htmlInputHidden == null) {
 			return null;
@@ -311,29 +311,26 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 		}
 
 		try {
-			tipoEntidade = (String) htmlInputHidden.getAttributes().get(
-					"tipoEntidadeTemp");
+			tipoUsuario = (String) htmlInputHidden.getAttributes().get(
+					"tipoUsuarioTemp");
 		} catch (Exception e) {
 			// execeção omitida
 		}
 
-		if (tipoEntidade == null) {
+		if (tipoUsuario == null) {
 			return null;
 		}
 
-		if (tipoEntidade.equals(TipoCadastro.TIPO_CADASTRO_CLIENTE.name())) {
-			return TipoCadastro.TIPO_CADASTRO_CLIENTE;
-		} else if (tipoEntidade.equals(TipoCadastro.TIPO_CADASTRO_CONSTRUTORA
+		if (tipoUsuario.equals(TipoCadastro.TIPO_CADASTRO_USUARIO.name())) {
+			return TipoCadastro.TIPO_CADASTRO_USUARIO;
+		} else if (tipoUsuario.equals(TipoCadastro.TIPO_CADASTRO_PRODUTO
 				.name())) {
-			return TipoCadastro.TIPO_CADASTRO_CONSTRUTORA;
-		} else if (tipoEntidade.equals(TipoCadastro.TIPO_CADASTRO_FORNECEDOR
-				.name())) {
-			return TipoCadastro.TIPO_CADASTRO_FORNECEDOR;
-		} else if (tipoEntidade.equals(TipoCadastro.TIPO_CADASTRO_FUNCIONARIO
-				.name())) {
-			return TipoCadastro.TIPO_CADASTRO_FUNCIONARIO;
+			return TipoCadastro.TIPO_CADASTRO_PRODUTO;
+		} else if (tipoUsuario.equals(TipoCadastro.TIPO_CADASTRO_PACIENTE
+				.name())) { 
+			return TipoCadastro.TIPO_CADASTRO_PACIENTE;
 		} else
-			return TipoCadastro.TIPO_CADASTRO_VENDEDOR;
+			return TipoCadastro.TIPO_CADASTRO_USUARIO;
 	}
 
 	public TituloSituacao getTituloSituacaoTemp() {
@@ -377,14 +374,14 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	}
 
 	/**
-	 * Retorna a entidade passada como parametro ex: <f:param
-	 * name="entidadeEdit" value="#{objeto.cid_codigo}" />
+	 * Retorna o usuario passado como parametro ex: <f:param
+	 * name="usuarioEdit" value="#{objeto.user_codigo}" />
 	 * 
-	 * @return String codigo entidade selecionada
+	 * @return String codigo usuario selecionado
 	 */
 	protected String getEntidadeEdit() {
 		return FacesContext.getCurrentInstance().getExternalContext()
-				.getRequestParameterMap().get("entidadeEdit");
+				.getRequestParameterMap().get("usuarioEdit");
 	}
 
 	/**
@@ -392,7 +389,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	 * @return String
 	 */
 	protected String consultarInativos() {
-		String retorno = " and entity.ent_inativo is false ";
+		String retorno = " and entity.user_inativo is false ";
 		boolean consultar = false;
 		try {
 			Map<String, String> params = FacesContext.getCurrentInstance()

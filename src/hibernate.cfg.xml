@@ -29,7 +29,8 @@
 		<!-- PARTE PARA MAPEAR AS CLASSES  <mapping class=""/>-->
 		
 		
-		<mapping class="br.com.project.model.classes.Entidade" />
+		<mapping class="br.com.project.model.classes.Usuario" />
+		<mapping class="br.com.project.model.classes.Pessoa" />
 		<mapping class="br.com.project.model.classes.InformacaoRevisao" />
 		<mapping class="br.com.project.model.classes.Paciente" />
 		<mapping class="br.com.project.model.classes.Medico" />

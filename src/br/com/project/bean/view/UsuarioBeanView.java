@@ -12,8 +12,8 @@ import br.com.project.util.all.BeanViewAbstract;
 
 @Controller
 @Scope(value = "session")
-@ManagedBean(name = "entidadeBeanView")
-public class EntidadeBeanView  extends BeanViewAbstract{
+@ManagedBean(name = "usuarioBeanView")
+public class UsuarioBeanView  extends BeanViewAbstract{
 	
 	@Autowired
 	private ContextoBean contextoBean;
@@ -25,7 +25,7 @@ public class EntidadeBeanView  extends BeanViewAbstract{
 	}
 	
 	public Date getUltimoAcesso() throws Exception {
-		return contextoBean.getEntidadeLogada().getEnt_ultimoacesso();
+		return contextoBean.getUsuarioLogado().getUser_ultimoacesso();
 	}
 	
 

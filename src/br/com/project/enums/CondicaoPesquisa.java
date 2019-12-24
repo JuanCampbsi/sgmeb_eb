@@ -2,7 +2,7 @@ package br.com.project.enums;
 
 /**
  * Lista para montar o combo de condição de pesquisa
- * @author alex
+ * @author Juan Campos
  *
  */
 public enum CondicaoPesquisa{

@@ -22,7 +22,7 @@ import br.com.project.annotation.IdentificaCampoPesquisa;
 @Audited
 @Entity(name = "medico")
 @SequenceGenerator(name = "med_seq", sequenceName = "med_seq", initialValue = 1, allocationSize = 1)
-public class Medico implements Serializable {
+public class Medico extends Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

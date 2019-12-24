@@ -6,12 +6,12 @@ import java.util.Date;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface SrvEntidade  extends Serializable{
+public interface SrvUsuario  extends Serializable{
 
-	Date getUltimoAcessoEntidadeLogada(String name);
+	Date getUltimoAcessoUsuarioLogado(String name);
 
 	void updateUltimoAcessoUser(String login);
 
-	boolean existeUsuario(String ent_login);
+	boolean existeUsuario(String user_login);
 
 }
