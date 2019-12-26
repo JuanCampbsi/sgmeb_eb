@@ -11,20 +11,31 @@
 <ui:composition template="/templates/templatePrincipal.xhtml">
 	<ui:define name="corpo">
 		<h:form id="formCadastro" prependId="false">
-		 <c:set var="isCadastro" value="true" scope="view"/>
-		<p:panel header="Cadastro de Paciente" id="panelCadastro">
-		
-		<h:panelGrid id="gridPaciente" columns="3">
-		<h:outputLabel for="id" value="Código : " id="labelId" />
-					<p:inputText id="id" styleClass="estiloIdCadastro"
-						 />
+			<c:set var="isCadastro" value="true" scope="view" />
+			<p:panel header="Cadastro de Paciente" id="panelCadastro"
+				styleClass="estiloIdCadastro">
+
+				<h:panelGrid id="gridPaciente" columns="3">
+					<h:outputLabel for="id" value="Código : " id="labelId" />
+					<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true"
+						value="#{usuario.objetoSelecionado.user_codigo}" />
 					<h:outputLabel />
-		
-		</h:panelGrid>
-		
-		</p:panel>		
+
+
+					<h:outputLabel id="labelnome" for="nomeUsuario" value="Nome *: " styleClass="estiloIdCadastro" />
+					<p:inputText id="usuarionome" styleClass="estyleInputNome"
+						required="true" maxlength="100"
+						requiredMessage="Informe o Nome do Usuário"
+						 />
+						 <p:message  for="usuarionome" />
+					<h:outputLabel />
+				</h:panelGrid>
+			</p:panel>
+			
+			<p:commandButton value="Salvar" styleClass="buttonLogin"/>
+			
 		</h:form>
-		
+
 	</ui:define>
 </ui:composition>
 </html>

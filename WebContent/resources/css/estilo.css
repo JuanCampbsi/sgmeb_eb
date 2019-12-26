@@ -1,3 +1,4 @@
+
 @CHARSET "ISO-8859-1";
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
@@ -57,6 +58,7 @@
 .form .register-form {
   display: none;
 }
+
 .container {
   position: relative;
   z-index: 1;
@@ -462,6 +464,8 @@ input[type=submit] {
 	font-size: 12px;
 }
 
+
+
 #barraerro #mensagembarraerro {
 	padding-left: 60px;
 	padding-right: 10px;
@@ -523,7 +527,10 @@ input[type=submit] {
 }
 
 .estiloIdCadastro {
-	width: 115px;
+	
+	font-size: 12px;
+	font-face: sans-serif;
+
 }
 
 .estyleInputName {
@@ -646,7 +653,7 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	cursor: pointer;
 	text-align: center;
 	overflow: visible;
-	height: 24px;
+	 /*  height: 30px; */ 
 	-webkit-border-top-right-radius: 5px;
 	-webkit-border-bottom-right-radius: 5px;
 	-moz-border-radius-topright: 5px;
@@ -658,6 +665,8 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	border-radius: 5px; /* Para Opera 10.5+*/
 	border: 1px solid #AED0EA;
 	font-weight: bold;
+	font-size: 14px;
+	height: 30px;
 }
 
 .ui-panelgrid td {
