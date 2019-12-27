@@ -31,6 +31,7 @@
 	<context:component-scan base-package="br.com.project.util.all" />
 	<context:component-scan base-package="br.com.framework.controller.crud"/>
 	<context:component-scan base-package="br.com.framework.interfac.crud"/>
+	<context:component-scan base-package="br.com.project.convertes"/>
 
 	<!-- Inicializa a indentificação de ambiente de execução -->
 	<bean id="BeanProperty" class="br.com.project.util.all.BeanProperty" scope="singleton" >
@@ -109,14 +110,35 @@
 	
 	
 	<!-- Controler -->
+	<bean id="interfaceCrud" class="br.com.framework.implementacao.crud.ImplementacaoCrud" scope="singleton" lazy-init="false"/>
 	<bean id="sessionController" class="br.com.project.geral.controller.SessionControllerImpl" scope="singleton"/>
-
-
+	<bean id="controller" class="br.com.framework.controller.crud.Controller"/>
+	<bean id="usuarioController" class="br.com.project.geral.controller.UsuarioController" />
+	<bean id="consultaController" class="br.com.project.geral.controller.ConsultaController" />
+	<bean id="pacienteController" class="br.com.project.geral.controller.PacienteController" />
+	<bean id="receituarioController" class="br.com.project.geral.controller.ReceituarioController" />
+	<bean id="medicoController" class="br.com.project.geral.controller.MedicoController" />
+	
+	
+	
 	<!-- Repository DAOS-->
 	<bean id="repositoryLogin" class="br.com.dao.implementacao.DaoLogin" />
-
+	<bean id="repositoryConsulta" class="br.com.dao.implementacao.DaoConsulta" />
+	<bean id="repositoryPaciente" class="br.com.dao.implementacao.DaoPaciente" />
+	<bean id="repositoryMedico" class="br.com.dao.implementacao.DaoMedico" />
+	<bean id="repositoryUsuario" class="br.com.dao.implementacao.DaoUsuario" />
+	<bean id="repositoryReceituario" class="br.com.dao.implementacao.DaoReceituario" />
+	
+	
+	
+	
 	<!-- Services -->
 	<bean id="srvLogin" class="br.com.srv.implementacao.SrvLoginImpl" />
+	<bean id="srvUsuario" class="br.com.srv.implementacao.SrvUsuarioImpl" />
+	<bean id="srvPaciente" class="br.com.srv.implementacao.SrvPacienteImpl" />
+	<bean id="srvMedico" class="br.com.srv.implementacao.SrvMedicoImpl" />
+	
+	<bean id="srvReceituario" class="br.com.srv.implementacao.SrvReceituarioImpl" />
 	
 
 </beans>

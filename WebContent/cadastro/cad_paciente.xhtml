@@ -18,21 +18,31 @@
 				<h:panelGrid id="gridPaciente" columns="3">
 					<h:outputLabel for="id" value="Código : " id="labelId" />
 					<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true"
-						value="#{usuario.objetoSelecionado.user_codigo}" />
+						value="#{pacienteBeanView.objetoSelecionado.paci_id}" />
 					<h:outputLabel />
 
 
-					<h:outputLabel id="labelnome" for="nomeUsuario" value="Nome *: " styleClass="estiloIdCadastro" />
-					<p:inputText id="usuarionome" styleClass="estyleInputNome"
-						required="true" maxlength="100"
-						requiredMessage="Informe o Nome do Usuário"
-						 />
-						 <p:message  for="usuarionome" />
+					<h:outputLabel id="labelnome" for="nomePaciente" value="Nome *: " styleClass="estiloIdCadastro" />
+					<p:inputText id="pacienteNome" styleClass="estyleInputNome"
+						required="true" maxlength="100" value="#{pacienteBeanView.objetoSelecionado.pes_nome}"
+						requiredMessage="Informe o Nome do Usuário" />
+						 <p:message  for="pacienteNome" />
+						 
+						 
+						 <p:selectOneMenu> <f:selectItems value="#{pacienteBeanView}"/>
+						 
+						 
+						 </p:selectOneMenu>
+						 
+						 
+						 
+						 
+						 
 					<h:outputLabel />
 				</h:panelGrid>
 			</p:panel>
 			
-			<p:commandButton value="Salvar" styleClass="buttonLogin"/>
+			<p:commandButton value="Salvar" ajax="false" action="#{pacienteBeanView.save}"/>
 			
 		</h:form>
 

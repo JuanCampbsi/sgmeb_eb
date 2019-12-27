@@ -11,6 +11,20 @@ import br.com.srv.interfaces.SrvPaciente;
 public class PacienteController extends ImplementacaoCrud<Paciente> implements
 		InterfaceCrud<Paciente> {
 	private static final long serialVersionUID = 1L;
+	
+	/*public List<SelectItem> getListPaciente() {
+		List<SelectItem> list = new ArrayList<SelectItem>();
+		List<Paciente> pacientes = super.finListOrderByProperty(Paciente.class,
+				"pes_grad");
+		for (Paciente e : pacientes) {
+			list.add(new SelectItem(e, e.getPes_grad()));
+		}
+		}
+		return list;*/
+	
+	
+	
+	
 	@Resource
 	private SrvPaciente srvPaciente;
 	@Resource
