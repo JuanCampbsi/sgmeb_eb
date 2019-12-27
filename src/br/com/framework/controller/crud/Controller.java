@@ -12,36 +12,36 @@ public class Controller extends ImplementacaoCrud<Object> {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public void persist(Object usuario) throws Exception {
-		super.persist(usuario);
+	public void persist(Object entidade) throws Exception {
+		super.persist(entidade);
 	}
 
 	@Override
-	public void saveOrUpdate(Object usuario) throws Exception {
-		super.saveOrUpdate(usuario);
+	public void saveOrUpdate(Object entidade) throws Exception {
+		super.saveOrUpdate(entidade);
 	}
 
 	@Override
-	public void delete(Object usuario) throws Exception {
+	public void delete(Object entidade) throws Exception {
 
-		super.delete(usuario);
+		super.delete(entidade);
 	}
 
 	@Override
-	public Object findById(Class usuario, Long id) throws Exception {
+	public Object findById(Class entidade, Long id) throws Exception {
 
-		return super.findById(usuario, id);
+		return super.findById(entidade, id);
 	}
 
 	@Override
-	public List findListByProperty(Class usuario, Object atributo, Object valor)
+	public List findListByProperty(Class entidade, Object atributo, Object valor)
 			throws Exception {
-		return super.findListByProperty(usuario, atributo, valor);
+		return super.findListByProperty(entidade, atributo, valor);
 	}
 
 	@Override
-	public List findListByListDeIds(Class usuario, List cods) throws Exception {
-		return super.findListByListDeIds(usuario, cods);
+	public List findListByListDeIds(Class entidade, List cods) throws Exception {
+		return super.findListByListDeIds(entidade, cods);
 	}
 
 	@Override
@@ -50,25 +50,25 @@ public class Controller extends ImplementacaoCrud<Object> {
 	}
 
 	@Override
-	public List finList(Class usuario) throws Exception {
+	public List finList(Class entidade) throws Exception {
 
-		return super.finList(usuario);
+		return super.finList(entidade);
 	}
 
 	@Override
-	public Object merge(Object usuario) throws Exception {
+	public Object merge(Object entidade) throws Exception {
 
-		return super.merge(usuario);
+		return super.merge(entidade);
 	}
 
 	@Override
-	public void update(Object usuario) throws Exception {
-		super.update(usuario);
+	public void update(Object entidade) throws Exception {
+		super.update(entidade);
 	}
 
 	@Override
-	public Class getClass(Class usuario) throws Exception {
-		return super.getClass(usuario);
+	public Class getClass(Class entidade) throws Exception {
+		return super.getClass(entidade);
 	}
 }
 

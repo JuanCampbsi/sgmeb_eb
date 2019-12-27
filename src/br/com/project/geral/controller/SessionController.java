@@ -10,6 +10,6 @@ public interface SessionController extends Serializable {
 	
 	void addSession(String keyLoginUser, HttpSession httpSession);
 	
-	void invalidateSession(String keyLoginUser);
+	void invalidateSession(String keyLoginEnt);
 
 }

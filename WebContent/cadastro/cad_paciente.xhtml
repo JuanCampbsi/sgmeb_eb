@@ -18,18 +18,16 @@
 				<h:panelGrid id="gridPaciente" columns="3">
 					<h:outputLabel for="id" value="Código : " id="labelId" />
 					<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true"
-						value="#{pacienteBeanView.objetoSelecionado.paci_id}" />
-					<h:outputLabel />
-
+					value="#{entidadeBeanView.objetoSelecionado.ent_codigo}"	 />
+					<h:outputLabel />  <!-- --> 
 
 					<h:outputLabel id="labelnome" for="nomePaciente" value="Nome *: " styleClass="estiloIdCadastro" />
 					<p:inputText id="pacienteNome" styleClass="estyleInputNome"
-						required="true" maxlength="100" value="#{pacienteBeanView.objetoSelecionado.pes_nome}"
-						requiredMessage="Informe o Nome do Usuário" />
-						 <p:message  for="pacienteNome" />
+						required="true" maxlength="100" 
+						requiredMessage="Informe o Nome do Usuário" value="#{entidadeBeanView.objetoSelecionado.ent_nome}"/>
+						 <p:message  for="pacienteNome" /> <!--  --> 
 						 
-						 
-						 <p:selectOneMenu> <f:selectItems value="#{pacienteBeanView}"/>
+						 <p:selectOneMenu> <f:selectItems value=""/>
 						 
 						 
 						 </p:selectOneMenu>
@@ -42,7 +40,7 @@
 				</h:panelGrid>
 			</p:panel>
 			
-			<p:commandButton value="Salvar" ajax="false" action="#{pacienteBeanView.save}"/>
+			<p:commandButton value="Salvar" ajax="false" action="#{entidadeBeanView.save}"/>
 			
 		</h:form>
 

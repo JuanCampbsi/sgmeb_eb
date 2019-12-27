@@ -35,9 +35,9 @@ public interface InterfaceCrud<T> extends Serializable {
 
 	List<T> finList(Class<T> obj) throws Exception;
 
-	Object findById(Class<T> usuario, Long id) throws Exception;
+	Object findById(Class<T> entidade, Long id) throws Exception;
 
-	List<T> findListByProperty(Class<T> usuario, Object atributo, Object valor)
+	List<T> findListByProperty(Class<T> entidade, Object atributo, Object valor)
 			throws Exception;
 
 	List<T> findListByListDeIds(Class<T> obj, List<Long> cods) throws Exception;
@@ -52,32 +52,32 @@ public interface InterfaceCrud<T> extends Serializable {
 
 	T carregar(Class<T> class1, Long long1) throws Exception;
 
-	Class<T> getClass(Class<T> usuario) throws Exception;
+	Class<T> getClass(Class<T> entidade) throws Exception;
 
-	List<T> findListByLike(Class<T> usuario, String atributoClass, String valor)
+	List<T> findListByLike(Class<T> entidade, String atributoClass, String valor)
 			throws Exception;
 
-	List<T> findByPropertyId(Class<T> usuario, Long id, Object atributo)
+	List<T> findByPropertyId(Class<T> entidade, Long id, Object atributo)
 			throws Exception;
 
 	Session getSession() throws Exception;
 
 	List<?> getListSQLDinamica(String sql) throws Exception;
 
-	T findUninqueByPropertyId(Class<T> usuario, Long id, Object atributo)
+	T findUninqueByPropertyId(Class<T> entidade, Long id, Object atributo)
 			throws Exception;
 
 	T findUniqueByQueryDinamica(String query) throws Exception;
 
 	void executeUpdateSQLDinamica(String query, Long... cods) throws Exception;
 
-	List<T> finListOrderByProperty(Class<T> usuario, String propriedade)
+	List<T> finListOrderByProperty(Class<T> entidade, String propriedade)
 			throws Exception;
 
-	T findUninqueByProperty(Class<T> usuario, Object valor, String atributo)
+	T findUninqueByProperty(Class<T> entidade, Object valor, String atributo)
 			throws Exception;
 
-	T findUninqueByPropertyId(Class<T> usuario, Long id, Object atributo,
+	T findUninqueByPropertyId(Class<T> entidade, Long id, Object atributo,
 			String condicaoAdicional) throws Exception;
 
 	JdbcTemplate getJdbcTemplate();
@@ -86,7 +86,7 @@ public interface InterfaceCrud<T> extends Serializable {
 
 	SimpleJdbcInsert getSimpleJdbcInsert();
 	
-	public T findUninqueByProperty(Class<T> usuario, Object valor,
+	public T findUninqueByProperty(Class<T> entidade, Object valor,
 			String atributo, String condicao) throws Exception;
 	
 	Long totalRegistro(String tabela) throws Exception;
@@ -95,3 +95,4 @@ public interface InterfaceCrud<T> extends Serializable {
 	
 	 List<T> findListByQueryDinamica(String query, int iniciaNoRegistro, int maximoResultado) throws Exception; 
 }
+

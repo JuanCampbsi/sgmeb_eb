@@ -3,20 +3,16 @@ package br.com.project.model.classes;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
-import org.hibernate.annotations.ForeignKey;
 import org.hibernate.envers.Audited;
 
 import br.com.project.annotation.IdentificaCampoPesquisa;
@@ -49,7 +45,7 @@ public class Consulta implements Serializable {
 	@Column(length = 100, nullable = false)
 	private String hist_cons;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Paciente", campoConsulta = "paciente.paci_id")
+	/*@IdentificaCampoPesquisa(descricaoCampo = "Paciente", campoConsulta = "paciente.paci_id")
 	@Basic
 	@OneToOne
 	@JoinColumn(name = "paciente", nullable = false)
@@ -61,7 +57,7 @@ public class Consulta implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "medico", nullable = false)
 	@ForeignKey(name = "med_id_fk")
-	private Medico medico = new Medico();
+	private Medico medico = new Medico();*/
 
 	@Version
 	@Column(name = "versionNum")
@@ -107,21 +103,7 @@ public class Consulta implements Serializable {
 		this.hist_cons = hist_cons;
 	}
 
-	public Paciente getPaciente() {
-		return paciente;
-	}
-
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
-
-	public Medico getMedico() {
-		return medico;
-	}
-
-	public void setMedico(Medico medico) {
-		this.medico = medico;
-	}
+	
 
 	public int getVersionNum() {
 		return versionNum;

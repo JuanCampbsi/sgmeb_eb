@@ -10,59 +10,63 @@ import org.springframework.stereotype.Controller;
 
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
-import br.com.project.geral.controller.UsuarioController;
-import br.com.project.model.classes.Usuario;
+import br.com.project.geral.controller.EntidadeController;
+import br.com.project.model.classes.Entidade;
 
 @Controller
 @Scope(value = "session")
-@ManagedBean(name = "usuarioBeanView")
-public class UsuarioBeanView  extends BeanManagedViewAbstract{
+@ManagedBean(name = "entidadeBeanView")
+public class EntidadeBeanView  extends BeanManagedViewAbstract{
 	
 	
 	private static final long serialVersionUID = 1L;
 	
-	private Usuario objetoSelecionado = new Usuario();
+	private Entidade objetoSelecionado = new Entidade();
 	
 	@Autowired
 	private ContextoBean contextoBean;
 	
 	@Autowired
-	private UsuarioController usuarioController;
+	private EntidadeController entidadeController;
 	
 	
-	public String getUsuarioLogadoSecurity() {
+	public String getEntidadeLogadoSecurity() {
 		return contextoBean.getAuthentication().getName();
 	}
 
 	public Date getUltimoAcesso() throws Exception {
-		return contextoBean.getUsuarioLogado().getUser_ultimoacesso();
+		return contextoBean.getEntidadeLogada().getEnt_ultimoacesso();
 	}
 
 	@Override
 	protected Class<?> getClassImplement() {
-		return Usuario.class;
+		return Entidade.class;
 	}
 
 	@Override
-	protected InterfaceCrud<Usuario> getController() {
-		return usuarioController;
+	protected InterfaceCrud<Entidade> getController() {
+		return entidadeController;
 	}
 
 	@Override
 	public String condicaoAndParaPesquisa() {
-		return "and entity.user_tipo = '" + getTipoUsuarioTemp().name() + "' "
+		return "and entity.ent_tipo = '" + getTipoEntidadeTemp().name() + "' "
 				+ consultarInativos();
 	}
 
-	public Usuario getObjetoSelecionado() {
+	public Entidade getObjetoSelecionado() {
 		return objetoSelecionado;
 	}
 
-	public void setObjetoSelecionado(Usuario objetoSelecionado) {
+	public void setObjetoSelecionado(Entidade objetoSelecionado) {
 		this.objetoSelecionado = objetoSelecionado;
 	}
 
-	
+	@Override
+	public String save() throws Exception {
+		System.out.println(objetoSelecionado.getEnt_nome());
+		return "";
+	}
 	
 
 }

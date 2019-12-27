@@ -59,7 +59,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 
 	private HtmlInputHidden htmlInputHiddenTitulo;
 
-	protected String tipoUsuarioTemp;
+	protected String tipoEntidadeTemp;
 
 	/**
 	 * 
@@ -289,13 +289,13 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 
 	}
 
-	public void setTipoUsuarioTemp(String tipoUsuarioTemp) {
-		this.tipoUsuarioTemp = tipoUsuarioTemp;
+	public void setTipoEntidadeTemp(String tipoEntidadeTemp) {
+		this.tipoEntidadeTemp = tipoEntidadeTemp;
 	}
 
-	public TipoCadastro getTipoUsuarioTemp() {
+	public TipoCadastro getTipoEntidadeTemp() {
 
-		String tipoUsuario = null;
+		String tipoEntidade = null;
 
 		if (htmlInputHidden == null) {
 			return null;
@@ -311,22 +311,22 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 		}
 
 		try {
-			tipoUsuario = (String) htmlInputHidden.getAttributes().get(
-					"tipoUsuarioTemp");
+			tipoEntidade = (String) htmlInputHidden.getAttributes().get(
+					"tipoEntidadeTemp");
 		} catch (Exception e) {
 			// execeção omitida
 		}
 
-		if (tipoUsuario == null) {
+		if (tipoEntidade == null) {
 			return null;
 		}
 
-		if (tipoUsuario.equals(TipoCadastro.TIPO_CADASTRO_USUARIO.name())) {
+		if (tipoEntidade.equals(TipoCadastro.TIPO_CADASTRO_USUARIO.name())) {
 			return TipoCadastro.TIPO_CADASTRO_USUARIO;
-		} else if (tipoUsuario.equals(TipoCadastro.TIPO_CADASTRO_PRODUTO
+		} else if (tipoEntidade.equals(TipoCadastro.TIPO_CADASTRO_PRODUTO
 				.name())) {
 			return TipoCadastro.TIPO_CADASTRO_PRODUTO;
-		} else if (tipoUsuario.equals(TipoCadastro.TIPO_CADASTRO_PACIENTE
+		} else if (tipoEntidade.equals(TipoCadastro.TIPO_CADASTRO_PACIENTE
 				.name())) { 
 			return TipoCadastro.TIPO_CADASTRO_PACIENTE;
 		} else
@@ -374,14 +374,14 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	}
 
 	/**
-	 * Retorna o usuario passado como parametro ex: <f:param
-	 * name="usuarioEdit" value="#{objeto.user_codigo}" />
+	 * Retorna a entidade passada como parametro ex: <f:param
+	 * name="entidadeEdit" value="#{objeto.cid_codigo}" />
 	 * 
-	 * @return String codigo usuario selecionado
+	 * @return String codigo entidade selecionada
 	 */
 	protected String getEntidadeEdit() {
 		return FacesContext.getCurrentInstance().getExternalContext()
-				.getRequestParameterMap().get("usuarioEdit");
+				.getRequestParameterMap().get("entidadeEdit");
 	}
 
 	/**
@@ -389,7 +389,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	 * @return String
 	 */
 	protected String consultarInativos() {
-		String retorno = " and entity.user_inativo is false ";
+		String retorno = " and entity.ent_inativo is false ";
 		boolean consultar = false;
 		try {
 			Map<String, String> params = FacesContext.getCurrentInstance()

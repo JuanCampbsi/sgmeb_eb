@@ -23,8 +23,7 @@ import org.springframework.web.filter.DelegatingFilterProxy;
 import br.com.framework.hibernate.session.HibernateUtil;
 import br.com.framework.utils.UtilFramework;
 import br.com.project.listener.ContextLoaderListenerGsmebUtils;
-import br.com.project.model.classes.Pessoa;
-import br.com.project.model.classes.Usuario;
+import br.com.project.model.classes.Entidade;
 
 /**
  * Responsavel por iniciar a sessão/transaction do hibernate, iterceptar as
@@ -63,10 +62,10 @@ public class FilterOpenSessionInView extends DelegatingFilterProxy implements
 			HttpServletRequest request = (HttpServletRequest) servletRequest;
 			HttpServletResponse response = (HttpServletResponse) servletResponse;
 			HttpSession sessao = request.getSession();
-			Usuario userLogadoSessao = (Usuario) sessao.getAttribute("userLogadoSessao");
+			Entidade entLogadoSessao = (Entidade) sessao.getAttribute("entLogadoSessao");
 
-			if (userLogadoSessao != null) {
-				UtilFramework.getThreadLocal().set(userLogadoSessao.getUser_codigo());
+			if (entLogadoSessao != null) {
+				UtilFramework.getThreadLocal().set(entLogadoSessao.getEnt_codigo());
 			}
 
 			sf.getCurrentSession().beginTransaction();

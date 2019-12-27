@@ -70,36 +70,36 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	/**
 	 * Salva objeto no banco TestUnit ok
 	 */
-	public void persist(T usuario) throws Exception {
+	public void persist(T entidade) throws Exception {
 		validaSessionFactory();
-		sessionFactory.getCurrentSession().persist(usuario);
+		sessionFactory.getCurrentSession().persist(entidade);
 		executeFlushSession();
 	}
 
 	/**
 	 * Salva ou atualiza objeto no banco TestUnit ok
 	 */
-	public void saveOrUpdate(Object usuario) throws Exception {
+	public void saveOrUpdate(Object entidade) throws Exception {
 		validaSessionFactory();
-		sessionFactory.getCurrentSession().saveOrUpdate(usuario);
+		sessionFactory.getCurrentSession().saveOrUpdate(entidade);
 		executeFlushSession();
 	}
 
 	/**
 	 * Atualiza objeto no banco TestUnit ok
 	 */
-	public void update(T usuario) throws Exception {
+	public void update(T entidade) throws Exception {
 		validaSessionFactory();
-		sessionFactory.getCurrentSession().update(usuario);
+		sessionFactory.getCurrentSession().update(entidade);
 		executeFlushSession();
 	}
 
 	/**
 	 * Deleta objeto do banco TestUnit ok
 	 */
-	public void delete(T usuario) throws Exception {
+	public void delete(T entidade) throws Exception {
 		validaSessionFactory();
-		sessionFactory.getCurrentSession().delete(usuario);
+		sessionFactory.getCurrentSession().delete(entidade);
 		executeFlushSession();
 
 	}
@@ -107,21 +107,21 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	/**
 	 * Atualiza ou insere objeto no banco TestUnit ok
 	 */
-	public T merge(T usuario) throws Exception {
+	public T merge(T entidade) throws Exception {
 		validaSessionFactory();
-		usuario = (T) sessionFactory.getCurrentSession().merge(usuario);
+		entidade = (T) sessionFactory.getCurrentSession().merge(entidade);
 		executeFlushSession();
-		return usuario;
+		return entidade;
 	}
 
 	/**
 	 * Busca a lista de registro por classe informada TestUnit ok
 	 */
-	public List<T> finList(Class<T> usuario) throws Exception {
+	public List<T> finList(Class<T> entidade) throws Exception {
 		validaSessionFactory();
 		StringBuilder query = new StringBuilder();
 		query.append("select distinct(entity) from ")
-				.append(usuario.getSimpleName()).append(" entity ");
+				.append(entidade.getSimpleName()).append(" entity ");
 		List<T> lista = sessionFactory.getCurrentSession()
 				.createQuery(query.toString()).list();
 		return lista;
@@ -130,10 +130,10 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	/**
 	 * TestUnit ok
 	 */
-	public List<T> finListOrderByProperty(Class<T> usuario, String propriedade) {
+	public List<T> finListOrderByProperty(Class<T> entidade, String propriedade) {
 		validaSessionFactory();
 		StringBuilder query = new StringBuilder();
-		query.append("select entity from ").append(usuario.getSimpleName())
+		query.append("select entity from ").append(entidade.getSimpleName())
 				.append(" entity ").append(" order by entity.")
 				.append(propriedade);
 		List<T> lista = sessionFactory.getCurrentSession()
@@ -145,15 +145,15 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	 * TestUnit Ok
 	 */
 	@Override
-	public T findById(Class<T> usuario, Long id) throws Exception {
+	public T findById(Class<T> entidade, Long id) throws Exception {
 		validaSessionFactory();
-		T ob = (T) sessionFactory.getCurrentSession().load(usuario, id);
+		T ob = (T) sessionFactory.getCurrentSession().load(entidade, id);
 		return ob;
 	}
 
-	public T findById(Class<T> usuario, String id) throws Exception {
+	public T findById(Class<T> entidade, String id) throws Exception {
 		validaSessionFactory();
-		T ob = (T) sessionFactory.getCurrentSession().load(usuario,
+		T ob = (T) sessionFactory.getCurrentSession().load(entidade,
 				Long.parseLong(id));
 		return ob;
 	}
@@ -161,12 +161,12 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	/**
 	 * TestUnit Ok
 	 */
-	public List<T> findByPropertyId(Class<T> usuario, Long id, Object atributo)
+	public List<T> findByPropertyId(Class<T> entidade, Long id, Object atributo)
 			throws Exception {
 		validaSessionFactory();
 		StringBuilder query = new StringBuilder();
 
-		query.append("select entity from ").append(usuario.getSimpleName())
+		query.append("select entity from ").append(entidade.getSimpleName())
 				.append(" entity where entity.").append(atributo).append(" = ")
 				.append(id);
 
@@ -179,12 +179,12 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	/**
 	 * TestUnit Ok
 	 */
-	public T findUninqueByPropertyId(Class<T> usuario, Long id, Object atributo)
+	public T findUninqueByPropertyId(Class<T> entidade, Long id, Object atributo)
 			throws Exception {
 		validaSessionFactory();
 		StringBuilder query = new StringBuilder();
 
-		query.append("select entity from ").append(usuario.getSimpleName())
+		query.append("select entity from ").append(entidade.getSimpleName())
 				.append(" entity where entity.").append(atributo).append(" = ")
 				.append(id);
 
@@ -195,12 +195,12 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	}
 
 	@Override
-	public T findUninqueByPropertyId(Class<T> usuario, Long id,
+	public T findUninqueByPropertyId(Class<T> entidade, Long id,
 			Object atributo, String condicaoAdicional) throws Exception {
 		validaSessionFactory();
 		StringBuilder query = new StringBuilder();
 
-		query.append("select entity from ").append(usuario.getSimpleName())
+		query.append("select entity from ").append(entidade.getSimpleName())
 				.append(" entity where entity.").append(atributo).append(" = ")
 				.append(id).append(" ").append(condicaoAdicional);
 
@@ -210,12 +210,12 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
 	}
 
-	public T findUninqueByProperty(Class<T> usuario, Object valor,
+	public T findUninqueByProperty(Class<T> entidade, Object valor,
 			String atributo) throws Exception {
 		validaSessionFactory();
 		StringBuilder query = new StringBuilder();
 
-		query.append("select entity from ").append(usuario.getSimpleName())
+		query.append("select entity from ").append(entidade.getSimpleName())
 				.append(" entity where entity.").append(atributo)
 				.append(" = '").append(valor).append("'");
 
@@ -225,12 +225,12 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
 	}
 
-	public T findUninqueByProperty(Class<T> usuario, Object valor,
+	public T findUninqueByProperty(Class<T> entidade, Object valor,
 			String atributo, String condicao) throws Exception {
 		validaSessionFactory();
 		StringBuilder query = new StringBuilder();
 
-		query.append("select entity from ").append(usuario.getSimpleName())
+		query.append("select entity from ").append(entidade.getSimpleName())
 				.append(" entity where entity.").append(atributo)
 				.append(" = '").append(valor).append("' ").append(condicao);
 
@@ -243,12 +243,12 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	/**
 	 * TestUnit Ok
 	 */
-	public List<T> findListByProperty(Class<T> usuario, Object atributo,
+	public List<T> findListByProperty(Class<T> entidade, Object atributo,
 			Object valor) throws Exception {
 		validaSessionFactory();
 		StringBuilder query = new StringBuilder();
 		query.append(" select entity from ");
-		query.append(usuario.getSimpleName());
+		query.append(entidade.getSimpleName());
 		query.append(" entity where entity.");
 		query.append(atributo);
 		query.append(" = '");
@@ -262,12 +262,12 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	/**
 	 * TestUnit Ok
 	 */
-	public List<T> findListByListDeIds(Class<T> usuario, List<Long> cods)
+	public List<T> findListByListDeIds(Class<T> entidade, List<Long> cods)
 			throws Exception {
 		validaSessionFactory();
 		StringBuilder query = new StringBuilder();
 		query.append(" select entity from ");
-		query.append(usuario.getSimpleName());
+		query.append(entidade.getSimpleName());
 		query.append(" entity where entity.id in(");
 		query.append(" :ids ");
 		query.append(")");
@@ -347,9 +347,9 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	/**
 	 * Retira objeto da sessao
 	 */
-	public void evict(Object usuario) throws Exception {
+	public void evict(Object entidade) throws Exception {
 		validaSessionFactory();
-		sessionFactory.getCurrentSession().evict(usuario);
+		sessionFactory.getCurrentSession().evict(entidade);
 	}
 
 	/**
@@ -374,9 +374,9 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	/**
 	 * TestUnit Ok
 	 */
-	public T saveRetorno(T usuario) throws Exception {
+	public T saveRetorno(T entidade) throws Exception {
 		validaSessionFactory();
-		Object t = this.merge(usuario);
+		Object t = this.merge(entidade);
 		executeFlushSession();
 		sessionFactory.getCurrentSession().clear();
 		return (T) t;
@@ -427,8 +427,8 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	}
 
 	@Override
-	public Class<T> getClass(Class<T> usuario) throws Exception {
-		return (Class<T>) usuario;
+	public Class<T> getClass(Class<T> entidade) throws Exception {
+		return (Class<T>) entidade;
 	}
 
 	/**
@@ -444,12 +444,12 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	 * TestUnit Ok
 	 */
 	@Override
-	public List<T> findListByLike(Class<T> usuario, String atributoClass,
+	public List<T> findListByLike(Class<T> entidade, String atributoClass,
 			String valor) throws Exception {
 		validaSessionFactory();
 		StringBuilder query = new StringBuilder();
 		query.append(" select entity from ");
-		query.append(usuario.getSimpleName());
+		query.append(entidade.getSimpleName());
 		query.append(" entity ");
 		query.append(" where upper(entity.");
 		query.append(atributoClass);
@@ -530,3 +530,4 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	}
 
 }
+

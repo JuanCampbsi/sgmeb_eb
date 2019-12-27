@@ -5,15 +5,14 @@ import java.util.Date;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 @Transactional
 @Repository
-public interface RepositoryUsuario extends Serializable {
+public interface RepositoryEntidade  extends Serializable{
 
-	Date getUltimoAcessoUsuarioLogado(String name);
+	Date getUltimoAcessoEntidadeLogada(String name);
 
 	void updateUltimoAcessoUser(String login);
 
-	boolean existeUsuario(String user_login);
+	boolean existeUsuario(String ent_login);
 
 }

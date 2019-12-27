@@ -6,8 +6,8 @@ import org.hibernate.envers.RevisionListener;
 import org.springframework.stereotype.Service;
 
 import br.com.framework.utils.UtilFramework;
+import br.com.project.model.classes.Entidade;
 import br.com.project.model.classes.InformacaoRevisao;
-import br.com.project.model.classes.Usuario;
 
 
 @Service
@@ -18,11 +18,11 @@ public class CustomListener implements RevisionListener, Serializable {
 	public void newRevision(Object revisionEntity) {
 			InformacaoRevisao informacaoRevisao = (InformacaoRevisao) revisionEntity;
 
-			Long codUser = UtilFramework.getThreadLocal().get();
-			Usuario user = new Usuario();
-			if (codUser != null && codUser != 0L) {
-				user.setUser_codigo(codUser);
-				informacaoRevisao.setPessoa(user);
+			Long codEnt= UtilFramework.getThreadLocal().get();
+			Entidade ent = new Entidade();
+			if (codEnt != null && codEnt != 0L) {
+				ent.setEnt_codigo(codEnt);
+				informacaoRevisao.setPessoa(ent);
 			}
 	}
 
