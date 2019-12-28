@@ -19,7 +19,6 @@ import org.hibernate.envers.Audited;
 
 import br.com.project.annotation.IdentificaCampoPesquisa;
 
-
 @Audited
 @Entity
 @Table(name = "entidade")
@@ -31,8 +30,8 @@ public class Entidade implements Serializable {
 	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "ent_codigo")
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "entidade_seq")
-	private Long ent_codigo;	
-	
+	private Long ent_codigo;
+
 	@Column(length = 20, nullable = true, unique = true)
 	@Index(name = "xlogin")
 	private String ent_login = null;
@@ -52,71 +51,95 @@ public class Entidade implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ent_ultimoacesso;
-	
+
 	@Version
 	@Column(name = "versionNum")
 	private int versionNum;
-	
+
 	@Column(nullable = true)
-	private  String ent_nome;
-	
+	private String ent_nome;
+
+	@Column(nullable = true)
+	private String ent_idade;
+
+	@Column(nullable = true)
+	private String ent_n_guerra;
+
+	@Column(nullable = true)
+	private String ent_peso;
+
+	@Column(nullable = true)
+	private String ent_altura;
+
 	/*
-	  
-	 @Enumerated(EnumType.STRING)
-	private TipoCadastro ent_tipo;
-
-	@Enumerated(EnumType.STRING)
-	private TipoPessoa ent_tipopessoa;	
-		
-	
-	
-	@Column(nullable = true)
-	private  int ent_idade;	
-	
-	@Column(nullable = true)
-	private  String ent_genero;	
-	
-	@Column(nullable = true)
-	private  String ent_posto;	
-	
-	@Column(nullable = true)
-	private  String ent_grad;
-	
-	@Column(nullable = true)
-	private  String ent_n_guerra;	
-	
-	@Column(nullable = true)
-	private  String ent_coren;	
-	
-	@Column(nullable = true)
-	private  String ent_profissao;
-	
-	@IdentificaCampoPesquisa(descricaoCampo = "CRM", campoConsulta = "crm", principal = 1)
-	@Column(nullable = false, length = 25)
-	private String ent_crm;
-	
-	@Column(nullable = false, length = 20)
-	private float ent_peso;
-
-	@Column(nullable = false, length = 20)
-	private float ent_altura;
-
-	@Column(nullable = false, length = 20)
-	private float ent_imc;
-	
-	
-	@Version
-	@Column(name = "versionNum")
-	private int versionNum;
-	
-	
-*/
-
-	
-	
+	 * 
+	 * @Enumerated(EnumType.STRING) private TipoCadastro ent_tipo;
+	 * 
+	 * @Enumerated(EnumType.STRING) private TipoPessoa ent_tipopessoa;
+	 * 
+	 * 
+	 * 
+	 * @Column(nullable = true) private int ent_idade;
+	 * 
+	 * @Column(nullable = true) private String ent_genero;
+	 * 
+	 * @Column(nullable = true) private String ent_posto;
+	 * 
+	 * @Column(nullable = true) private String ent_grad;
+	 * 
+	 * 
+	 * 
+	 * @Column(nullable = true) private String ent_coren;
+	 * 
+	 * @Column(nullable = true) private String ent_profissao;
+	 * 
+	 * @IdentificaCampoPesquisa(descricaoCampo = "CRM", campoConsulta = "crm",
+	 * principal = 1)
+	 * 
+	 * @Column(nullable = false, length = 25) private String ent_crm;
+	 * 
+	 * @Column(nullable = false, length = 20) private float ent_imc;
+	 * 
+	 * 
+	 * @Version
+	 * 
+	 * @Column(name = "versionNum") private int versionNum;
+	 */
 
 	public int getVersionNum() {
 		return versionNum;
+	}
+
+	public String getEnt_altura() {
+		return ent_altura;
+	}
+
+	public void setEnt_altura(String ent_altura) {
+		this.ent_altura = ent_altura;
+	}
+
+	public String getEnt_peso() {
+		return ent_peso;
+	}
+
+	public void setEnt_peso(String ent_peso) {
+		this.ent_peso = ent_peso;
+	}
+
+	public String getEnt_idade() {
+		return ent_idade;
+	}
+
+	public void setEnt_idade(String ent_idade) {
+		this.ent_idade = ent_idade;
+	}
+
+	public String getEnt_n_guerra() {
+		return ent_n_guerra;
+	}
+
+	public void setEnt_n_guerra(String ent_n_guerra) {
+		this.ent_n_guerra = ent_n_guerra;
 	}
 
 	public String getEnt_nome() {
@@ -220,13 +243,9 @@ public class Entidade implements Serializable {
 				+ ent_mudarsenha + ", ent_inativo=" + ent_inativo
 				+ ", ent_datacadastro=" + ent_datacadastro
 				+ ", ent_ultimoacesso=" + ent_ultimoacesso + ", ent_nome="
-				+ ent_nome + "]";
+				+ ent_nome + ", ent_idade=" + ent_idade + ", ent_n_guerra="
+				+ ent_n_guerra + ", ent_peso=" + ent_peso + ", ent_altura="
+				+ ent_altura + "]";
 	}
 
-	
-	
-	
-	
-
-	
 }

@@ -15,33 +15,88 @@
 			<p:panel header="Cadastro de Paciente" id="panelCadastro"
 				styleClass="estiloIdCadastro">
 
-				<h:panelGrid id="gridPaciente" columns="3">
+				<h:panelGrid id="gridPaciente" columns="3"
+					style="margin-bottom:10px" cellpadding="5">
 					<h:outputLabel for="id" value="Código : " id="labelId" />
 					<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true"
-					value="#{entidadeBeanView.objetoSelecionado.ent_codigo}"	 />
-					<h:outputLabel />  <!-- --> 
+						value="#{entidadeBeanView.objetoSelecionado.ent_codigo}" />
+					<h:outputLabel />
+					<!-- -->
 
-					<h:outputLabel id="labelnome" for="nomePaciente" value="Nome *: " styleClass="estiloIdCadastro" />
+					<h:outputLabel id="labelnome" for="nomePaciente"
+						value="Nome Completo *: " styleClass="estiloIdCadastro" />
 					<p:inputText id="pacienteNome" styleClass="estyleInputNome"
-						required="true" maxlength="100" 
-						requiredMessage="Informe o Nome do Usuário" value="#{entidadeBeanView.objetoSelecionado.ent_nome}"/>
-						 <p:message  for="pacienteNome" /> <!--  --> 
-						 
-						 <p:selectOneMenu  style="width:125px"> <f:selectItems value="#{graduacaoBeanView.graduacaos}"/>
-						 
-						 
-						 </p:selectOneMenu>
-						 
-						 
-						 
-						 
-						 
+						required="true" maxlength="100"
+						requiredMessage="Informe o Nome de Paciente"
+						value="#{entidadeBeanView.objetoSelecionado.ent_nome}" />
+					<p:message for="pacienteNome" />
+					<!--  -->
+
+
+					<h:outputLabel id="labelnguerra" for="nomeGuerra"
+						value="Nome de Guerra *: " styleClass="estiloIdCadastro" />
+					<p:inputText id="nGuerra" styleClass="estyleInputNome"
+						required="true" maxlength="100"
+						requiredMessage="Informe o Nome de Guerra"
+						value="#{entidadeBeanView.objetoSelecionado.ent_n_guerra}" />
+					<p:message for="nGuerra" />
+
+
+					<h:outputText value="P/Grad *: " />
+
+					<h:outputLabel>
+						<p:selectOneMenu id="graduacao" style="width:100px;" effect="fade">
+							<f:selectItems value="#{graduacaoBeanView.graduacaos}" />
+						</p:selectOneMenu>
+						<p:message for="graduacao" />
+
+					</h:outputLabel>
+					<br />
+
+
+					<h:outputLabel id="labelidade" for="idadeP" value="Idade *: "
+						styleClass="estiloIdCadastro" />
+					<p:inputText id="PaIdade" styleClass="estyleInputNome"
+						required="true" maxlength="100" requiredMessage="Informe a Idade"
+						value="#{entidadeBeanView.objetoSelecionado.ent_idade}" />
+					<p:message for="PaIdade" />
+
+					<h:outputLabel id="labelpeso" for="pesoP" value="Peso *: "
+						styleClass="estiloIdCadastro" />
+					<p:inputText id="PaPeso" styleClass="estyleInputNome"
+						required="true" maxlength="100" requiredMessage="Informe o Peso"
+						value="#{entidadeBeanView.objetoSelecionado.ent_peso}" />
+					<p:message for="PaPeso" />
+
+					<h:outputLabel id="labelaltura" for="alturaP" value="Altura *: "
+						styleClass="estiloIdCadastro" />
+					<p:inputText id="PaAltura" styleClass="estyleInputNome"
+						required="true" maxlength="100" requiredMessage="Informe a Altura"
+						value="#{entidadeBeanView.objetoSelecionado.ent_altura}" />
+					<p:message for="PaAltura" />
+
+
+
+
+
 					<h:outputLabel />
 				</h:panelGrid>
 			</p:panel>
+			<div class="espacoBranco" />
+
+			<!--
+			<div class="espacoBranco" />
 			
-			<p:commandButton value="Salvar" ajax="false" action="#{entidadeBeanView.save}"/>
-			
+			 <util:botoesCrud managedBeanView="#{entidadeBeanView}"
+				camposReload=":formTemplate:msg, tableResult" 
+				botaoNovo = "#{contextoBean.possuiAcesso('PACIENTE_NOVO', 'ADMIN')}"
+				botaoSalvar = "#{contextoBean.possuiAcesso('PACIENTE_NOVO', 'ADMIN') and entidadeBeanView.objetoSelecionado.ent_codigo == null}"
+				botaoAtualizar = "#{contextoBean.possuiAcesso('PACIENTE_EDITAR', 'ADMIN') and entidadeBeanView.objetoSelecionado.ent_codigo != null}"
+				botaoExcluir = "#{contextoBean.possuiAcesso('PACIENTE_EXCLUIR', 'ADMIN')}"/> -->
+
+			<p:commandButton value="Salvar" ajax="false"
+				action="#{entidadeBeanView.save}" />
+
 		</h:form>
 
 	</ui:define>
