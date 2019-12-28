@@ -33,6 +33,7 @@
 		<mapping class="br.com.project.model.classes.InformacaoRevisao" />		
 		<mapping class="br.com.project.model.classes.Consulta" />
 		<mapping class="br.com.project.model.classes.Receituario" />
+		<mapping class="br.com.project.model.classes.Graduacao" />
 		
 		
 
