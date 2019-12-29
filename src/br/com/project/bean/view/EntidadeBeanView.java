@@ -1,6 +1,8 @@
 package br.com.project.bean.view;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
@@ -21,8 +23,23 @@ public class EntidadeBeanView  extends BeanManagedViewAbstract{
 	
 	private static final long serialVersionUID = 1L;
 	
+	private String url = "/cadastro/cad_entidade.jsf?faces-redirect=true";
+	
 	private Entidade objetoSelecionado = new Entidade();
 	
+	private List<Entidade> list = new ArrayList<Entidade>();
+	
+
+	
+	public List<Entidade> getList() throws Exception {
+		list = entidadeController.finList(Entidade.class);
+		return list;
+	}
+
+	public void setList(List<Entidade> list) {
+		this.list = list;
+	}
+
 	@Autowired
 	private ContextoBean contextoBean;
 	
@@ -64,10 +81,17 @@ public class EntidadeBeanView  extends BeanManagedViewAbstract{
 
 	@Override
 	public String save() throws Exception {
-		System.out.println(objetoSelecionado.getEnt_nome());
+		objetoSelecionado = entidadeController.merge(objetoSelecionado);		
+		
 		return "";
 	}
-	
 
+	@Override
+	public String novo() throws Exception {
+		objetoSelecionado = new Entidade();
+		return url;
+	}
+	
+	
 }
 

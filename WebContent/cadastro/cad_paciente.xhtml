@@ -83,8 +83,7 @@
 				</h:panelGrid>
 			</p:panel>
 			<div class="espacoBranco" />
-
-			<!--
+	<!--
 			<div class="espacoBranco" />
 			
 			 <util:botoesCrud managedBeanView="#{entidadeBeanView}"
@@ -92,12 +91,79 @@
 				botaoNovo = "#{contextoBean.possuiAcesso('PACIENTE_NOVO', 'ADMIN')}"
 				botaoSalvar = "#{contextoBean.possuiAcesso('PACIENTE_NOVO', 'ADMIN') and entidadeBeanView.objetoSelecionado.ent_codigo == null}"
 				botaoAtualizar = "#{contextoBean.possuiAcesso('PACIENTE_EDITAR', 'ADMIN') and entidadeBeanView.objetoSelecionado.ent_codigo != null}"
-				botaoExcluir = "#{contextoBean.possuiAcesso('PACIENTE_EXCLUIR', 'ADMIN')}"/> -->
+				botaoExcluir = "#{contextoBean.possuiAcesso('PACIENTE_EXCLUIR', 'ADMIN')}"/> 
+				
+				<p:dataTable id="tableResult" value="#{entidadeBeanView.list}"
+			rendered="#{entidadeBeanView.list.list.size() > 0}" var="objeto"
+			rows="10" paginatorPosition="bottom" paginator="true"
+			emptyMessage="Não existem valores para exibição." lazy="true"
+			paginatorTemplate=" {FirstPageLink}
+								   {PreviousPageLink} {PageLinks} 
+	 							   {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+			<ui:include src="/resources/componentes/colunasDataTableEntidade.xhtml" />
+		</p:dataTable>
+				
+				
+				-->
 
 			<p:commandButton value="Salvar" ajax="false"
 				action="#{entidadeBeanView.save}" />
 
+			<p:commandButton value="Novo" ajax="false"
+				action="#{entidadeBeanView.novo}" />
+
 		</h:form>
+
+		<p:dataTable id="tableResult" value="#{entidadeBeanView.list}"
+			var="objeto" emptyMessage="Não existem valores para exibição."
+			lazy="true">
+			
+			<p:column> 
+			<center>
+			<f:facet name="header">Nome Completo</f:facet>
+			<h:outputText value="#{objeto.ent_nome}" />
+			
+			</center>
+			</p:column>
+			
+			<p:column> 
+			<center>
+			<f:facet name="header">Nome de Guerra</f:facet>
+			<h:outputText value="#{objeto.ent_n_guerra}" />
+			
+			</center>
+			</p:column>
+			
+			<p:column> 
+			<center>
+			<f:facet name="header">Idade</f:facet>
+			<h:outputText value="#{objeto.ent_idade}" />
+			
+			</center>
+			</p:column>
+			
+			<p:column> 
+			<center>
+			<f:facet name="header">Altura</f:facet>
+			<h:outputText value="#{objeto.ent_altura}" />
+			
+			</center>
+			</p:column>
+			
+			<p:column> 
+			<center>
+			<f:facet name="header">Peso</f:facet>
+			<h:outputText value="#{objeto.ent_peso}" />
+			
+			</center>
+			</p:column>
+			
+			
+
+
+		</p:dataTable>
+
 
 	</ui:define>
 </ui:composition>

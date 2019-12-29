@@ -20,16 +20,15 @@ import br.com.project.model.classes.Graduacao;
 public class GraduacaoBeanView extends BeanManagedViewAbstract {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Graduacao objetoSelecionado = new Graduacao();
-	
+
 	@Autowired
 	private GraduacaoController graduacaoController;
-	
-	public List<SelectItem> getGraduacaos() throws Exception{
+
+	public List<SelectItem> getGraduacaos() throws Exception {
 		return graduacaoController.getListGraduacao();
 	}
-	
 
 	public Graduacao getObjetoSelecionado() {
 		return objetoSelecionado;
@@ -57,8 +56,4 @@ public class GraduacaoBeanView extends BeanManagedViewAbstract {
 		return null;
 	}
 
-	
-
-	
-	
 }

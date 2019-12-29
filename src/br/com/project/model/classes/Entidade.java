@@ -70,8 +70,30 @@ public class Entidade implements Serializable {
 
 	@Column(nullable = true)
 	private String ent_altura;
+	
 
 	/*
+	 * 
+	@IdentificaCampoPesquisa(descricaoCampo = "Graduacao", campoConsulta = "grad_codigo.grad_grad")
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE,
+			CascadeType.PERSIST })
+	@ForeignKey(name = "grad_codigo_fk")
+	@JoinColumn(name = "grad_codigo")
+	private Graduacao grad_codigo = new Graduacao();
+	
+	
+	public Graduacao getGrad_codigo() {
+		return grad_codigo;
+	}
+
+	public void setGrad_codigo(Graduacao grad_codigo) {
+		this.grad_codigo = grad_codigo;
+	}
+	
+	
+	 * 
+	 * 
+	 * 
 	 * 
 	 * @Enumerated(EnumType.STRING) private TipoCadastro ent_tipo;
 	 * 
@@ -105,10 +127,14 @@ public class Entidade implements Serializable {
 	 * 
 	 * @Column(name = "versionNum") private int versionNum;
 	 */
+	
+	
 
 	public int getVersionNum() {
 		return versionNum;
 	}
+
+	
 
 	public String getEnt_altura() {
 		return ent_altura;
@@ -236,6 +262,8 @@ public class Entidade implements Serializable {
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Entidade [ent_codigo=" + ent_codigo + ", ent_login="
@@ -247,5 +275,9 @@ public class Entidade implements Serializable {
 				+ ent_n_guerra + ", ent_peso=" + ent_peso + ", ent_altura="
 				+ ent_altura + "]";
 	}
+
+	
+
+	
 
 }
