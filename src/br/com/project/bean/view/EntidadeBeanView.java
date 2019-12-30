@@ -9,6 +9,8 @@ import javax.faces.bean.ManagedBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
@@ -22,7 +24,8 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 
 	private static final long serialVersionUID = 1L;
 
-	private String url = "/cadastro/cad_entidade.jsf?faces-redirect=true";
+	private String url = "/cadastro/cad_paciente.jsf?faces-redirect=true";
+	private String urlFind = "/cadastro/find_paciente.jsf?faces-redirect=true";
 
 	private Entidade objetoSelecionado = new Entidade();
 
@@ -114,7 +117,18 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		return url;
 	}
 	
+	@Override
+	@RequestMapping(value = { "**/find_entidade" }, method = RequestMethod.POST)
+	public void setarVariaveisNulas() throws Exception {
+		valorPesquisa = "";
+		list.clear();
+		objetoSelecionado = new Entidade();
+	}
 	
-
+	@Override
+	public String redirecionarFindEntidade() throws Exception {
+		setarVariaveisNulas();
+		return urlFind;
+	}
 	
 }

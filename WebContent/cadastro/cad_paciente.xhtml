@@ -5,7 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:sec="http://www.springframework.org/security/facelets/tags"
-	xmlns:util="http://java.sun.com/jsf/composite/components"
+	xmlns:util="http://java.sun.com/jsf/composite/componentes"
 	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/templates/templatePrincipal.xhtml">
@@ -86,35 +86,25 @@
 				</h:panelGrid>
 			</p:panel>
 			<div class="espacoBranco" />
-			<!--
-			<div class="espacoBranco" />
+			
+		
 			
 			 <util:botoesCrud managedBeanView="#{entidadeBeanView}"
 				camposReload=":formTemplate:msg, tableResult" 
 				botaoNovo = "#{contextoBean.possuiAcesso('PACIENTE_NOVO', 'ADMIN')}"
 				botaoSalvar = "#{contextoBean.possuiAcesso('PACIENTE_NOVO', 'ADMIN') and entidadeBeanView.objetoSelecionado.ent_codigo == null}"
 				botaoAtualizar = "#{contextoBean.possuiAcesso('PACIENTE_EDITAR', 'ADMIN') and entidadeBeanView.objetoSelecionado.ent_codigo != null}"
-				botaoExcluir = "#{contextoBean.possuiAcesso('PACIENTE_EXCLUIR', 'ADMIN')}"/> 
+				botaoExcluir = "#{contextoBean.possuiAcesso('PACIENTE_EXCLUIR', 'ADMIN')}"/> 				
 				
-				<p:dataTable id="tableResult" value="#{entidadeBeanView.list}"
-			rendered="#{entidadeBeanView.list.list.size() > 0}" var="objeto"
-			rows="10" paginatorPosition="bottom" paginator="true"
-			emptyMessage="Não existem valores para exibição." lazy="true"
-			paginatorTemplate=" {FirstPageLink}
-								   {PreviousPageLink} {PageLinks} 
-	 							   {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
-
-			<ui:include src="/resources/componentes/colunasDataTableEntidade.xhtml" />
-		</p:dataTable>
-				
-				
-				-->
-
-			<p:commandButton value="Salvar" ajax="false"
+				<!--
+				<p:commandButton value="Salvar" ajax="false"
 				action="#{entidadeBeanView.saveNotReturn}" />
 
 			<p:commandButton value="Novo" ajax="false"
-				action="#{entidadeBeanView.novo}" />
+				action="#{entidadeBeanView.novo}" /
+				-->
+
+			
 
 		</h:form>
 

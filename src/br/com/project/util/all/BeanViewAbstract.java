@@ -52,17 +52,17 @@ public abstract class BeanViewAbstract implements ActionViewPadrao {
 	}
 
 	@Override
-	public void consultaUsuario() throws Exception {
+	public void consultaEntidade() throws Exception {
 
 	}
 
 	@Override
-	public String redirecionarNewUsuario() throws Exception {
+	public String redirecionarNewEntidade() throws Exception {
 		return null;
 	}
 
 	@Override
-	public String redirecionarFindUsuario() throws Exception {
+	public String redirecionarFindEntidade() throws Exception {
 		return null;
 	}
 
