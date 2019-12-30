@@ -12,7 +12,7 @@ import br.com.project.bean.geral.ObjetoCampoConsulta;
 /**
  * Responsavel por efetuar a conversão nos combos de campos de consulta
  * 
- * @author alex
+ * @author Juan Campos
  * 
  */
 @FacesConverter(forClass = ObjetoCampoConsulta.class)

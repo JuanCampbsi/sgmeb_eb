@@ -131,4 +131,10 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		return urlFind;
 	}
 	
+	@Override
+	public void consultaEntidade() throws Exception {
+	
+		super.consultaEntidade();
+	}
+	
 }

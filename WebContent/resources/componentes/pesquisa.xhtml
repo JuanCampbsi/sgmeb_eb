@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/componentes"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+	
+	
+<h:form id="formPesquisa" prependId="false" >
+		<composite:interface displayName="interfacePesquisa" name="interfacePesquisa">
+			<composite:attribute name="managedBeanView" required="true" />
+			<composite:attribute name="tipoEntidadeTemp" required="false" />
+			<composite:attribute name="tipoTituloEmAberto" required="false" />
+			<composite:attribute name="nomePesquisa" required="true" />
+			<composite:attribute name="colunasGridDataTableList" required="true" />
+			<composite:attribute name="exibirBotaoAdd" required="true" />
+			<composite:attribute name="camposReload" required="false" />
+			<composite:attribute name="ocultaNovo" required="true" />
+			<composite:attribute name="funcaoJavaScript" required="false" />
+			<composite:attribute name="menuImpressao" required="false" default="false"/>
+			<composite:attribute name="exportPage" required="false" default="false"/>
+			<composite:attribute name="consultarInativos" required="false" default="false"/>
+		</composite:interface>
+
+		<composite:implementation >
+		
+		<c:set var="isCadastro" value="false" scope="view"/>
+		
+		<h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHiddenTitulo}" value="#{cc.attrs.tipoTituloEmAberto}" immediate="true">
+			<f:attribute name="tipoTituloEmAberto" value="#{cc.attrs.tipoTituloEmAberto}"/>
+		</h:inputHidden>
+		
+		<h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHidden}" value="#{cc.attrs.tipoEntidadeTemp}" immediate="true">
+			<f:attribute name="tipoEntidadeTemp" value="#{cc.attrs.tipoEntidadeTemp}"/>
+		</h:inputHidden>
+
+		<h:panelGrid columns="2">
+			<h:column rendered="#{!cc.attrs.ocultaNovo}">
+				<p:commandButton value="Novo" id="buttonNovoRegistro"
+					style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF"
+					action="#{cc.attrs.managedBeanView.novo}" ajax="false"
+					immediate="true" />
+			</h:column>
+			<h:column rendered="#{cc.attrs.menuImpressao}">
+				<util:menuImpressao bean="#{cc.attrs.managedBeanView}" tipoEntidadeTemp="#{cc.attrs.tipoEntidadeTemp}">
+				</util:menuImpressao>
+			</h:column>
+		</h:panelGrid>
+		<div class="espacoBranco"/>
+		 	
+			<p:panel id="panelPesquisa" header="#{cc.attrs.nomePesquisa}" 
+				widgetVar="panelPesquisa" styleClass="estiloIdCadastro">
+				<h:panelGrid id="panelGridPesquisa" columns="7">
+					<h:outputLabel for="campo" id="labelCampo" value="Campo :"/>
+					<p:selectOneMenu style="width: 150px;" id="campo" onchange="addMascaraPesquisa(this.value);"
+						value="#{cc.attrs.managedBeanView.campoPesquisaSelecionado}">
+						<f:selectItems var="campoPesquisaSelecionado"
+							id="itensCampoPesquisa"
+							itemLabel="#{campoPesquisaSelecionado.descricao}" 
+							itemValue="#{campoPesquisaSelecionado.tipoClass}"
+							value="#{cc.attrs.managedBeanView.listaCampoPesquisa}"> 
+						</f:selectItems>
+					</p:selectOneMenu>
+					
+					<h:outputLabel for="condicao" id="labelCondicao" value="Onde :"/>
+					<p:selectOneMenu style="width: 150px;" id="condicao"
+						value="#{cc.attrs.managedBeanView.condicaoPesquisaSelecionado}">
+						<f:selectItems 
+							id="itensCondicao"
+							value="#{cc.attrs.managedBeanView.listaCondicaoPesquisa}"/>
+					</p:selectOneMenu>
+					<p:inputText  id="valorPesquisa" immediate="false" 
+						value="#{cc.attrs.managedBeanView.valorPesquisa}"
+						onblur="validarCampoPesquisa(event);"
+						styleClass="valorPesquisa" maxlength="65" 
+						onkeypress="executaPesquisaComEnter(event, this);"
+						required="false" requiredMessage="Informe o valor do filtro."/>
+					<p:commandButton id="buttonPesquisar" 
+									  styleClass="botaoPesquisa" value="Filtrar" ajax="true"
+									  actionListener="#{cc.attrs.managedBeanView.consultaEntidade}"
+									  process="@this,panelPesquisa"
+									  oncomplete="addFocoAoCampo('valorPesquisa');"
+									  onsuccess="addFocoAoCampo('valorPesquisa');"
+									  update=":formTemplate:msg, tableResult">
+					    <h:inputHidden binding="#{cc.attrs.managedBeanView.htmlInputHidden}" value="#{cc.attrs.tipoEntidadeTemp}" immediate="true">
+								<f:attribute name="tipoEntidadeTemp" value="#{cc.attrs.tipoEntidadeTemp}" />
+						</h:inputHidden>
+						<f:param name="consultarInativos" value="#{cc.attrs.consultarInativos}"/>
+					</p:commandButton>
+				</h:panelGrid>
+			</p:panel>
+			
+			<div class="espacoBranco"/>
+			
+			<p:dataTable styleClass="estiloIdCadastro" id="tableResult" rendered="true" 
+			    value="#{cc.attrs.managedBeanView.list}"
+				var="objeto" 
+				rows="10" 
+				widgetVar="tableResult"
+				selectionMode="single" 
+				selection="#{cc.attrs.managedBeanView.objetoSelecionado}" 
+				rowKey="#{objeto}" 
+				paginatorPosition="bottom" 
+				lazy="true"
+				rowIndexVar="index"
+				paginator="true" 
+				emptyMessage="Não existem valores para exibição."
+				paginatorTemplate=" {FirstPageLink}
+								   {PreviousPageLink} {PageLinks} 
+	 							   {NextPageLink} {LastPageLink} {RowsPerPageDropdown} ">
+	 							   
+	 		<p:ajax event="rowSelect" global="false" listener="#{cc.attrs.managedBeanView.onRowSelect}" onsuccess="processaDelete(this);" />
+       		<p:ajax event="rowUnselect" global="false" listener="#{cc.attrs.managedBeanView.onRowUnselect}" onsuccess="processaDelete(this);"/>		
+
+			<ui:include src="#{cc.attrs.colunasGridDataTableList}" />  
+
+				<p:column rendered="#{cc.attrs.exibirBotaoAdd}" style="width:70px;" id="colunaSelecionar" exportable="false" >
+					<center>
+						<f:facet name="header">Selecionar</f:facet>
+						<p:commandLink id="addPesquisa" immediate="true"
+										partialSubmit="true"
+										ajax="true"
+										process="@this, colunaSelecionar" onclick="#{cc.attrs.funcaoJavaScript}">
+							<h:graphicImage library="img" 
+											id="imgAddPesquisa"
+											name="add_16.png"
+											styleClass="bordaImagem" />
+						</p:commandLink>
+					</center>
+				</p:column>
+			</p:dataTable>
+			
+		<p:commandButton value="Exportar" ajax="false" rendered="#{cc.attrs.exportPage}"> 
+				<p:dataExporter type="pdf" target="tableResult" 
+				fileName="export" pageOnly="true" encoding="ISO-8859-1"/>
+		</p:commandButton>			
+		
+		<script type="text/javascript" charset="UTF-8">   
+	
+		var idCampo = getValorElementPorIdJQuery('campo');
+		var idCampoCondicao = getValorElementPorIdJQuery('condicao');
+		var idPesquisa = getValorElementPorIdJQuery('valorPesquisa');
+		
+		$(idPesquisa).keypress(permitNumber);
+		
+		$(idCampo + ' :nth-child(1)').prop('selected', true);
+		$(idCampoCondicao + ' :nth-child(1)').prop('selected', true);
+		$(idPesquisa).val('');
+		
+		addMascaraPesquisa($(idCampo).val()); 
+		
+		addFocoAoCampo('valorPesquisa');
+		
+		//chama o pesquisar ao dar enter na pesquisa
+		function executaPesquisaComEnter(event, button){
+			if (event.keyCode == 13){
+				event.preventDefault();    
+				addFocoAoCampo('buttonPesquisar');
+				
+				var buttonPesquisar = getValorElementPorIdJQuery('buttonPesquisar');
+				$(buttonPesquisar).click();
+			}
+		}
+		
+	</script>
+  </composite:implementation>
+</h:form>
+</html>

@@ -71,8 +71,8 @@
 			</div>
 			<div id="container">
 				<div id="topo">
-					<span style="position: absolute; left: 7px; top: 3px" id="spanLogo">
-						<h:graphicImage library="img" name="ebreduzido(1).png"
+					<span style="position: absolute; left:-10px; top: -15px" id="spanLogo">
+						<h:graphicImage library="img" name="image.png"
 							id="logoImg" styleClass="bordaImagem" />
 					</span> <span id="dadoslogin"> Usuário:
 						#{entidadeBeanView.entidadeLogadoSecurity} <br id="quebraUser" />
@@ -140,7 +140,7 @@
 						
 						<sec:ifAnyGranted roles="PACIENTE_ACESSAR, ADMIN">	 
 							<p:menuitem value="Paciente" id="menupaciente"
-								action = "/cadastro/cad_paciente.jsf?faces-redirect=true" />
+								action = "#{entidadeBeanView.redirecionarFindEntidade}" />
 						</sec:ifAnyGranted>
 						
 						<sec:ifAnyGranted roles="PRODUTO_ACESSAR, ADMIN">	 
