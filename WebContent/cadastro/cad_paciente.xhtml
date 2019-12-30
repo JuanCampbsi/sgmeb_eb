@@ -125,7 +125,7 @@
 
 		<div class="espacoBranco" />
 
-		<p:dataTable id="tableResult" value="#{entidadeBeanView.list}"
+		<p:dataTable headerClass="cabecalho"  style="font-size: 12px;font-face: sans-serif;"  id="tableResult" value="#{entidadeBeanView.list}"
 			emptyMessage="Não existem valores para exibição."
 			rendered="#{entidadeBeanView.list.size()>0}" rows="4" var="objeto"
 			lazy="true" paginatorPosition="bottom" paginator="true" 
@@ -134,7 +134,7 @@
 	 							   {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
 
 
-	<ui:include src="/resources/componentes/colunasDataTableEntidade.xhtml" />
+	<ui:include  src="/resources/componentes/colunasDataTableEntidade.xhtml" />
 
 		</p:dataTable>
 

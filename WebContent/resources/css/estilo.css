@@ -554,6 +554,7 @@ a.ui-menuitem-link.ui-corner-all.ui-state-hover {
 
 .ui-datatable table {
 	border-collapse: separate;
+	
 }
 
 .ui-datatable thead th,.ui-datatable tbody td,.ui-datatable tfoot td {
@@ -567,6 +568,7 @@ a.ui-menuitem-link.ui-corner-all.ui-state-hover {
 	-webkit-border-radius: 5px; /*Para Safari e Chrome */
 	border-radius: 5px; /* Para Opera 10.5+*/
 	border-color: white; /*cor das linha nos data table*/
+	
 }
 
 .ui-corner-bottom {
@@ -627,6 +629,7 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	border-width: 1px;
 	border-style: solid;
 	border-color: white; /*cor das linha nos data table*/
+	
 }
 
 .ui-paginator .ui-paginator-page,.ui-paginator .ui-paginator-pages,.ui-paginator .ui-paginator-next,.ui-paginator .ui-paginator-last,.ui-paginator .ui-paginator-first,.ui-paginator .ui-paginator-prev,.ui-paginator .ui-paginator-current
@@ -644,6 +647,7 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	color: #000;
 	font-weight: bold;
 	background: none;
+	
 }
 
 .ui-button {
@@ -720,4 +724,15 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 
 .value {
 	font-weight: bold;
+}
+
+
+.cabecalho {
+
+   text-align: center;
+
+   font: 15px  sans-serif;
+
+   font-weight: bold;  
+
 }
