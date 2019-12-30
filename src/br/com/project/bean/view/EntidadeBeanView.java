@@ -18,19 +18,16 @@ import br.com.project.model.classes.Entidade;
 @Controller
 @Scope(value = "session")
 @ManagedBean(name = "entidadeBeanView")
-public class EntidadeBeanView  extends BeanManagedViewAbstract{
-	
-	
-	private static final long serialVersionUID = 1L;
-	
-	private String url = "/cadastro/cad_entidade.jsf?faces-redirect=true";
-	
-	private Entidade objetoSelecionado = new Entidade();
-	
-	private List<Entidade> list = new ArrayList<Entidade>();
-	
+public class EntidadeBeanView extends BeanManagedViewAbstract {
 
-	
+	private static final long serialVersionUID = 1L;
+
+	private String url = "/cadastro/cad_entidade.jsf?faces-redirect=true";
+
+	private Entidade objetoSelecionado = new Entidade();
+
+	private List<Entidade> list = new ArrayList<Entidade>();
+
 	public List<Entidade> getList() throws Exception {
 		list = entidadeController.finList(Entidade.class);
 		return list;
@@ -42,11 +39,10 @@ public class EntidadeBeanView  extends BeanManagedViewAbstract{
 
 	@Autowired
 	private ContextoBean contextoBean;
-	
+
 	@Autowired
 	private EntidadeController entidadeController;
-	
-	
+
 	public String getEntidadeLogadoSecurity() {
 		return contextoBean.getAuthentication().getName();
 	}
@@ -80,18 +76,45 @@ public class EntidadeBeanView  extends BeanManagedViewAbstract{
 	}
 
 	@Override
-	public String save() throws Exception {
-		objetoSelecionado = entidadeController.merge(objetoSelecionado);		
-		
-		return "";
+	public void saveNotReturn() throws Exception { 
+			if (validarCampoObrigatorio(objetoSelecionado)) {
+				list.clear();
+				objetoSelecionado = entidadeController.merge(objetoSelecionado);
+				list.add(objetoSelecionado);
+				objetoSelecionado = new Entidade();
+				sucesso();
+			}
+	}
+	@Override
+	public String novo() throws Exception {
+		setarVariaveisNulas();
+		return url;
+	}
+	
+	@Override
+	public void saveEdit() throws Exception {
+		saveNotReturn();
 	}
 
 	@Override
-	public String novo() throws Exception {
-		objetoSelecionado = new Entidade();
+	public void excluir() throws Exception {
+			if (objetoSelecionado.getEnt_codigo() != null
+					&& objetoSelecionado.getEnt_codigo() > 0) {
+				entidadeController.delete(objetoSelecionado);
+				list.remove(objetoSelecionado);
+				objetoSelecionado = new Entidade();
+				sucesso();
+			}
+	}
+	
+	@Override
+	public String editar() throws Exception {
+		valorPesquisa = "";
+		list.clear();
 		return url;
 	}
 	
 	
-}
 
+	
+}

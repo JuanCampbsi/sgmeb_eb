@@ -3,17 +3,22 @@ package br.com.project.model.classes;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.ForeignKey;
 import org.hibernate.annotations.Index;
 import org.hibernate.envers.Audited;
 
@@ -71,6 +76,22 @@ public class Entidade implements Serializable {
 	@Column(nullable = true)
 	private String ent_altura;
 	
+	@IdentificaCampoPesquisa(descricaoCampo = "Graduacao", campoConsulta = "graduacao.grad_grad")
+	@Basic
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "graduacao")
+	@ForeignKey(name = "grad_codigo_fk")
+	private Graduacao graduacao = new Graduacao();
+	
+	public Graduacao getGraduacao() {
+		return graduacao;
+	}
+
+
+
+	public void setGraduacao(Graduacao graduacao) {
+		this.graduacao = graduacao;
+	}
 
 	/*
 	 * 
@@ -129,6 +150,10 @@ public class Entidade implements Serializable {
 	 */
 	
 	
+
+	
+
+
 
 	public int getVersionNum() {
 		return versionNum;
@@ -273,8 +298,12 @@ public class Entidade implements Serializable {
 				+ ", ent_ultimoacesso=" + ent_ultimoacesso + ", ent_nome="
 				+ ent_nome + ", ent_idade=" + ent_idade + ", ent_n_guerra="
 				+ ent_n_guerra + ", ent_peso=" + ent_peso + ", ent_altura="
-				+ ent_altura + "]";
+				+ ent_altura + ", graduacao=" + graduacao + "]";
 	}
+
+
+
+	
 
 	
 

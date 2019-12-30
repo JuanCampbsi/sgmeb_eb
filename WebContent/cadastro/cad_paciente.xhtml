@@ -44,8 +44,11 @@
 
 					<h:outputText value="P/Grad *: " />
 
-					<h:outputLabel>
-						<p:selectOneMenu id="graduacao" style="width:100px;" effect="fade">
+					<h:outputLabel for="graduacao" id="labelgraduacao">
+						<p:selectOneMenu id="graduacao" required="true"
+							style="width:100px;" effect="fade"
+							requiredMessage="Informe o Posto/Graduação."
+							value="#{entidadeBeanView.objetoSelecionado.graduacao}">
 							<f:selectItems value="#{graduacaoBeanView.graduacaos}" />
 						</p:selectOneMenu>
 						<p:message for="graduacao" />
@@ -83,7 +86,7 @@
 				</h:panelGrid>
 			</p:panel>
 			<div class="espacoBranco" />
-	<!--
+			<!--
 			<div class="espacoBranco" />
 			
 			 <util:botoesCrud managedBeanView="#{entidadeBeanView}"
@@ -108,59 +111,30 @@
 				-->
 
 			<p:commandButton value="Salvar" ajax="false"
-				action="#{entidadeBeanView.save}" />
+				action="#{entidadeBeanView.saveNotReturn}" />
 
 			<p:commandButton value="Novo" ajax="false"
 				action="#{entidadeBeanView.novo}" />
 
 		</h:form>
 
-		<p:dataTable id="tableResult" value="#{entidadeBeanView.list}"
-			var="objeto" emptyMessage="Não existem valores para exibição."
-			lazy="true">
-			
-			<p:column> 
-			<center>
-			<f:facet name="header">Nome Completo</f:facet>
-			<h:outputText value="#{objeto.ent_nome}" />
-			
-			</center>
-			</p:column>
-			
-			<p:column> 
-			<center>
-			<f:facet name="header">Nome de Guerra</f:facet>
-			<h:outputText value="#{objeto.ent_n_guerra}" />
-			
-			</center>
-			</p:column>
-			
-			<p:column> 
-			<center>
-			<f:facet name="header">Idade</f:facet>
-			<h:outputText value="#{objeto.ent_idade}" />
-			
-			</center>
-			</p:column>
-			
-			<p:column> 
-			<center>
-			<f:facet name="header">Altura</f:facet>
-			<h:outputText value="#{objeto.ent_altura}" />
-			
-			</center>
-			</p:column>
-			
-			<p:column> 
-			<center>
-			<f:facet name="header">Peso</f:facet>
-			<h:outputText value="#{objeto.ent_peso}" />
-			
-			</center>
-			</p:column>
-			
-			
+		<script type="text/javascript" charset="UTF-8">
+			addFocoAoCampo('pacienteNome');
+			gerenciaTeclaEnter();
+		</script>
 
+		<div class="espacoBranco" />
+
+		<p:dataTable id="tableResult" value="#{entidadeBeanView.list}"
+			emptyMessage="Não existem valores para exibição."
+			rendered="#{entidadeBeanView.list.size()>0}" rows="4" var="objeto"
+			lazy="true" paginatorPosition="bottom" paginator="true" 
+			paginatorTemplate=" {FirstPageLink}
+								   {PreviousPageLink} {PageLinks} 
+	 							   {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+
+	<ui:include src="/resources/componentes/colunasDataTableEntidade.xhtml" />
 
 		</p:dataTable>
 
