@@ -18,7 +18,10 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.JRHtmlExporter;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.JRXlsExporter;
+import net.sf.jasperreports.engine.export.oasis.JROdtExporter;
 import net.sf.jasperreports.engine.util.JRLoader;
 
 import org.primefaces.model.DefaultStreamedContent;
@@ -32,10 +35,16 @@ public class ReportUtil implements Serializable{
 	
 	private static final String UNDERLINE = "_";
 	private static final String FOLDER_RELATORIOS = "/relatorios";
-	private static final String SUBREPORT_DIR = "SUBREPORT_DIR";	
+	private static final String SUBREPORT_DIR = "SUBREPORT_DIR";
+	private static final String EXTENSION_ODS = "ods";
+	private static final String EXTENSION_XLS = "xls";
+	private static final String EXTENSION_HTML = "html";
 	private static final String EXTENSION_PDF = "pdf";
 	private String SEPARATOR = File.separator;
-	private static final int RELATORIO_PDF = 1;	
+	private static final int RELATORIO_PDF = 1;
+	private static final int RELATORIO_EXCEL = 2;
+	private static final int RELATORIO_HTML = 3;
+	private static final int RELATORIO_PLANILHA_OPEN_OFFICE = 4;
 	private static final String PONTO = ".";
 	private StreamedContent arquivoRetorno = null;
 	private String caminhoArquivoRelatorio = null;
@@ -76,7 +85,7 @@ public class ReportUtil implements Serializable{
 			SEPARATOR = "";
 		}	
 		
-		/*caminho para imagens*/
+		/*caminho para imgens*/
 		parametrosRelatorio.put("REPORT_PARAMETERS_IMG", caminhoRelatorio); 
 
 		/* caminho completo até o relatório compilado indicado */
@@ -99,7 +108,19 @@ public class ReportUtil implements Serializable{
 		case ReportUtil.RELATORIO_PDF:
 			tipoArquivoExportado = new JRPdfExporter();
 			extensaoArquivoExportado = EXTENSION_PDF;
-			break;		
+			break;
+		case ReportUtil.RELATORIO_HTML:
+			tipoArquivoExportado = new JRHtmlExporter();
+			extensaoArquivoExportado = EXTENSION_HTML;
+			break;
+		case ReportUtil.RELATORIO_EXCEL:
+			tipoArquivoExportado = new JRXlsExporter();
+			extensaoArquivoExportado = EXTENSION_XLS;
+			break;
+		case ReportUtil.RELATORIO_PLANILHA_OPEN_OFFICE:
+			tipoArquivoExportado = new JROdtExporter();
+			extensaoArquivoExportado = EXTENSION_ODS;
+			break;
 		default:
 			tipoArquivoExportado = new JRPdfExporter();
 			extensaoArquivoExportado = EXTENSION_PDF;

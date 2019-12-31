@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="default" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4d5eb5f7-3688-44b9-beda-704bc735f4e7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="147"/>
+	<parameter name="REPORT_PARAMETERS_IMG" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="147" splitType="Stretch">
+			<image>
+				<reportElement x="238" y="0" width="142" height="50" uuid="73f8a57e-69e3-4504-9182-ae23ec58ddf7"/>
+				<imageExpression><![CDATA[$P{REPORT_PARAMETERS_IMG} + "EB_logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="118" y="53" width="298" height="91" uuid="2c1dc519-dafb-4fa9-8f0e-ae57bd9e5fdd"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MINISTÉRIO DA DEFESA EXÉRCITO BRASILEIRO
+21ª BATERIA DE ARTILHARIA ANTIAÉREA PÁRA-QUEDISTA
+(Bateria Coronel Darcy Tavares de Carvalho Lima)
+
+]]></text>
+			</staticText>
+		</band>
+	</title>
+	<lastPageFooter>
+		<band height="162">
+			<staticText>
+				<reportElement x="43" y="115" width="490" height="35" uuid="444b8d6e-47fb-4b11-8962-2e73a8601141"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA["CENTENÁRIO DA MISSÃO MILITAR FRANCESA NO BRASIL, 1919/1940: VETOR DE PROFISSIONALIZAÇÃO EM NOSSO EXÉRCITO"
+
+]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="169">
+			<staticText>
+				<reportElement x="159" y="65" width="236" height="50" uuid="a01443e3-a855-4d6d-9121-a93c965cc2f6"/>
+				<textElement>
+					<font fontName="Times New Roman" size="22"/>
+				</textElement>
+				<text><![CDATA[Relatório não disponível]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="416" y="13" width="135" height="21" uuid="e6e3593f-8a97-4a60-b6cf-a8f224fb6853"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

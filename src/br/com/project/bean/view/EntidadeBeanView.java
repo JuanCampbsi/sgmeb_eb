@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,16 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 
 	private List<Entidade> list = new ArrayList<Entidade>();
 
+	@Override
+	public StreamedContent getArquivoReport() throws Exception {
+		super.setNomeRelatorioJasper("report_paciente");
+		super.setNomeRelatorioSaida("report_paciente");
+
+		super.setListDataBeanColletionReport(entidadeController
+				.finList(getClassImplement()));
+		return super.getArquivoReport();
+	}
+
 	public List<Entidade> getList() throws Exception {
 		list = entidadeController.finList(Entidade.class);
 		return list;
@@ -54,8 +65,16 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		return contextoBean.getEntidadeLogada().getEnt_ultimoacesso();
 	}
 
+	public EntidadeController getEntidadeController() {
+		return entidadeController;
+	}
+
+	public void setEntidadeController(EntidadeController entidadeController) {
+		this.entidadeController = entidadeController;
+	}
+
 	@Override
-	protected Class<?> getClassImplement() {
+	protected Class<Entidade> getClassImplement() {
 		return Entidade.class;
 	}
 
@@ -79,21 +98,22 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	}
 
 	@Override
-	public void saveNotReturn() throws Exception { 
-			if (validarCampoObrigatorio(objetoSelecionado)) {
-				list.clear();
-				objetoSelecionado = entidadeController.merge(objetoSelecionado);
-				list.add(objetoSelecionado);
-				objetoSelecionado = new Entidade();
-				sucesso();
-			}
+	public void saveNotReturn() throws Exception {
+		if (validarCampoObrigatorio(objetoSelecionado)) {
+			list.clear();
+			objetoSelecionado = entidadeController.merge(objetoSelecionado);
+			list.add(objetoSelecionado);
+			objetoSelecionado = new Entidade();
+			sucesso();
+		}
 	}
+
 	@Override
 	public String novo() throws Exception {
 		setarVariaveisNulas();
 		return url;
 	}
-	
+
 	@Override
 	public void saveEdit() throws Exception {
 		saveNotReturn();
@@ -101,22 +121,22 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public void excluir() throws Exception {
-			if (objetoSelecionado.getEnt_codigo() != null
-					&& objetoSelecionado.getEnt_codigo() > 0) {
-				entidadeController.delete(objetoSelecionado);
-				list.remove(objetoSelecionado);
-				objetoSelecionado = new Entidade();
-				sucesso();
-			}
+		if (objetoSelecionado.getEnt_codigo() != null
+				&& objetoSelecionado.getEnt_codigo() > 0) {
+			entidadeController.delete(objetoSelecionado);
+			list.remove(objetoSelecionado);
+			objetoSelecionado = new Entidade();
+			sucesso();
+		}
 	}
-	
+
 	@Override
 	public String editar() throws Exception {
 		valorPesquisa = "";
 		list.clear();
 		return url;
 	}
-	
+
 	@Override
 	@RequestMapping(value = { "**/find_entidade" }, method = RequestMethod.POST)
 	public void setarVariaveisNulas() throws Exception {
@@ -124,17 +144,17 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		list.clear();
 		objetoSelecionado = new Entidade();
 	}
-	
+
 	@Override
 	public String redirecionarFindEntidade() throws Exception {
 		setarVariaveisNulas();
 		return urlFind;
 	}
-	
+
 	@Override
 	public void consultaEntidade() throws Exception {
-	
+
 		super.consultaEntidade();
 	}
-	
+
 }

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_paciente" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7f05c3ae-32a6-46f8-b0b9-444eb8344557">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="122"/>
+	<parameter name="REPORT_PARAMETERS_IMG" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="ent_codigo" class="java.lang.Long">
+		<fieldDescription><![CDATA[ent_codigo]]></fieldDescription>
+	</field>
+	<field name="ent_nome" class="java.lang.String">
+		<fieldDescription><![CDATA[ent_nome]]></fieldDescription>
+	</field>
+	<field name="ent_n_guerra" class="java.lang.String">
+		<fieldDescription><![CDATA[ent_n_guerra]]></fieldDescription>
+	</field>
+	<field name="graduacao" class="br.com.project.model.classes.Graduacao">
+		<fieldDescription><![CDATA[graduacao]]></fieldDescription>
+	</field>
+	<field name="ent_idade" class="java.lang.String">
+		<fieldDescription><![CDATA[ent_idade]]></fieldDescription>
+	</field>
+	<field name="ent_peso" class="java.lang.String">
+		<fieldDescription><![CDATA[ent_peso]]></fieldDescription>
+	</field>
+	<field name="ent_altura" class="java.lang.String">
+		<fieldDescription><![CDATA[ent_altura]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="129" splitType="Stretch">
+			<image>
+				<reportElement x="244" y="0" width="100" height="50" uuid="0b019f97-8bd4-4816-8b1f-a774e8d4e217"/>
+				<imageExpression><![CDATA[$P{REPORT_PARAMETERS_IMG} + "EB_logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="127" y="58" width="298" height="55" uuid="96301e31-adaa-4de0-858e-b82ea2548ecb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MINISTÉRIO DA DEFESA EXÉRCITO BRASILEIRO
+21ª BATERIA DE ARTILHARIA ANTIAÉREA PÁRA-QUEDISTA
+(Bateria Coronel Darcy Tavares de Carvalho Lima)
+
+]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="144" y="12" width="379" height="50" uuid="24eacba7-db83-4a05-be89-fa407a02218a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="22"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO PACIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="62" width="61" height="20" uuid="3b7c877d-d66b-4e09-9d1c-746cdf49f6c5"/>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="69" y="62" width="100" height="20" uuid="f0f272a2-a23c-4cee-9d62-251733ca7816"/>
+				<text><![CDATA[Nome Completo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="62" width="88" height="20" uuid="19a1d4aa-2967-45ee-96ac-1dbe1dfc4de1"/>
+				<text><![CDATA[Nome de Guerra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="62" width="87" height="20" uuid="e69241ac-21de-469b-accd-edfaf3698297"/>
+				<text><![CDATA[P/Graduação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="344" y="62" width="81" height="20" uuid="e204d068-ed02-47c7-a6a4-0e138ecb98d3"/>
+				<text><![CDATA[Altura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="62" width="60" height="20" uuid="36602960-2eff-45de-82de-27411361c281"/>
+				<text><![CDATA[Peso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="483" y="62" width="72" height="20" uuid="2ac18e34-6a4a-4b1b-909e-8f1a84fe4aa6"/>
+				<text><![CDATA[Idade]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement x="8" y="0" width="61" height="20" uuid="4a8062b8-28a9-48f8-b00e-c251ef13bf18"/>
+				<textFieldExpression><![CDATA[$F{ent_codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="0" width="100" height="20" uuid="17d3dfe4-3a23-45de-a7e8-2078c865dd41"/>
+				<textFieldExpression><![CDATA[$F{ent_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="257" y="0" width="87" height="20" uuid="cb0d0edd-6a30-4e61-99aa-73488264ba1b"/>
+				<textFieldExpression><![CDATA[$F{graduacao}$F{graduacao}.getGrad_grad()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="483" y="0" width="72" height="20" uuid="254e19c9-8a1f-4a18-b3d3-0a561b8bd8c0"/>
+				<textFieldExpression><![CDATA[$F{ent_idade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="0" width="60" height="20" uuid="03a29dc6-4107-4b14-8ec1-8fbcdb113d08"/>
+				<textFieldExpression><![CDATA[$F{ent_peso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="344" y="0" width="81" height="20" uuid="0e9b52cf-5dcb-4e95-8c82-f653a2c41f7e"/>
+				<textFieldExpression><![CDATA[$F{ent_altura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="169" y="0" width="88" height="20" uuid="129bb352-708b-423b-8b42-ee5650cdbc60"/>
+				<textFieldExpression><![CDATA[$F{ent_n_guerra}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="425" y="11" width="100" height="20" uuid="5a960b66-4a94-4cd1-b73b-037390169869"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="77">
+			<staticText>
+				<reportElement x="33" y="42" width="490" height="35" uuid="a95b78a7-e758-4bec-95a4-bf8f82ae075f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA["CENTENÁRIO DA MISSÃO MILITAR FRANCESA NO BRASIL, 1919/1940: VETOR DE PROFISSIONALIZAÇÃO EM NOSSO EXÉRCITO"
+
+]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="45" splitType="Stretch"/>
+	</summary>
+	<noData>
+		<band height="50">
+			<staticText>
+				<reportElement x="244" y="14" width="74" height="19" uuid="4b37cd99-9089-4a3b-b519-5bf0774d26b2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Não há dados]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>
