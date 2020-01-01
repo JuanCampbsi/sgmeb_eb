@@ -21,7 +21,8 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
 	private static final long serialVersionUID = 1L;
 
-	private static SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+	private static SessionFactory sessionFactory = HibernateUtil
+			.getSessionFactory();
 
 	@Autowired
 	private JdbcTemplateImpl jdbcTemplate;
@@ -31,10 +32,9 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 
 	@Autowired
 	private SimpleJdbcInsertImplents simpleJdbcInsert;
-	
+
 	@Autowired
 	protected SimpleJdbcClassImpl simpleJdbcClassImpl;
-
 
 	// =====================TEMPLATES DE OPERAÇÕES DE CRUD
 	// EM JDBC
@@ -50,7 +50,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	public SimpleJdbcInsertImplents getSimpleJdbcInsert() {
 		return simpleJdbcInsert;
 	}
-	
+
 	public SimpleJdbcClassImpl getSimpleJdbcClassImpl() {
 		return simpleJdbcClassImpl;
 	}
@@ -117,10 +117,13 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	/**
 	 * Busca a lista de registro por classe informada TestUnit ok
 	 */
+	
+
+	@Override
 	public List<T> finList(Class<T> entidade) throws Exception {
 		validaSessionFactory();
 		StringBuilder query = new StringBuilder();
-		query.append("select distinct(entity) from ")
+		query.append(" select distinct(entity) from ")
 				.append(entidade.getSimpleName()).append(" entity ");
 		List<T> lista = sessionFactory.getCurrentSession()
 				.createQuery(query.toString()).list();
@@ -530,4 +533,3 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	}
 
 }
-
