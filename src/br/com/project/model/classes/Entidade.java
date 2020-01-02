@@ -66,7 +66,7 @@ public class Entidade implements Serializable {
 
 	@Column(nullable = true)
 	private String ent_idade;
-	
+
 	@IdentificaCampoPesquisa(descricaoCampo = "Nome de Guerra", campoConsulta = "graduacao.grad_grad", principal = 1)
 	@Column(nullable = true)
 	private String ent_n_guerra;
@@ -76,19 +76,19 @@ public class Entidade implements Serializable {
 
 	@Column(nullable = true)
 	private String ent_altura;
-	
-	
+
+	@Column(nullable = true)
+	private String ent_tipo;
+
 	@Basic
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "graduacao")
 	@ForeignKey(name = "grad_codigo_fk")
 	private Graduacao graduacao = new Graduacao();
-	
+
 	public Graduacao getGraduacao() {
 		return graduacao;
 	}
-
-
 
 	public void setGraduacao(Graduacao graduacao) {
 		this.graduacao = graduacao;
@@ -96,23 +96,24 @@ public class Entidade implements Serializable {
 
 	/*
 	 * 
-	@IdentificaCampoPesquisa(descricaoCampo = "Graduacao", campoConsulta = "grad_codigo.grad_grad")
-	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE,
-			CascadeType.PERSIST })
-	@ForeignKey(name = "grad_codigo_fk")
-	@JoinColumn(name = "grad_codigo")
-	private Graduacao grad_codigo = new Graduacao();
-	
-	
-	public Graduacao getGrad_codigo() {
-		return grad_codigo;
-	}
-
-	public void setGrad_codigo(Graduacao grad_codigo) {
-		this.grad_codigo = grad_codigo;
-	}
-	
-	
+	 * @IdentificaCampoPesquisa(descricaoCampo = "Graduacao", campoConsulta =
+	 * "grad_codigo.grad_grad")
+	 * 
+	 * @ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE,
+	 * CascadeType.PERSIST })
+	 * 
+	 * @ForeignKey(name = "grad_codigo_fk")
+	 * 
+	 * @JoinColumn(name = "grad_codigo") private Graduacao grad_codigo = new
+	 * Graduacao();
+	 * 
+	 * 
+	 * public Graduacao getGrad_codigo() { return grad_codigo; }
+	 * 
+	 * public void setGrad_codigo(Graduacao grad_codigo) { this.grad_codigo =
+	 * grad_codigo; }
+	 * 
+	 * 
 	 * 
 	 * 
 	 * 
@@ -149,18 +150,18 @@ public class Entidade implements Serializable {
 	 * 
 	 * @Column(name = "versionNum") private int versionNum;
 	 */
-	
-	
 
-	
+	public String getEnt_tipo() {
+		return ent_tipo;
+	}
 
-
+	public void setEnt_tipo(String ent_tipo) {
+		this.ent_tipo = ent_tipo;
+	}
 
 	public int getVersionNum() {
 		return versionNum;
 	}
-
-	
 
 	public String getEnt_altura() {
 		return ent_altura;
@@ -288,8 +289,6 @@ public class Entidade implements Serializable {
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Entidade [ent_codigo=" + ent_codigo + ", ent_login="
@@ -299,15 +298,8 @@ public class Entidade implements Serializable {
 				+ ", ent_ultimoacesso=" + ent_ultimoacesso + ", ent_nome="
 				+ ent_nome + ", ent_idade=" + ent_idade + ", ent_n_guerra="
 				+ ent_n_guerra + ", ent_peso=" + ent_peso + ", ent_altura="
-				+ ent_altura + ", graduacao=" + graduacao + "]";
+				+ ent_altura + ", ent_tipo=" + ent_tipo + ", graduacao="
+				+ graduacao + "]";
 	}
-
-
-
-	
-
-	
-
-	
 
 }

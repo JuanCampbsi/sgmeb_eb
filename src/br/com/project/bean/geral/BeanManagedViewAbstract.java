@@ -37,6 +37,7 @@ import br.com.project.util.all.UtilitariaRegex;
 @Component
 public abstract class BeanManagedViewAbstract extends BeanReportView {
 
+
 	private static final long serialVersionUID = 1L;
 
 	protected abstract Class<?> getClassImplement();

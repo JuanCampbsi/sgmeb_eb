@@ -91,13 +91,18 @@
 						</h:inputHidden>
 						<f:param name="consultarInativos" value="#{cc.attrs.consultarInativos}"/>
 					</p:commandButton>
+					
+					
+					
+					
+					
 				</h:panelGrid>
 			</p:panel>
 			
 			<div class="espacoBranco"/>
 			
 			<p:dataTable styleClass="estiloIdCadastro" id="tableResult" rendered="true" 
-			    value="#{cc.attrs.managedBeanView.list}"
+			    value="#{cc.attrs.managedBeanView.list.list}"
 				var="objeto" 
 				rows="10" 
 				widgetVar="tableResult"

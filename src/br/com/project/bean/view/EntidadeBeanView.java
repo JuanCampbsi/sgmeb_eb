@@ -1,8 +1,6 @@
 package br.com.project.bean.view;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
+import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.geral.controller.EntidadeController;
 import br.com.project.model.classes.Entidade;
 
@@ -25,12 +24,13 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 
 	private static final long serialVersionUID = 1L;
 
+	private CarregamentoLazyListForObject<Entidade> list = new CarregamentoLazyListForObject<Entidade>();
 	private String url = "/cadastro/cad_paciente.jsf?faces-redirect=true";
 	private String urlFind = "/cadastro/find_paciente.jsf?faces-redirect=true";
 
 	private Entidade objetoSelecionado = new Entidade();
 
-	private List<Entidade> list = new ArrayList<Entidade>();
+
 
 	@Override
 	public StreamedContent getArquivoReport() throws Exception {
@@ -42,14 +42,11 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		return super.getArquivoReport();
 	}
 
-	public List<Entidade> getList() throws Exception {
-		list = entidadeController.finList(Entidade.class);
+	public CarregamentoLazyListForObject<Entidade> getList() {
 		return list;
 	}
-
-	public void setList(List<Entidade> list) {
-		this.list = list;
-	}
+	
+	
 
 	@Autowired
 	private ContextoBean contextoBean;
@@ -96,16 +93,42 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	public void setObjetoSelecionado(Entidade objetoSelecionado) {
 		this.objetoSelecionado = objetoSelecionado;
 	}
+	
+	@Override
+	@RequestMapping(value = { "**/find_paciente" }, method = RequestMethod.POST)
+	public void setarVariaveisNulas() throws Exception {
+		valorPesquisa = "";
+		list.clear();
+		objetoSelecionado = new Entidade();
+	}
 
 	@Override
-	public void saveNotReturn() throws Exception {
-		if (validarCampoObrigatorio(objetoSelecionado)) {
-			list.clear();
-			objetoSelecionado = entidadeController.merge(objetoSelecionado);
-			list.add(objetoSelecionado);
+	public void saveNotReturn() throws Exception { 
+			if (validarCampoObrigatorio(objetoSelecionado)) {
+				list.clear();
+				objetoSelecionado = entidadeController.merge(objetoSelecionado);
+				list.add(objetoSelecionado);
+				objetoSelecionado = new Entidade();
+				sucesso();
+			}
+	}
+
+	@Override
+	public void excluir() throws Exception {
+			if (objetoSelecionado.getEnt_codigo() != null
+					&& objetoSelecionado.getEnt_codigo() > 0) {
+				entidadeController.delete(objetoSelecionado);
+				list.remove(objetoSelecionado);
+				objetoSelecionado = new Entidade();
+				sucesso();
+			}
+	}
+
+	@Override
+	public void consultaEntidade() throws Exception {
 			objetoSelecionado = new Entidade();
-			sucesso();
-		}
+			list.clear();
+			list.setTotalRegistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());
 	}
 
 	@Override
@@ -118,17 +141,8 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	public void saveEdit() throws Exception {
 		saveNotReturn();
 	}
-
-	@Override
-	public void excluir() throws Exception {
-		if (objetoSelecionado.getEnt_codigo() != null
-				&& objetoSelecionado.getEnt_codigo() > 0) {
-			entidadeController.delete(objetoSelecionado);
-			list.remove(objetoSelecionado);
-			objetoSelecionado = new Entidade();
-			sucesso();
-		}
-	}
+	
+	
 
 	@Override
 	public String editar() throws Exception {
@@ -137,13 +151,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		return url;
 	}
 
-	@Override
-	@RequestMapping(value = { "**/find_entidade" }, method = RequestMethod.POST)
-	public void setarVariaveisNulas() throws Exception {
-		valorPesquisa = "";
-		list.clear();
-		objetoSelecionado = new Entidade();
-	}
+	
 
 	@Override
 	public String redirecionarFindEntidade() throws Exception {
@@ -151,10 +159,6 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		return urlFind;
 	}
 
-	@Override
-	public void consultaEntidade() throws Exception {
-
-		super.consultaEntidade();
-	}
+	
 
 }
