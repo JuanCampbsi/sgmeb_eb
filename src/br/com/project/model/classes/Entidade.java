@@ -67,7 +67,7 @@ public class Entidade implements Serializable {
 	@Column(nullable = true)
 	private String ent_idade;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Nome de Guerra", campoConsulta = "graduacao.grad_grad", principal = 1)
+	@IdentificaCampoPesquisa(descricaoCampo = "Nome de Guerra", campoConsulta = "ent_n_guerra")
 	@Column(nullable = true)
 	private String ent_n_guerra;
 

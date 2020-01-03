@@ -45,7 +45,16 @@
 		</property>
 	</bean>
 
-	
+	<bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate" lazy-init="false" > 
+    	<property name="dataSource" ref="springDataSource"/> 
+    	<property name="baselineOnMigrate" value="true"/>  
+    	<property name="table" value="version"/> 
+    	<property name="sqlMigrationPrefix" value="v"/> 
+    	<property name="sqlMigrationSeparator" value="_"/>
+    	<property name="encoding" value="ISO-8859-1"/>
+    	<property name="validateOnMigrate" value="false"/>
+    	
+	</bean>
 	
 	
 	 <bean id="transactionManager" name="transactionManager"   
@@ -108,16 +117,18 @@
 	<bean id="reportUtil" class="br.com.project.report.util.ReportUtil"/>
 	<bean id="utilFramework" class="br.com.framework.utils.UtilFramework" scope="session"/>
 	
+	<bean id="controller" name="controller"  class="br.com.framework.controller.crud.Controller" />
+	
 	
 	<!-- Controler -->
 	<bean id="interfaceCrud" class="br.com.framework.implementacao.crud.ImplementacaoCrud" scope="singleton" lazy-init="false"/>
 	<bean id="sessionController" class="br.com.project.geral.controller.SessionControllerImpl" scope="singleton"/>
-	<bean id="controller" class="br.com.framework.controller.crud.Controller"/>
+	
 	<bean id="entidadeController" class="br.com.project.geral.controller.EntidadeController" />
 	<bean id="consultaController" class="br.com.project.geral.controller.ConsultaController" />	
 	<bean id="receituarioController" class="br.com.project.geral.controller.ReceituarioController" />
 	<bean id="graduacaoController" class="br.com.project.geral.controller.GraduacaoController" />
-
+<!-- <bean id="controller" class="br.com.framework.controller.crud.Controller"/> -->
 	
 	
 	<!-- Repository DAOS-->
@@ -134,6 +145,7 @@
 	<bean id="srvEntidade" class="br.com.srv.implementacao.SrvEntidadeImpl" />	
 	<bean id="srvReceituario" class="br.com.srv.implementacao.SrvReceituarioImpl" />
 	<bean id="srvGraduacao" class="br.com.srv.implementacao.SrvGraduacaoImpl" />
+	
 
 </beans>
 

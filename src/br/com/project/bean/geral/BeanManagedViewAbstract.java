@@ -21,7 +21,6 @@ import org.springframework.stereotype.Component;
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.annotation.IdentificaCampoPesquisa;
 import br.com.project.enums.CondicaoPesquisa;
-import br.com.project.enums.TipoCadastro;
 import br.com.project.enums.TituloSituacao;
 import br.com.project.report.util.BeanReportView;
 import br.com.project.util.all.Messagens;
@@ -36,7 +35,6 @@ import br.com.project.util.all.UtilitariaRegex;
  */
 @Component
 public abstract class BeanManagedViewAbstract extends BeanReportView {
-
 
 	private static final long serialVersionUID = 1L;
 
@@ -294,7 +292,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 		this.tipoEntidadeTemp = tipoEntidadeTemp;
 	}
 
-	public TipoCadastro getTipoEntidadeTemp() {
+	/*public TipoCadastro getTipoEntidadeTemp() {
 
 		String tipoEntidade = null;
 
@@ -320,7 +318,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 
 		if (tipoEntidade == null) {
 			return null;
-		}
+		}	
 
 		if (tipoEntidade.equals(TipoCadastro.TIPO_CADASTRO_USUARIO.name())) {
 			return TipoCadastro.TIPO_CADASTRO_USUARIO;
@@ -332,7 +330,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 			return TipoCadastro.TIPO_CADASTRO_PACIENTE;
 		} else
 			return TipoCadastro.TIPO_CADASTRO_USUARIO;
-	}
+	}*/
 
 	public TituloSituacao getTituloSituacaoTemp() {
 
