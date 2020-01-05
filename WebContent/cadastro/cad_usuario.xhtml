@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/componentes"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/templatePrincipal.xhtml">
+	<ui:define name="corpo">
+
+		<h:form id="formCadastro" prependId="false">
+			<c:set var="isCadastro" value="true" scope="view" />
+			<p:panel header="Cadastro de Usuario" id="panelCadastro"
+				styleClass="estiloIdCadastro">
+
+				<h:panelGrid id="gridUsuario" columns="3"
+					style="margin-bottom:10px" cellpadding="5">
+					<h:outputLabel for="id" value="Código : " id="labelId"  />
+					<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true"
+						value="#{usuarioBeanView.objetoSelecionado.ent_codigo}" />
+					<h:outputLabel />
+					<!-- -->
+
+
+
+					<h:outputLabel id="labelnome" for="nomeUsuario"
+						value="Nome Completo *: " styleClass="estiloIdCadastro" />
+					<p:inputText id="usuarioNome" styleClass="estyleInputNome"
+						required="true" maxlength="100"
+						requiredMessage="Informe o Nome de Paciente"
+						value="#{usuarioBeanView.objetoSelecionado.ent_nome}" />
+					<p:message for="usuarioNome" />
+					<!--  -->
+
+
+					<h:outputLabel id="labelnguerra" for="nomeGuerra"
+						value="Nome de Guerra *: " styleClass="estiloIdCadastro" />
+					<p:inputText id="nGuerra" styleClass="estyleInputNome"
+						required="true" maxlength="100"
+						requiredMessage="Informe o Nome de Guerra"
+						value="#{usuarioBeanView.objetoSelecionado.ent_n_guerra}" />
+					<p:message for="nGuerra" />
+
+
+					<h:outputText value="P/Grad *: " />
+
+					<h:outputLabel for="graduacao" id="labelgraduacao">
+						<p:selectOneMenu id="graduacao" required="true"
+							style="width:100px;" effect="fade"
+							requiredMessage="Informe o Posto/Graduação."
+							value="#{usuarioBeanView.objetoSelecionado.graduacao}">
+							<f:selectItems value="#{graduacaoBeanView.graduacaos}" />
+						</p:selectOneMenu>
+						<p:message for="graduacao" />
+
+					</h:outputLabel>
+
+
+					<tr />
+					<h:outputLabel id="labelcad" for="nomecad"
+						value="Data do cadastro *: " styleClass="estiloIdCadastro" />
+					<p:inputText id="ent_datacadastro" readonly="true"
+						
+						value="#{usuarioBeanView.objetoSelecionado.ent_datacadastro}">
+						<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss"
+							dateStyle="long" timeStyle="full" timeZone="GMT-03:00" />
+					</p:inputText>
+
+					<tr />
+					<p/>
+
+
+					<p:column
+						rendered="#{usuarioBeanView.objetoSelecionado.ent_codigo != null}">
+						<p:row>
+							<h:outputLabel for="ent_inativo" value="Inativo : "
+								id="labelInativo" />
+						</p:row>
+					</p:column>
+					<p:column
+						rendered="#{usuarioBeanView.objetoSelecionado.ent_codigo != null}">
+						<p:row>
+							<p:selectBooleanCheckbox id="ent_inativo"
+								value="#{usuarioBeanView.objetoSelecionado.ent_inativo}" />
+						</p:row>
+					</p:column>
+					<p:column
+						rendered="#{usuarioBeanView.objetoSelecionado.ent_codigo != null}">
+						<p:row>
+							<p:message for="ent_inativo" />
+						</p:row>
+					</p:column>
+
+
+
+					<p:column
+						rendered="#{usuarioBeanView.objetoSelecionado.ent_codigo != null}">
+						<p:row>
+							<h:outputLabel for="ent_ultimoacesso" value="Ultimo acesso : "
+								id="labelUltimoAcesso" />
+						</p:row>
+					</p:column>
+					<p:column
+						rendered="#{usuarioBeanView.objetoSelecionado.ent_codigo != null}">
+						<p:row>
+							<p:inputText id="ent_ultimoacesso" readonly="true"
+								value="#{usuarioBeanView.objetoSelecionado.ent_ultimoacesso}">
+								<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss"
+									dateStyle="long" timeStyle="full" timeZone="GMT-03:00" />
+							</p:inputText>
+						</p:row>
+					</p:column>
+					<p:column
+						rendered="#{usuarioBeanView.objetoSelecionado.ent_codigo != null}">
+						<p:row>
+							<p:message for="ent_ultimoacesso" />
+						</p:row>
+					</p:column>
+
+
+
+					<p:fieldset legend="Senha" style=" padding-left: 37px;">
+
+						<p:column>
+							<p:row>
+								<h:outputLabel for="ent_login" value="Login : " id="labelLogin"
+									 />
+							</p:row>
+						</p:column>
+						<p:column>
+							<p:row>
+								<p:inputText id="ent_login" styleClass="estiloIdCastro"
+									maxlength="20"
+									value="#{usuarioBeanView.objetoSelecionado.ent_login}"
+									required="true" requiredMessage="Informe o campo login." />
+							</p:row>
+						</p:column>
+						<p:column>
+							<p:row>
+								<p:message for="ent_login" />
+							</p:row>
+						</p:column>
+
+
+						<p:column>
+							<p:row>
+								<h:outputLabel for="ent_senha" value="Senha : " id="labelSenha"
+									style="width:300px;" />
+							</p:row>
+						</p:column>
+						<p:column>
+							<p:row>
+								<p:password id="ent_senha" styleClass="estiloIdCastro"
+									maxlength="20" feedback="true" promptLabel="Informe a senha"
+									weakLabel="Ruim" goodLabel="Boa" strongLabel="Ótima"
+									value="#{usuarioBeanView.objetoSelecionado.ent_senha}"
+									required="true" requiredMessage="Informe o campo senha." />
+							</p:row>
+						</p:column>
+						<p:column>
+							<p:row>
+								<p:message for="ent_senha" />
+							</p:row>
+						</p:column>
+
+
+						<p:column>
+							<p:row>
+								<h:outputLabel for="ent_mudarsenha" value="Mudar senha : "
+									id="labelMudarSenha" style="width:300px;" />
+							</p:row>
+						</p:column>
+						<p:column>
+							<p:row>
+								<p:selectBooleanCheckbox id="ent_mudarsenha"
+									value="#{usuarioBeanView.objetoSelecionado.ent_mudarsenha}" />
+							</p:row>
+						</p:column>
+						<p:column>
+							<p:row>
+								<p:message for="ent_mudarsenha" />
+							</p:row>
+						</p:column>
+
+					</p:fieldset>
+
+
+
+
+
+
+
+
+					<h:outputLabel />
+				</h:panelGrid>
+			</p:panel>
+			<div class="espacoBranco" />
+
+
+
+			<util:botoesCrud managedBeanView="#{usuarioBeanView}"
+				camposReload=":formTemplate:msg, tableResult"
+				botaoNovo="#{contextoBean.possuiAcesso('USUARIO_NOVO', 'ADMIN')}"
+				botaoSalvar="#{contextoBean.possuiAcesso('USUARIO_NOVO', 'ADMIN') and usuarioBeanView.objetoSelecionado.ent_codigo == null}"
+				botaoAtualizar="#{contextoBean.possuiAcesso('USUARIO_EDITAR', 'ADMIN') and usuarioBeanView.objetoSelecionado.ent_codigo != null}"
+				botaoExcluir="#{contextoBean.possuiAcesso('USUARIO_EXCLUIR', 'ADMIN')}" />
+
+
+
+
+
+		</h:form>
+
+		<script type="text/javascript" charset="UTF-8">
+			addFocoAoCampo('pacienteNome');
+			gerenciaTeclaEnter();
+		</script>
+
+		<div class="espacoBranco" />
+
+		<p:dataTable id="tableResult" value="#{usuarioBeanView.list.list}"
+			var="objeto" emptyMessage="Não existem valores para exibição."
+			rendered="#{usuarioBeanView.list.list.size() > 0}" rows="5"
+			paginator="true" paginatorPosition="bottom"
+			paginatorTemplate=" {FirstPageLink}
+									{PreviousPageLink} {PageLinks}
+									{NextPageLink} {LastPageLink} 
+									{RowsPerPageDropdown} ">
+
+			<ui:include
+				src="/resources/componentes/colunasDataTableUsuario.xhtml" />
+
+		</p:dataTable>
+
+
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -132,9 +132,9 @@
 					<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">	 
 						<p:submenu label="Cadastros" id="subMenuCadastro">
 						
-						<sec:ifAnyGranted roles="AUXILIAR_ACESSAR, ADMIN">	 
+						<sec:ifAnyGranted roles="USUARIO_ACESSAR, ADMIN">	 
 							<p:menuitem value="Usuários" id="menuusuarios"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_entidade')"
+								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_usuario')"
 								ajax="true" />
 						</sec:ifAnyGranted>
 						

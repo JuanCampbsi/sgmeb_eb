@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/componentes"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/templatePrincipal.xhtml">
+		<ui:define name="corpo">
+		<sec:ifAnyGranted roles="ADMIN">	
+			<h:form id="formCadastro" prependId="false">
+					<p:panel header="Cadastro de Permissões" id="panelCadastro">
+						<h:panelGrid id="gridPermissoes" columns="5">
+							<h:graphicImage library="img" name="cadeado_16x16.png" styleClass="bordaImagem" />
+							<h:outputLabel value="Login: "/>
+							<p:inputText value="#{usuarioBeanView.objetoSelecionado.ent_login}" readonly="true"/>
+							<h:outputLabel value="Nome: " style="margin-left:20px;"/>
+							<p:inputText value="#{usuarioBeanView.objetoSelecionado.ent_nome}" readonly="true" style="width:400px;"/>
+						</h:panelGrid>
+						
+				<p:pickList id="tabelaAcessos" style="margin-left:19px;" effect="bounce"
+					value="#{usuarioBeanView.listMenu}"
+					 showSourceControls="true"
+					 showSourceFilter="true"
+					 showTargetFilter="true" 
+					 filterMatchMode="contains"
+					showTargetControls="true" 
+					var="menu" itemValue="#{menu}"
+					itemLabel="#{menu.descricao}" 
+					addAllLabel="Adicionar Todos"
+					addLabel="Adicionar Selecionado"
+					removeAllLabel="Remover Todos"
+					removeLabel="Remover Selecionado" 
+					required="false"
+					requiredMessage="Informe os acessos">
+					<f:facet name="sourceCaption">Menu de Acesso</f:facet>
+					<f:facet name="targetCaption">Permitidos</f:facet>
+				</p:pickList>
+				<p:message for="tabelaAcessos"/>
+			</p:panel>
+
+			<div class="espacoBranco" />
+			
+			<p:commandButton value="Salvar"  style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
+				actionListener="#{usuarioBeanView.savePermissoes}" 
+				ajax="false"
+				partialSubmit="true"
+				process="@this, @form"
+				update=":formTemplate:msg"
+				immediate="false"/>
+
+			<p:commandButton value="Cancelar"  style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"
+				action="#{usuarioBeanView.redirecionarFindEntidade}"
+				ajax="false" 
+				id="buttonConsultarCadMsg"
+				immediate="true" />
+		</h:form>
+		
+		<div class="espacoBranco" />
+		
+  	</sec:ifAnyGranted>
+	</ui:define>
+</ui:composition>
+</html>
