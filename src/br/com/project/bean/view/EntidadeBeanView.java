@@ -34,7 +34,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	private ContextoBean contextoBean;
 
 	@Autowired
-	private EntidadeController entidadeController;
+	private  EntidadeController entidadeController;
 
 	@Override
 	public StreamedContent getArquivoReport() throws Exception {
@@ -77,7 +77,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	}
 
 /*	@Override
-	public String condicaoAndParaPesquisa() {
+	public String     condicaoAndParaPesquisa() {
 		return "and entity.ent_tipo = '" + getTipoEntidadeTemp().name() + "' "
 				+ consultarInativos();
 	}*/
