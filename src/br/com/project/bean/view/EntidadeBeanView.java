@@ -153,6 +153,8 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		return urlFind;
 	}
 
+	
+	
 	@Override
 	public String condicaoAndParaPesquisa() throws Exception {
 		return "";
