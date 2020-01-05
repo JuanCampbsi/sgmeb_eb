@@ -77,6 +77,9 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	}
 
 /*	@Override
+	
+	
+	
 	public String     condicaoAndParaPesquisa() {
 		return "and entity.ent_tipo = '" + getTipoEntidadeTemp().name() + "' "
 				+ consultarInativos();
