@@ -34,6 +34,7 @@
 		<mapping class="br.com.project.model.classes.Consulta" />
 		<mapping class="br.com.project.model.classes.Receituario" />
 		<mapping class="br.com.project.model.classes.Graduacao" />
+		<mapping class="br.com.project.model.classes.Produto" />
 		
 		
 
