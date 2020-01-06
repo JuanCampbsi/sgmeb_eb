@@ -117,6 +117,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.corpofundo {
+	background: #dde8ca; /* fallback for old browsers */
+}
+
 .buttonPesquisa {
 	height: 20px;
 	width: 23px;
@@ -177,7 +181,7 @@ a:focus {
 	left: 0px;
 	right: 0px;
 	height: 80px;
-	background-color: #F0F8FF;
+	background-color: #dde8ca;
 }
 
 #menu {
@@ -185,13 +189,13 @@ a:focus {
 	top: 80px;
 	left: 0px;
 	right: 0px;
-	height: 30px;
-	background-color: #F0F8FF;
+	height: 35px;
+	background-color: #556B2F;
 }
 
 #menupop {
 	position: absolute;
-	border: 1px solid #61cded;
+	border: 1px solid #98b95f;
 	top: 63px;
 	right: 25px;
 	height: 30px;
@@ -207,7 +211,7 @@ a:focus {
 }
 
 #menupop a:hover {
-	background-color: #e5e5e5;
+	background-color: #98b95f;
 }
 
 #dialogo {
@@ -313,7 +317,7 @@ a:focus {
 
 #iniciarmenu {
 	border: 1px solid gray;
-	background-color: white;
+	background-color: #e8efdc;
 	margin-top: 4px;
 	margin-left: 9px;
 	padding: 3px 10px 6px 20px;
@@ -333,20 +337,6 @@ a:focus {
 	margin-left: -14px;
 	display: inline-block;
 	float: left;
-}
-
-#barramenu {
-	display: block;
-	background-color: #F0F8FF;
-	position: absolute;
-	top: 110px;
-	width: 200px;
-	bottom: 0px;
-	left: 0px;
-	padding-top: 5px;
-	padding-left: 5px;
-	font-size: 11px;
-	font-face: sans-serif;
 }
 
 #imagemlogin {
@@ -514,6 +504,16 @@ input[type=submit] {
 	border: 0;
 }
 
+.bordaImagem2 {
+	border: 0;
+	height: 10px;
+	font-family: "Roboto", sans-serif;
+}
+
+.bordaImagem3 {
+	background-color: #C0C8CB;
+}
+
 .espacoBranco {
 	height: 10px;
 }
@@ -535,8 +535,39 @@ input[type=submit] {
 	font-face: sans-serif;
 }
 
+.estiloIdCadastro2 {
+	font-size: 12px;
+	font-face: sans-serif;
+	position: relative;
+	right: 100px;
+	top: 7px;
+	width: 300px;
+	background:	 #e6ffe6;
+	
+}
+
+.campo {
+    margin:0;
+  padding:0;
+  font-family: Arial,sans-serif;
+}
+.campo2 {
+  
+  margin-top: 4px;
+  padding: 5px;    
+  border: 1px solid #b2b2b2;
+ 
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+ 
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+  box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+ 
+  
+}
+
 .estyleInputName {
-	width: 500px;
+	width: 0px;
 }
 
 a.ui-menuitem-link.ui-corner-all.ui-state-hover {
@@ -554,7 +585,6 @@ a.ui-menuitem-link.ui-corner-all.ui-state-hover {
 
 .ui-datatable table {
 	border-collapse: separate;
-	
 }
 
 .ui-datatable thead th,.ui-datatable tbody td,.ui-datatable tfoot td {
@@ -568,7 +598,6 @@ a.ui-menuitem-link.ui-corner-all.ui-state-hover {
 	-webkit-border-radius: 5px; /*Para Safari e Chrome */
 	border-radius: 5px; /* Para Opera 10.5+*/
 	border-color: white; /*cor das linha nos data table*/
-	
 }
 
 .ui-corner-bottom {
@@ -629,7 +658,6 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	border-width: 1px;
 	border-style: solid;
 	border-color: white; /*cor das linha nos data table*/
-	
 }
 
 .ui-paginator .ui-paginator-page,.ui-paginator .ui-paginator-pages,.ui-paginator .ui-paginator-next,.ui-paginator .ui-paginator-last,.ui-paginator .ui-paginator-first,.ui-paginator .ui-paginator-prev,.ui-paginator .ui-paginator-current
@@ -647,7 +675,6 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	color: #000;
 	font-weight: bold;
 	background: none;
-	
 }
 
 .ui-button {
@@ -688,6 +715,28 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	text-indent: -9999999px;
 }
 
+#barramenu {
+	display: block;
+	background-color: #ccff99;
+	position: absolute;
+	top: 110px;
+	width: 200px;
+	bottom: 0px;
+	left: 0px;
+	padding-top: 5px;
+	padding-left: 5px;
+	font-size: 11px;
+	font-face: sans-serif;
+}
+
+.meumenu2 {
+	background: #ccff99 !important;
+}
+
+.meumenu .ui-menu-child {
+	background: #ccff99 !important;
+}
+
 .ui-inputfield,.ui-widget-content .ui-inputfield,.ui-widget-header .ui-inputfield
 	{
 	background: #ffffff;
@@ -726,13 +775,8 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	font-weight: bold;
 }
 
-
 .cabecalho {
-
-   text-align: center;
-
-   font: 15px  sans-serif;
-
-   font-weight: bold;  
-
+	text-align: center;
+	font: 15px sans-serif;
+	font-weight: bold;
 }

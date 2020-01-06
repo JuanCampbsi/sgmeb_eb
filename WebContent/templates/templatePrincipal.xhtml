@@ -41,7 +41,7 @@
 	<h:form id="formTemplate" prependId="false">
 		<h:outputStylesheet name="estilo.css" library="css"
 			id="cssStiloSistema" />
-		<h:body>
+		<h:body styleClass="corpofundo">
 			<script type="text/javascript" charset="UTF-8">
 				$.noConflict();
 				localeData_pt_br();
@@ -69,16 +69,16 @@
 				<p:tooltip id="toolTipFocus" globalSelector="a,:input,:button"
 					showEvent="focus" hideEvent="blur" />
 			</div>
-			<div id="container">
-				<div id="topo">
-					<span style="position: absolute; left:-10px; top: -15px" id="spanLogo">
+			<div id="container" >
+				<div id="topo" >
+					<span style="position: absolute; left:-10px; top: -15px" id="spanLogo" >
 						<h:graphicImage library="img" name="image.png"
 							id="logoImg" styleClass="bordaImagem" />
 					</span> <span id="dadoslogin"> Usuário:
 						#{entidadeBeanView.entidadeLogadoSecurity} <br id="quebraUser" />
 						Último login: <h:outputLabel value="#{entidadeBeanView.ultimoAcesso}" id="saidaUltimoAcesso">
 							<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss"
-							dateStyle="long" timeStyle="full" timeZone="GMT-03:00"/>
+							dateStyle="long" timeStyle="full" timeZone="GMT-03:00" />
 						</h:outputLabel>
 					<br id="quebraUltimoAcesso"/> 
 					<a href="#" id="logoutSuperior" onclick="javascript:logout('#{request.contextPath}');">Sair</a>
@@ -96,8 +96,8 @@
 			<div id="menu">
    				 <span id="iniciarmenu" >
    				 <h:graphicImage library="img" name="iconemenu.png"
-						styleClass="bordaImagem" id="iconemenu">
-					Menu
+						styleClass="bordaImagem2" id="iconemenu">
+					MENU
 				</h:graphicImage>
    				 </span>
  		    </div>
@@ -126,25 +126,25 @@
   			<div id="barramenu">
   				<p:tieredMenu
 						style="width: 185px;border: none;background:none;color: #000;"
-						 id="menuEsquerdo">
+						 id="menuEsquerdo"   >
 						 
 						 	 
 					<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">	 
-						<p:submenu label="Cadastros" id="subMenuCadastro">
+						<p:submenu  label="Cadastros" id="subMenuCadastro"  styleClass="meumenu"  >
 						
-						<sec:ifAnyGranted roles="USUARIO_ACESSAR, ADMIN">	 
-							<p:menuitem value="Usuários" id="menuusuarios"
+						<sec:ifAnyGranted roles="USUARIO_ACESSAR, ADMIN" >	 
+							<p:menuitem value="Usuários" id="menuusuarios" styleClass="meumenu2"
 								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_usuario')"
 								ajax="true" />
 						</sec:ifAnyGranted>
 						
 						<sec:ifAnyGranted roles="PACIENTE_ACESSAR, ADMIN">	 
-							<p:menuitem value="Paciente" id="menupaciente"
+							<p:menuitem value="Paciente" id="menupaciente"  
 								action = "#{entidadeBeanView.redirecionarFindEntidade}" />
 						</sec:ifAnyGranted>
 						
 						<sec:ifAnyGranted roles="PRODUTO_ACESSAR, ADMIN">	 
-							<p:menuitem value="Produtos" id="menuprodutos"
+							<p:menuitem value="Produtos" id="menuprodutos"  
 								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_entidade')"
 								ajax="true" />
 						</sec:ifAnyGranted>

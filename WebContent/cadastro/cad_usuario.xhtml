@@ -16,9 +16,9 @@
 			<p:panel header="Cadastro de Usuario" id="panelCadastro"
 				styleClass="estiloIdCadastro">
 
-				<h:panelGrid id="gridUsuario" columns="3"
-					style="margin-bottom:10px" cellpadding="5">
-					<h:outputLabel for="id" value="Código : " id="labelId"  />
+				<h:panelGrid id="gridUsuario" columns="3" style="margin-bottom:20px"
+					cellpadding="5">
+					<h:outputLabel for="id" value="Código : " id="labelId" />
 					<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true"
 						value="#{usuarioBeanView.objetoSelecionado.ent_codigo}" />
 					<h:outputLabel />
@@ -30,7 +30,7 @@
 						value="Nome Completo *: " styleClass="estiloIdCadastro" />
 					<p:inputText id="usuarioNome" styleClass="estyleInputNome"
 						required="true" maxlength="100"
-						requiredMessage="Informe o Nome de Paciente"
+						requiredMessage="Informe o Nome de Usuário"
 						value="#{usuarioBeanView.objetoSelecionado.ent_nome}" />
 					<p:message for="usuarioNome" />
 					<!--  -->
@@ -63,14 +63,13 @@
 					<h:outputLabel id="labelcad" for="nomecad"
 						value="Data do cadastro *: " styleClass="estiloIdCadastro" />
 					<p:inputText id="ent_datacadastro" readonly="true"
-						
 						value="#{usuarioBeanView.objetoSelecionado.ent_datacadastro}">
 						<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss"
 							dateStyle="long" timeStyle="full" timeZone="GMT-03:00" />
 					</p:inputText>
 
 					<tr />
-					<p/>
+					<p />
 
 
 					<p:column
@@ -121,73 +120,46 @@
 					</p:column>
 
 
+					<h:outputLabel id="labelsenha" for="senhacad"
+						styleClass="estiloIdCadastro" />
 
-					<p:fieldset legend="Senha" style=" padding-left: 37px;">
-
-						<p:column>
-							<p:row>
-								<h:outputLabel for="ent_login" value="Login : " id="labelLogin"
-									 />
-							</p:row>
-						</p:column>
-						<p:column>
-							<p:row>
-								<p:inputText id="ent_login" styleClass="estiloIdCastro"
-									maxlength="20"
-									value="#{usuarioBeanView.objetoSelecionado.ent_login}"
-									required="true" requiredMessage="Informe o campo login." />
-							</p:row>
-						</p:column>
-						<p:column>
-							<p:row>
-								<p:message for="ent_login" />
-							</p:row>
-						</p:column>
-
-
-						<p:column>
-							<p:row>
-								<h:outputLabel for="ent_senha" value="Senha : " id="labelSenha"
-									style="width:300px;" />
-							</p:row>
-						</p:column>
-						<p:column>
-							<p:row>
-								<p:password id="ent_senha" styleClass="estiloIdCastro"
-									maxlength="20" feedback="true" promptLabel="Informe a senha"
-									weakLabel="Ruim" goodLabel="Boa" strongLabel="Ótima"
-									value="#{usuarioBeanView.objetoSelecionado.ent_senha}"
-									required="true" requiredMessage="Informe o campo senha." />
-							</p:row>
-						</p:column>
-						<p:column>
-							<p:row>
-								<p:message for="ent_senha" />
-							</p:row>
-						</p:column>
+					<p:fieldset legend="Usuário" styleClass="estiloIdCadastro2">
+					
+						
+						<div class="campo">
+						<p>
+						<h:outputLabel for="ent_login" value="Login *:  " id="labelLogin" />
+						<p:inputText id="ent_login" maxlength="20" styleClass="campo2"
+							value="#{usuarioBeanView.objetoSelecionado.ent_login}"
+							required="true" requiredMessage="Informe o campo login." />
+						<p:message for="ent_login" />
+						</p></div>
+							
+						<div class="campo">
+						<p>
+						<h:outputLabel for="ent_login" value="Senha *:  " id="labelSenha" />
+						<p:password id="ent_senha" styleClass="campo2"
+							maxlength="20" feedback="true" promptLabel="Informe a senha"
+							weakLabel="Ruim" goodLabel="Boa" strongLabel="Ótima"
+							value="#{usuarioBeanView.objetoSelecionado.ent_senha}"
+							required="true" requiredMessage="Informe o campo senha." />
+						<p:message for="ent_senha" />
+						</p></div>
+						
 
 
-						<p:column>
-							<p:row>
-								<h:outputLabel for="ent_mudarsenha" value="Mudar senha : "
-									id="labelMudarSenha" style="width:300px;" />
-							</p:row>
-						</p:column>
-						<p:column>
-							<p:row>
-								<p:selectBooleanCheckbox id="ent_mudarsenha"
-									value="#{usuarioBeanView.objetoSelecionado.ent_mudarsenha}" />
-							</p:row>
-						</p:column>
-						<p:column>
-							<p:row>
-								<p:message for="ent_mudarsenha" />
-							</p:row>
-						</p:column>
+					
+
+
+						<h:outputLabel for="ent_mudarsenha" value="Mudar senha : "
+							id="labelMudarSenha" style="width:300px;" />
+
+						<p:selectBooleanCheckbox id="ent_mudarsenha"
+							value="#{usuarioBeanView.objetoSelecionado.ent_mudarsenha}" />
+
+						<p:message for="ent_mudarsenha" />
 
 					</p:fieldset>
-
-
 
 
 
