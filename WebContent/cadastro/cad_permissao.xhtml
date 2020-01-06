@@ -11,8 +11,8 @@
 <ui:composition template="/templates/templatePrincipal.xhtml">
 		<ui:define name="corpo">
 		<sec:ifAnyGranted roles="ADMIN">	
-			<h:form id="formCadastro" prependId="false">
-					<p:panel header="Cadastro de Permissões" id="panelCadastro">
+			<h:form id="formCadastro" prependId="false" >
+					<p:panel header="Cadastro de Permissões" id="panelCadastro" 	styleClass="estiloIdCadastro">
 						<h:panelGrid id="gridPermissoes" columns="5">
 							<h:graphicImage library="img" name="cadeado_16x16.png" styleClass="bordaImagem" />
 							<h:outputLabel value="Login: "/>

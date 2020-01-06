@@ -1,27 +1,37 @@
 package br.com.project.model.classes;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.CollectionOfElements;
 import org.hibernate.annotations.ForeignKey;
 import org.hibernate.annotations.Index;
 import org.hibernate.envers.Audited;
 
+import br.com.project.acessos.Permissao;
 import br.com.project.annotation.IdentificaCampoPesquisa;
 
 @Audited
@@ -61,6 +71,7 @@ public class Entidade implements Serializable {
 	@Column(name = "versionNum")
 	private int versionNum;
 
+	@IdentificaCampoPesquisa(descricaoCampo = "Nome", campoConsulta = "ent_nome")
 	@Column(nullable = true)
 	private String ent_nome;
 
@@ -85,6 +96,14 @@ public class Entidade implements Serializable {
 	@JoinColumn(name = "graduacao")
 	@ForeignKey(name = "grad_codigo_fk")
 	private Graduacao graduacao = new Graduacao();
+	
+	@SuppressWarnings("deprecation")
+	@CollectionOfElements
+	@ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+	@JoinTable(name = "entidadeacesso", uniqueConstraints = { @UniqueConstraint(name = "unique_acesso_entidade_key", columnNames = {
+			"ent_codigo", "esa_codigo" }) }, joinColumns = { @JoinColumn(name = "ent_codigo") })
+	@Column(name = "esa_codigo", length = 20)
+	private Set<String> acessos = new HashSet<String>();
 
 	public Graduacao getGraduacao() {
 		return graduacao;
@@ -92,6 +111,36 @@ public class Entidade implements Serializable {
 
 	public void setGraduacao(Graduacao graduacao) {
 		this.graduacao = graduacao;
+	}
+	
+	
+	public Set<Permissao> getAcessosPermissao() {
+		Set<Permissao> permissoes = new HashSet<Permissao>();
+		for (String acesso : getAcessosOrdenadas()) {
+			for (Permissao acess : Permissao.values()) {
+				if (acesso.equalsIgnoreCase(acess.name())) {
+					permissoes.add(acess);
+				}
+			}
+		}
+		return permissoes;
+	}
+	
+	public Set<String> getAcessos() {
+		return acessos;
+	}
+	
+	public List<String> getAcessosOrdenadas() {
+		List<String> retorno = new ArrayList<String>();
+		for (String acesso : acessos) {
+			retorno.add(acesso);
+		}
+		Collections.sort(retorno);
+		return retorno;
+	}
+	
+	public void setAcessos(Set<String> acessos) {
+		this.acessos = acessos;
 	}
 
 	/*

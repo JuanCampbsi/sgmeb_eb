@@ -1,9 +1,15 @@
 package br.com.project.bean.view;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+import org.primefaces.model.DualListModel;
 import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -12,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.framework.interfac.crud.InterfaceCrud;
+import br.com.project.acessos.Permissao;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.geral.controller.EntidadeController;
@@ -25,10 +32,13 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 	private static final long serialVersionUID = 1L;
 
 	private CarregamentoLazyListForObject<Entidade> list = new CarregamentoLazyListForObject<Entidade>();
-	
+
 	private String url = "/cadastro/cad_usuario.jsf?faces-redirect=true";
 	private String urlFind = "/cadastro/find_usuario.jsf?faces-redirect=true";
-	
+	private String urlPermissao = "/cadastro/cad_permissao.jsf?faces-redirect=true";
+	private List<Permissao> listSelecionado = new ArrayList<Permissao>();
+	private DualListModel<Permissao> listMenu = new DualListModel<Permissao>();
+
 	private Entidade objetoSelecionado = new Entidade();
 
 	@Autowired
@@ -36,6 +46,103 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 
 	@Autowired
 	private EntidadeController entidadeController;
+
+	public DualListModel<Permissao> getListMenu() {
+		permissao();
+		setListMenu(new DualListModel<Permissao>(Permissao.getListPermissao(),
+				listSelecionado));
+
+		for (Permissao acesso : listSelecionado) {
+			if (listMenu.getSource().contains(acesso)) {
+				listMenu.getSource().remove(acesso);
+			}
+		}
+
+		return listMenu;
+	}
+
+	public List<Permissao> getListSelecionado() {
+		return listSelecionado;
+	}
+
+	public void setListSelecionado(List<Permissao> listSelecionado) {
+		this.listSelecionado = listSelecionado;
+	}
+
+	public void setListMenu(DualListModel<Permissao> listMenu) {
+		this.listMenu = listMenu;
+	}
+	
+	
+	
+	public String permissao(){
+		listSelecionado.clear();
+		Iterator<Permissao> iterator = objetoSelecionado.getAcessosPermissao().iterator();
+		while (iterator.hasNext()) {
+			listSelecionado.add(iterator.next());
+		} 
+		
+		Collections.sort(listSelecionado, new Comparator<Permissao>() { 
+
+			@Override
+			public int compare(Permissao o1, Permissao o2) {
+				return new Integer(o1.ordinal()).compareTo(new Integer(o2.ordinal()));
+			}
+		});
+		return urlPermissao;
+	}
+	
+	public String savePermissoes() throws Exception {
+			if (validarCampoObrigatorio(objetoSelecionado)) {
+				list.clear();
+				objetoSelecionado.getAcessos().clear();
+				listSelecionado.clear();
+				
+				List<Permissao> permissoesConverter = getConvertPermissoes();
+				
+				for (Permissao permissao : permissoesConverter) {
+					listSelecionado.add(permissao); 
+					objetoSelecionado.getAcessos().add(permissao.name());
+				}
+				objetoSelecionado = entidadeController.merge(objetoSelecionado);
+				list.add(objetoSelecionado);
+				sucesso(); 
+			}
+			return urlPermissao;
+	}
+
+	private List<Permissao> getConvertPermissoes() {
+		List<Permissao> retorno = new ArrayList<Permissao>();
+		Object[] acessos = (Object[]) listMenu.getTarget().toArray();
+		
+		for (Object object : acessos) {
+			for (Permissao ace : Permissao.values()){
+				if (object.toString().equals(ace.name())){
+					retorno.add(ace);
+				}
+			}
+		}
+		return retorno;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@Override
 	public StreamedContent getArquivoReport() throws Exception {
@@ -77,11 +184,11 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 		return entidadeController;
 	}
 
-/*	@Override
-	public String condicaoAndParaPesquisa() {
-		return "and entity.ent_tipo = '" + getTipoEntidadeTemp().name() + "' "
-				+ consultarInativos();
-	}*/
+	/*
+	 * @Override public String condicaoAndParaPesquisa() { return
+	 * "and entity.ent_tipo = '" + getTipoEntidadeTemp().name() + "' " +
+	 * consultarInativos(); }
+	 */
 
 	public Entidade getObjetoSelecionado() {
 		return objetoSelecionado;
@@ -125,8 +232,10 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 	public void consultaEntidade() throws Exception {
 		objetoSelecionado = new Entidade();
 		list.clear();
-		list.setTotalRegistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());
-}
+		list.setTotalRegistroConsulta(super.totalRegistroConsulta(),
+				super.getSqlLazyQuery());
+	}
+
 	@Override
 	public String novo() throws Exception {
 		setarVariaveisNulas();
@@ -155,6 +264,5 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 	public String condicaoAndParaPesquisa() throws Exception {
 		return "";
 	}
-	
-	
+
 }

@@ -111,7 +111,7 @@
 	background: -webkit-linear-gradient(right, #F0F8FF, #6B8E23);
 	background: -moz-linear-gradient(right, #7FFFD4, #6B8E23);
 	background: -o-linear-gradient(right, #7FFFD4, #F0F8FF);
-	background: linear-gradient(to left, #6B8E23, #CAFF70);
+	background: linear-gradient(to left,#e6ffe6,    #c6d8a6);
 	font-family: "Roboto", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -717,7 +717,7 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 
 #barramenu {
 	display: block;
-	background-color: #ccff99;
+	background-color:  #d1e0b8;
 	position: absolute;
 	top: 110px;
 	width: 200px;
@@ -730,11 +730,11 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 }
 
 .meumenu2 {
-	background: #ccff99 !important;
+	background:  #d1e0b8 !important;
 }
 
 .meumenu .ui-menu-child {
-	background: #ccff99 !important;
+	background:  #d1e0b8 !important;
 }
 
 .ui-inputfield,.ui-widget-content .ui-inputfield,.ui-widget-header .ui-inputfield
