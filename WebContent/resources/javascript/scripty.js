@@ -171,7 +171,7 @@ function ocultarMenu() {
 			closeText : 'Fechar',
 			prevText : 'Anterior',
 			nextText : 'Próximo',
-			currentText : 'Começo',
+			currentText : 'Comeco',
 			monthNames : [ 'Janeiro', 'Fevereiro', 'Marcio', 'Abril', 'Maio',
 					'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro',
 					'Dezembro' ],

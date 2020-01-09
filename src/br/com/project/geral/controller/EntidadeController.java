@@ -37,6 +37,8 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements
 	public boolean existeUsuario(String ent_login) {
 		return srvEntidade.existeUsuario(ent_login);
 	}
+	
+	
 
 }
 

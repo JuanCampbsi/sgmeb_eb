@@ -18,7 +18,6 @@ import org.hibernate.envers.Audited;
 
 import br.com.project.annotation.IdentificaCampoPesquisa;
 
-
 @Audited
 @Entity
 @Table(name = "produto")
@@ -26,44 +25,41 @@ import br.com.project.annotation.IdentificaCampoPesquisa;
 public class Produto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "prod_codigo", principal = 1)
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "produto_seq")
 	private Long prod_codigo;
-	
+
 	@IdentificaCampoPesquisa(descricaoCampo = "Nome", campoConsulta = "prod_nome")
 	@Column(nullable = true)
 	private String prod_nome;
-	
+
 	@Column(nullable = true)
 	private String prod_tipo;
-	
+
 	@Column(nullable = true)
 	private int quantidade_prod;
-	
+
 	@Column(nullable = true)
 	private String descricao_prod;
-	
+
 	@Column(nullable = true)
 	private String principio_ativo;
-	
+
 	@Column(nullable = true)
 	private String serie_prod;
-	
-	@Column(nullable = true)
-	private String fabri_prod;
-	
-	@Column(nullable = false, updatable = false)
+
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date validade_prod = new Date();
-	
-	
+	private Date fabri_prod;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date validade_prod;
+
 	@Column(nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date prod_datacadastro = new Date();
-	
+
 	@Version
 	@Column(name = "versionNum")
 	private int versionNum;
@@ -124,11 +120,11 @@ public class Produto implements Serializable {
 		this.serie_prod = serie_prod;
 	}
 
-	public String getFabri_prod() {
+	public Date getFabri_prod() {
 		return fabri_prod;
 	}
 
-	public void setFabri_prod(String fabri_prod) {
+	public void setFabri_prod(Date fabri_prod) {
 		this.fabri_prod = fabri_prod;
 	}
 
@@ -192,12 +188,6 @@ public class Produto implements Serializable {
 				+ ", validade_prod=" + validade_prod + ", prod_datacadastro="
 				+ prod_datacadastro + "]";
 	}
-	
-	
-	
-	
-	
 
-
-
+	
 }

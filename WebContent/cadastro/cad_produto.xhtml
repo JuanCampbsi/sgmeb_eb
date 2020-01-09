@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/componentes"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/templatePrincipal.xhtml">
+	<ui:define name="corpo">
+		<h:form id="formCadastro" prependId="false">
+			<c:set var="isCadastro" value="true" scope="view" />
+			<p:panel header="Cadastro de Produto" id="panelCadastro"
+				styleClass="estiloIdCadastro">
+
+				<h:panelGrid id="gridProduto" columns="3">
+					<h:outputLabel for="id" value="Código : " id="labelId" />
+					<p:inputText id="id" styleClass="estiloIdCastro"
+						value="#{produtoBeanView.objetoSelecionado.prod_codigo}"
+						disabled="true" />
+					<h:outputLabel />
+
+
+					<h:outputLabel id="labelPativo" for="prodPativo"
+						value="Príncipio Ativo * : " styleClass="estiloIdCadastro" />
+					<p:inputText id="prodPativo" styleClass="estyleInputNome"
+						required="true" maxlength="100"
+						requiredMessage="Informe o campo do Príncipio Ativo."
+						value="#{produtoBeanView.objetoSelecionado.principio_ativo}" />
+					<p:message for="prodPativo" />
+
+					<h:outputLabel id="labelDescricao" for="prodDescricao"
+						value="Descrição * : " styleClass="estiloIdCadastro" />
+					<p:inputText id="prodDescricao" styleClass="estyleInputNome"
+						required="true" maxlength="100"
+						requiredMessage="Informe o campo descrição."
+						value="#{produtoBeanView.objetoSelecionado.descricao_prod}" />
+					<p:message for="prodDescricao" />
+
+					<h:outputLabel id="labelTipo" for="prodTipo" value="Tipo * : "
+						styleClass="estiloIdCadastro" />
+					<p:inputText id="prodTipo" styleClass="estyleInputNome"
+						required="true" maxlength="100"
+						requiredMessage="Informe o campo do tipo."
+						value="#{produtoBeanView.objetoSelecionado.prod_tipo}" />
+					<p:message for="prodTipo" />
+
+					<h:outputLabel id="labelSerie" for="prodSerie" value="Série * : "
+						styleClass="estiloIdCadastro" />
+					<p:inputText id="prodSerie" styleClass="estyleInputNome"
+						required="true" maxlength="100"
+						requiredMessage="Informe o campo da Série."
+						value="#{produtoBeanView.objetoSelecionado.serie_prod}" />
+					<p:message for="prodSerie" />
+
+					<h:outputLabel for="prodFabr" id="lbelFabric"
+						value="Fabricação * : " />
+					<p:calendar locale="pt" showButtonPanel="true" showOn="button"
+						styleClass="calendar" pattern="dd/MM/yyyy" readonlyInput="true"
+						navigator="true" id="lbelFabricacao"
+						value="#{produtoBeanView.objetoSelecionado.fabri_prod}" />
+
+
+					<tr />
+
+
+					<h:outputLabel for="prodValidade" id="labelValidade"
+						value="Validade * : " />
+					<p:calendar locale="pt" showButtonPanel="true" showOn="button"
+						styleClass="calendar" pattern="dd/MM/yyyy" readonlyInput="true"
+						navigator="true" id="labelValid"
+						value="#{produtoBeanView.objetoSelecionado.validade_prod}" />
+
+
+
+
+
+
+				</h:panelGrid>
+
+			</p:panel>
+
+			<div class="espacoBranco" />
+
+			<util:botoesCrud managedBeanView="#{produtoBeanView}"
+				camposReload=":formTemplate:msg, tableResult"
+				botaoNovo="#{contextoBean.possuiAcesso('PRODUTO_NOVO', 'ADMIN')}"
+				botaoSalvar="#{contextoBean.possuiAcesso('PRODUTO_NOVO', 'ADMIN') and produtoBeanView.objetoSelecionado.prod_codigo == null}"
+				botaoAtualizar="#{contextoBean.possuiAcesso('PRODUTO_EDITAR', 'ADMIN') and produtoBeanView.objetoSelecionado.prod_codigo != null}"
+				botaoExcluir="#{contextoBean.possuiAcesso('PRODUTO_EXCLUIR', 'ADMIN')}" />
+		</h:form>
+
+		<script type="text/javascript" charset="UTF-8">
+			addFocoAoCampo('prodDescricao');
+			addMascaraDecimalMonetaria('prd_comissaofilial');
+			addMascaraDecimalMonetaria('prd_comissaousuario');
+			gerenciaTeclaEnter();
+		</script>
+
+		<div class="espacoBranco" />
+
+		<p:dataTable id="tableResult" value="#{produtoBeanView.list.list}"
+			rendered="#{produtoBeanView.list.list.size() > 0}" var="objeto"
+			rows="10" paginatorPosition="bottom" paginator="true"
+			emptyMessage="Não existem valores para exibição." lazy="true"
+			paginatorTemplate=" {FirstPageLink}
+								   {PreviousPageLink} {PageLinks} 
+	 							   {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+			<ui:include
+				src="/resources/componentes/colunasDataTableProduto.xhtml" />
+
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
+</html>

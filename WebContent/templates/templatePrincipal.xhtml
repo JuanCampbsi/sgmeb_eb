@@ -29,13 +29,13 @@
 		<h:outputScript name="scripty.js" library="javascript"
 			id="jsScriptSistema" />
 		<h:outputScript name="jsf.js" library="javax.faces" />
-		
-		
-		
+
+
+
 		<!-- <h:outputScript name="googlechart.js" library="javascript" /> -->
-		
-		
-		
+
+
+
 		<h:outputScript name="deployJava.js" library="javascript" />
 	</h:head>
 	<h:form id="formTemplate" prependId="false">
@@ -69,89 +69,91 @@
 				<p:tooltip id="toolTipFocus" globalSelector="a,:input,:button"
 					showEvent="focus" hideEvent="blur" />
 			</div>
-			<div id="container" >
-				<div id="topo" >
-					<span style="position: absolute; left:-10px; top: -15px" id="spanLogo" >
-						<h:graphicImage library="img" name="image.png"
-							id="logoImg" styleClass="bordaImagem" />
+			<div id="container">
+				<div id="topo">
+					<span style="position: absolute; left: -10px; top: -15px"
+						id="spanLogo"> <h:graphicImage library="img"
+							name="image.png" id="logoImg" styleClass="bordaImagem" />
 					</span> <span id="dadoslogin"> Usuário:
 						#{entidadeBeanView.entidadeLogadoSecurity} <br id="quebraUser" />
-						Último login: <h:outputLabel value="#{entidadeBeanView.ultimoAcesso}" id="saidaUltimoAcesso">
+						Último login: <h:outputLabel
+							value="#{entidadeBeanView.ultimoAcesso}" id="saidaUltimoAcesso">
 							<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss"
-							dateStyle="long" timeStyle="full" timeZone="GMT-03:00" />
-						</h:outputLabel>
-					<br id="quebraUltimoAcesso"/> 
-					<a href="#" id="logoutSuperior" onclick="javascript:logout('#{request.contextPath}');">Sair</a>
-							
-				</span> 
-					<span id="menuSistema" style="position: absolute; right: 25px; top: 48px; width: 20px">
-					<a href="#" onclick="abrirMenupop()">
-					<h:graphicImage library="img" name="setabaixo.png"
-						styleClass="bordaImagem" id="imaSetaBaixo"/>
+								dateStyle="long" timeStyle="full" timeZone="GMT-03:00" />
+						</h:outputLabel> <br id="quebraUltimoAcesso" /> <a href="#" id="logoutSuperior"
+						onclick="javascript:logout('#{request.contextPath}');">Sair</a>
+
+					</span> <span id="menuSistema"
+						style="position: absolute; right: 25px; top: 48px; width: 20px">
+						<a href="#" onclick="abrirMenupop()"> <h:graphicImage
+								library="img" name="setabaixo.png" styleClass="bordaImagem"
+								id="imaSetaBaixo" />
 					</a>
-				</span> 
-			</div>
-			
-			
-			<div id="menu">
-   				 <span id="iniciarmenu" >
-   				 <h:graphicImage library="img" name="iconemenu.png"
-						styleClass="bordaImagem2" id="iconemenu">
+					</span>
+				</div>
+
+
+				<div id="menu">
+					<span id="iniciarmenu"> <h:graphicImage library="img"
+							name="iconemenu.png" styleClass="bordaImagem2" id="iconemenu">
 					MENU
 				</h:graphicImage>
-   				 </span>
- 		    </div>
- 		    
+					</span>
+				</div>
+
 
 				<div id="corpo" class="corpo">
-				<ui:insert name="corpo" />
-				
-			</div>
-			
-			
-			<div id="menupop">				
-   			 <a href='#' onclick="alterarSenhaDialog.show();" style="display:block" id="alterarSenha">
-   			 	<span style="display:block" id="spanAlterarSenha">Alterar senha</span>
-   			 </a>
-  			</div>
-  			
-  			<p:dialog widgetVar="alterarSenhaDialog" id="alterarSenhaDialog" width="240"
-				modal="true" resizable="false" height="170"
-				header="Alterar senha" appendToBody="false" dynamic="true">
+					<ui:insert name="corpo" />
+
+				</div>
+
+
+				<div id="menupop">
+					<a href='#' onclick="alterarSenhaDialog.show();"
+						style="display: block" id="alterarSenha"> <span
+						style="display: block" id="spanAlterarSenha">Alterar senha</span>
+					</a>
+				</div>
+
+				<p:dialog widgetVar="alterarSenhaDialog" id="alterarSenhaDialog"
+					width="240" modal="true" resizable="false" height="170"
+					header="Alterar senha" appendToBody="false" dynamic="true">
 				Corpo					
 			</p:dialog>
-  			
-  			
-  			
-  			<div id="barramenu">
-  				<p:tieredMenu
+
+
+
+				<div id="barramenu">
+					<p:tieredMenu
 						style="width: 185px;border: none;background:none;color: #000;"
-						 id="menuEsquerdo"   >
-						 
-						 	 
-					<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">	 
-						<p:submenu  label="Cadastros" id="subMenuCadastro"  styleClass="meumenu"  >
-						
-						<sec:ifAnyGranted roles="USUARIO_ACESSAR, ADMIN" >	 
-							<p:menuitem value="Usuários" id="menuusuarios" styleClass="meumenu2"
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_usuario')"
-								ajax="true" />
+						id="menuEsquerdo">
+
+
+						<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">
+							<p:submenu label="Cadastros" id="subMenuCadastro"
+								styleClass="meumenu">
+
+								<sec:ifAnyGranted roles="USUARIO_ACESSAR, ADMIN">
+									<p:menuitem value="Usuários" id="menuusuarios"
+										styleClass="meumenu2"
+										onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_usuario')"
+										ajax="true" />
+								</sec:ifAnyGranted>
+
+								<sec:ifAnyGranted roles="PACIENTE_ACESSAR, ADMIN">
+									<p:menuitem value="Paciente" id="menupaciente"
+										action="#{entidadeBeanView.redirecionarFindEntidade}" />
+								</sec:ifAnyGranted>
+
+								<sec:ifAnyGranted roles="PRODUTO_ACESSAR, ADMIN">
+									<p:menuitem value="Produtos" id="menuprodutos"
+										onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_produto')"
+										ajax="true" />
+								</sec:ifAnyGranted>
+
+							</p:submenu>
 						</sec:ifAnyGranted>
-						
-						<sec:ifAnyGranted roles="PACIENTE_ACESSAR, ADMIN">	 
-							<p:menuitem value="Paciente" id="menupaciente"  
-								action = "#{entidadeBeanView.redirecionarFindEntidade}" />
-						</sec:ifAnyGranted>
-						
-						<sec:ifAnyGranted roles="PRODUTO_ACESSAR, ADMIN">	 
-							<p:menuitem value="Produtos" id="menuprodutos"  
-								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_entidade')"
-								ajax="true" />
-						</sec:ifAnyGranted>
-						
-						</p:submenu>
-						</sec:ifAnyGranted>
-						 
+
 						<!--   <p:submenu label="Cadastrar">	
 						 <p:menuitem value="Usuários" id="permissaousuarios" />
 						 					 
@@ -163,34 +165,45 @@
 						<p:submenu label="Permissões Gerais">						 
 						<p:menuitem value="Usuários" id="permissaousuarios" />					 
 						 </p:submenu> -->
-						 
-						 
-						 
-						 <p:menuitem value="Início" id="menuinicio"
-							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"  
-							ajax="true"  />
+
+
+
+
+
+						<p:menuitem value="Impressão local web" id="menuImpressaoLocalWeb"
+							onclick="invocaApplet('#{request.contextPath}');" ajax="true"
+							async="false" oncomplete="PF('statusDialog').hide()" />
+
+						<p:menuitem value="Alterar senha" id="menualterarsenha"
+							onclick="alterarSenha('#{request.contextPath}');" ajax="true" />
 							
-						 <p:menuitem value="Alterar senha" id="menualterarsenha"
-							onclick="alterarSenha('#{request.contextPath}');" 
-							ajax="true" />							
-						
+							<p:menuitem value="Manual" id="menumanual"
+							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"
+							ajax="true" />
+
+
+						<p:menuitem value="Início" id="menuinicio"
+							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"
+							ajax="true" />
+
+
+
 						<p:menuitem value="Sair" id="menusair"
 							onclick="javascript:logout('#{request.contextPath}');"
 							ajax="true" />
-						 
-						 </p:tieredMenu>
+
+					</p:tieredMenu>
 				</div>
-  			
-  			
-  			
-  			
+
+
+
+
 
 			</div>
 		</h:body>
 	</h:form>
 	<script type="text/javascript" charset="UTF-8">
 		carregarIdElementosPagina();
-		
 	</script>
 </sec:isAuthenticated>
 </html>

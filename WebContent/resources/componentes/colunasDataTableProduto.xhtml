@@ -15,7 +15,7 @@
 		<f:facet name="header" >
 			<h:outputText value="Código" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.ent_codigo}" />
+		<h:outputText value="#{objeto.prod_codigo}" />
 	</center>
 </p:column>
 
@@ -23,9 +23,9 @@
 <p:column  styleClass="estiloIdCadastro">
 	<center>
 		<f:facet name="header">
-			<h:outputText value="Nome de Guerra" styleClass="cabecalho"></h:outputText>
+			<h:outputText value="Príncipio Ativo" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto. ent_n_guerra}" />
+		<h:outputText value="#{objeto.principio_ativo}" />
 	</center>
 </p:column>
 
@@ -34,22 +34,32 @@
 <p:column  styleClass="estiloIdCadastro">
 	<center>
 		<f:facet name="header">
-			<h:outputText value="Usuário" styleClass="cabecalho"></h:outputText>
+			<h:outputText value="Tipo" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.ent_login}" />
+		<h:outputText value="#{objeto.prod_tipo}" />
 	</center>
 </p:column>
 
 <p:column  styleClass="estiloIdCadastro">
 	<center>
 		<f:facet name="header">
-			<h:outputText value="Posto/Grad" styleClass="cabecalho"></h:outputText>
-		</f:facet>
-		<h:outputText value="#{objeto.graduacao.grad_grad}" />
+			<h:outputText value="Fabricação" styleClass="cabecalho"></h:outputText>	
+			</f:facet>	
+		<h:outputText value="#{objeto.fabri_prod}" > <f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText> 
+		
 	</center>
 </p:column >
 
-<sec:ifAnyGranted roles="USUARIO_EXCLUIR, ADMIN">
+<p:column  styleClass="estiloIdCadastro">
+	<center>
+		<f:facet name="header">
+			<h:outputText value="Validade" styleClass="cabecalho"></h:outputText>
+		</f:facet>
+		<h:outputText value="#{objeto.validade_prod}" > <f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText> 
+	</center>
+</p:column >
+
+<sec:ifAnyGranted roles="PRODUTO_EXCLUIR, ADMIN">
 	<p:column style="width:50px;">
 		<center>
 			<f:facet name="header">
@@ -58,29 +68,29 @@
 
 			<c:choose>
 				<c:when test="${isCadastro == false}">
-					<p:commandLink action="#{usuarioBeanView.excluir}"
+					<p:commandLink action="#{produtoBeanView.excluir}"
 						id="buttonColunaExcluir" ajax="true" immediate="true"
 						partialSubmit="true" process="@this" update="tableResult"
-						onfocus="addFocoAoCampo('usuarioNome');"
-						onclick="if(!confirm('Confirma a exclusão do usuario : #{objeto.ent_nome}?')) return false;">
+						onfocus="addFocoAoCampo('principioAtivo');"
+						onclick="if(!confirm('Confirma a exclusão da produto : #{objeto.principio_ativo}?')) return false;">
 						<h:graphicImage library="img" name="excluir16.png"
 							styleClass="bordaImagem" />
 
 						<f:setPropertyActionListener
-							target="#{usuarioBeanView.objetoSelecionado}" value="#{objeto}" />
+							target="#{produtoBeanView.objetoSelecionado}" value="#{objeto}" />
 					</p:commandLink>
 				</c:when>
 				<c:otherwise>
-					<p:commandLink action="#{usuarioBeanView.excluir}"
+					<p:commandLink action="#{produtoBeanView.excluir}"
 						id="buttonColunaExcluir" ajax="false" immediate="true"
 						partialSubmit="true" process="@this" update="tableResult"
-						onfocus="addFocoAoCampo('usuarioNome');"
-						onclick="if(!confirm('Confirma a exclusão do Usuario: #{objeto.ent_nome}?')) return false;">
+						onfocus="addFocoAoCampo('principioAtivo');"
+						onclick="if(!confirm('Confirma a exclusão da produto : #{objeto.principio_ativo}?')) return false;">
 						<h:graphicImage library="img" name="excluir16.png"
 							styleClass="bordaImagem" />
 
 						<f:setPropertyActionListener
-							target="#{usuarioBeanView.objetoSelecionado}" value="#{objeto}" />
+							target="#{produtoBeanView.objetoSelecionado}" value="#{objeto}" />
 					</p:commandLink>
 				</c:otherwise>
 			</c:choose>
@@ -88,43 +98,24 @@
 	</p:column>
 </sec:ifAnyGranted>
 
-<sec:ifAnyGranted roles="USUARIO_EDITAR, ADMIN">
+<sec:ifAnyGranted roles="PRODUTO_EDITAR, ADMIN">
 	<p:column style="width:50px;">
 		<center>
 			<f:facet name="header">
 				<h:outputText value="Editar" styleClass="cabecalho"></h:outputText>
 			</f:facet>
-			<p:commandLink immediate="true" action="#{usuarioBeanView.editar}"
-				ajax="true" id="editarPaciente"
-				oncomplete="addFocoAoCampo('usuarioNome');">
+			<p:commandLink immediate="true" action="#{produtoBeanView.editar}"
+				ajax="true" id="editarProduto"
+				oncomplete="addFocoAoCampo('principioAtivo');">
 				<h:graphicImage library="img" name="editar16.png"
 					styleClass="bordaImagem" />
 				<f:setPropertyActionListener value="#{objeto}"
-					target="#{usuarioBeanView.objetoSelecionado}" />
-				<f:param name="usuarioEdit" value="#{objeto.ent_codigo}" />
+					target="#{produtoBeanView.objetoSelecionado}" />
+				<f:param name="produtoEdit" value="#{objeto.prod_codigo}" />
 			</p:commandLink>
 		</center>
 	</p:column>
 </sec:ifAnyGranted>
-
-   <sec:ifAnyGranted roles="ADMIN">	
-	   <p:column style="width:50px;">
-	      <center>
-	     
-	         <f:facet name="header">
-	          <h:outputText value="Permissão" styleClass="cabecalho"></h:outputText>
-	         </f:facet>
-	         <p:commandLink immediate="true" action="#{usuarioBeanView.permissao}" ajax="true" id="editarPermissao"> 
-	            <h:graphicImage library="img" name="cadeado_16x16.png" styleClass="bordaImagem" />
-	            <f:setPropertyActionListener value="#{objeto}" target="#{usuarioBeanView.objetoSelecionado}" />
-	         </p:commandLink>
-	      </center>
-	   </p:column>
-   </sec:ifAnyGranted>
-   
-
-
-
 </html>
 
 
