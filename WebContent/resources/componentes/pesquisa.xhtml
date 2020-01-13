@@ -82,7 +82,7 @@
 					<p:commandButton id="buttonPesquisar" 
 									  styleClass="botaoPesquisa" value="Filtrar" ajax="true"
 									  actionListener="#{cc.attrs.managedBeanView.consultaEntidade}"
-									  process="@this,panelPesquisa"
+									  process="@this,panelPesquisa" 
 									  oncomplete="addFocoAoCampo('valorPesquisa');"
 									  onsuccess="addFocoAoCampo('valorPesquisa');"
 									  update=":formTemplate:msg, tableResult">
@@ -92,8 +92,7 @@
 						<f:param name="consultarInativos" value="#{cc.attrs.consultarInativos}"/>
 					</p:commandButton>
 					
-					
-					
+				
 					
 					
 				</h:panelGrid>
@@ -170,6 +169,7 @@
 				$(buttonPesquisar).click();
 			}
 		}
+		
 		
 	</script>
   </composite:implementation>

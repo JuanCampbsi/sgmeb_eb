@@ -10,9 +10,9 @@
 
 
 
-<p:column styleClass="estiloIdCadastro" >
+<p:column styleClass="estiloIdCadastro">
 	<center>
-		<f:facet name="header" >
+		<f:facet name="header">
 			<h:outputText value="Código" styleClass="cabecalho"></h:outputText>
 		</f:facet>
 		<h:outputText value="#{objeto.prod_codigo}" />
@@ -20,7 +20,7 @@
 </p:column>
 
 
-<p:column  styleClass="estiloIdCadastro">
+<p:column styleClass="estiloIdCadastro">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Príncipio Ativo" styleClass="cabecalho"></h:outputText>
@@ -31,7 +31,7 @@
 
 
 
-<p:column  styleClass="estiloIdCadastro">
+<p:column styleClass="estiloIdCadastro">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Tipo" styleClass="cabecalho"></h:outputText>
@@ -40,24 +40,32 @@
 	</center>
 </p:column>
 
-<p:column  styleClass="estiloIdCadastro">
+<p:column styleClass="estiloIdCadastro">
 	<center>
 		<f:facet name="header">
-			<h:outputText value="Fabricação" styleClass="cabecalho"></h:outputText>	
-			</f:facet>	
-		<h:outputText value="#{objeto.fabri_prod}" > <f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText> 
-		
-	</center>
-</p:column >
+			<h:outputText value="Fabricação" styleClass="cabecalho"></h:outputText>
+		</f:facet>
+		<h:outputText value="#{objeto.fabri_prod}">
+			<f:convertDateTime pattern="dd/MM/yyyy" />
+		</h:outputText>
 
-<p:column  styleClass="estiloIdCadastro">
+	</center>
+</p:column>
+
+<p:column styleClass="estiloIdCadastro">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Validade" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.validade_prod}" > <f:convertDateTime pattern="MM/dd/yyyy" /></h:outputText> 
+		<h:outputText value="#{objeto.validade_prod}"
+		style="#{objeto.invalido ? 'color: red' : ''}"	>
+			<f:convertDateTime pattern="dd/MM/yyyy" />
+		</h:outputText>
+
+
+
 	</center>
-</p:column >
+</p:column>
 
 <sec:ifAnyGranted roles="PRODUTO_EXCLUIR, ADMIN">
 	<p:column style="width:50px;">

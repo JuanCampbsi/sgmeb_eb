@@ -1,5 +1,6 @@
 package br.com.project.model.classes;
 
+import java.beans.Transient;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -49,12 +50,6 @@ public class Produto implements Serializable {
 
 	@Column(nullable = true)
 	private String serie_prod;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date fabri_prod;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date validade_prod;
 
 	@Column(nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -128,14 +123,6 @@ public class Produto implements Serializable {
 		this.fabri_prod = fabri_prod;
 	}
 
-	public Date getValidade_prod() {
-		return validade_prod;
-	}
-
-	public void setValidade_prod(Date validade_prod) {
-		this.validade_prod = validade_prod;
-	}
-
 	public Date getProd_datacadastro() {
 		return prod_datacadastro;
 	}
@@ -186,8 +173,82 @@ public class Produto implements Serializable {
 				+ ", principio_ativo=" + principio_ativo + ", serie_prod="
 				+ serie_prod + ", fabri_prod=" + fabri_prod
 				+ ", validade_prod=" + validade_prod + ", prod_datacadastro="
-				+ prod_datacadastro + "]";
+				+ prod_datacadastro + ", data_atual=" + data_atual + "]";
 	}
 
-	
+	@Temporal(TemporalType.DATE)
+	private Date fabri_prod;
+
+	@Temporal(TemporalType.DATE)
+	private Date data_atual = new Date();
+
+	@Temporal(TemporalType.DATE)
+	private Date validade_prod;
+
+	public Date getData_atual() {
+		return data_atual;
+	}
+
+	public void setData_atual(Date data_atual) {
+		this.data_atual = data_atual;
+	}
+
+	public Date getValidade_prod() {
+		return validade_prod;
+	}
+
+	public void setValidade_prod(Date validade_prod) {
+		this.validade_prod = validade_prod;
+	}
+
+	private Double diferencaEmDias;
+
+	public Double getDiferencaEmDias() {
+		return diferencaEmDias;
+	}
+
+	public void setDiferencaEmDias(Double diferencaEmDias) {
+		this.diferencaEmDias = diferencaEmDias;
+	}
+
+	public void validar() throws Exception {
+		double result = 5.1;
+		Produto s = new Produto();
+
+		s.setDiferencaEmDias(result);
+
+	}
+
+	@Transient
+	public boolean isValido() {
+		Produto c = new Produto();
+		return c.getDiferencaEmDias() == null;
+	}
+
+	@Transient
+	public boolean isInvalido() {
+		return !this.isValido();
+	}
+
+	/*
+	 * 
+	 * 
+	 * 
+	 * SELECT prod_codigo, data_atual, validade_prod, 	 
+	 * data_atual - validade_prod AS diferencaemdias FROM produto;
+	 * 
+	 * 
+	 * 
+	 * public void diferencaEmDiass() { double result = 0; long diferenca
+	 * =getValidade_prod().getTime() - getData_atual().getTime(); double dif =
+	 * (diferenca /1000) / 60 / 60 /24; //resultado é diferença entre as datas
+	 * em dias long horasRestantes = (diferenca /1000) / 60 / 60 %24; //calcula
+	 * as horas restantes result = dif + (horasRestantes /24d); //transforma as
+	 * horas restantes em fração de dias
+	 * 
+	 * if(result >= 1 && result <=30){ setDiferencaEmDias(result); }
+	 * 
+	 * } }
+	 */
+
 }

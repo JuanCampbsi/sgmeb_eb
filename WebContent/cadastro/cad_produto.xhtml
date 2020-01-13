@@ -58,30 +58,24 @@
 					<h:outputLabel for="prodFabr" id="lbelFabric"
 						value="Fabricação * : " />
 					<p:calendar locale="pt" showButtonPanel="true" showOn="button"
-						styleClass="calendar" pattern="dd/MM/yyyy" readonlyInput="true"
-						navigator="true" id="lbelFabricacao"
+						required="true" styleClass="calendar" pattern="dd/MM/yyyy"
+						readonlyInput="true"
+						requiredMessage="Informe o campo de Fabricação." navigator="true"
+						id="lbelFabricacao"
 						value="#{produtoBeanView.objetoSelecionado.fabri_prod}" />
-
-
 					<tr />
 
 
 					<h:outputLabel for="prodValidade" id="labelValidade"
 						value="Validade * : " />
 					<p:calendar locale="pt" showButtonPanel="true" showOn="button"
-						styleClass="calendar" pattern="dd/MM/yyyy" readonlyInput="true"
+						required="true" styleClass="calendar" pattern="dd/MM/yyyy"
+						readonlyInput="true"
+						requiredMessage="Informe o campo de Validade do medicamento."
 						navigator="true" id="labelValid"
 						value="#{produtoBeanView.objetoSelecionado.validade_prod}" />
-
-
-
-
-
-
 				</h:panelGrid>
-
 			</p:panel>
-
 			<div class="espacoBranco" />
 
 			<util:botoesCrud managedBeanView="#{produtoBeanView}"
@@ -94,8 +88,6 @@
 
 		<script type="text/javascript" charset="UTF-8">
 			addFocoAoCampo('prodDescricao');
-			addMascaraDecimalMonetaria('prd_comissaofilial');
-			addMascaraDecimalMonetaria('prd_comissaousuario');
 			gerenciaTeclaEnter();
 		</script>
 
