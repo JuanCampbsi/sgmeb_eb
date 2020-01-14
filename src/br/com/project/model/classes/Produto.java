@@ -215,24 +215,25 @@ public class Produto implements Serializable {
 	@Transient
 	public double validar() throws Exception {
 		double result = 0;		
-		long diferenca =validade_prod.getTime() - data_atual.getTime();
+		long diferenca =getValidade_prod().getTime() - getData_atual().getTime();
 		double dif = (diferenca /1000) / 60 / 60 /24; //resultado é diferença entre as datas em dias
 		long horasRestantes = (diferenca /1000) / 60 / 60 %24; //calcula as horas restantes
 		result = dif + (horasRestantes /24d); //transforma as horas restantes em fração de dias
 		
-		if(result >= 1 && result <=30){
+		if (result <30){
 			this.setDiferencaEmDias(result);
+	
+		}else{
+			this.setDiferencaEmDias((double) 0);
 		}
-		
 		
 		
 		return diferencaEmDias;
 	}
 
 	@Transient
-	public boolean isValido() {
-		
-		return getDiferencaEmDias() >=31;
+	public boolean isValido() {		
+		return getDiferencaEmDias() ==0;
 	}
 
 	@Transient

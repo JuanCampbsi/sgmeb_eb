@@ -503,6 +503,12 @@ input[type=submit] {
 .bordaImagem {
 	border: 0;
 }
+.bordaGif {
+	border: 0;
+	width:50px;
+
+}
+
 
 .bordaImagem2 {
 	border: 0;
