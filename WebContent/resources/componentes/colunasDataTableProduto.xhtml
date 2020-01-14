@@ -47,7 +47,7 @@
 		</f:facet>
 		<h:outputText value="#{objeto.fabri_prod}">
 			<f:convertDateTime pattern="dd/MM/yyyy" />
-		</h:outputText>
+		</h:outputText> 
 
 	</center>
 </p:column>
@@ -56,7 +56,7 @@
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Validade" styleClass="cabecalho"></h:outputText>
-		</f:facet>
+		</f:facet> 
 		<h:outputText value="#{objeto.validade_prod}"
 		style="#{objeto.invalido ? 'color: red' : ''}"	>
 			<f:convertDateTime pattern="dd/MM/yyyy" />

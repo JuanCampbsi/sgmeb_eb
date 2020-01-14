@@ -140,6 +140,7 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	public String condicaoAndParaPesquisa() throws Exception {
 		return "";
 	}
+
 	
 	
 	
