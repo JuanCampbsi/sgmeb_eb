@@ -82,7 +82,7 @@
 					<p:commandButton id="buttonPesquisar" 
 									  styleClass="botaoPesquisa" value="Filtrar" ajax="true"
 									  actionListener="#{cc.attrs.managedBeanView.consultaEntidade}"
-									  process="@this,panelPesquisa" onclick="  validade();"
+									  process="@this,panelPesquisa" 
 									  oncomplete="addFocoAoCampo('valorPesquisa');"
 									  onsuccess="addFocoAoCampo('valorPesquisa');"
 									  update=":formTemplate:msg, tableResult">
@@ -144,13 +144,6 @@
 		</p:commandButton>			
 		
 		<script type="text/javascript" charset="UTF-8">   
-		
-		function validade() {
- 			
-    		 alert("FUNCIONOU!");
-		
-      
-    }
 	
 		var idCampo = getValorElementPorIdJQuery('campo');
 		var idCampoCondicao = getValorElementPorIdJQuery('condicao');
@@ -176,8 +169,6 @@
 				$(buttonPesquisar).click();
 			}
 		}
-		
-		 mostraAlerta();
 		
 		
 	</script>
