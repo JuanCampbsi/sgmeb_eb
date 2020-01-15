@@ -564,5 +564,7 @@ function addDestinoSelecionadoMsgDialog(objeto) {
 	function erroApplet(erro) {
 		alert(erro);
 	}
+	
+	 
 }
 
