@@ -15,7 +15,8 @@
 		<f:facet name="header">
 			<h:outputText value="Código" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.prod_codigo}" style="#{objeto.invalido ?  'color: red' : ''}"/>
+		<h:outputText value="#{objeto.prod_codigo}"
+			style="#{objeto.invalido ?  'color: red' : ''}" />
 	</center>
 </p:column>
 
@@ -25,8 +26,9 @@
 		<f:facet name="header">
 			<h:outputText value="Príncipio Ativo" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.principio_ativo}" style="#{objeto.invalido ?  'color: red' : ''}" />
-		
+		<h:outputText id="texto" value="#{objeto.principio_ativo}"
+			style="#{objeto.invalido ?  'color: red' : ''}" />
+
 	</center>
 </p:column>
 
@@ -35,9 +37,10 @@
 <p:column styleClass="estiloIdCadastro">
 	<center>
 		<f:facet name="header">
-			<h:outputText value="Tipo" styleClass="cabecalho" ></h:outputText>
+			<h:outputText value="Tipo" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.prod_tipo}" style="#{objeto.invalido ?  'color: red' : ''}"/>
+		<h:outputText value="#{objeto.prod_tipo}"
+			style="#{objeto.invalido ?  'color: red' : ''}" />
 	</center>
 </p:column>
 
@@ -46,9 +49,10 @@
 		<f:facet name="header">
 			<h:outputText value="Descrição" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.descricao_prod}" style="#{objeto.invalido ?  'color: red' : ''}">
-			
-		</h:outputText> 
+		<h:outputText value="#{objeto.descricao_prod}"
+			style="#{objeto.invalido ?  'color: red' : ''}">
+
+		</h:outputText>
 
 	</center>
 </p:column>
@@ -57,11 +61,11 @@
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Validade" styleClass="cabecalho"></h:outputText>
-		</f:facet> 
-		<h:outputText value="#{objeto.validade_prod}" 
-		style="#{objeto.invalido ?  'color: red' : ''}"	>
-		<h:graphicImage   library="img" name="venc.gif" rendered="#{objeto.invalido}"
-							styleClass="bordaGif" />
+		</f:facet>
+		<h:outputText value="#{objeto.validade_prod}"
+			style="#{objeto.invalido ?  'color: red' : ''}">
+			<h:graphicImage library="img" name="venc.gif"
+				rendered="#{objeto.invalido}" styleClass="bordaGif" />
 			<f:convertDateTime pattern="dd/MM/yyyy" />
 		</h:outputText>
 

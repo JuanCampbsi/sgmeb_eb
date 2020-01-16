@@ -8,16 +8,26 @@
 	xmlns:util="http://java.sun.com/jsf/composite/componentes"
 	xmlns:p="http://primefaces.org/ui">
 
+
+
+
 <ui:composition template="/templates/templatePrincipal.xhtml">
 	<ui:define name="corpo">
 		<util:pesquisa managedBeanView="#{produtoBeanView}"
 			nomePesquisa="Pesquisa de Produto"
 			colunasGridDataTableList="/resources/componentes/colunasDataTableProduto.xhtml"
-			ocultaNovo = "#{!contextoBean.possuiAcesso('PRODUTO_NOVO', 'ADMIN')}"
-			exibirBotaoAdd="false"
-		    menuImpressao="true"
-		    consultarInativos = "true">
+			ocultaNovo="#{!contextoBean.possuiAcesso('PRODUTO_NOVO', 'ADMIN')}"
+			exibirBotaoAdd="false" menuImpressao="true" consultarInativos="true">
 		</util:pesquisa>
+		
+		
+		
+		<p:dialog id="basicModalAvisoVencidosVencer" header="Modal Dialog" visible="true" widgetVar="dlg2" modal="true" height="200">
+  		  <h:outputText value="Atenção." />
+		</p:dialog> 
+			
+
+	
 	</ui:define>
 </ui:composition>
 </html>
