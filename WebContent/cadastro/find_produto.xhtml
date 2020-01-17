@@ -23,13 +23,13 @@
 
 
 		<p:dialog id="basicModalAvisoVencidosVencer" 
-			visible="true" widgetVar="dlg2" modal="true" height="200" width="380px">
+			visible="true" widgetVar="dlg2" modal="true" height="150" width="380px">
 			<h:outputText >
 			<h:graphicImage library="img" name="atencao_gif.gif"
 				 styleClass="bordaGif2" />
 				 		
 			</h:outputText><br/><br/>
-			<h:outputText  value="#{produtoBeanView.objetoSelecionado.quantidade_prod} "  styleClass="bordaGif2"/> 
+			<h:outputText  value="#{objeto.validar}"  styleClass="bordaGif2"/> 
 			<h:outputText  value="produtos vencendo"  styleClass="bordaGif2"/> 
 		</p:dialog>
 
