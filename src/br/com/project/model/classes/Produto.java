@@ -39,7 +39,7 @@ public class Produto implements Serializable {
 	@Column(nullable = true)
 	private String prod_tipo;
 
-	@Column(nullable = true)
+	@javax.persistence.Transient
 	private int quantidade_prod;
 
 	@Column(nullable = true)
@@ -203,6 +203,8 @@ public class Produto implements Serializable {
 
 	private Double diferencaEmDias;
 
+	
+
 	public Double getDiferencaEmDias() {
 		return diferencaEmDias;
 	}
@@ -211,17 +213,23 @@ public class Produto implements Serializable {
 		this.diferencaEmDias = diferencaEmDias;
 	}
 	
+	
 
-	@Transient
+	
 	public double validar() throws Exception {
+		Produto c = new Produto();
 		double result = 0;		
 		long diferenca =getValidade_prod().getTime() - getData_atual().getTime();
 		double dif = (diferenca /1000) / 60 / 60 /24; //resultado é diferença entre as datas em dias
 		long horasRestantes = (diferenca /1000) / 60 / 60 %24; //calcula as horas restantes
 		result = dif + (horasRestantes /24d); //transforma as horas restantes em fração de dias
+		int cont = 1;
+		
 		
 		if (result <30){
 			this.setDiferencaEmDias(result);
+			c.setQuantidade_prod(cont);
+		
 	
 		}else{
 			this.setDiferencaEmDias((double) 0);

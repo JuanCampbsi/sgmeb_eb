@@ -509,6 +509,17 @@ input[type=submit] {
 
 }
 
+.bordaGif2 {
+	border: 0;
+	width:250px;
+	position: center;
+	top: 112px;
+	left: 100px;
+	font-face: sans-serif;
+	font-size: 13px;
+
+}
+
 
 .bordaImagem2 {
 	border: 0;
