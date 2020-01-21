@@ -202,8 +202,8 @@ public class Produto implements Serializable {
 		this.diferencaEmDias = diferencaEmDias;
 	}
 
-	@javax.persistence.Transient 
-	private double cont = 0;
+	@javax.persistence.Transient
+	public double cont ;
 	
 	public double getCont() {
 		return cont;
@@ -216,6 +216,7 @@ public class Produto implements Serializable {
 	
 
 	public double validar() throws Exception {	
+		
 		double result = 0;		
 		long diferenca =getValidade_prod().getTime() - getData_atual().getTime();
 		double dif = (diferenca /1000) / 60 / 60 /24; //resultado é diferença entre as datas em dias
@@ -225,7 +226,7 @@ public class Produto implements Serializable {
 			
 		if (result <30){
 			this.setDiferencaEmDias(result);
-			
+			this.setCont(cont +1);
 		
 		}else{
 			this.setDiferencaEmDias((double) 0);
@@ -235,8 +236,8 @@ public class Produto implements Serializable {
 	
 	
 	public double teste() throws Exception {
-		this.setCont(cont +1);
 		
+		this.getCont();		
 		return cont;
 		
 	}

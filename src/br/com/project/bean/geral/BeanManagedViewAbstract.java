@@ -374,7 +374,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 
 	/**
 	 * Retorna a entidade passada como parametro ex: <f:param
-	 * name="entidadeEdit" value="#{objeto.cid_codigo}" />
+	 * name="entidadeEdit" value="#{objeto.ent_codigo}" />
 	 * 
 	 * @return String codigo entidade selecionada
 	 */

@@ -78,11 +78,10 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	@Override
 	@RequestMapping(value = { "**/find_produto" }, method = RequestMethod.POST)
 	public void setarVariaveisNulas() throws Exception {
-		objetoSelecionado = new Produto();	
-		objetoSelecionado.teste();
+		objetoSelecionado = new Produto();			
 		valorPesquisa = "";
 		list.clear();
-		
+		objetoSelecionado.teste();
 		
 	}
 	
@@ -151,7 +150,8 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 		return "";
 	}
 
-	
+
+
 	
 
 }
