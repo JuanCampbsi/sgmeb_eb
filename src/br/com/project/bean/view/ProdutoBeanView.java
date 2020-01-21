@@ -34,6 +34,7 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 
 	@Autowired
 	private  ProdutoController produtoController;
+
 	
 	@Override
 	public StreamedContent getArquivoReport() throws Exception {
@@ -77,9 +78,12 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	@Override
 	@RequestMapping(value = { "**/find_produto" }, method = RequestMethod.POST)
 	public void setarVariaveisNulas() throws Exception {
+		objetoSelecionado = new Produto();	
+		objetoSelecionado.teste();
 		valorPesquisa = "";
 		list.clear();
-		objetoSelecionado = new Produto();
+		
+		
 	}
 	
 	@Override
@@ -109,6 +113,9 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 		objetoSelecionado = new Produto();
 		list.clear();
 		list.setTotalRegistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());
+		
+		
+		
 }
 	@Override
 	public String novo() throws Exception {
@@ -130,9 +137,12 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public String redirecionarFindEntidade() throws Exception {
-		setarVariaveisNulas();
+		setarVariaveisNulas();		
+		objetoSelecionado = new Produto();		
 		return urlFind;
 	}
+	
+	
 
 	
 	
@@ -141,7 +151,6 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 		return "";
 	}
 
-	
 	
 	
 

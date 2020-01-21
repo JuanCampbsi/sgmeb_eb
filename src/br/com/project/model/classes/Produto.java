@@ -160,7 +160,7 @@ public class Produto implements Serializable {
 	public String toString() {
 		return "Produto [prod_codigo=" + prod_codigo + ", prod_nome="
 				+ prod_nome + ", prod_tipo=" + prod_tipo + ", quantidade_prod="
-				+ quantidade_prod + ", descricao_prod=" + descricao_prod
+			 + ", descricao_prod=" + descricao_prod
 				+ ", principio_ativo=" + principio_ativo + ", serie_prod="
 				+ serie_prod + ", fabri_prod=" + fabri_prod
 				+ ", validade_prod=" + validade_prod + ", prod_datacadastro="
@@ -194,8 +194,6 @@ public class Produto implements Serializable {
 
 	private Double diferencaEmDias;
 
-	
-
 	public Double getDiferencaEmDias() {
 		return diferencaEmDias;
 	}
@@ -203,38 +201,44 @@ public class Produto implements Serializable {
 	public void setDiferencaEmDias(Double diferencaEmDias) {
 		this.diferencaEmDias = diferencaEmDias;
 	}
-	private int quantidade_prod;	
 
+	@javax.persistence.Transient 
+	private double cont = 0;
 	
-	
-
-	public int getQuantidade_prod() {
-		return quantidade_prod;
+	public double getCont() {
+		return cont;
 	}
 
-	public void setQuantidade_prod(int quantidade_prod) {
-		this.quantidade_prod = quantidade_prod;
+	public void setCont(double cont) {
+		this.cont = cont;
 	}
 
-	public double validar() throws Exception {
 	
+
+	public double validar() throws Exception {	
 		double result = 0;		
 		long diferenca =getValidade_prod().getTime() - getData_atual().getTime();
 		double dif = (diferenca /1000) / 60 / 60 /24; //resultado é diferença entre as datas em dias
 		long horasRestantes = (diferenca /1000) / 60 / 60 %24; //calcula as horas restantes
 		result = dif + (horasRestantes /24d); //transforma as horas restantes em fração de dias
-		
+				
 			
 		if (result <30){
 			this.setDiferencaEmDias(result);
 			
 		
-	
 		}else{
 			this.setDiferencaEmDias((double) 0);
-		}
-		
+		}		
 		return diferencaEmDias;
+	}
+	
+	
+	public double teste() throws Exception {
+		this.setCont(cont +1);
+		
+		return cont;
+		
 	}
 	
 
@@ -248,28 +252,8 @@ public class Produto implements Serializable {
 	@Transient
 	public boolean isInvalido() throws Exception {		
 		validar();		
-		return !this.isValido();
+		return !this.isValido() ;
 	}
 
-	/*
-	 * 
-	 * 
-	 * 
-	 * SELECT prod_codigo, data_atual, validade_prod, 	 
-	 * data_atual - validade_prod AS diferencaemdias FROM produto;
-	 * 
-	 * 
-	 * 
-	 * public void diferencaEmDiass() { double result = 0; long diferenca
-	 * =getValidade_prod().getTime() - getData_atual().getTime(); double dif =
-	 * (diferenca /1000) / 60 / 60 /24; //resultado é diferença entre as datas
-	 * em dias long horasRestantes = (diferenca /1000) / 60 / 60 %24; //calcula
-	 * as horas restantes result = dif + (horasRestantes /24d); //transforma as
-	 * horas restantes em fração de dias
-	 * 
-	 * if(result >= 1 && result <=30){ setDiferencaEmDias(result); }
-	 * 
-	 * } }
-	 */
 
 }
