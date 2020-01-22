@@ -81,7 +81,7 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 		objetoSelecionado = new Produto();			
 		valorPesquisa = "";
 		list.clear();
-		objetoSelecionado.teste();
+		
 		
 	}
 	

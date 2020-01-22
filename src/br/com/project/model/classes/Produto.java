@@ -203,17 +203,15 @@ public class Produto implements Serializable {
 	}
 
 	@javax.persistence.Transient
-	public double cont ;
-	
-	public double getCont() {
-		return cont;
+	private int contador;	
+
+	public int getContador() {
+		return contador;
 	}
 
-	public void setCont(double cont) {
-		this.cont = cont;
+	public void setContador(int contador) {
+		this.contador = contador;
 	}
-
-	
 
 	public double validar() throws Exception {	
 		
@@ -226,7 +224,7 @@ public class Produto implements Serializable {
 			
 		if (result <30){
 			this.setDiferencaEmDias(result);
-			this.setCont(cont +1);
+			
 		
 		}else{
 			this.setDiferencaEmDias((double) 0);
@@ -235,12 +233,7 @@ public class Produto implements Serializable {
 	}
 	
 	
-	public double teste() throws Exception {
-		
-		this.getCont();		
-		return cont;
-		
-	}
+	
 	
 
 	
