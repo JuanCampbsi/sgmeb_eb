@@ -29,6 +29,7 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	
 	private Produto objetoSelecionado = new Produto();
 	
+	
 	@Autowired
 	private ContextoBean contextoBean;
 
@@ -49,6 +50,7 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	public CarregamentoLazyListForObject<Produto> getList() throws Exception {
 		return list;
 	}
+
 	
 	public ProdutoController getProdutoController() {
 		return produtoController;
@@ -77,10 +79,10 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	}
 	@Override
 	@RequestMapping(value = { "**/find_produto" }, method = RequestMethod.POST)
-	public void setarVariaveisNulas() throws Exception {
-		objetoSelecionado = new Produto();			
+	public void setarVariaveisNulas() throws Exception {					
 		valorPesquisa = "";
 		list.clear();
+		objetoSelecionado = new Produto();		
 		
 		
 	}

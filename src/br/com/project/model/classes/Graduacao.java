@@ -26,8 +26,7 @@ public class Graduacao implements Serializable {
 	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "grad_codigo")
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "grad_seq")
-	private Long grad_codigo;
-	
+	private Long grad_codigo;	
 	
 	
 	@Column(nullable = true)

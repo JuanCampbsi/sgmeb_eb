@@ -510,13 +510,15 @@ input[type=submit] {
 }
 
 .bordaGif2 {
-	border: 0;
+	border:0;
 	width:250px;
 	position: center;
-	top: 112px;
+	top: 180px;
 	left: 100px;
 	font-face: sans-serif;
-	font-size: 13px;
+	font-size: 18px;
+	background:	 #e6ffe6;
+	
 
 }
 
