@@ -10,7 +10,7 @@
 
 
 
-<p:column styleClass="estiloIdCadastro">
+<p:column styleClass="estiloIdCodigo">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Código" styleClass="cabecalho"></h:outputText>
@@ -21,12 +21,12 @@
 </p:column>
 
 
-<p:column styleClass="estiloIdCadastro">
+<p:column styleClass="estiloIdNome">
 	<center>
 		<f:facet name="header">
-			<h:outputText value="Príncipio Ativo" styleClass="cabecalho"></h:outputText>
+			<h:outputText value="Nome" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText id="texto" value="#{objeto.principio_ativo}"
+		<h:outputText id="texto" value="#{objeto.prod_nome}"
 			style="#{objeto.invalido ?  'color: red' : ''}" />
 
 	</center>
@@ -34,17 +34,17 @@
 
 
 
-<p:column styleClass="estiloIdCadastro">
+<p:column styleClass="estiloIdTipo">
 	<center>
-		<f:facet name="header">
+		<f:facet name="header" >
 			<h:outputText value="Tipo" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.prod_tipo}"
+		<h:outputText value="#{objeto.prod_tipo}" 
 			style="#{objeto.invalido ?  'color: red' : ''}" />
 	</center>
 </p:column>
 
-<p:column styleClass="estiloIdCadastro">
+<p:column styleClass="estiloIdDescricao">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Descrição" styleClass="cabecalho"></h:outputText>
@@ -57,21 +57,23 @@
 	</center>
 </p:column>
 
-<p:column styleClass="estiloIdCadastro">
+<p:column styleClass="estiloIdCadastro5">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Validade" styleClass="cabecalho"></h:outputText>
 		</f:facet>
+			<h:graphicImage library="img" name="venceu.gif"
+				rendered="#{objeto.invalido}" styleClass="bordaGif" />	
+		
 		<h:outputText value="#{objeto.validade_prod}"
 			style="#{objeto.invalido ?  'color: red' : ''}">
-			<h:graphicImage library="img" name="venc.gif"
-				rendered="#{objeto.invalido}" styleClass="bordaGif" />
+						
+				<h:outputText value="--" style="color:#F5F5DC;"	/>
 			<f:convertDateTime pattern="dd/MM/yyyy" />
 		</h:outputText>
+</center>
 
-
-
-	</center>
+	
 </p:column>
 
 <sec:ifAnyGranted roles="PRODUTO_EXCLUIR, ADMIN">
@@ -87,7 +89,7 @@
 						id="buttonColunaExcluir" ajax="true" immediate="true"
 						partialSubmit="true" process="@this" update="tableResult"
 						onfocus="addFocoAoCampo('principioAtivo');"
-						onclick="if(!confirm('Confirma a exclusão da produto : #{objeto.principio_ativo}?')) return false;">
+						onclick="if(!confirm('Confirma a exclusão da produto : #{objeto.prod_nome}?')) return false;">
 						<h:graphicImage library="img" name="excluir16.png"
 							styleClass="bordaImagem" />
 
@@ -100,7 +102,7 @@
 						id="buttonColunaExcluir" ajax="false" immediate="true"
 						partialSubmit="true" process="@this" update="tableResult"
 						onfocus="addFocoAoCampo('principioAtivo');"
-						onclick="if(!confirm('Confirma a exclusão da produto : #{objeto.principio_ativo}?')) return false;">
+						onclick="if(!confirm('Confirma a exclusão da produto : #{objeto.prod_nome}?')) return false;">
 						<h:graphicImage library="img" name="excluir16.png"
 							styleClass="bordaImagem" />
 

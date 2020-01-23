@@ -75,14 +75,40 @@
 			</div>
 			<div id="container">
 				<div id="topo">
-					<span style="position: absolute; left: -10px; top: -15px"
+					<span style="position: absolute; left: -10px; top: -17px"
 						id="spanLogo">
 						 <h:graphicImage library="img"
 							name="image.png" id="logoImg" styleClass="bordaImagem" 
-							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"/>
-							
-							
-					</span> <span id="dadoslogin"> Usuário:
+							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"/>						
+					</span>
+					
+						<span style="position: absolute; left: 1014px; top: -16px; " id="spanLogo3">
+						 <h:graphicImage library="img"
+							name="medicoslogo.png" id="logoImg3" style=" width:120px;"
+						/>	
+						
+						</span>				
+					
+						<span style="position: absolute; left: 995px; top: 15px; " id="spanLogo5">
+						 <h:graphicImage library="img"
+							name="logobia2.png" id="logoImg5" style=" width:40px;"
+						/>	
+					</span>
+					
+						<span style="position: absolute; left: 950px; top: 15px; " id="spanLogo6">
+						 <h:graphicImage library="img"
+							name="logobda.png" id="logoImg6" style=" width:40px;"
+						/>	
+					</span>
+					
+						<span style="position: absolute; left: 872px; top: 3px; " id="spanLogo4">
+						 <h:graphicImage library="img"
+							name="mapa.png" id="logoImg4" style=" width:70px;"
+						/>							
+					</span>
+					
+					
+					 <span id="dadoslogin"> Usuário:
 						#{entidadeBeanView.entidadeLogadoSecurity} <br id="quebraUser" />
 						Último login: <h:outputLabel
 							value="#{entidadeBeanView.ultimoAcesso}" id="saidaUltimoAcesso">

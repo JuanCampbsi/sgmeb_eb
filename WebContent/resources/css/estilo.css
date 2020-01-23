@@ -503,9 +503,18 @@ input[type=submit] {
 .bordaImagem {
 	border: 0;
 }
+.bordaImagem3 {
+	width:500px;
+}
 .bordaGif {
 	border: 0;
-	width:50px;
+	width:30px;
+	top:50px;
+
+}
+
+.estilyPesquisa {
+	background:	#FFD700;
 
 }
 
@@ -516,11 +525,33 @@ input[type=submit] {
 	top: 180px;
 	left: 100px;
 	font-face: sans-serif;
-	font-size: 18px;
-	background:	 #e6ffe6;
+	font-size: 16px;
+	background:	#FFD700;
+	border: 1px solid #000;
+}
+
+.bordaGif3 {
+	border:0;
+	width:250px;
+	position: center;
+	top: 180px;
+	left: 100px;
+	font-face: sans-serif;
+	font-size: 30px;
+	border: 2px solid #000;
+	 color: #FFFFF0;
+	 background:#FF7F50;
+	 -moz-border-radius-topright: 5px;
+	-moz-border-radius-bottomright: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-moz-border-radius: 5px; /* Para Firefox */
+	-webkit-border-radius: 5px; /*Para Safari e Chrome */
+	border-radius: 5px; /* Para Opera 10.5+*/
 	
 
 }
+
 
 
 .bordaImagem2 {
@@ -554,13 +585,63 @@ input[type=submit] {
 	font-face: Roboto;
 	font-variant: normal;
 	
+	
+}
+.estiloIdCadastro5 {
+	font-size: 12px;
+	font-face: Roboto;
+	font-variant: normal;	
+	top: 7px;
+	width:150px;
+	
+}
+
+.estiloIdCodigo {
+	font-size: 12px;
+	font-face: Roboto;
+	font-variant: normal;	
+	top: 7px;
+	width:50px;
+	
+}
+
+.estiloIdNome {
+	font-size: 12px;
+	font-face: Roboto;
+	font-variant: normal;	
+	top: 7px;
+	width:200px;
+	
+}
+
+.estiloIdTipo {
+	font-size: 12px;
+	font-face: Roboto;
+	font-variant: normal;	
+	top: 7px;
+	width:120px;
+	
+}
+
+.estiloIdDescricao {
+	font-size: 12px;
+	font-face: Roboto;
+	font-variant: normal;	
+	top: 7px;
+	width:300px;
+	
 }
 
 .estiloIdCadastro3 {
 	font-size: 20px;
-	font-face: Roboto;
-	color: #008B8B;
+	font-face: Arial;
+	color:#6B8E23;
 	font-weight: bold;
+	 
+	 text-align: center;
+	 	margin: 1px 2px 1px 2px;
+	padding-right:15px;
+	padding-left:15px;
 	
 }
 

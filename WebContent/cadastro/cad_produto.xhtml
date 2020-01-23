@@ -15,9 +15,9 @@
 			<p:panel id="panelCadastro"
 				styleClass="estiloIdCadastro">
 				
-			<br/>
-				<h:outputText  value="Cadastro de Produto"  styleClass="estiloIdCadastro3"/>
-				<br/><br/><hr style="height:2px; border:none; color:#000;
+			
+				<h:outputText  value="Cadastro - Produto"  styleClass="estiloIdCadastro3"/>
+				<br/><hr style="height:2px; border:none; color:#000;
 				 background-color:#8FBC8F; margin-top: 0px; margin-bottom: 0px;"/><br/>
 				
 				
@@ -25,30 +25,30 @@
 
 
 				<h:panelGrid id="gridProduto" columns="3">
-					<h:outputLabel for="id" value="Código : " id="labelId" />
+					<h:outputLabel for="id" value="Código" id="labelId" />
 					<p:inputText id="id" styleClass="estiloIdCastro"
 						value="#{produtoBeanView.objetoSelecionado.prod_codigo}"
 						disabled="true" />
 					<h:outputLabel />
 
 
-					<h:outputLabel id="labelPativo" for="prodPativo"
-						value="Príncipio Ativo * : " styleClass="estiloIdCadastro" />
-					<p:inputText id="prodPativo" styleClass="estyleInputNome"
+					<h:outputLabel id="labelPativo" for="prod_nomee"
+						value="Nome:  " styleClass="estiloIdCadastro" />
+					<p:inputText id="prod_nomee" styleClass="estyleInputNome"
 						required="true" maxlength="100"
-						requiredMessage="Informe o campo do Príncipio Ativo."
-						value="#{produtoBeanView.objetoSelecionado.principio_ativo}" />
-					<p:message for="prodPativo" />
+						requiredMessage="Informe o campo Nome do Produto."
+						value="#{produtoBeanView.objetoSelecionado.prod_nome}" />
+					<p:message for="prod_nomee" />
 
 					<h:outputLabel id="labelDescricao" for="prodDescricao"
-						value="Descrição * : " styleClass="estiloIdCadastro" />
+						value="Descrição: " styleClass="estiloIdCadastro" />
 					<p:inputText id="prodDescricao" styleClass="estyleInputNome"
 						required="true" maxlength="100"
 						requiredMessage="Informe o campo descrição."
 						value="#{produtoBeanView.objetoSelecionado.descricao_prod}" />
 					<p:message for="prodDescricao" />
 
-					<h:outputLabel id="labelTipo" for="prodTipo" value="Tipo * : "
+					<h:outputLabel id="labelTipo" for="prodTipo" value="Tipo: "
 						styleClass="estiloIdCadastro" />
 					<p:inputText id="prodTipo" styleClass="estyleInputNome"
 						required="true" maxlength="100"
@@ -56,7 +56,7 @@
 						value="#{produtoBeanView.objetoSelecionado.prod_tipo}" />
 					<p:message for="prodTipo" />
 
-					<h:outputLabel id="labelSerie" for="prodSerie" value="Série * : "
+					<h:outputLabel id="labelSerie" for="prodSerie" value="Série: "
 						styleClass="estiloIdCadastro" />
 					<p:inputText id="prodSerie" styleClass="estyleInputNome"
 						required="true" maxlength="100"
@@ -65,7 +65,7 @@
 					<p:message for="prodSerie" />
 
 					<h:outputLabel for="prodFabr" id="lbelFabric"
-						value="Fabricação * : " />
+						value="Fabricação: " />
 					<p:calendar locale="pt" showButtonPanel="true" showOn="button"
 						required="true" styleClass="calendar" pattern="dd/MM/yyyy"
 						readonlyInput="true"
@@ -75,8 +75,8 @@
 					<tr />
 
 
-					<h:outputLabel for="prodValidade" id="labelValidade"
-						value="Validade * : " />
+					<h:outputLabel for="produtoValidade" id="labelValidade"
+						value="Validade: " />
 					<p:calendar locale="pt" showButtonPanel="true" showOn="button"
 						required="true" styleClass="calendar" pattern="dd/MM/yyyy"
 						readonlyInput="true"
@@ -85,6 +85,8 @@
 						value="#{produtoBeanView.objetoSelecionado.validade_prod}" />
 						
 				</h:panelGrid><tr/><br/>
+				<hr style="height:2px; border:none; color:#000; 
+				background-color:#8FBC8F; margin-top: 0px; margin-bottom: 0px;"/><br/><br/>
 			</p:panel>
 			<div class="espacoBranco" />
 

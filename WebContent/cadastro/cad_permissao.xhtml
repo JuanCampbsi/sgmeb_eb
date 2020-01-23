@@ -14,7 +14,7 @@
 			<h:form id="formCadastro" prependId="false" >
 					<p:panel  id="panelCadastro" 	styleClass="estiloIdCadastro">
 					
-					<h:outputText  value="Permissões de Usuários"  styleClass="estiloIdCadastro3"/><br/>
+					<h:outputText  value="Permissões - Usuários do Sistema"  styleClass="estiloIdCadastro3"/>
 				<br/><hr style="height:2px; border:none; color:#000; 
 				background-color:#8FBC8F; margin-top: 0px; margin-bottom: 0px;"/><br/>
 						<h:panelGrid id="gridPermissoes" columns="5">					
@@ -24,6 +24,9 @@
 							<h:outputLabel value="Nome: " style="margin-left:20px;"/>
 							<p:inputText value="#{usuarioBeanView.objetoSelecionado.ent_nome}" readonly="true" style="width:400px;"/>
 						</h:panelGrid>
+						<br/>
+						<hr style="height:2px; border:none; color:#000; 
+				background-color:#8FBC8F; margin-top: 0px; margin-bottom: 0px;"/><br/><br/>
 						
 				<p:pickList id="tabelaAcessos" style="margin-left:19px;" effect="bounce"
 					value="#{usuarioBeanView.listMenu}"

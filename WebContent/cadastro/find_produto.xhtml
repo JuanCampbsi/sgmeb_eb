@@ -20,6 +20,45 @@
 			exibirBotaoAdd="false" menuImpressao="true" consultarInativos="true">
 		</util:pesquisa>
 		
+		<h:form>
+				<p:dialog id="basicModalAvisoVencidosVencer" visible="true"
+					widgetVar="dlg2" modal="true" height="150"
+					style="background:#F5F5DC;" width="470px" resizable="false"
+					draggable="false">
+
+				<center>
+						<h:outputText value="  ATENÇÃO!  " styleClass="bordaGif3"> 							
+							<h:graphicImage library="img" name="hojeten.gif"
+								style="	width:38px;" />	<h:outputText value=" -- " style="color:#F5F5DC;" 
+								/>
+						</h:outputText> <h:outputText value=" -- " style="color:#F5F5DC;" 
+								/> <h:graphicImage library="img" name="hojeten.gif"
+								style="	width:38px;" /></center>
+				
+					<p />
+
+
+					<hr style="height: 2px; border: none; color: #000; background-color: #8FBC8F;
+						 margin-top: 0px; margin-bottom: 0px;" />
+					<br />
+
+
+					<center>
+						<h:outputText
+							value="Verifique os prazos de validade dos medicamentos! "
+							styleClass="bordaGif2" />
+					</center>
+					<br />
+
+					<hr
+						style="height: 2px; border: none; color: #000; background-color: #8FBC8F;
+						 margin-top: 0px; margin-bottom: 0px;" />
+					<br />
+
+
+
+				</p:dialog>
+			</h:form>
 	
 	
 

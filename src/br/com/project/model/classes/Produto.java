@@ -32,7 +32,7 @@ public class Produto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "produto_seq")
 	private Long prod_codigo;
 
-	
+	@IdentificaCampoPesquisa(descricaoCampo = "Nome", campoConsulta = "prod_nome")
 	@Column(nullable = true)
 	private String prod_nome;
 
@@ -41,22 +41,14 @@ public class Produto implements Serializable {
 	
 
 	@Column(nullable = true)
-	private String descricao_prod;
-
-	@IdentificaCampoPesquisa(descricaoCampo = "Nome", campoConsulta = "principio_ativo")
-	@Column(nullable = true)
-	private String principio_ativo;
+	private String descricao_prod;	
 
 	@Column(nullable = true)
 	private String serie_prod;
 
 	@Column(nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date prod_datacadastro = new Date();
-	
-	
-
-	
+	private Date prod_datacadastro = new Date();	
 
 	@Version
 	@Column(name = "versionNum")
@@ -95,13 +87,6 @@ public class Produto implements Serializable {
 		this.descricao_prod = descricao_prod;
 	}
 
-	public String getPrincipio_ativo() {
-		return principio_ativo;
-	}
-
-	public void setPrincipio_ativo(String principio_ativo) {
-		this.principio_ativo = principio_ativo;
-	}
 
 	public String getSerie_prod() {
 		return serie_prod;
@@ -171,7 +156,7 @@ public class Produto implements Serializable {
 	public String toString() {
 		return "Produto [prod_codigo=" + prod_codigo + ", prod_nome="
 				+ prod_nome + ", prod_tipo=" + prod_tipo + ", descricao_prod="
-				+ descricao_prod + ", principio_ativo=" + principio_ativo
+				+ descricao_prod + ", principio_ativo="
 				+ ", serie_prod=" + serie_prod + ", prod_datacadastro="
 				+ prod_datacadastro + ", fabri_prod=" + fabri_prod
 				+ ", data_atual=" + data_atual + ", validade_prod="
