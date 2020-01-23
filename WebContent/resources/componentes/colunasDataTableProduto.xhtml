@@ -36,10 +36,10 @@
 
 <p:column styleClass="estiloIdTipo">
 	<center>
-		<f:facet name="header" >
+		<f:facet name="header">
 			<h:outputText value="Tipo" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.prod_tipo}" 
+		<h:outputText value="#{objeto.prod_tipo}"
 			style="#{objeto.invalido ?  'color: red' : ''}" />
 	</center>
 </p:column>
@@ -58,23 +58,31 @@
 </p:column>
 
 <p:column styleClass="estiloIdCadastro5">
+<center>
+	<f:facet name="header">
+		<h:outputText value="Vencendo" styleClass="cabecalho" />
+	</f:facet>
+	<h:graphicImage library="img" name="venceu.gif"
+		rendered="#{objeto.invalido}" styleClass="bordaGif" />
+</center>
+</p:column>
+
+
+<p:column styleClass="estiloIdCadastro5">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Validade" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-			<h:graphicImage library="img" name="venceu.gif"
-				rendered="#{objeto.invalido}" styleClass="bordaGif" />	
 		
 		<h:outputText value="#{objeto.validade_prod}"
 			style="#{objeto.invalido ?  'color: red' : ''}">
-						
-				<h:outputText value="--" style="color:#F5F5DC;"	/>
+
+			<h:outputText value="--" style="color:#F5F5DC;" />
 			<f:convertDateTime pattern="dd/MM/yyyy" />
 		</h:outputText>
-</center>
-
-	
+	</center>
 </p:column>
+
 
 <sec:ifAnyGranted roles="PRODUTO_EXCLUIR, ADMIN">
 	<p:column style="width:50px;">

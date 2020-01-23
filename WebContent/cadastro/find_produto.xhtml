@@ -9,8 +9,6 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-
-
 <ui:composition template="/templates/templatePrincipal.xhtml">
 	<ui:define name="corpo">
 		<util:pesquisa managedBeanView="#{produtoBeanView}"
@@ -22,49 +20,42 @@
 		
 		<h:form>
 				<p:dialog id="basicModalAvisoVencidosVencer" visible="true"
-					widgetVar="dlg2" modal="true" height="150"
+					widgetVar="dlg2" modal="true" height="250"
 					style="background:#F5F5DC;" width="470px" resizable="false"
 					draggable="false">
 
 				<center>
 						<h:outputText value="  ATENÇÃO!  " styleClass="bordaGif3"> 							
-							<h:graphicImage library="img" name="hojeten.gif"
-								style="	width:38px;" />	<h:outputText value=" -- " style="color:#F5F5DC;" 
-								/>
-						</h:outputText> <h:outputText value=" -- " style="color:#F5F5DC;" 
-								/> <h:graphicImage library="img" name="hojeten.gif"
-								style="	width:38px;" /></center>
-				
-					<p />
+						<h:graphicImage library="img" name="hojeten.gif" style="width:38px;" />	
+						
+						<h:outputText value=" -- " style="color:#F5F5DC;"/>
+						</h:outputText> 
+						
+						<h:outputText value=" -- " style="color:#F5F5DC;" /> 
+						
+						<h:graphicImage library="img" name="hojeten.gif" style="width:38px;" />
+				</center><p/>
 
 
 					<hr style="height: 2px; border: none; color: #000; background-color: #8FBC8F;
-						 margin-top: 0px; margin-bottom: 0px;" />
-					<br />
+						 margin-top: 0px; margin-bottom: 0px;" /><br/>
 
 
-					<center>
-						<h:outputText
-							value="Verifique os prazos de validade dos medicamentos! "
+					<center>							
+							<h:outputText
+							value="1 - Os produtos que estão em vermelho e com o relógio, irão VENCER!"
 							styleClass="bordaGif2" />
-					</center>
-					<br />
+							<br/><br/>
+							
+							<h:outputText
+							value="2 - Verifique na coluna ( 'VALIDADE' ) os prazos dos produtos! "
+							styleClass="bordaGif2" />
+					</center><br/>
 
-					<hr
-						style="height: 2px; border: none; color: #000; background-color: #8FBC8F;
-						 margin-top: 0px; margin-bottom: 0px;" />
-					<br />
-
-
-
+					<hr style="height: 2px; border: none; color: #000; background-color: #8FBC8F;
+						 margin-top: 0px; margin-bottom: 0px;" /><br/>
 				</p:dialog>
-			</h:form>
-	
-	
-
-		
+			</h:form>	
 	</ui:define>
-	
-	
 </ui:composition>
 </html>

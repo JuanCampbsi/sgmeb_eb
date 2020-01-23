@@ -527,7 +527,7 @@ input[type=submit] {
 	font-face: sans-serif;
 	font-size: 16px;
 	background:	#FFD700;
-	border: 1px solid #000;
+	
 }
 
 .bordaGif3 {
@@ -592,7 +592,7 @@ input[type=submit] {
 	font-face: Roboto;
 	font-variant: normal;	
 	top: 7px;
-	width:150px;
+	width:70px;
 	
 }
 
