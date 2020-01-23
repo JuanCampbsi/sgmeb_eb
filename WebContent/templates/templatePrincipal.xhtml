@@ -76,8 +76,12 @@
 			<div id="container">
 				<div id="topo">
 					<span style="position: absolute; left: -10px; top: -15px"
-						id="spanLogo"> <h:graphicImage library="img"
-							name="image.png" id="logoImg" styleClass="bordaImagem" />
+						id="spanLogo">
+						 <h:graphicImage library="img"
+							name="image.png" id="logoImg" styleClass="bordaImagem" 
+							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"/>
+							
+							
 					</span> <span id="dadoslogin"> Usuário:
 						#{entidadeBeanView.entidadeLogadoSecurity} <br id="quebraUser" />
 						Último login: <h:outputLabel

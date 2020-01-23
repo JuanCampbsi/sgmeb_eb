@@ -13,11 +13,16 @@
 
 		<h:form id="formCadastro" prependId="false">
 			<c:set var="isCadastro" value="true" scope="view" />
-			<p:panel header="Cadastro de Usuario" id="panelCadastro"
+			<p:panel  id="panelCadastro"
 				styleClass="estiloIdCadastro">
+				
+				<br/>
+				<h:outputText  value="Cadastro de Usuário"  styleClass="estiloIdCadastro3"/><br/>
+				<br/><hr style="height:2px; border:none; color:#000; 
+				background-color:#8FBC8F; margin-top: 0px; margin-bottom: 0px;"/>
 
 				<h:panelGrid id="gridUsuario" columns="3" style="margin-bottom:20px"
-					cellpadding="5">
+					cellpadding="5" styleClass="estiloIdCadastro">
 					<h:outputLabel for="id" value="Código : " id="labelId" />
 					<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true"
 						value="#{usuarioBeanView.objetoSelecionado.ent_codigo}" />
@@ -125,11 +130,11 @@
 
 					<p:fieldset legend="Usuário" styleClass="estiloIdCadastro2">
 					
-						
+						<center>
 						<div class="campo">
 						<p>
 						<h:outputLabel for="ent_login" value="Login *:  " id="labelLogin" />
-						<p:inputText id="ent_login" maxlength="20" styleClass="campo2"
+						<p:inputText id="ent_login" maxlength="20" styleClass="campo3"
 							value="#{usuarioBeanView.objetoSelecionado.ent_login}"
 							required="true" requiredMessage="Informe o campo login." />
 						<p:message for="ent_login" />
@@ -144,12 +149,8 @@
 							value="#{usuarioBeanView.objetoSelecionado.ent_senha}"
 							required="true" requiredMessage="Informe o campo senha." />
 						<p:message for="ent_senha" />
-						</p></div>
+						</p></div></center>
 						
-
-
-					
-
 
 						<h:outputLabel for="ent_mudarsenha" value="Mudar senha : "
 							id="labelMudarSenha" style="width:300px;" />
@@ -158,13 +159,9 @@
 							value="#{usuarioBeanView.objetoSelecionado.ent_mudarsenha}" />
 
 						<p:message for="ent_mudarsenha" />
-
+						<br/>
 					</p:fieldset>
-
-
-
-
-
+					
 
 					<h:outputLabel />
 				</h:panelGrid>

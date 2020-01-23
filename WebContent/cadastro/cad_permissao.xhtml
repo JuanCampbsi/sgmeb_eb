@@ -12,8 +12,12 @@
 		<ui:define name="corpo">
 		<sec:ifAnyGranted roles="ADMIN">	
 			<h:form id="formCadastro" prependId="false" >
-					<p:panel header="Cadastro de Permissões" id="panelCadastro" 	styleClass="estiloIdCadastro">
-						<h:panelGrid id="gridPermissoes" columns="5">
+					<p:panel  id="panelCadastro" 	styleClass="estiloIdCadastro">
+					
+					<h:outputText  value="Permissões de Usuários"  styleClass="estiloIdCadastro3"/><br/>
+				<br/><hr style="height:2px; border:none; color:#000; 
+				background-color:#8FBC8F; margin-top: 0px; margin-bottom: 0px;"/><br/>
+						<h:panelGrid id="gridPermissoes" columns="5">					
 							<h:graphicImage library="img" name="cadeado_16x16.png" styleClass="bordaImagem" />
 							<h:outputLabel value="Login: "/>
 							<p:inputText value="#{usuarioBeanView.objetoSelecionado.ent_login}" readonly="true"/>

@@ -14,8 +14,14 @@
 	
 		<h:form id="formCadastro" prependId="false">
 			<c:set var="isCadastro" value="true" scope="view" />
-			<p:panel header="Cadastro de Paciente" id="panelCadastro"
+			<p:panel  id="panelCadastro"
 				styleClass="estiloIdCadastro">
+				
+				<br/>
+				<h:outputText  value="Cadastro de Paciente"  styleClass="estiloIdCadastro3"/>
+				<br/><br/><hr style="height:2px; border:none; color:#000;
+				 background-color:#8FBC8F; margin-top: 0px; margin-bottom: 0px;"/><br/>
+				
 
 				<h:panelGrid id="gridPaciente" columns="3"
 					style="margin-bottom:10px" cellpadding="5">

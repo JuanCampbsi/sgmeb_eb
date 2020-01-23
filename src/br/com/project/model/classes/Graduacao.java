@@ -13,8 +13,6 @@ import javax.persistence.Version;
 
 import org.hibernate.envers.Audited;
 
-import br.com.project.annotation.IdentificaCampoPesquisa;
-
 @Audited
 @Entity
 @Table(name = "graduacao")
@@ -23,12 +21,12 @@ public class Graduacao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "grad_codigo")
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "grad_seq")
 	private Long grad_codigo;	
 	
-	
+
 	@Column(nullable = true)
 	private  String grad_grad;
 	

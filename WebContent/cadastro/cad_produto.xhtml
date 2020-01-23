@@ -12,8 +12,17 @@
 	<ui:define name="corpo">
 		<h:form id="formCadastro" prependId="false">
 			<c:set var="isCadastro" value="true" scope="view" />
-			<p:panel header="Cadastro de Produto" id="panelCadastro"
+			<p:panel id="panelCadastro"
 				styleClass="estiloIdCadastro">
+				
+			<br/>
+				<h:outputText  value="Cadastro de Produto"  styleClass="estiloIdCadastro3"/>
+				<br/><br/><hr style="height:2px; border:none; color:#000;
+				 background-color:#8FBC8F; margin-top: 0px; margin-bottom: 0px;"/><br/>
+				
+				
+
+
 
 				<h:panelGrid id="gridProduto" columns="3">
 					<h:outputLabel for="id" value="Código : " id="labelId" />
@@ -74,7 +83,8 @@
 						requiredMessage="Informe o campo de Validade do medicamento."
 						navigator="true" id="labelValid"
 						value="#{produtoBeanView.objetoSelecionado.validade_prod}" />
-				</h:panelGrid>
+						
+				</h:panelGrid><tr/><br/>
 			</p:panel>
 			<div class="espacoBranco" />
 
@@ -87,7 +97,7 @@
 		</h:form>
 
 		<script type="text/javascript" charset="UTF-8">
-			addFocoAoCampo('prodDescricao');
+			addFocoAoCampo('prodPativo');
 			gerenciaTeclaEnter();
 		</script>
 

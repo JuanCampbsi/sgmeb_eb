@@ -42,7 +42,7 @@ public class Entidade implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "ent_codigo", principal = 1)
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "entidade_seq")
 	private Long ent_codigo;
@@ -91,6 +91,7 @@ public class Entidade implements Serializable {
 	@Column(nullable = true)
 	private String ent_tipo;
 
+	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "graduacao.grad_codigo", principal = 1)
 	@Basic
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "graduacao")
