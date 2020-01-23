@@ -174,7 +174,20 @@
 						<p:menuitem value="Usuários" id="permissaousuarios" />					 
 						 </p:submenu> -->
 
-
+						<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">
+							<p:submenu label="Manual" id="subMenuManual"
+								styleClass="meumenu">
+								
+								<p:menuitem value="Usuário Padrão" id="menumanualuserpadrao"
+							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"
+							ajax="true" />
+							
+							<p:menuitem value="Usuário Administrador" id="menumanual"
+							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"
+							ajax="true" />
+								
+								
+								</p:submenu></sec:ifAnyGranted>
 
 
 
@@ -185,9 +198,7 @@
 						<p:menuitem value="Alterar senha" id="menualterarsenha"
 							onclick="alterarSenha('#{request.contextPath}');" ajax="true" />
 							
-							<p:menuitem value="Manual" id="menumanual"
-							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"
-							ajax="true" />
+							
 
 
 						<p:menuitem value="Início" id="menuinicio"
