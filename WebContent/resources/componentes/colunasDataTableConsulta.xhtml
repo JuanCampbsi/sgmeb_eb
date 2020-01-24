@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+
+<p:column  styleClass="estiloIdCadastro">
+	<center>
+		<f:facet name="header">
+			<h:outputText value="Código" styleClass="cabecalho"></h:outputText>
+		</f:facet>
+		<h:outputText value="#{objeto.ent_codigo}" />
+	</center>
+</p:column>
+
+<p:column  styleClass="estiloIdCadastro">
+	<center>
+		<f:facet name="header">
+			<h:outputText value="Nome Completo" styleClass="cabecalho"></h:outputText>
+		</f:facet>
+		<h:outputText value="#{objeto.ent_nome}" />
+	</center>
+</p:column>
+
+<p:column  styleClass="estiloIdCadastro">
+	<center>
+		<f:facet name="header">
+			<h:outputText value="Nome de Guerra" styleClass="cabecalho"></h:outputText>
+		</f:facet>
+		<h:outputText value="#{objeto. ent_n_guerra}" />
+	</center>
+</p:column>
+
+<p:column  styleClass="estiloIdCadastro">
+	<center>
+		<f:facet name="header">
+			<h:outputText value="Posto/Grad" styleClass="cabecalho"></h:outputText>
+		</f:facet>
+		<h:outputText value="#{objeto.graduacao.grad_grad}" />
+	</center>
+</p:column>
+
+<sec:ifAnyGranted roles="PACIENTE_EXCLUIR, ADMIN">
+	<p:column style="width:50px;">
+		<center>
+			<f:facet name="header">
+				<h:outputText value="Excluir" styleClass="cabecalho"></h:outputText>
+			</f:facet>
+
+			<c:choose>
+				<c:when test="${isCadastro == false}">
+					<p:commandLink action="#{entidadeBeanView.excluir}"
+						id="buttonColunaExcluir" ajax="true" immediate="true"
+						partialSubmit="true" process="@this" update="tableResult"
+						onfocus="addFocoAoCampo('cidadeNome');"
+						onclick="if(!confirm('Confirma a exclusão da cidade : #{objeto.ent_nome}?')) return false;">
+						<h:graphicImage library="img" name="excluir16.png"
+							styleClass="bordaImagem" />
+
+						<f:setPropertyActionListener
+							target="#{entidadeBeanView.objetoSelecionado}" value="#{objeto}" />
+					</p:commandLink>
+				</c:when>
+				<c:otherwise>
+					<p:commandLink action="#{entidadeBeanView.excluir}"
+						id="buttonColunaExcluir" ajax="false" immediate="true"
+						partialSubmit="true" process="@this" update="tableResult"
+						onfocus="addFocoAoCampo('pacienteNome');"
+						onclick="if(!confirm('Confirma a exclusão do Paciente : #{objeto.ent_nome}?')) return false;">
+						<h:graphicImage library="img" name="excluir16.png"
+							styleClass="bordaImagem" />
+
+						<f:setPropertyActionListener
+							target="#{entidadeBeanView.objetoSelecionado}" value="#{objeto}" />
+					</p:commandLink>
+				</c:otherwise>
+			</c:choose>
+		</center>
+	</p:column>
+</sec:ifAnyGranted>
+
+<sec:ifAnyGranted roles="PACIENTE_EDITAR, ADMIN">
+	<p:column style="width:50px;">
+		<center>
+			<f:facet name="header">
+				<h:outputText value="Editar" styleClass="cabecalho"></h:outputText>
+			</f:facet>
+			<p:commandLink immediate="true" action="#{entidadeBeanView.editar}"
+				ajax="true" id="editarPaciente"
+				oncomplete="addFocoAoCampo('cidadeNome');">
+				<h:graphicImage library="img" name="editar16.png"
+					styleClass="bordaImagem" />
+				<f:setPropertyActionListener value="#{objeto}"
+					target="#{entidadeBeanView.objetoSelecionado}" />
+				<f:param name="entidadeEdit" value="#{objeto.ent_codigo}" />
+			</p:commandLink>
+		</center>
+	</p:column>
+</sec:ifAnyGranted>
+</html>

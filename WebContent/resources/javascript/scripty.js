@@ -21,6 +21,134 @@ function validaDescricao(descricao) {
 	}
 }
 
+/**
+ * add Paciente selecionada na tela de consulta
+ * 
+ * @param objeto
+ */
+function addPacienteFunc(objeto) {
+	var pacienteObj = JSON.parse(objeto);
+	$("#ent_codigo").val(pacienteObj.ent_codigo);
+	$("#ent_nome").val(validaDescricao(pacienteObj.ent_nome));
+	 addPacienteFunce(''+pacienteObj.ent_codigo);
+}
+
+/**
+ * Add Paciente selecionada na entidade sendo cadastrada
+ * 
+ * @param id
+ */
+function addPacienteFunc(id) {
+	if (id.trim() != '') {
+		 $.get("addPacienteFunc?entCodigo=" + id);
+	}
+} 
+
+/**
+ * Carrega um array global com os ids de todos os componentes da pagina Para ter
+ * faciliades em obtencao de valores dos componentes bem como trabalhar com ajax
+ */
+function carregarIdElementosPagina() {
+	 arrayIdsElementsPage = new Array;
+	 for (form = 0 ; form <= document.forms.length; form++){
+		 var formAtual = document.forms[form];
+		 if (formAtual != undefined) {
+			 for (i = 0; i< document.forms[form].elements.length; i++){
+				 if(document.forms[form].elements[i].id != '') {
+					 arrayIdsElementsPage[i] = document.forms[form].elements[i].id;
+				 }
+			 }	
+		 }
+	 }
+}
+
+/**
+ * Retorno o valor do id do componente dentro do documento html passando como
+ * parametro a descri��o do id declarada em jsf
+ * 
+ * @param id
+ */
+function getValorElementPorId(id) {
+	 carregarIdElementosPagina();
+	 for (i = 0; i< arrayIdsElementsPage.length; i++){
+		 var valor =  ""+arrayIdsElementsPage[i];
+		 if (valor.indexOf(id) > -1) {
+			return valor;
+	}
+  }	
+	 return idundefined;
+}
+
+function permitirApenasNumero(id) {
+	var id = getValorElementPorIdJQuery(id);
+	$(id).keypress(permitNumber);
+}
+
+function alterarSenha(context) {
+	 statusDialog.show();
+	 	document.location =	 context + "/cadastro/alterar_senha.jsf";
+	 statusDialog.hide();
+}
+
+function invocaAppletFileLocal(context) {
+	var url = context + "/applet/ler_file_local.jsp"; 
+
+	var title = "Lendo arquivo local...";
+	var w = "220";
+	var h = "200";
+    var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
+    var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
+
+    width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+    height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+    var left = ((width / 2) - (w / 2)) + dualScreenLeft;  
+    var top = ((height / 2) - (h / 2)) + dualScreenTop;  
+    window.open(url, title, 'scrollbars=true, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+}
+
+function respostaApplet(respostaProperties) {
+	respostaPropertiesElement = document.getElementById("respostaPropertiesElement");
+	if (respostaProperties != ''){
+		respostaPropertiesElement.value = respostaProperties;
+	}
+	// Faz qualquer coisa aqui
+}
+
+function executeApplet(context) {
+	contextApp = context;
+	var attributes = {
+		code : 'JalisApplet.class',
+		archive : 'jalisApplet.jar',
+		codebase : context + '/applet/',
+		type : 'applet',
+		name : 'jalisApplet',
+		width : 0,
+		height : 0
+	};
+	var parameters = {
+		parametroApplet : 'parametroApplet teste valor',
+		Permissions : 'all-permissions'
+	};
+	var version = '1.6';
+	deployJava.runApplet(attributes, parameters, version);
+}
+
+
+/**
+ * Adiciona foco ao campo passado como paramentro
+ * 
+ * @param campo
+ */
+function addFocoAoCampo(campo) {
+	var id = getValorElementPorId(campo);
+	if (id != idundefined) {
+		document.getElementById(getValorElementPorId(id)).focus();
+	}
+}
+
+
+
 // invalida a sess�o do spring security
 function logout(contextPath) {
 

@@ -95,4 +95,3 @@ public interface InterfaceCrud<T> extends Serializable {
 	
 	 List<T> findListByQueryDinamica(String query, int iniciaNoRegistro, int maximoResultado) throws Exception; 
 }
-

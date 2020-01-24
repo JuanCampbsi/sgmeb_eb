@@ -36,6 +36,11 @@ public enum Permissao {
 	PACIENTE_EDITAR("PACIENTE_EDITAR", "Paciente - Editar"),
 	PACIENTE_EXCLUIR("PACIENTE_EXCLUIR", "Paciente - Excluir"),
 	
+	MEDICO_ACESSAR("MEDICO_ACESSAR", "Medico - Acessar"),
+	MEDICO_NOVO("MEDICO_NOVO", "Medico - Novo"),
+	MEDICO_EDITAR("MEDICO_EDITAR", "Medico - Editar"),
+	MEDICO_EXCLUIR("MEDICO_EXCLUIR", "Medico - Excluir"),
+	
 	//GERA RELATORIO ESTOQUE
 	ESTOQUE_GERAR("ESTOQUE_GERAR", "Estoque - Gerar"),
 	

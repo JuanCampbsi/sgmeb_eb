@@ -293,9 +293,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	}
 
 	/*public TipoCadastro getTipoEntidadeTemp() {
-
 		String tipoEntidade = null;
-
 		if (htmlInputHidden == null) {
 			return null;
 		}
@@ -303,23 +301,19 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 				.getAttributes().isEmpty())) {
 			return null;
 		}
-
 		if (htmlInputHidden.getAttributes() != null
 				&& htmlInputHidden.getAttributes().isEmpty()) {
 			return null;
 		}
-
 		try {
 			tipoEntidade = (String) htmlInputHidden.getAttributes().get(
 					"tipoEntidadeTemp");
 		} catch (Exception e) {
 			// execeção omitida
 		}
-
 		if (tipoEntidade == null) {
 			return null;
 		}	
-
 		if (tipoEntidade.equals(TipoCadastro.TIPO_CADASTRO_USUARIO.name())) {
 			return TipoCadastro.TIPO_CADASTRO_USUARIO;
 		} else if (tipoEntidade.equals(TipoCadastro.TIPO_CADASTRO_PRODUTO

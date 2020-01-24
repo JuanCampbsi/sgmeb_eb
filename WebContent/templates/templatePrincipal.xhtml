@@ -209,6 +209,12 @@
 								
 								
 								</p:submenu></sec:ifAnyGranted>
+								
+						<sec:ifAnyGranted roles="MEDICO_ACESSAR, ADMIN">		
+						<p:menuitem value="Realizar Consulta" id="realizaConsulta"
+							onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_consulta')"
+							ajax="true" />
+							</sec:ifAnyGranted>
 
 
 

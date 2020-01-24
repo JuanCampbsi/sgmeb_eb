@@ -148,6 +148,8 @@
 	<bean id="srvReceituario" class="br.com.srv.implementacao.SrvReceituarioImpl" />
 	<bean id="srvGraduacao" class="br.com.srv.implementacao.SrvGraduacaoImpl" />
 	<bean id="srvProduto" class="br.com.srv.implementacao.SrvProdutoImpl" />
+	<bean id="srvConsulta" class="br.com.srv.implementacao.SvrConsultaImpl" />
+	
 	
 
 </beans>

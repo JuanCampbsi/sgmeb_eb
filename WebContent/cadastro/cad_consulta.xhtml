@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/componentes"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/templatePrincipal.xhtml">
+	<ui:define name="corpo">
+		<h:form id="formCadastro" prependId="false">
+			<c:set var="isCadastro" value="true" scope="view" />
+			<p:panel id="panelCadastro"
+				styleClass="estiloIdCadastro">
+				
+			
+				<h:outputText  value="Dados da Consulta"  styleClass="estiloIdCadastro3"/>
+				<br/><hr style="height:2px; border:none; color:#000;
+				 background-color:#8FBC8F; margin-top: 0px; margin-bottom: 0px;"/><br/>
+				
+				
+
+
+
+				<h:panelGrid id="gridConsulta" columns="3">
+					<h:outputLabel for="idconsulta" value="Código" id="labelId" />
+					<p:inputText id="idconsulta" styleClass="estiloIdCastro"
+						value="#{consultaBeanView.objetoSelecionado.cons_id}"
+						disabled="true" />
+					<h:outputLabel />
+					
+								
+					<p:column>
+						<p:row>
+							<h:outputLabel for="pes_codigo" value="Nome : "
+								id="labelIdBairro" />
+						</p:row>
+					</p:column>
+						<p:column>
+						<p:row>
+							<p:inputText id="pes_codigo" styleClass="estiloIdCastro"
+								onblur="pesquisarFilialPerderFoco(this.value);addPacienteFunc(this.value);"
+								value="#{consultaBeanView.objetoSelecionado.ent_codigo.ent_nome}"
+								immediate="true" required="false"
+								requiredMessage="Informe o nome." />
+						
+							<p:commandButton id="buttonPesquisaPaciente" icon="imgPesquisa"
+								ajax="true" immediate="false" 
+								actionListener="#{entidadeBeanView.setarVariaveisNulas}"
+								oncomplete="entidadeDialog.show();"
+								update=":formTemplate:entidadeDialog"								
+								process="@this" styleClass="buttonPesquisa" />
+						
+						
+							<p:inputText id="pac_descricao" readonly="true" immediate="true"
+								value="#{consultaBeanView.objetoSelecionado.ent_codigo.ent_nome}"
+								required="false" requiredMessage="Informe o campo nome."
+								style="width: 350px;" />
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:message for="pes_codigo" />
+						</p:row>
+					</p:column>
+					
+			
+
+				<!--
+				
+				<h:outputLabel id="labelPativo" for="cons_nomee"
+						value="Nome:  " styleClass="estiloIdCadastro" />
+					<p:inputText id="cons_nomee" styleClass="estyleInputNome"
+						required="true" maxlength="100"
+						requiredMessage="Informe o campo Nome do Produto."
+						value="#{produtoBeanView.objetoSelecionado.prod_nome}" />
+					<p:message for="cons_nomee" />
+				
+				
+				  -->
+					
+
+				
+				</h:panelGrid><tr/><br/>
+				<hr style="height:2px; border:none; color:#000; 
+				background-color:#8FBC8F; margin-top: 0px; margin-bottom: 0px;"/><br/><br/>
+			</p:panel>
+			<div class="espacoBranco" />
+
+			<util:botoesCrud managedBeanView="#{produtoBeanView}"
+				camposReload=":formTemplate:msg, tableResult"
+				botaoNovo="#{contextoBean.possuiAcesso('MEDICO_NOVO', 'ADMIN')}"
+				botaoSalvar="#{contextoBean.possuiAcesso('MEDICO_NOVO', 'ADMIN') and consultaBeanView.objetoSelecionado.cons_id == null}"
+				botaoAtualizar="#{contextoBean.possuiAcesso('MEDICO_EDITAR', 'ADMIN') and consultaBeanView.objetoSelecionado.cons_id != null}"
+				botaoExcluir="#{contextoBean.possuiAcesso('MEDICO_EXCLUIR', 'ADMIN')}" />
+		</h:form>
+
+		<script type="text/javascript" charset="UTF-8">
+		addFocoAoCampo('ent_nome');	
+		gerenciaTeclaEnter();
+		</script>
+
+		<div class="espacoBranco" />
+
+		<p:dataTable id="tableResult" value="#{consultaBeanView.list.list}"
+			rendered="#{consultaBeanView.list.list.size() > 0}" var="objeto"
+			rows="10" paginatorPosition="bottom" paginator="true"
+			emptyMessage="Não existem valores para exibição." lazy="true"
+			paginatorTemplate=" {FirstPageLink}
+								   {PreviousPageLink} {PageLinks} 
+	 							   {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+			<ui:include
+				src="/resources/componentes/colunasDataTableConsulta.xhtml" />
+
+		</p:dataTable>
+		
+				
+			<p:dialog widgetVar="entidadeDialog" id="entidadeDialog" 
+			modal="true" resizable="false" height="250" styleClass="estiloIdCadastro"
+			 appendToBody="false" dynamic="true" >
+			<h:outputText  value="Selecione Paciente"  styleClass="estiloDialog"/>
+			<util:pesquisa managedBeanView="#{consultaBeanView}" styleClass="estiloIdCadastro"
+				nomePesquisa="Pesquisar"
+				colunasGridDataTableList="/resources/componentes/colunasDataTablePaciente.xhtml"
+				exibirBotaoAdd="true" ocultaNovo="true"
+				funcaoJavaScript="entidadeDialog.hide(),addPacienteFunc('#{objeto.json}')">
+			</util:pesquisa>
+		</p:dialog>
+	</ui:define>
+</ui:composition>
+</html>

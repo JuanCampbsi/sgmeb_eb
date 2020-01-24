@@ -604,6 +604,15 @@ input[type=submit] {
 	
 	
 }
+
+.estiloDialog {
+	font-size: 18px;
+	font-face: Arial;
+	font-variant: normal;
+	color:#6B8E23;
+	font-weight: bold;
+}
+
 .estiloIdCadastro5 {
 	font-size: 12px;
 	font-face: Roboto;
@@ -926,4 +935,10 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	text-align: center;
 	font: 15px sans-serif;
 	font-weight: bold;
+}
+
+.cabecalho2{
+	text-align: center;
+	font: 12px sans-serif;
+	
 }
