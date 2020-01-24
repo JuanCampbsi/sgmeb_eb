@@ -41,18 +41,18 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 	@RequestMapping(value = "**/invalidar_session", method = RequestMethod.POST)
 	public void invalidateSessionContrala(HttpServletRequest httpServletRequest) throws Exception {
 		
-		String entLogadoSessao = null;
+		String userLogadoSessao = null;
 		
 		if (httpServletRequest.getUserPrincipal() != null){
-			 entLogadoSessao = httpServletRequest.getUserPrincipal().getName();
+			 userLogadoSessao = httpServletRequest.getUserPrincipal().getName();
 		}
 
-		if (entLogadoSessao == null || (entLogadoSessao != null && entLogadoSessao.trim().isEmpty())) {
-			entLogadoSessao = httpServletRequest.getRemoteUser();
+		if (userLogadoSessao == null || (userLogadoSessao != null && userLogadoSessao.trim().isEmpty())) {
+			userLogadoSessao = httpServletRequest.getRemoteUser();
 		}
 		
-		if (entLogadoSessao != null && !entLogadoSessao.isEmpty())
-			sessionController.invalidateSession(entLogadoSessao);
+		if (userLogadoSessao != null && !userLogadoSessao.isEmpty())
+			sessionController.invalidateSession(userLogadoSessao);
 	}
 
 	@RequestMapping(value = "/publico/atualizarBanco", method = RequestMethod.GET)

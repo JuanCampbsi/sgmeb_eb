@@ -60,10 +60,12 @@
 <p:column styleClass="estiloIdCadastro5">
 <center>
 	<f:facet name="header">
-		<h:outputText value="Vencendo" styleClass="cabecalho" />
+		<h:outputText value="Ações" styleClass="cabecalho" />
 	</f:facet>
 	<h:graphicImage library="img" name="venceu.gif"
 		rendered="#{objeto.invalido}" styleClass="bordaGif" />
+	<h:graphicImage library="img" name="setaverdadeiro.gif"
+		rendered="#{objeto.valido}" styleClass="bordaGif" />
 </center>
 </p:column>
 

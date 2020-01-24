@@ -15,14 +15,16 @@
 
 <h:body styleClass="bodycss">
 
-	<div id="imagemlogin">
-		<h:graphicImage library="img" name="keys.png"
-			styleClass="bordaImagem" />
+<div id="imagemlogin" style=" width:300px; top: 350px;"  >
+		<h:graphicImage library="img" name="keys.png" 
+			styleClass="bordamapa" />
 	</div>
+
 	
-		<div id="imagemlogin2">
-		<h:graphicImage library="img" name="eb.png"
-			styleClass="bordaImagem" />
+	
+		<div id="imagemlogin2" style=" width: 180px;">
+		<h:graphicImage library="img" name="image.png"
+			styleClass="bordalogin" />
 	</div>	
 
 	<div id="formlogin">
@@ -50,6 +52,10 @@
 
 		<div class="login-page">
 			<div class="form">
+			<div id="imagemlogin" style=" width:165px; top: 5px;">
+		<h:graphicImage library="img" name="logonovo.png" 
+			styleClass="bordapqd" />
+	</div>
 				<form id="formulario" method="post" name="formulario"
 					onsubmit="return validarSenhaLogin();" 
 					action="#{request.contextPath}/j_spring_security_check">
