@@ -54,12 +54,10 @@ public class CarregamentoLazyListForObject<T> extends LazyDataModel<T> {
 		return (List<T>) list;
 	}
 
-	public void setTotalRegistroConsulta(int totalRegistroConsulta,
-			String queryDeBuscaDeConsulta) {
+	public void setTotalRegistroConsulta(int totalRegistroConsulta, String queryDeBuscaDeConsulta) {
 		this.query = queryDeBuscaDeConsulta;
 		this.totalRegistroConsulta = totalRegistroConsulta;
 	}
-
 	
 	public List<T> getList() {
 		return list;

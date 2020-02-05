@@ -18,7 +18,7 @@ import br.com.project.model.classes.Produto;
 
 
 @Controller
-@Scope(value = "session")
+@Scope("session")
 @ManagedBean(name = "produtoBeanView")
 public class ProdutoBeanView extends BeanManagedViewAbstract {
 	private static final long serialVersionUID = 1L;

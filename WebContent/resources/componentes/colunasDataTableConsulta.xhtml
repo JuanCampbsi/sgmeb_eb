@@ -12,27 +12,21 @@
 <p:column  styleClass="estiloIdCadastro">
 	<center>
 		<f:facet name="header">
-			<h:outputText value="Código" styleClass="cabecalho"></h:outputText>
+			<h:outputText value="Código da Consulta" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.ent_codigo}" />
+		<h:outputText value="#{objeto.cons_id}" />
 	</center>
 </p:column>
 
-<p:column  styleClass="estiloIdCadastro">
+<p:column styleClass="estiloIdCadastro5">
 	<center>
 		<f:facet name="header">
-			<h:outputText value="Nome Completo" styleClass="cabecalho"></h:outputText>
+			<h:outputText value="Data" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.ent_nome}" />
-	</center>
-</p:column>
-
-<p:column  styleClass="estiloIdCadastro">
-	<center>
-		<f:facet name="header">
-			<h:outputText value="Nome de Guerra" styleClass="cabecalho"></h:outputText>
-		</f:facet>
-		<h:outputText value="#{objeto. ent_n_guerra}" />
+		
+		<h:outputText value="#{objeto.cons_data}">
+			<f:convertDateTime pattern="dd/MM/yyyy" />
+		</h:outputText>
 	</center>
 </p:column>
 
@@ -41,11 +35,23 @@
 		<f:facet name="header">
 			<h:outputText value="Posto/Grad" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.graduacao.grad_grad}" />
+		<h:outputText value="#{objeto.pessoa_codigo.graduacao.grad_grad}" />
 	</center>
 </p:column>
 
-<sec:ifAnyGranted roles="PACIENTE_EXCLUIR, ADMIN">
+<p:column  styleClass="estiloIdCadastro">
+	<center>
+		<f:facet name="header">
+			<h:outputText value="Nome de Guerra" styleClass="cabecalho"></h:outputText>
+		</f:facet>
+		<h:outputText value="#{objeto.pessoa_codigo.ent_n_guerra}" />
+	</center>
+</p:column>
+
+
+
+
+<sec:ifAnyGranted roles="MEDICO_EXCLUIR, ADMIN">
 	<p:column style="width:50px;">
 		<center>
 			<f:facet name="header">
@@ -54,29 +60,29 @@
 
 			<c:choose>
 				<c:when test="${isCadastro == false}">
-					<p:commandLink action="#{entidadeBeanView.excluir}"
+					<p:commandLink action="#{consultaBeanView.excluir}"
 						id="buttonColunaExcluir" ajax="true" immediate="true"
 						partialSubmit="true" process="@this" update="tableResult"
 						onfocus="addFocoAoCampo('cidadeNome');"
-						onclick="if(!confirm('Confirma a exclusão da cidade : #{objeto.ent_nome}?')) return false;">
+						onclick="if(!confirm('Confirma a exclusão da consulta : #{objeto.cons_id}?')) return false;">
 						<h:graphicImage library="img" name="excluir16.png"
 							styleClass="bordaImagem" />
 
 						<f:setPropertyActionListener
-							target="#{entidadeBeanView.objetoSelecionado}" value="#{objeto}" />
+							target="#{consultaBeanView.objetoSelecionado}" value="#{objeto}" />
 					</p:commandLink>
 				</c:when>
 				<c:otherwise>
-					<p:commandLink action="#{entidadeBeanView.excluir}"
+					<p:commandLink action="#{consultaBeanView.excluir}"
 						id="buttonColunaExcluir" ajax="false" immediate="true"
 						partialSubmit="true" process="@this" update="tableResult"
 						onfocus="addFocoAoCampo('pacienteNome');"
-						onclick="if(!confirm('Confirma a exclusão do Paciente : #{objeto.ent_nome}?')) return false;">
+						onclick="if(!confirm('Confirma a exclusão da consulta do Paciente : #{objeto.cons_id}?')) return false;">
 						<h:graphicImage library="img" name="excluir16.png"
 							styleClass="bordaImagem" />
 
 						<f:setPropertyActionListener
-							target="#{entidadeBeanView.objetoSelecionado}" value="#{objeto}" />
+							target="#{consultaBeanView.objetoSelecionado}" value="#{objeto}" />
 					</p:commandLink>
 				</c:otherwise>
 			</c:choose>
@@ -84,20 +90,20 @@
 	</p:column>
 </sec:ifAnyGranted>
 
-<sec:ifAnyGranted roles="PACIENTE_EDITAR, ADMIN">
+<sec:ifAnyGranted roles="MEDICO_EDITAR, ADMIN">
 	<p:column style="width:50px;">
 		<center>
 			<f:facet name="header">
 				<h:outputText value="Editar" styleClass="cabecalho"></h:outputText>
 			</f:facet>
-			<p:commandLink immediate="true" action="#{entidadeBeanView.editar}"
-				ajax="true" id="editarPaciente"
-				oncomplete="addFocoAoCampo('cidadeNome');">
+			<p:commandLink immediate="true" action="#{consultaBeanView.editar}"
+				ajax="true" id="editarConsulta"
+				oncomplete="addFocoAoCampo('consultaNome');">
 				<h:graphicImage library="img" name="editar16.png"
 					styleClass="bordaImagem" />
 				<f:setPropertyActionListener value="#{objeto}"
-					target="#{entidadeBeanView.objetoSelecionado}" />
-				<f:param name="entidadeEdit" value="#{objeto.ent_codigo}" />
+					target="#{consultaBeanView.objetoSelecionado}" />
+				<f:param name="consultaEdit" value="#{objeto.cons_id}" />
 			</p:commandLink>
 		</center>
 	</p:column>

@@ -143,20 +143,35 @@ public class ConsultaBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public String condicaoAndParaPesquisa() throws Exception {
-		return "";
+		return " ";
 	}
 	
-
 	@RequestMapping("**/addPacienteFunc")
-	public void addPaciente(@RequestParam Long entCodigo) throws Exception {	
-		if (entCodigo!= null && entCodigo > 0) {
-			
-				objetoSelecionado.setEnt_codigo(entidadeController
-						.findUninqueByProperty(Entidade.class, entCodigo,
-								"ent_codigo"));
+	public void addPacienteFunc(@RequestParam Long codEntidade) throws Exception  {
+		if (codEntidade != null && codEntidade > 0) {
+				Entidade entidade = entidadeController
+						.findPaciente(codEntidade);
+				objetoSelecionado.setPessoa_codigo(entidade != null ? entidade
+						: new Entidade());
+		}}
+	
+	/*
+	 * 
+	 * 
+	 * 
+	 * 
+	 * @RequestMapping("/addPacienteFunc")
+	public void addPacienteFunc(HttpServletResponse httpServletResponse
+			, @RequestParam(value = "codEntidade") Long codEntidade) throws Exception{
+		Entidade entidade = entidadeController.findById(Entidade.class, codEntidade);
+		if (entidade != null){
+			objetoSelecionado.setPessoa_codigo(entidade);
+			httpServletResponse.getWriter().write(entidade.getJson().toString());
 		}
 	}
-
+	*/
+	
+	
 	
 
 }

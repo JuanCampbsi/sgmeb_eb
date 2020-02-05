@@ -4,14 +4,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,9 +34,11 @@ import org.hibernate.annotations.CollectionOfElements;
 import org.hibernate.annotations.ForeignKey;
 import org.hibernate.annotations.Index;
 import org.hibernate.envers.Audited;
+import org.primefaces.json.JSONObject;
 
 import br.com.project.acessos.Permissao;
 import br.com.project.annotation.IdentificaCampoPesquisa;
+import br.com.project.enums.TipoCadastro;
 
 @Audited
 @Entity
@@ -88,8 +94,8 @@ public class Entidade implements Serializable {
 	@Column(nullable = true)
 	private String ent_altura;
 
-	@Column(nullable = true)
-	private String ent_tipo;
+	@Enumerated(EnumType.STRING)
+	private TipoCadastro ent_tipo;
 
 	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "graduacao.grad_codigo", principal = 1)
 	@Basic
@@ -201,16 +207,18 @@ public class Entidade implements Serializable {
 	 * @Column(name = "versionNum") private int versionNum;
 	 */
 
-	public String getEnt_tipo() {
-		return ent_tipo;
-	}
-
-	public void setEnt_tipo(String ent_tipo) {
-		this.ent_tipo = ent_tipo;
-	}
+	
 
 	public int getVersionNum() {
 		return versionNum;
+	}
+
+	public TipoCadastro getEnt_tipo() {
+		return ent_tipo;
+	}
+
+	public void setEnt_tipo(TipoCadastro ent_tipo) {
+		this.ent_tipo = ent_tipo;
 	}
 
 	public String getEnt_altura() {
@@ -264,7 +272,8 @@ public class Entidade implements Serializable {
 	public void setEnt_codigo(Long ent_codigo) {
 		this.ent_codigo = ent_codigo;
 	}
-
+	
+	
 	public String getEnt_login() {
 		return ent_login;
 	}
@@ -311,6 +320,13 @@ public class Entidade implements Serializable {
 
 	public void setEnt_ultimoacesso(Date ent_ultimoacesso) {
 		this.ent_ultimoacesso = ent_ultimoacesso;
+	}
+	
+	public JSONObject getJson() {
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("ent_codigo", ent_codigo);
+		map.put("ent_nome", ent_nome);
+		return new JSONObject(map);
 	}
 
 	@Override

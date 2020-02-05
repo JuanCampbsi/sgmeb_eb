@@ -3,6 +3,7 @@ package br.com.project.bean.view;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
+import javax.servlet.http.HttpServletResponse;
 
 import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
@@ -156,9 +158,24 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	
 	
 	@Override
-	public String condicaoAndParaPesquisa() throws Exception {
+	public String condicaoAndParaPesquisa() {
 		return "";
 	}
 	
 	
+	
+
+	
+	@RequestMapping("**/findEntidade")
+	public void findEntidade(HttpServletResponse httpServletResponse,
+			@RequestParam(value = "codEntidade") Long codEntidade)
+			throws Exception {
+		Entidade entidade = entidadeController.findPaciente(codEntidade);
+		if (entidade != null) {
+			httpServletResponse.getWriter()
+					.write(entidade.getJson().toString());
+		}
+
+	}
+
 }

@@ -13,6 +13,93 @@ function reloadPage() {
 
 }
 
+function invocaApplet(context) {
+	
+	   //Faz algo com ajax...
+	    
+		var url = context + "/applet/imprimir.jsp?impressoraImprimir=" + null;// passando null para pegar a padrão
+		
+		var title = "Imprimindo...";
+		var w = "150"; 
+		var h = "130";
+	    var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
+	    var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
+
+	    width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+	    height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+	    var left = ((width / 2) - (w / 2)) + dualScreenLeft;  
+	    var top = ((height / 2) - (h / 2)) + dualScreenTop;  
+	    window.open(url, title, 'scrollbars=true, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+}
+
+function processaDelete(e) {
+	
+	 
+	/*
+	 * var rows = document.getElementsByTagName('tr');
+	 * 
+	 * for(var x = 0, xLength = rows.length; x < xLength; x++) {
+	 * 
+	 * alert('rowIndex=' + rows[x].rowIndex);
+	 *  }
+	 */
+	
+	$(document).ready(function(){
+	     $("table>tbody>tr").each(function(index, elemento){
+	    	 
+	    	 var selecionado = $(this).attr('aria-selected'); 
+	    	 
+	    	 if(selecionado != undefined 
+	    			 && selecionado != 'undefined' 
+	    			 && selecionado === 'true' || selecionado === true){
+	    		 
+	    	
+	    		 //$(this).attr("onkeypress", "javascript:alert('kkk')");
+	    		// $(this).attr("onkeydown", "javascript:alert('kkk')");
+	    		 //$(this).attr("onkeyup", "javascript:alert('kkk')");
+	    		 //$(this).attr("ondblclick", "javascript:alert('kkk')");
+	    		 //alert($(this).attr('data-ri') + " - " + $(this).attr('data-rk')); 
+	    	 }
+//	         $(elemento).bind('click', function(){
+	             //$(this).css('background-color', 'red');
+	//         });
+	     });
+	});
+}
+
+
+function gerenciaTeclaEnter() {
+	$(document).ready(function() {
+		$('input').keypress(function(e) {
+			var code = null;
+			code = (e.keyCode ? e.keyCode : e.which);
+			return (code === 13) ? false : true;
+
+		});
+
+		$('input[type=text]').keydown(function(e) {
+			// Obter o próximo índice do elemento de entrada de texto
+			var next_idx = $('input[type=text]').index(this) + 1;
+
+			// Obter o número de elemento de entrada de texto em um documento html
+			var tot_idx = $('body').find('input[type=text]').length;
+
+			// Entra na tecla no código ASCII
+			if (e.keyCode === 13) {
+				if (tot_idx === next_idx)
+					// Vá para o primeiro elemento de texto
+					$('input[type=text]:eq(0)').focus();
+				else
+					// Vá para o elemento de entrada de texto seguinte
+					$('input[type=text]:eq(' + next_idx + ')').focus();
+			}
+		});
+	});
+
+}
+
+
 function validaDescricao(descricao) {
 	if (descricao === ' ' || descricao.trim() === '') {
 		return "Descrição não foi informada.";
@@ -21,28 +108,6 @@ function validaDescricao(descricao) {
 	}
 }
 
-/**
- * add Paciente selecionada na tela de consulta
- * 
- * @param objeto
- */
-function addPacienteFunc(objeto) {
-	var pacienteObj = JSON.parse(objeto);
-	$("#ent_codigo").val(pacienteObj.ent_codigo);
-	$("#ent_nome").val(validaDescricao(pacienteObj.ent_nome));
-	 addPacienteFunce(''+pacienteObj.ent_codigo);
-}
-
-/**
- * Add Paciente selecionada na entidade sendo cadastrada
- * 
- * @param id
- */
-function addPacienteFunc(id) {
-	if (id.trim() != '') {
-		 $.get("addPacienteFunc?entCodigo=" + id);
-	}
-} 
 
 /**
  * Carrega um array global com os ids de todos os componentes da pagina Para ter
@@ -448,76 +513,6 @@ function permitirApenasNumero(id) {
 	$(id).keypress(permitNumber);
 }
 
-function addDestinoSelecionadoMsg(objeto) {
-	var entObj = JSON.parse(objeto);
-	$("#usr_destino").val(entObj.ent_codigo);
-	$("#loginDestino").val(validaDescricao(entObj.ent_login));
-	addDestinoMsg('' + entObj.ent_codigo);
-}
-
-function addDestinoSelecionadoMsgDialog(objeto) {
-	var entObj = JSON.parse(objeto);
-	$("#usr_destinoMsgDialog").val(entObj.ent_codigo);
-	$("#loginDestinoMsgDialog").val(validaDescricao(entObj.ent_login));
-	addDestinoMsg('' + entObj.ent_codigo);
-
-	function pesquisarUserDestinoPerderFoco(id) {
-		if (id.trim() != '') {
-			statusDialog.show();
-			$("#loginDestino").val('');
-			$.get(
-					"findUserDestino?codEntidade=" + id,
-					function(resposta) {
-						if (resposta != 'erro' && resposta.trim() != '') {
-							var entidadeObj = JSON.parse(resposta);
-							$("#usr_destino").val(entidadeObj.ent_codigo);
-							$("#loginDestino").val(
-									validaDescricao(entidadeObj.ent_login));
-						}
-					}).always(function() {
-				statusDialog.hide();
-			});
-		}
-	}
-
-	function pesquisarUserDestinoPerderFocoDialog(id) {
-		if (id.trim() != '') {
-			statusDialog.show();
-			$("#loginDestinoMsgDialog").val('');
-			$.get(
-					"findUserDestino?codEntidade=" + id,
-					function(resposta) {
-						if (resposta != 'erro' && resposta.trim() != '') {
-							var entidadeObj = JSON.parse(resposta);
-							$("#usr_destinoMsgDialog").val(
-									entidadeObj.ent_codigo);
-							$("#loginDestinoMsgDialog").val(
-									validaDescricao(entidadeObj.ent_login));
-						}
-					}).always(function() {
-				statusDialog.hide();
-			});
-		}
-	}
-
-	function pesquisarEntidadePerderFoco(id) {
-		if (id.trim() != '') {
-			statusDialog.show();
-			$("#loginDestino").val('');
-			$.get(
-					"findEntidade?codEntidade=" + id,
-					function(resposta) {
-						if (resposta != 'erro' && resposta.trim() != '') {
-							var entidadeObj = JSON.parse(resposta);
-							$("#usr_destino").val(entidadeObj.ent_codigo);
-							$("#loginDestino").val(
-									validaDescricao(entidadeObj.ent_login));
-						}
-					}).always(function() {
-				statusDialog.hide();
-			});
-		}
-	}
 
 	function alterarSenha(context) {
 		statusDialog.show();
@@ -693,9 +688,73 @@ function addDestinoSelecionadoMsgDialog(objeto) {
 		alert(erro);
 	}
 	
+	function pesquisaUserDestinoPerderFocoDialog(codUser) {
+		if (codUser != ''){
+			$("#ent_codigo}").val('');			
+			$.get("buscarUsuarioDestinoMsg?codEntidade=" + codUser , function(resposta) {
+				if (resposta.trim() != ''){
+					var entidade = JSON.parse(resposta);
+					$("#ent_codigo").val(entidade.ent_codigo);					
+				}
+			});
+		}
+	}
+	/**
+	 * add Paciente selecionada na tela de consulta
+	 * 
+	 * @param objeto
+	 * 
+	 * 
+	 */
+	
+	function validaDescricao(descricao) {
+		if (descricao === ' ' || descricao.trim() === '') {
+			return "Descrição não foi informada.";
+		}
+		 else {
+			return descricao;
+		}
+	}
 	
 	
+	function addPacienteDialog(objeto) {		
+		var entObj = JSON.parse(objeto);
+		$("#pesCodigo").val(entObj.ent_codigo);
+		
+		addPacienteFunc(''+entObj.ent_codigo);
+		
+		
+	}
 	
 	
-}
+
+	/**
+	 * Add Paciente selecionada na entidade sendo cadastrada
+	 * 
+	 * @param id
+	 */
+	function addPacienteFunc(id) {
+		if (id.trim() != '') {
+			 $.get("addPacienteFunc?entCodigo=" + id);
+		}
+	} 
+
+	function pesquisarUserDestinoPerderFoco(id) {
+		if (id.trim() != '') {
+		 statusDialog.show();
+		 $("#pacDescricao").val('');
+		 $.get("findEntidade?codEntidade=" + id, function(resposta) {
+		        if (resposta != 'erro' && resposta.trim() != ''){
+		        	var entidadeObj = JSON.parse(resposta);
+		        	$("#pesCodigo").val(entidadeObj.ent_codigo);
+		        	$("#pacDescricao").val(validaDescricao(entidadeObj.ent_nome));
+		        }
+		   })
+		   .always(function() { 
+			   statusDialog.hide();
+			});
+		}
+	}
+	
+
 

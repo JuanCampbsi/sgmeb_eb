@@ -339,12 +339,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 
 		if (tipoEntidade == null) {
 			return null;
-		}
-
-		if (tipoEntidade.equals(TituloSituacao.TITULO_ABERTO.name())) {
-			return TituloSituacao.TITULO_ABERTO;
-		} else if (tipoEntidade.equals(TituloSituacao.TITULO_BAIXADO.name())) {
-			return TituloSituacao.TITULO_BAIXADO;
+		
 		} else {
 			return null;
 		}

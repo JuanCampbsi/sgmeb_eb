@@ -12,84 +12,149 @@
 	<ui:define name="corpo">
 		<h:form id="formCadastro" prependId="false">
 			<c:set var="isCadastro" value="true" scope="view" />
-			<p:panel id="panelCadastro"
-				styleClass="estiloIdCadastro">
-				
-			
-				<h:outputText  value="Dados da Consulta"  styleClass="estiloIdCadastro3"/>
-				<br/><hr style="height:2px; border:none; color:#000;
-				 background-color:#8FBC8F; margin-top: 0px; margin-bottom: 0px;"/><br/>
-				
-				
+			<p:panel id="panelCadastro" styleClass="estiloIdCadastro">
 
+
+				<h:outputText value="Dados da Consulta"
+					styleClass="estiloIdCadastro3" />
+				<br />
+				<hr style="height: 2px; border: none; color: #000; background-color: #8FBC8F; margin-top: 0px; margin-bottom: 0px;" />
+				
 
 
 				<h:panelGrid id="gridConsulta" columns="3">
+					<p:column>
+						<p:row>
 					<h:outputLabel for="idconsulta" value="Código" id="labelId" />
 					<p:inputText id="idconsulta" styleClass="estiloIdCastro"
 						value="#{consultaBeanView.objetoSelecionado.cons_id}"
 						disabled="true" />
 					<h:outputLabel />
+					</p:row>
+					</p:column>
 					
-								
+					<tr />
+					<tr />
 					<p:column>
 						<p:row>
-							<h:outputLabel for="pes_codigo" value="Nome : "
-								id="labelIdBairro" />
-						</p:row>
-					</p:column>
-						<p:column>
+					<h:outputLabel id="labelcad" for="nomecad"
+						value="Data da Consulta : " styleClass="estiloIdCadastro" />
+					<p:inputText id="ent_datacadastro" readonly="true"
+						value="#{consultaBeanView.objetoSelecionado.cons_data}">
+						<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss"
+							dateStyle="long" timeStyle="full" timeZone="GMT-03:00" />
+					</p:inputText>
+					</p:row></p:column>
+						<tr />
+					<tr />
+
+
+			
+					<p:column>
 						<p:row>
-							<p:inputText id="pes_codigo" styleClass="estiloIdCastro"
-								onblur="pesquisarFilialPerderFoco(this.value);addPacienteFunc(this.value);"
-								value="#{consultaBeanView.objetoSelecionado.ent_codigo.ent_nome}"
-								immediate="true" required="false"
-								requiredMessage="Informe o nome." />
-						
-							<p:commandButton id="buttonPesquisaPaciente" icon="imgPesquisa"
+							<h:outputText value="Nome: " />
+						</p:row>
+						<p:row>
+						<p:inputText id="pesCodigo" styleClass="estiloIdCastro"
+								onblur="addPacienteFunc(this.value);"
+								value="#{consultaBeanView.objetoSelecionado.pessoa_codigo.ent_codigo}"
+								immediate="false" required="true"
+								requiredMessage="Informe o nome Paciente." />
+							<p:commandButton id="buttonPesquisaDestino" icon="imgPesquisa"
 								ajax="true" immediate="false" 
 								actionListener="#{entidadeBeanView.setarVariaveisNulas}"
 								oncomplete="entidadeDialog.show();"
 								update=":formTemplate:entidadeDialog"								
 								process="@this" styleClass="buttonPesquisa" />
-						
-						
-							<p:inputText id="pac_descricao" readonly="true" immediate="true"
-								value="#{consultaBeanView.objetoSelecionado.ent_codigo.ent_nome}"
-								required="false" requiredMessage="Informe o campo nome."
+							<p:inputText id="pacDescricao" readonly="true" immediate="true"
+								value="#{consultaBeanView.objetoSelecionado.pessoa_codigo.ent_nome}"
+								required="true" requiredMessage="Informe o nome Paciente."
 								style="width: 350px;" />
+
+							<p:message for="pesCodigo" />
 						</p:row>
 					</p:column>
-					<p:column>
-						<p:row>
-							<p:message for="pes_codigo" />
-						</p:row>
-					</p:column>
-					
-			
 
-				<!--
-				
-				<h:outputLabel id="labelPativo" for="cons_nomee"
-						value="Nome:  " styleClass="estiloIdCadastro" />
-					<p:inputText id="cons_nomee" styleClass="estyleInputNome"
-						required="true" maxlength="100"
-						requiredMessage="Informe o campo Nome do Produto."
-						value="#{produtoBeanView.objetoSelecionado.prod_nome}" />
-					<p:message for="cons_nomee" />
-				
-				
-				  -->
+
+					<tr />
+					<tr />
+
+
+
+
+					<h:outputText value="Histórico Familiar: " />
+					<tr />
+
+					<p:inputTextarea rows="3" cols="30" counter="display_his"
+						maxlength="100" counterTemplate="{0} caracteres restantes."
+						autoResize="false" style="width:350px;"
+						value="#{consultaBeanView.objetoSelecionado.hist_cons}"
+						immediate="false" required="true"
+						requiredMessage="Informe o Histórico do Paciente." />
+					<tr />
+					<h:outputText id="display_his" />
+					<p:message for="display_his" />
+
+					<h:outputLabel /><h:outputLabel />
+					<p /><p />
+
+
+					<tr />
+					<br />
+
+
+					<h:outputText value="Situação " />
+					<tr />
+
+					<p:inputTextarea rows="3" cols="30" counter="display_sit"
+						maxlength="250" counterTemplate="{0} caracteres restantes."
+						autoResize="false" style="width:602px;"
+						value="#{consultaBeanView.objetoSelecionado.sit_paci}"
+						immediate="false" required="true"
+						requiredMessage="Informe a situação do paciente." />
+					<tr />
+					<h:outputText id="display_sit" />
+					<p:message for="display_sit" />
+					<tr />
+					<h:outputLabel /><h:outputLabel />
+					<p /><p />
+								
+
+					<tr />
+					<tr />
+					<br />
 					
 
-				
-				</h:panelGrid><tr/><br/>
-				<hr style="height:2px; border:none; color:#000; 
-				background-color:#8FBC8F; margin-top: 0px; margin-bottom: 0px;"/><br/><br/>
+					<h:outputText value="Prescrição " />
+					<tr />
+
+					<p:inputTextarea rows="5" cols="30" counter="display_pres"
+						maxlength="250" counterTemplate="{0} caracteres restantes."
+						autoResize="false" style="width:602px;"
+						value="#{consultaBeanView.objetoSelecionado.presc_paci}"
+						immediate="false" required="true"
+						requiredMessage="Informe a prescrição de medicamento." />
+					<tr />
+
+					<h:outputText id="display_pres" />
+					<p:message for="display_pres" />
+					
+					<tr />
+					<tr />
+					<br />
+
+
+				</h:panelGrid>
+				<tr />
+				<br />
+				<hr
+					style="height: 2px; border: none; color: #000; background-color: #8FBC8F; margin-top: 0px; margin-bottom: 0px;" />
+				<br />
+				<br />
 			</p:panel>
 			<div class="espacoBranco" />
 
-			<util:botoesCrud managedBeanView="#{produtoBeanView}"
+			<util:botoesCrud managedBeanView="#{consultaBeanView}"
 				camposReload=":formTemplate:msg, tableResult"
 				botaoNovo="#{contextoBean.possuiAcesso('MEDICO_NOVO', 'ADMIN')}"
 				botaoSalvar="#{contextoBean.possuiAcesso('MEDICO_NOVO', 'ADMIN') and consultaBeanView.objetoSelecionado.cons_id == null}"
@@ -98,8 +163,42 @@
 		</h:form>
 
 		<script type="text/javascript" charset="UTF-8">
-		addFocoAoCampo('ent_nome');	
-		gerenciaTeclaEnter();
+			addFocoAoCampo('ent_nome');
+			gerenciaTeclaEnter();
+			
+			function validaDescricao(descricao) {
+				if (descricao === ' ' || descricao.trim() === '') {
+					return "Descrição não foi informada.";
+				}
+				 else {
+					return descricao;
+				}
+			}
+			
+			
+			function addPacienteDialog(objeto) {		
+				var entObj = JSON.parse(objeto);
+				$("#pesCodigo").val(entObj.ent_codigo);
+				$("#pacDescricao").val(entObj.ent_nome);
+				addPacienteFunc(''+entObj.ent_codigo);
+				addPacienteFunc(''+entObj.ent_nome);
+				
+				
+			}			
+
+			/**
+			 * Add Paciente selecionada na entidade sendo cadastrada
+			 * 
+			 * @param id
+			 */
+			function addPacienteFunc(id) {
+				if (id.trim() != '') {
+					 $.get("addPacienteFunc?entCodigo=" + id);
+				}
+			} 
+
+		
+			
 		</script>
 
 		<div class="espacoBranco" />
@@ -116,17 +215,17 @@
 				src="/resources/componentes/colunasDataTableConsulta.xhtml" />
 
 		</p:dataTable>
-		
-				
-			<p:dialog widgetVar="entidadeDialog" id="entidadeDialog" 
+
+
+		<p:dialog widgetVar="entidadeDialog" id="entidadeDialog" 
 			modal="true" resizable="false" height="250" styleClass="estiloIdCadastro"
 			 appendToBody="false" dynamic="true" >
 			<h:outputText  value="Selecione Paciente"  styleClass="estiloDialog"/>
-			<util:pesquisa managedBeanView="#{consultaBeanView}" styleClass="estiloIdCadastro"
+			<util:pesquisa managedBeanView="#{entidadeBeanView}" styleClass="estiloIdCadastro"
 				nomePesquisa="Pesquisar"
 				colunasGridDataTableList="/resources/componentes/colunasDataTablePaciente.xhtml"
 				exibirBotaoAdd="true" ocultaNovo="true"
-				funcaoJavaScript="entidadeDialog.hide(),addPacienteFunc('#{objeto.json}')">
+				funcaoJavaScript="entidadeDialog.hide(),addPacienteDialog('#{objeto.json}')">
 			</util:pesquisa>
 		</p:dialog>
 	</ui:define>
