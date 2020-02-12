@@ -1,6 +1,7 @@
 package br.com.project.bean.view;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
+import br.com.project.bean.geral.EntidadeAtualizaSenhaBean;
 import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
+import br.com.project.enums.TipoCadastro;
 import br.com.project.geral.controller.EntidadeController;
 import br.com.project.model.classes.Entidade;
 
@@ -29,6 +32,27 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	private CarregamentoLazyListForObject<Entidade> list = new CarregamentoLazyListForObject<Entidade>();
 	private String url = "/cadastro/cad_paciente.jsf?faces-redirect=true";
 	private String urlFind = "/cadastro/find_paciente.jsf?faces-redirect=true";
+	private EntidadeAtualizaSenhaBean entidadeAtualizaSenhaBean = new EntidadeAtualizaSenhaBean();
+	
+	
+	@Override
+	public StreamedContent getArquivoReport() throws Exception {
+		super.setNomeRelatorioJasper("report_paciente");
+		super.setNomeRelatorioSaida("report_paciente");
+		List<?> list = entidadeController.findListByProperty(Entidade.class, "ent_tipo", "TIPO_CADASTRO_PACIENTE");
+		super.setListDataBeanColletionReport(list); 
+		return super.getArquivoReport();
+	}
+
+	public EntidadeAtualizaSenhaBean getEntidadeAtualizaSenhaBean() {
+		return entidadeAtualizaSenhaBean;
+	}
+
+	public void setEntidadeAtualizaSenhaBean(
+			EntidadeAtualizaSenhaBean entidadeAtualizaSenhaBean) {
+		this.entidadeAtualizaSenhaBean = entidadeAtualizaSenhaBean;
+	}
+
 
 	private Entidade objetoSelecionado = new Entidade();
 
@@ -38,15 +62,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	@Autowired
 	private  EntidadeController entidadeController;
 
-	@Override
-	public StreamedContent getArquivoReport() throws Exception {
-		super.setNomeRelatorioJasper("report_paciente");
-		super.setNomeRelatorioSaida("report_paciente");
 
-		super.setListDataBeanColletionReport(entidadeController
-				.finList(getClassImplement()));
-		return super.getArquivoReport();
-	}
 
 	public CarregamentoLazyListForObject<Entidade> getList() throws Exception {
 		return list;
@@ -78,14 +94,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		return entidadeController;
 	}
 
-/*	@Override
-	
-	
-	
-	public String     condicaoAndParaPesquisa() {
-		return "and entity.ent_tipo = '" + getTipoEntidadeTemp().name() + "' "
-				+ consultarInativos();
-	}*/
+
 
 	public Entidade getObjetoSelecionado() {
 		return objetoSelecionado;
@@ -101,10 +110,12 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		valorPesquisa = "";
 		list.clear();
 		objetoSelecionado = new Entidade();
+		entidadeAtualizaSenhaBean = new EntidadeAtualizaSenhaBean();
 	}
 
 	@Override
 	public void saveNotReturn() throws Exception {
+		objetoSelecionado.setEnt_tipo(TipoCadastro.TIPO_CADASTRO_PACIENTE);
 		if (validarCampoObrigatorio(objetoSelecionado)) {
 			list.clear();
 			objetoSelecionado = entidadeController.merge(objetoSelecionado);
@@ -159,11 +170,43 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public String condicaoAndParaPesquisa() {
-		return "";
+		return "and entity.ent_tipo = '"
+				+ TipoCadastro.TIPO_CADASTRO_PACIENTE.name() + "' "
+				+ consultarInativos();
 	}
 	
 	
-	
+	public void updateSenha() throws Exception {
+		Entidade entidadeLogada = contextoBean.getEntidadeLogada();
+		if (!entidadeAtualizaSenhaBean.getSenhaAtual().equals(
+				entidadeLogada.getEnt_senha())) {
+			addMsg("A senha atual não é válida");
+			return;
+		} else if (entidadeAtualizaSenhaBean.getSenhaAtual().equals(
+				entidadeAtualizaSenhaBean.getNovaSenha())) {
+			addMsg("A senha atual não pode ser igual a nova senha.");
+			return;
+		} else if (!entidadeAtualizaSenhaBean.getNovaSenha().equals(
+				entidadeAtualizaSenhaBean.getConfirmaSenha())) {
+			addMsg("A nova senha e a confimação não conferem.");
+			return;
+		} else {
+			entidadeLogada.setEnt_senha(entidadeAtualizaSenhaBean
+					.getNovaSenha());
+			entidadeController.saveOrUpdate(entidadeLogada);
+			entidadeLogada = entidadeController.findById(Entidade.class,
+					entidadeLogada.getEnt_codigo());
+			if (entidadeLogada.getEnt_senha().equals(
+					entidadeAtualizaSenhaBean.getNovaSenha())) {
+				sucesso();
+			} else {
+				addMsg("A nova senha não pode ser atualizada.");
+				error();
+			}
+		}
+
+		entidadeAtualizaSenhaBean = new EntidadeAtualizaSenhaBean();
+	}
 
 	
 	@RequestMapping("**/findEntidade")

@@ -10,7 +10,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 import org.primefaces.model.DualListModel;
-import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -21,6 +20,7 @@ import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.acessos.Permissao;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
+import br.com.project.enums.TipoCadastro;
 import br.com.project.geral.controller.EntidadeController;
 import br.com.project.model.classes.Entidade;
 
@@ -72,86 +72,57 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 	public void setListMenu(DualListModel<Permissao> listMenu) {
 		this.listMenu = listMenu;
 	}
-	
-	
-	
-	public String permissao(){
+
+	public String permissao() {
 		listSelecionado.clear();
-		Iterator<Permissao> iterator = objetoSelecionado.getAcessosPermissao().iterator();
+		Iterator<Permissao> iterator = objetoSelecionado.getAcessosPermissao()
+				.iterator();
 		while (iterator.hasNext()) {
 			listSelecionado.add(iterator.next());
-		} 
-		
-		Collections.sort(listSelecionado, new Comparator<Permissao>() { 
+		}
+
+		Collections.sort(listSelecionado, new Comparator<Permissao>() {
 
 			@Override
 			public int compare(Permissao o1, Permissao o2) {
-				return new Integer(o1.ordinal()).compareTo(new Integer(o2.ordinal()));
+				return new Integer(o1.ordinal()).compareTo(new Integer(o2
+						.ordinal()));
 			}
 		});
 		return urlPermissao;
 	}
-	
+
 	public String savePermissoes() throws Exception {
-			if (validarCampoObrigatorio(objetoSelecionado)) {
-				list.clear();
-				objetoSelecionado.getAcessos().clear();
-				listSelecionado.clear();
-				
-				List<Permissao> permissoesConverter = getConvertPermissoes();
-				
-				for (Permissao permissao : permissoesConverter) {
-					listSelecionado.add(permissao); 
-					objetoSelecionado.getAcessos().add(permissao.name());
-				}
-				objetoSelecionado = entidadeController.merge(objetoSelecionado);
-				list.add(objetoSelecionado);
-				sucesso(); 
+		if (validarCampoObrigatorio(objetoSelecionado)) {
+			list.clear();
+			objetoSelecionado.getAcessos().clear();
+			listSelecionado.clear();
+
+			List<Permissao> permissoesConverter = getConvertPermissoes();
+
+			for (Permissao permissao : permissoesConverter) {
+				listSelecionado.add(permissao);
+				objetoSelecionado.getAcessos().add(permissao.name());
 			}
-			return urlPermissao;
+			objetoSelecionado = entidadeController.merge(objetoSelecionado);
+			list.add(objetoSelecionado);
+			sucesso();
+		}
+		return urlPermissao;
 	}
 
 	private List<Permissao> getConvertPermissoes() {
 		List<Permissao> retorno = new ArrayList<Permissao>();
 		Object[] acessos = (Object[]) listMenu.getTarget().toArray();
-		
+
 		for (Object object : acessos) {
-			for (Permissao ace : Permissao.values()){
-				if (object.toString().equals(ace.name())){
+			for (Permissao ace : Permissao.values()) {
+				if (object.toString().equals(ace.name())) {
 					retorno.add(ace);
 				}
 			}
 		}
 		return retorno;
-	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	@Override
-	public StreamedContent getArquivoReport() throws Exception {
-		super.setNomeRelatorioJasper("report_paciente");
-		super.setNomeRelatorioSaida("report_paciente");
-
-		super.setListDataBeanColletionReport(entidadeController
-				.finList(getClassImplement()));
-		return super.getArquivoReport();
 	}
 
 	public CarregamentoLazyListForObject<Entidade> getList() throws Exception {
@@ -184,12 +155,6 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 		return entidadeController;
 	}
 
-	/*
-	 * @Override public String condicaoAndParaPesquisa() { return
-	 * "and entity.ent_tipo = '" + getTipoEntidadeTemp().name() + "' " +
-	 * consultarInativos(); }
-	 */
-
 	public Entidade getObjetoSelecionado() {
 		return objetoSelecionado;
 	}
@@ -208,6 +173,7 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public void saveNotReturn() throws Exception {
+		objetoSelecionado.setEnt_tipo(TipoCadastro.TIPO_CADASTRO_USUARIO);
 		if (validarCampoObrigatorio(objetoSelecionado)) {
 			list.clear();
 			objetoSelecionado = entidadeController.merge(objetoSelecionado);
@@ -262,7 +228,9 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public String condicaoAndParaPesquisa() throws Exception {
-		return "";
+		return "and entity.ent_tipo = '"
+				+ TipoCadastro.TIPO_CADASTRO_USUARIO.name() + "' "
+				+ consultarInativos();
 	}
 
 }

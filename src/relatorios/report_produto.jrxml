@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_produto" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="58ccb8c9-e25c-4831-8870-226edaa809b2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="REPORT_PARAMETERS_IMG" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="137" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="53" width="802" height="49" uuid="b15ae4c2-b651-443c-b9e4-5ce27381b7eb"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MINISTÉRIO DA DEFESA EXÉRCITO BRASILEIRO
+21ª BATERIA DE ARTILHARIA ANTIAÉREA PÁRA-QUEDISTA
+(Bateria Coronel Darcy Tavares de Carvalho Lima)
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-23" y="101" width="298" height="34" uuid="a8f04272-d912-4633-9f6d-4c11b45f2c4e"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Produtos]]></text>
+			</staticText>
+			<image>
+				<reportElement x="372" y="0" width="105" height="50" uuid="e441b94a-04f3-41a7-9932-01151f243996"/>
+				<imageExpression><![CDATA[$P{REPORT_PARAMETERS_IMG}+ "EB_logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

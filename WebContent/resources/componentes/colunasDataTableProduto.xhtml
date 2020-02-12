@@ -8,6 +8,32 @@
 	xmlns:sec="http://www.springframework.org/security/facelets/tags"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
+<p:column styleClass="estiloIdCodigo">
+<center>
+	<p:selectBooleanCheckbox value="#{produtoBeanView.value1}" />
+	</center>
+	<center>
+		<f:facet name="header">
+			<h:outputText value="Excluir" styleClass="cabecalho"></h:outputText>
+			
+			<c:when test="${isCadastro == false}">
+			
+					<p:commandLink action="#{produtoBeanView.selecao}"
+						id="buttonColunaExcluirsele" ajax="true" immediate="true"
+						partialSubmit="true" process="@this" update="tableResult">
+						<h:graphicImage library="img" name="icone-excluir.png"
+							styleClass="bordaImagem" style="width:50px;" />
+						<f:setPropertyActionListener
+							target="#{produtoBeanView.objetoSelecionado}" value="#{objeto}" />
+					</p:commandLink>
+				</c:when>
+		</f:facet>
+		 
+		
+	</center>
+
+</p:column>
+
 
 
 <p:column styleClass="estiloIdCodigo">
@@ -144,6 +170,3 @@
 	</p:column>
 </sec:ifAnyGranted>
 </html>
-
-
-

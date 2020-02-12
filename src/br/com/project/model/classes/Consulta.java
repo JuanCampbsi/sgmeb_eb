@@ -3,6 +3,7 @@ package br.com.project.model.classes;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
@@ -22,7 +24,8 @@ import org.hibernate.envers.Audited;
 import br.com.project.annotation.IdentificaCampoPesquisa;
 
 @Audited
-@Entity(name = "consulta")
+@Entity
+@Table(name = "consulta")
 @SequenceGenerator(name = "cons_seq", sequenceName = "cons_seq", initialValue = 1, allocationSize = 1)
 public class Consulta implements Serializable {
 
@@ -50,28 +53,28 @@ public class Consulta implements Serializable {
 	private String hist_cons;
 
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Consulta", campoConsulta = "pessoa_codigo.ent_nome", principal = 3)
+	@IdentificaCampoPesquisa(descricaoCampo = "Nome/Militar", campoConsulta = "entidade.ent_n_guerra" )
+	@Basic
 	@ManyToOne(fetch = FetchType.EAGER)
 	@ForeignKey(name = "pessoa_codigo_fk")
-	@JoinColumn(name = "pessoa_codigo", nullable = false)
-	private Entidade pessoa_codigo = new Entidade();
+	@JoinColumn(name = "entidade", nullable = false)
+	private Entidade entidade = new Entidade();
+	
 	
 
+
+	public Entidade getEntidade() {
+		return entidade;
+	}
+
+	public void setEntidade(Entidade entidade) {
+		this.entidade = entidade;
+	}
 
 	@Version
 	@Column(name = "versionNum")
 	private int versionNum;
-
-
 	
-
-	public Entidade getPessoa_codigo() {
-		return pessoa_codigo;
-	}
-
-	public void setPessoa_codigo(Entidade pessoa_codigo) {
-		this.pessoa_codigo = pessoa_codigo;
-	}
 
 	public Long getCons_id() {
 		return cons_id;
@@ -152,9 +155,10 @@ public class Consulta implements Serializable {
 	public String toString() {
 		return "Consulta [cons_id=" + cons_id + ", cons_data=" + cons_data
 				+ ", sit_paci=" + sit_paci + ", presc_paci=" + presc_paci
-				+ ", hist_cons=" + hist_cons + ", pessoa_codigo="
-				+ "]";
+				+ ", hist_cons=" + hist_cons + ", entidade=" + entidade + "]";
 	}
+
+
 
 
 	

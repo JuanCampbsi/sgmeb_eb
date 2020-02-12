@@ -3,8 +3,7 @@ package br.com.project.enums;
 public enum TipoCadastro {
 
 	TIPO_CADASTRO_USUARIO("Usuario"),
-	TIPO_CADASTRO_PACIENTE("Paciente"),
-	TIPO_CADASTRO_PRODUTO("Produto");
+	TIPO_CADASTRO_PACIENTE("Paciente");
 	
 
 	private String tipo = "";

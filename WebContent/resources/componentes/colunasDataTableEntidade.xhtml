@@ -9,7 +9,7 @@
 	xmlns:composite="http://java.sun.com/jsf/composite">
 
 
-<p:column  styleClass="estiloIdCadastro">
+<p:column  styleClass="estiloIdCadastro" style="width:70px;">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Código" styleClass="cabecalho"></h:outputText>
@@ -27,16 +27,16 @@
 	</center>
 </p:column>
 
-<p:column  styleClass="estiloIdCadastro">
+<p:column  styleClass="estiloIdCadastro" style="width:150px;">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Nome de Guerra" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto. ent_n_guerra}" />
+		<h:outputText value="#{objeto.ent_n_guerra}" />
 	</center>
 </p:column>
 
-<p:column  styleClass="estiloIdCadastro">
+<p:column  styleClass="estiloIdCadastro" style="width:90px;">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Posto/Grad" styleClass="cabecalho"></h:outputText>
@@ -45,8 +45,33 @@
 	</center>
 </p:column>
 
+<p:column  styleClass="estiloIdCadastro">
+	<center>
+		<f:facet name="header">
+			<h:outputText value="Idade" styleClass="cabecalho"></h:outputText>
+		</f:facet>
+		<h:outputText value="#{objeto.ent_idade}" />
+	</center>
+</p:column>
+<p:column  styleClass="estiloIdCadastro">
+	<center>
+		<f:facet name="header">
+			<h:outputText value="Peso" styleClass="cabecalho"></h:outputText>
+		</f:facet>
+		<h:outputText value="#{objeto.ent_peso}" />
+	</center>
+</p:column>
+<p:column  styleClass="estiloIdCadastro">
+	<center>
+		<f:facet name="header">
+			<h:outputText value="Altura" styleClass="cabecalho"></h:outputText>
+		</f:facet>
+		<h:outputText value="#{objeto.ent_altura}" />
+	</center>
+</p:column>
+
 <sec:ifAnyGranted roles="PACIENTE_EXCLUIR, ADMIN">
-	<p:column style="width:50px;">
+	<p:column style="width:90px;">
 		<center>
 			<f:facet name="header">
 				<h:outputText value="Excluir" styleClass="cabecalho"></h:outputText>
@@ -85,7 +110,7 @@
 </sec:ifAnyGranted>
 
 <sec:ifAnyGranted roles="PACIENTE_EDITAR, ADMIN">
-	<p:column style="width:50px;">
+	<p:column style="width:90px;">
 		<center>
 			<f:facet name="header">
 				<h:outputText value="Editar" styleClass="cabecalho"></h:outputText>

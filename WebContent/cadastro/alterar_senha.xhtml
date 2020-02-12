@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/componentes"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/templatePrincipal.xhtml">
+	<ui:define name="corpo">
+		<h:form id="formCadastro" prependId="false" >
+			<p:panel  id="panelAltSenha" styleClass="estiloIdCadastro">
+			
+			<h:outputText value="Alterar Senha"
+					styleClass="estiloIdCadastro3" />
+				<br />
+				<hr style="height: 2px; border: none; color: #000; background-color: #8FBC8F; margin-top: 0px; margin-bottom: 0px;" />
+				<br/>
+			
+				<h:panelGrid id="gridAltSenha" columns="3">
+
+					<p:column>
+						<p:row>
+							<h:outputLabel for="senhaAtual" value="Senha atual : "
+								id="labelSenhaAtual" style="width:350px;" />
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:password id="senhaAtual" styleClass="estiloIdCastro"
+								maxlength="20"
+								value="#{entidadeBeanView.entidadeAtualizaSenhaBean.senhaAtual}"
+								required="true" requiredMessage="Informe o campo senha atual." />
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:message for="senhaAtual" />
+						</p:row>
+					</p:column>
+
+
+					<p:column>
+						<p:row>
+							<h:outputLabel for="senhaNova" value="Nova senha : "
+								id="labelSenha" style="width:350px;" />
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:password id="senhaNova" styleClass="estiloIdCastro"
+								maxlength="20"
+								value="#{entidadeBeanView.entidadeAtualizaSenhaBean.novaSenha}"
+								required="true" requiredMessage="Informe o campo nova senha." />
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:message for="senhaNova" />
+						</p:row>
+					</p:column>
+
+
+					<p:column>
+						<p:row>
+							<h:outputLabel for="confirme" value="Confirme : " id="labelConf"
+								style="width:350px;" />
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:password id="confirme" styleClass="estiloIdCastro"
+								maxlength="20"
+								value="#{entidadeBeanView.entidadeAtualizaSenhaBean.confirmaSenha}"
+								required="true" requiredMessage="Confirme a nova senha." />
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:message for="confirme" />
+						</p:row>
+					</p:column>
+
+				</h:panelGrid>
+			</p:panel>
+
+			<div class="espacoBranco" />
+
+			<p:commandButton value="Salvar" ajax="false" partialSubmit="true" action="#{entidadeBeanView.updateSenha}"
+				process="@this, @form" id="buttonSalvarAlteraSenha" immediate="false" style="height:40px;width:100px;background:#CDCDC1;border: 1px solid #FFFFFF;"/>
+		</h:form>
+
+		<script type="text/javascript" charset="UTF-8">
+			addFocoAoCampo('senhaAtual');
+			gerenciaTeclaEnter();
+		</script>
+
+	</ui:define>
+</ui:composition>
+</html>

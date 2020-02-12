@@ -89,6 +89,7 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void saveNotReturn() throws Exception {
+		objetoSelecionado.isInvalido();
 		if (validarCampoObrigatorio(objetoSelecionado)) {
 			list.clear();
 			objetoSelecionado = produtoController.merge(objetoSelecionado);
@@ -100,13 +101,16 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void excluir() throws Exception {
+				
 		if (objetoSelecionado.getProd_codigo() != null
 				&& objetoSelecionado.getProd_codigo() > 0) {
 			produtoController.delete(objetoSelecionado);
 			list.remove(objetoSelecionado);
 			objetoSelecionado = new Produto();
-			sucesso();
+			sucesso();		
+			list.clear();
 		}
+		
 	}
 	
 	@Override
@@ -152,7 +156,28 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 		return "";
 	}
 
+	@Override
+	public void selecao() throws Exception {
+		if(value1 != false){
+			produtoController.delete(objetoSelecionado);
+			list.remove(objetoSelecionado);
+			objetoSelecionado = new Produto();
+			sucesso();		
+		}
+		
+		
+	}
+	private boolean value1;
 
+
+	public boolean isValue1() {
+		return value1;
+	}
+
+	public void setValue1(boolean value1) {
+		this.value1 = value1;
+	}  
+	
 
 	
 

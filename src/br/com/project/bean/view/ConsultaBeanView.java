@@ -2,6 +2,7 @@ package br.com.project.bean.view;
 
 import javax.faces.bean.ManagedBean;
 
+import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -24,11 +25,6 @@ public class ConsultaBeanView extends BeanManagedViewAbstract {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Autowired
-	private ConsultaController consultaController;
-	
-	@Autowired
-	private EntidadeController entidadeController;
 	
 	private CarregamentoLazyListForObject<Consulta> list = new CarregamentoLazyListForObject<Consulta>();
 	private String url = "/cadastro/cad_consulta.jsf?faces-redirect=true";
@@ -36,10 +32,26 @@ public class ConsultaBeanView extends BeanManagedViewAbstract {
 	
 	private Consulta objetoSelecionado = new Consulta();
 	
+	@Override
+	public StreamedContent getArquivoReport() throws Exception {
+		super.setNomeRelatorioJasper("report_consulta");
+		super.setNomeRelatorioSaida("report_consulta");
+
+		super.setListDataBeanColletionReport(consultaController
+				.finList(getClassImplement()));
+		return super.getArquivoReport();
+	}
+	
 
 	@Autowired
 	private ContextoBean contextoBean;
 
+	
+	@Autowired
+	private ConsultaController consultaController;
+	
+	@Autowired
+	private EntidadeController entidadeController;
 	
 	
 	public CarregamentoLazyListForObject<Consulta> getList() throws Exception {
@@ -47,7 +59,7 @@ public class ConsultaBeanView extends BeanManagedViewAbstract {
 	}
 
 	
-	public ConsultaController getProdutoController() {
+	public ConsultaController getConsultaController() {
 		return consultaController;
 	}
 	
@@ -93,9 +105,6 @@ public class ConsultaBeanView extends BeanManagedViewAbstract {
 		}
 	}
 	
-	
-
-
 	@Override
 	public void excluir() throws Exception {
 		if (objetoSelecionado.getCons_id() != null
@@ -141,35 +150,30 @@ public class ConsultaBeanView extends BeanManagedViewAbstract {
 		return urlFind;
 	}
 	
+	
+
+	
+	
 	@Override
 	public String condicaoAndParaPesquisa() throws Exception {
-		return " ";
+		return "";
 	}
+
+
 	
-	@RequestMapping("**/addPacienteFunc")
+	
+	
+	
+	
+	
+	  @RequestMapping("**/addPacienteFunc")
 	public void addPacienteFunc(@RequestParam Long codEntidade) throws Exception  {
 		if (codEntidade != null && codEntidade > 0) {
 				Entidade entidade = entidadeController
 						.findPaciente(codEntidade);
-				objetoSelecionado.setPessoa_codigo(entidade != null ? entidade
+				objetoSelecionado.setEntidade(entidade != null ? entidade
 						: new Entidade());
 		}}
-	
-	/*
-	 * 
-	 * 
-	 * 
-	 * 
-	 * @RequestMapping("/addPacienteFunc")
-	public void addPacienteFunc(HttpServletResponse httpServletResponse
-			, @RequestParam(value = "codEntidade") Long codEntidade) throws Exception{
-		Entidade entidade = entidadeController.findById(Entidade.class, codEntidade);
-		if (entidade != null){
-			objetoSelecionado.setPessoa_codigo(entidade);
-			httpServletResponse.getWriter().write(entidade.getJson().toString());
-		}
-	}
-	*/
 	
 	
 	

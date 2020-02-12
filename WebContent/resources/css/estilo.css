@@ -1,7 +1,10 @@
 @CHARSET "ISO-8859-1";
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
+#body{
+			margin:0;
+			padding:0;
+		}
 .login-page {
 	width: 360px;
 	padding: 8% 0 0;
@@ -67,10 +70,9 @@
 }
 
 .container {
-	position: relative;
-	z-index: 1;
-	max-width: 300px;
-	margin: 0 auto;
+	width: 360px;
+	padding: 8% 0 0;
+	margin: auto;
 }
 
 .container:before,.container:after {
@@ -119,6 +121,9 @@
 
 .corpofundo {
 	background: #dde8ca; /* fallback for old browsers */
+	width: 360px;
+	padding: 8% 0 0;
+	margin: auto;
 }
 
 .buttonPesquisa {
@@ -503,10 +508,12 @@ input[type=submit] {
 .bordaImagem {
 	border: 0;	
 	
+	
 }
 .bordamapa {
 	border: 0;	
 	width:200px;
+	
 
 }
 
@@ -600,6 +607,14 @@ input[type=submit] {
 .estiloIdCadastro {
 	font-size: 12px;
 	font-face: Roboto;
+	font-variant: normal;
+	width:100%px;
+	
+}
+
+.estiloDialog2{
+	font-size:12px;
+	font-face: Arial;
 	font-variant: normal;
 	
 	
@@ -942,3 +957,11 @@ DESTE PONTO PARA BAIXO CSS QUE ALTERA GERAL O PRIMEFACES
 	font: 12px sans-serif;
 	
 }
+
+  .ui-outputlabel {
+        font-weight: bold;
+    }
+ 
+    .ui-orderlist .ui-orderlist-list {
+        height: auto;
+    }

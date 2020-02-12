@@ -52,7 +52,7 @@
 				<text><![CDATA[Relatório de Pacientes]]></text>
 			</staticText>
 			<image>
-				<reportElement x="249" y="0" width="142" height="50" uuid="00f4bb07-6318-407e-92f0-3bd58ccbd043"/>
+				<reportElement x="249" y="0" width="105" height="50" uuid="00f4bb07-6318-407e-92f0-3bd58ccbd043"/>
 				<imageExpression><![CDATA[$P{REPORT_PARAMETERS_IMG} + "EB_logo.png"]]></imageExpression>
 			</image>
 		</band>

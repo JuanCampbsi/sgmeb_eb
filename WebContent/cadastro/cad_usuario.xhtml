@@ -22,16 +22,12 @@
 
 				<h:panelGrid id="gridUsuario" columns="3" style="margin-bottom:20px"
 					cellpadding="5" styleClass="estiloIdCadastro">
-					<h:outputLabel for="id" value="Código : " id="labelId" />
-					<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true"
-						value="#{usuarioBeanView.objetoSelecionado.ent_codigo}" />
-					<h:outputLabel />
-					<!-- -->
+					
 
 
 
 					<h:outputLabel id="labelnome" for="nomeUsuario"
-						value="Nome Completo *: " styleClass="estiloIdCadastro" />
+						value="Nome Completo : " styleClass="estiloIdCadastro" />
 					<p:inputText id="usuarioNome" styleClass="estyleInputNome"
 						required="true" maxlength="100"
 						requiredMessage="Informe o Nome de Usuário"
@@ -41,7 +37,7 @@
 
 
 					<h:outputLabel id="labelnguerra" for="nomeGuerra"
-						value="Nome de Guerra *: " styleClass="estiloIdCadastro" />
+						value="Nome de Guerra : " styleClass="estiloIdCadastro" />
 					<p:inputText id="nGuerra" styleClass="estyleInputNome"
 						required="true" maxlength="100"
 						requiredMessage="Informe o Nome de Guerra"
@@ -49,7 +45,7 @@
 					<p:message for="nGuerra" />
 
 
-					<h:outputText value="P/Grad *: " />
+					<h:outputText value="P/Grad : " />
 
 					<h:outputLabel for="graduacao" id="labelgraduacao">
 						<p:selectOneMenu id="graduacao" required="true"
@@ -64,8 +60,8 @@
 
 
 					<tr />
-					<h:outputLabel id="labelcad" for="nomecad"
-						value="Data do cadastro *: " styleClass="estiloIdCadastro" />
+					<h:outputLabel id="labelcad" for="nomecadastro"
+						value="Data do cadastro : " styleClass="estiloIdCadastro" />
 					<p:inputText id="ent_datacadastro" readonly="true"
 						value="#{usuarioBeanView.objetoSelecionado.ent_datacadastro}">
 						<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy HH:mm:ss"

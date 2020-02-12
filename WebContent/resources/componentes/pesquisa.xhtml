@@ -11,10 +11,10 @@
 	
 	
 <h:form id="formPesquisa" prependId="false" >
+
+
 		<composite:interface displayName="interfacePesquisa" name="interfacePesquisa">
 			<composite:attribute name="managedBeanView" required="true" />
-			<composite:attribute name="tipoEntidadeTemp" required="false" />
-			<composite:attribute name="tipoTituloEmAberto" required="false" />
 			<composite:attribute name="nomePesquisa" required="true" />
 			<composite:attribute name="colunasGridDataTableList" required="true" />
 			<composite:attribute name="exibirBotaoAdd" required="true" />
@@ -25,6 +25,7 @@
 			<composite:attribute name="exportPage" required="false" default="false"/>
 			<composite:attribute name="consultarInativos" required="false" default="false"/>
 		</composite:interface>
+		
 
 		<composite:implementation >
 		
@@ -95,8 +96,8 @@
 				
 					
 					
-				</h:panelGrid>
-			</p:panel>
+				</h:panelGrid> 
+			</p:panel> 
 			
 			<div class="espacoBranco"/>
 			

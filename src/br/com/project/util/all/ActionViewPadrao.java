@@ -15,6 +15,9 @@ public interface ActionViewPadrao extends Serializable {
 	abstract void saveEdit() throws Exception;
 
 	abstract void excluir() throws Exception;
+	
+	abstract void selecao() throws Exception;
+
 
 	abstract String ativar() throws Exception;
 

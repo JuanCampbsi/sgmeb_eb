@@ -29,16 +29,16 @@
 			id="cssStiloSistema" />
 		<h:body styleClass="corpofundo">
 			<script type="text/javascript" charset="UTF-8">
-				$.noConflict();
-				localeData_pt_br();
-				initTamplete();
-				ocultarMenu();
-
-				$(document).keydown(function(e) {
-					if (e.which == 116) {
-						return false;
-					}
-				});
+			$.noConflict();
+	 	  	localeData_pt_br();
+		    initTamplete();
+			ocultarMenu();  
+			
+			$(document).keydown(function(e) {
+				if (e.which == 116) {
+					return false;
+				}
+			});
 
 				/*$(window).bind('beforeunload', function(e){// peder confirmação para atualizar ou sair da pagina
 					e = e || window.event;
@@ -46,7 +46,8 @@
 					
 					if(e) e.returnValue = message;
 						return message;	
-				});*/
+				});*/		
+				
 			</script>
 			<ui:include src="/templates/barraProgresso.xhtml" />
 			<div id="msgError" class="espacoMensagem">
@@ -59,13 +60,13 @@
 				<div id="topo">
 					<span style="position: absolute; left: -10px; top: -17px"
 						id="spanLogo">
-						 <h:graphicImage library="img"
+						 <p:graphicImage library="img"
 							name="image.png" id="logoImg" styleClass="bordaImagem" 
 							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"/>						
 					</span>
 					
 						<span style="position: absolute; left: 977px; top: -16px; " id="spanLogo3">
-						 <h:graphicImage library="img"
+						 <p:graphicImage library="img"
 							name="medicoslogo.png" id="logoImg3" style=" width:120px;"
 						/>	
 						
@@ -78,13 +79,13 @@
 					</span>
 					
 						<span style="position: absolute; left: 915px; top: 15px; " id="spanLogo6">
-						 <h:graphicImage library="img"
+						 <p:graphicImage library="img"
 							name="logobda.png" id="logoImg6" style=" width:40px;"
 						/>	
 					</span>
 					
 						<span style="position: absolute; left: 840px; top: 3px; " id="spanLogo4">
-						 <h:graphicImage library="img"
+						 <p:graphicImage library="img"
 							name="mapa.png" id="logoImg4" style=" width:70px;"
 						/>							
 					</span>
@@ -110,10 +111,10 @@
 
 
 				<div id="menu">
-					<span id="iniciarmenu"> <h:graphicImage library="img"
+					<span id="iniciarmenu"> <p:graphicImage library="img"
 							name="iconemenu.png" styleClass="bordaImagem2" id="iconemenu">
 					MENU
-				</h:graphicImage>
+				</p:graphicImage>
 					</span>
 				</div>
 
@@ -131,10 +132,10 @@
 					</a>
 				</div>
 
-				<p:dialog widgetVar="alterarSenhaDialog" id="alterarSenhaDialog"
-					width="240" modal="true" resizable="false" height="170"
+				<p:dialog widgetVar="alterarSenhaDialog" id="alterarSenhaDialog" styleClass="estiloDialog2"
+					width="370" modal="true" resizable="false" height="170"
 					header="Alterar senha" appendToBody="false" dynamic="true">
-				Corpo					
+				<ui:include src="/cadastro/dialog_alterar_senha.xhtml"/>				
 			</p:dialog>
 
 
@@ -170,17 +171,6 @@
 							</p:submenu>
 						</sec:ifAnyGranted>
 
-						<!--   <p:submenu label="Cadastrar">	
-						 <p:menuitem value="Usuários" id="permissaousuarios" />
-						 					 
-						 <p:menuitem value="Paciente" id="cadpaciente" />		
-						 
-						 <p:menuitem value="Produtos" id="cadmilitares" />					 
-						 </p:submenu>
-						 
-						<p:submenu label="Permissões Gerais">						 
-						<p:menuitem value="Usuários" id="permissaousuarios" />					 
-						 </p:submenu> -->
 
 						<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">
 							<p:submenu label="Manual" id="subMenuManual"
@@ -227,12 +217,10 @@
 
 					</p:tieredMenu>
 				</div>
-
-
-
-
-
 			</div>
+			
+		
+			
 		</h:body>
 	</h:form>
 	<script type="text/javascript" charset="UTF-8">

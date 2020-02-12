@@ -21,7 +21,6 @@ import org.springframework.stereotype.Component;
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.annotation.IdentificaCampoPesquisa;
 import br.com.project.enums.CondicaoPesquisa;
-import br.com.project.enums.TituloSituacao;
 import br.com.project.report.util.BeanReportView;
 import br.com.project.util.all.Messagens;
 import br.com.project.util.all.UtilitariaRegex;
@@ -326,24 +325,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 			return TipoCadastro.TIPO_CADASTRO_USUARIO;
 	}*/
 
-	public TituloSituacao getTituloSituacaoTemp() {
-
-		if (htmlInputHiddenTitulo == null
-				|| (htmlInputHiddenTitulo != null && htmlInputHiddenTitulo
-						.getAttributes() == null)) {
-			return null;
-		}
-
-		String tipoEntidade = (String) htmlInputHiddenTitulo.getAttributes()
-				.get("tipoTituloEmAberto");
-
-		if (tipoEntidade == null) {
-			return null;
-		
-		} else {
-			return null;
-		}
-	}
+	
 
 	public void setHtmlInputHidden(HtmlInputHidden htmlInputHidden) {
 		this.htmlInputHidden = htmlInputHidden;

@@ -23,5 +23,7 @@ public class ConsultaController extends ImplementacaoCrud<Consulta> implements
 	public void setRepositoryConsulta(RepositoryConsulta repositoryConsulta) {
 		this.repositoryConsulta = repositoryConsulta;
 	}
+	
+	
 
 }
