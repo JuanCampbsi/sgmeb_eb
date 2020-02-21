@@ -2,42 +2,16 @@ package br.com.project.model.classes;
 
 import java.io.Serializable;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Version;
 
-import org.hibernate.annotations.ForeignKey;
-import org.hibernate.envers.Audited;
-
-import br.com.project.annotation.IdentificaCampoPesquisa;
-
-@Audited
-@Entity(name = "receituario")
-@SequenceGenerator(name = "rec_seq", sequenceName = "rec_seq", initialValue = 1, allocationSize = 1)
 public class Receituario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Receituário", campoConsulta = "rec_id")
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rec_seq")
+	
 	private Long rec_id;
 
-	@Basic
-	@OneToOne
-	@JoinColumn(name = "receituario", nullable = false)
-	@ForeignKey(name = "rec_paci_fk")
 	private Consulta consulta = new Consulta();
-
-	@Version
-	@Column(name = "versionNum")
+	
 	private int versionNum;
 
 	public Long getRec_id() {

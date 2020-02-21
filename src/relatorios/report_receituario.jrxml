@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_receituario" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b8535f08-4512-47cf-9064-09a7c5f0687f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="29"/>
+	<parameter name="REPORT_PARAMETERS_IMG" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="presc_paci" class="java.lang.String">
+		<fieldDescription><![CDATA[presc_paci]]></fieldDescription>
+	</field>
+	<field name="ent_n_guerra" class="java.lang.String">
+		<fieldDescription><![CDATA[entidade.ent_n_guerra]]></fieldDescription>
+	</field>
+	<field name="grad_grad" class="java.lang.String">
+		<fieldDescription><![CDATA[entidade.graduacao.grad_grad]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="153" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="60" width="555" height="49" uuid="14d5b9d0-d9ca-474a-bfaa-773a9c75c84e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MINISTÉRIO DA DEFESA EXÉRCITO BRASILEIRO
+21ª BATERIA DE ARTILHARIA ANTIAÉREA PÁRA-QUEDISTA
+(Bateria Coronel Darcy Tavares de Carvalho Lima)
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="119" width="158" height="34" uuid="cadfcb72-806d-47c7-912e-adc55c65e97c"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Receituário]]></text>
+			</staticText>
+			<image>
+				<reportElement x="247" y="10" width="100" height="50" uuid="bb076db1-bc11-4221-91cb-db2521ae65bb"/>
+				<imageExpression><![CDATA[$P{REPORT_PARAMETERS_IMG}+ "EB_logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50">
+			<textField>
+				<reportElement x="42" y="15" width="100" height="20" uuid="ac0ba87a-5912-4017-b834-886b43d573d1"/>
+				<textFieldExpression><![CDATA[$F{grad_grad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="142" y="15" width="100" height="20" uuid="36c43bcf-40a5-478a-b4bc-79c31e35d081"/>
+				<textFieldExpression><![CDATA[$F{ent_n_guerra}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="42" y="51" width="481" height="20" uuid="0a34cf1f-3fd0-4db0-be17-5f3faa1d05da"/>
+				<textFieldExpression><![CDATA[$F{presc_paci}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

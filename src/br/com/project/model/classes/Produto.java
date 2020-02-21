@@ -27,7 +27,6 @@ public class Produto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "produto_seq")
 	private Long prod_codigo;
@@ -38,17 +37,16 @@ public class Produto implements Serializable {
 
 	@Column(nullable = true)
 	private String prod_tipo;
-	
 
 	@Column(nullable = true)
-	private String descricao_prod;	
+	private String descricao_prod;
 
 	@Column(nullable = true)
 	private String serie_prod;
 
 	@Column(nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date prod_datacadastro = new Date();	
+	private Date prod_datacadastro = new Date();
 
 	@Version
 	@Column(name = "versionNum")
@@ -78,7 +76,6 @@ public class Produto implements Serializable {
 		this.prod_tipo = prod_tipo;
 	}
 
-	
 	public String getDescricao_prod() {
 		return descricao_prod;
 	}
@@ -86,7 +83,6 @@ public class Produto implements Serializable {
 	public void setDescricao_prod(String descricao_prod) {
 		this.descricao_prod = descricao_prod;
 	}
-
 
 	public String getSerie_prod() {
 		return serie_prod;
@@ -146,28 +142,16 @@ public class Produto implements Serializable {
 		return true;
 	}
 
-	
-
-
-
-
-
 	@Override
 	public String toString() {
 		return "Produto [prod_codigo=" + prod_codigo + ", prod_nome="
 				+ prod_nome + ", prod_tipo=" + prod_tipo + ", descricao_prod="
-				+ descricao_prod + ", principio_ativo="
-				+ ", serie_prod=" + serie_prod + ", prod_datacadastro="
-				+ prod_datacadastro + ", fabri_prod=" + fabri_prod
-				+ ", data_atual=" + data_atual + ", validade_prod="
-				+ validade_prod + ", diferencaEmDias=" + diferencaEmDias + "]";
+				+ descricao_prod + ", principio_ativo=" + ", serie_prod="
+				+ serie_prod + ", prod_datacadastro=" + prod_datacadastro
+				+ ", fabri_prod=" + fabri_prod + ", data_atual=" + data_atual
+				+ ", validade_prod=" + validade_prod + ", diferencaEmDias="
+				+ diferencaEmDias + "]";
 	}
-
-
-
-
-
-
 
 	@Temporal(TemporalType.DATE)
 	private Date fabri_prod;
@@ -193,7 +177,7 @@ public class Produto implements Serializable {
 	public void setValidade_prod(Date validade_prod) {
 		this.validade_prod = validade_prod;
 	}
-	
+
 	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "diferencaEmDias", principal = 1)
 	private Double diferencaEmDias;
 
@@ -204,46 +188,44 @@ public class Produto implements Serializable {
 	public void setDiferencaEmDias(Double diferencaEmDias) {
 		this.diferencaEmDias = diferencaEmDias;
 	}
-	
-	
 
-	public double validar() throws Exception {	
-		
-		
-		double result = 0;		
-		long diferenca =getValidade_prod().getTime() - getData_atual().getTime();
-		double dif = (diferenca /1000) / 60 / 60 /24; //resultado é diferença entre as datas em dias
-		long horasRestantes = (diferenca /1000) / 60 / 60 %24; //calcula as horas restantes
-		result = dif + (horasRestantes /24d); //transforma as horas restantes em fração de dias
-		
-		if (result <30){
-			this.setDiferencaEmDias(result);
+	public double validar() throws Exception {
+
+		double result = 0;
+		long diferenca = getValidade_prod().getTime()
+				- getData_atual().getTime();
+		double dif = (diferenca / 1000) / 60 / 60 / 24; // resultado é diferença
+														// entre as datas em
+														// dias
+		long horasRestantes = (diferenca / 1000) / 60 / 60 % 24; // calcula as
+																	// horas
+																	// restantes
+		result = dif + (horasRestantes / 24d); // transforma as horas restantes
+												// em fração de dias
+
+		if (result < 30) {
+			this.setDiferencaEmDias(result);			
 			
-			
-		
-		}else{
+
+		} else {
 			this.setDiferencaEmDias((double) 31);
-		}		
+			
+		}
 		return diferencaEmDias;
 	}
-	
 
-	
-	
 	@Transient
-	public boolean isValido() {		
-		return getDiferencaEmDias() ==31 ;
-		
+	public boolean isValido() {
+		return getDiferencaEmDias() == 31;
+
 	}
 
 	@Transient
-	public boolean isInvalido() throws Exception {		
-		validar();			
-		return !this.isValido() ;
+	public boolean isInvalido() throws Exception {
+		validar();
+		return !this.isValido();
 	}
+
 	
-
-
-
 
 }

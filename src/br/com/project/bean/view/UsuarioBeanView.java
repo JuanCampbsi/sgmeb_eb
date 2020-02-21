@@ -10,6 +10,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 import org.primefaces.model.DualListModel;
+import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -46,6 +47,15 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 
 	@Autowired
 	private EntidadeController entidadeController;
+	
+	@Override
+	public StreamedContent getArquivoReport() throws Exception {
+		super.setNomeRelatorioJasper("report_usuario");
+		super.setNomeRelatorioSaida("report_usuario");
+		List<?> list = entidadeController.findListByProperty(Entidade.class, "ent_tipo", "TIPO_CADASTRO_USUARIO");
+		super.setListDataBeanColletionReport(list); 
+		return super.getArquivoReport();
+	}
 
 	public DualListModel<Permissao> getListMenu() {
 		permissao();

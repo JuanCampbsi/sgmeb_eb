@@ -12,28 +12,26 @@
 	<ui:define name="corpo">
 		<h:form id="formCadastro" prependId="false">
 			<c:set var="isCadastro" value="true" scope="view" />
-			<p:panel id="panelCadastro"
-				styleClass="estiloIdCadastro">
-				
-			
-				<h:outputText  value="Cadastro - Produto"  styleClass="estiloIdCadastro3"/>
-				<br/><hr style="height:2px; border:none; color:#000;
-				 background-color:#8FBC8F; margin-top: 0px; margin-bottom: 0px;"/><br/>
-				
-				
+			<p:panel id="panelCadastro" styleClass="estiloIdCadastro">
+
+
+				<h:outputText value="Cadastro - Produto"
+					styleClass="estiloIdCadastro3" />
+				<br />
+				<hr
+					style="height: 2px; border: none; color: #000; background-color: #8FBC8F; margin-top: 0px; margin-bottom: 0px;" />
+				<br />
+
+
 
 
 
 				<h:panelGrid id="gridProduto" columns="3">
-					<h:outputLabel for="id" value="Código" id="labelId" />
-					<p:inputText id="id" styleClass="estiloIdCastro"
-						value="#{produtoBeanView.objetoSelecionado.prod_codigo}"
-						disabled="true" />
-					<h:outputLabel />
+					
 
 
-					<h:outputLabel id="labelPativo" for="prod_nomee"
-						value="Nome:  " styleClass="estiloIdCadastro" />
+					<h:outputLabel id="labelPativo" for="prod_nomee" value="Nome:  "
+						styleClass="estiloIdCadastro" />
 					<p:inputText id="prod_nomee" styleClass="estyleInputNome"
 						required="true" maxlength="100"
 						requiredMessage="Informe o campo Nome do Produto."
@@ -64,8 +62,7 @@
 						value="#{produtoBeanView.objetoSelecionado.serie_prod}" />
 					<p:message for="prodSerie" />
 
-					<h:outputLabel for="prodFabr" id="lbelFabric"
-						value="Fabricação: " />
+					<h:outputLabel for="prodFabr" id="lbelFabric" value="Fabricação: " />
 					<p:calendar locale="pt" showButtonPanel="true" showOn="button"
 						required="true" styleClass="calendar" pattern="dd/MM/yyyy"
 						readonlyInput="true"
@@ -83,10 +80,14 @@
 						requiredMessage="Informe o campo de Validade do medicamento."
 						navigator="true" id="labelValid"
 						value="#{produtoBeanView.objetoSelecionado.validade_prod}" />
-						
-				</h:panelGrid><tr/><br/>
-				<hr style="height:2px; border:none; color:#000; 
-				background-color:#8FBC8F; margin-top: 0px; margin-bottom: 0px;"/><br/><br/>
+
+				</h:panelGrid>
+				<tr />
+				<br />
+				<hr
+					style="height: 2px; border: none; color: #000; background-color: #8FBC8F; margin-top: 0px; margin-bottom: 0px;" />
+				<br />
+				<br />
 			</p:panel>
 			<div class="espacoBranco" />
 
@@ -102,7 +103,6 @@
 			addFocoAoCampo('prodPativo');
 			gerenciaTeclaEnter();
 			permitirApenasNumero('prodSerie');
-			
 		</script>
 
 		<div class="espacoBranco" />

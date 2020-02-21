@@ -31,7 +31,7 @@ public class Consulta implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "cons_id" , principal = 1)
+	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "cons_id", principal = 1)
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cons_seq")
 	private Long cons_id;
@@ -40,28 +40,18 @@ public class Consulta implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date cons_data = new Date();
 
-	
 	@Column(length = 250, nullable = false)
 	private String sit_paci;
 
-	
 	@Column(length = 250, nullable = false)
 	private String presc_paci;
 
-
-	@Column(length = 100, nullable = false)
-	private String hist_cons;
-
-
-	@IdentificaCampoPesquisa(descricaoCampo = "Nome/Militar", campoConsulta = "entidade.ent_n_guerra" )
+	@IdentificaCampoPesquisa(descricaoCampo = "Nome/Militar", campoConsulta = "entidade.ent_n_guerra")
 	@Basic
 	@ManyToOne(fetch = FetchType.EAGER)
 	@ForeignKey(name = "pessoa_codigo_fk")
 	@JoinColumn(name = "entidade", nullable = false)
 	private Entidade entidade = new Entidade();
-	
-	
-
 
 	public Entidade getEntidade() {
 		return entidade;
@@ -74,7 +64,6 @@ public class Consulta implements Serializable {
 	@Version
 	@Column(name = "versionNum")
 	private int versionNum;
-	
 
 	public Long getCons_id() {
 		return cons_id;
@@ -107,16 +96,6 @@ public class Consulta implements Serializable {
 	public void setPresc_paci(String presc_paci) {
 		this.presc_paci = presc_paci;
 	}
-
-	public String getHist_cons() {
-		return hist_cons;
-	}
-
-	public void setHist_cons(String hist_cons) {
-		this.hist_cons = hist_cons;
-	}
-
-	
 
 	public int getVersionNum() {
 		return versionNum;
@@ -155,14 +134,7 @@ public class Consulta implements Serializable {
 	public String toString() {
 		return "Consulta [cons_id=" + cons_id + ", cons_data=" + cons_data
 				+ ", sit_paci=" + sit_paci + ", presc_paci=" + presc_paci
-				+ ", hist_cons=" + hist_cons + ", entidade=" + entidade + "]";
+				+ ", hist_cons=" + ", entidade=" + entidade + "]";
 	}
-
-
-
-
-	
-
-	
 
 }

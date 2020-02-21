@@ -15,9 +15,8 @@ public interface ActionViewPadrao extends Serializable {
 	abstract void saveEdit() throws Exception;
 
 	abstract void excluir() throws Exception;
-	
-	abstract void selecao() throws Exception;
 
+	abstract void selecao() throws Exception;
 
 	abstract String ativar() throws Exception;
 
@@ -35,12 +34,7 @@ public interface ActionViewPadrao extends Serializable {
 	abstract String redirecionarNewEntidade() throws Exception;
 
 	abstract String redirecionarFindEntidade() throws Exception;
-	
-	
-	
+
 	abstract void addMsg(String msg);
 
-
-
-	
 }

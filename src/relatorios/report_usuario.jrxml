@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_usuario" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b48c0f4-084b-40d9-88e4-b0dba82914c3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="REPORT_PARAMETERS_IMG" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="ent_codigo" class="java.lang.Long">
+		<fieldDescription><![CDATA[ent_codigo]]></fieldDescription>
+	</field>
+	<field name="ent_login" class="java.lang.String">
+		<fieldDescription><![CDATA[ent_login]]></fieldDescription>
+	</field>
+	<field name="ent_nome" class="java.lang.String">
+		<fieldDescription><![CDATA[ent_nome]]></fieldDescription>
+	</field>
+	<field name="graduacao" class="br.com.project.model.classes.Graduacao">
+		<fieldDescription><![CDATA[graduacao]]></fieldDescription>
+	</field>
+	<field name="ent_datacadastro" class="java.util.Date">
+		<fieldDescription><![CDATA[ent_datacadastro]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="153" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="57" width="555" height="49" uuid="f4ad29f7-8b75-4877-81ee-28b086043b6c"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MINISTÉRIO DA DEFESA EXÉRCITO BRASILEIRO
+21ª BATERIA DE ARTILHARIA ANTIAÉREA PÁRA-QUEDISTA
+(Bateria Coronel Darcy Tavares de Carvalho Lima)
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="119" width="286" height="34" uuid="95bfe53e-e998-4db5-a5c0-29ebf61a2eaf"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Usuários]]></text>
+			</staticText>
+			<image>
+				<reportElement x="254" y="7" width="100" height="50" uuid="de754152-46af-423f-9729-ecf3c6006130"/>
+				<imageExpression><![CDATA[$P{REPORT_PARAMETERS_IMG} + "EB_logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="26" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="25" forecolor="#333333" backcolor="#99CCFF" uuid="33afea2c-8f0d-44bb-8a5c-3a31f5f9584c"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="5" width="47" height="20" forecolor="#000000" uuid="f01feeac-6e05-469a-b942-997521afd9c3"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="47" height="25" backcolor="#FFFFFF" uuid="4e150182-18c0-44b2-9882-a353fe88596a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="154" y="0" width="209" height="25" uuid="c68b03c0-5e0d-459c-9192-e0e1904efe84"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome Completo]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="154" y="0" width="209" height="25" backcolor="#FFFFFF" uuid="1878dd5c-2e12-448b-be41-3edb324f0b87"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="363" y="0" width="63" height="26" uuid="83e11a9f-2f26-4e72-a33f-edb3828732a9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[P/Grad]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="363" y="0" width="63" height="25" backcolor="#FFFFFF" uuid="ff333db0-b3a6-47f4-9da2-1223e4c64d78"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="426" y="0" width="130" height="26" uuid="8850f727-bddf-428a-9a8e-d92d586b6f90"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Login]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="426" y="0" width="129" height="25" backcolor="#FFFFFF" uuid="bdd6644e-a668-4c14-b583-7bb3e54947cb"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="47" y="0" width="109" height="25" uuid="f3632e5f-099f-4742-899f-f9bbea9b2497"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data/Cadastro]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="47" height="20" backcolor="#FFFFFF" uuid="fc13001e-d353-429c-9f51-aae0c7b75296"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="47" height="20" uuid="3e86af18-e09b-40d0-8301-93afe6c1d755"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ent_codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="0" width="126" height="20" uuid="0264825a-4b0f-47d6-87e7-d791f78580fa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ent_login}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="0" width="207" height="20" uuid="fb786747-109d-4df9-aeeb-3641cbdebb22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ent_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="47" y="0" width="107" height="20" uuid="85fd4f6e-dc7d-48cf-8d41-5295e4327851"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ent_datacadastro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="363" y="0" width="63" height="20" uuid="b538ff41-2b89-4a13-b378-bd534e605a6d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{graduacao}.getGrad_grad()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="47" y="0" width="107" height="20" backcolor="#FFFFFF" uuid="259a2b83-f43a-4b0f-ae6d-f49dc71c16c7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="154" y="0" width="209" height="20" backcolor="#FFFFFF" uuid="ff9c5648-eac3-4630-9bd6-d0367299de03"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="363" y="0" width="63" height="20" backcolor="#FFFFFF" uuid="8775f19a-c2f9-4180-8a09-65e0b7af50b9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="426" y="0" width="129" height="20" backcolor="#FFFFFF" uuid="86c7e39b-ed7c-46e3-84fc-f42b872a2cad"/>
+			</rectangle>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="50">
+			<rectangle>
+				<reportElement x="0" y="19" width="555" height="20" backcolor="#999999" uuid="37ca346f-9cbb-4abd-a7c8-ff9ba14195a8"/>
+			</rectangle>
+			<textField>
+				<reportElement x="533" y="19" width="19" height="19" uuid="ad55354d-c4aa-4220-afd8-e2f8c6994193"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="493" y="20" width="39" height="18" uuid="f230a7ca-4599-4396-8e69-89eb384a8f3a"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Página]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="20" width="64" height="20" uuid="0404105d-3777-4d0b-8621-5409d3ee759e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+</jasperReport>

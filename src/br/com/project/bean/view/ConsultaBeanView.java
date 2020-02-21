@@ -19,19 +19,18 @@ import br.com.project.model.classes.Consulta;
 import br.com.project.model.classes.Entidade;
 
 @Controller
-@Scope(value="session")
+@Scope(value = "session")
 @ManagedBean(name = "consultaBeanView")
 public class ConsultaBeanView extends BeanManagedViewAbstract {
 
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	private CarregamentoLazyListForObject<Consulta> list = new CarregamentoLazyListForObject<Consulta>();
 	private String url = "/cadastro/cad_consulta.jsf?faces-redirect=true";
 	private String urlFind = "/cadastro/find_consulta.jsf?faces-redirect=true";
-	
+
 	private Consulta objetoSelecionado = new Consulta();
-	
+
 	@Override
 	public StreamedContent getArquivoReport() throws Exception {
 		super.setNomeRelatorioJasper("report_consulta");
@@ -41,32 +40,28 @@ public class ConsultaBeanView extends BeanManagedViewAbstract {
 				.finList(getClassImplement()));
 		return super.getArquivoReport();
 	}
-	
 
 	@Autowired
 	private ContextoBean contextoBean;
 
-	
 	@Autowired
 	private ConsultaController consultaController;
-	
+
 	@Autowired
 	private EntidadeController entidadeController;
-	
-	
+
 	public CarregamentoLazyListForObject<Consulta> getList() throws Exception {
 		return list;
 	}
 
-	
 	public ConsultaController getConsultaController() {
 		return consultaController;
 	}
-	
+
 	public void setConsultaController(ConsultaController consultaController) {
 		this.consultaController = consultaController;
 	}
-	
+
 	@Override
 	protected Class<Consulta> getClassImplement() {
 		return Consulta.class;
@@ -84,16 +79,16 @@ public class ConsultaBeanView extends BeanManagedViewAbstract {
 	public void setObjetoSelecionado(Consulta objetoSelecionado) {
 		this.objetoSelecionado = objetoSelecionado;
 	}
+
 	@Override
 	@RequestMapping(value = { "**/find_consulta" }, method = RequestMethod.POST)
-	public void setarVariaveisNulas() throws Exception {					
+	public void setarVariaveisNulas() throws Exception {
 		valorPesquisa = "";
 		list.clear();
-		objetoSelecionado = new Consulta();		
-		
-		
+		objetoSelecionado = new Consulta();
+
 	}
-	
+
 	@Override
 	public void saveNotReturn() throws Exception {
 		if (validarCampoObrigatorio(objetoSelecionado)) {
@@ -104,7 +99,7 @@ public class ConsultaBeanView extends BeanManagedViewAbstract {
 			sucesso();
 		}
 	}
-	
+
 	@Override
 	public void excluir() throws Exception {
 		if (objetoSelecionado.getCons_id() != null
@@ -115,16 +110,16 @@ public class ConsultaBeanView extends BeanManagedViewAbstract {
 			sucesso();
 		}
 	}
-	
+
 	@Override
 	public void consultaEntidade() throws Exception {
 		objetoSelecionado = new Consulta();
 		list.clear();
-		list.setTotalRegistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());
-		
-		
-		
-}
+		list.setTotalRegistroConsulta(super.totalRegistroConsulta(),
+				super.getSqlLazyQuery());
+
+	}
+
 	@Override
 	public String novo() throws Exception {
 		setarVariaveisNulas();
@@ -145,40 +140,24 @@ public class ConsultaBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public String redirecionarFindEntidade() throws Exception {
-		setarVariaveisNulas();		
-		objetoSelecionado = new Consulta();		
+		setarVariaveisNulas();
+		objetoSelecionado = new Consulta();
 		return urlFind;
 	}
-	
-	
 
-	
-	
 	@Override
 	public String condicaoAndParaPesquisa() throws Exception {
 		return "";
 	}
 
-
-	
-	
-	
-	
-	
-	
-	  @RequestMapping("**/addPacienteFunc")
-	public void addPacienteFunc(@RequestParam Long codEntidade) throws Exception  {
+	@RequestMapping("**/addPacienteFunc")
+	public void addPacienteFunc(@RequestParam Long codEntidade)
+			throws Exception {
 		if (codEntidade != null && codEntidade > 0) {
-				Entidade entidade = entidadeController
-						.findPaciente(codEntidade);
-				objetoSelecionado.setEntidade(entidade != null ? entidade
-						: new Entidade());
-		}}
-	
-	
-	
+			Entidade entidade = entidadeController.findPaciente(codEntidade);
+			objetoSelecionado.setEntidade(entidade != null ? entidade
+					: new Entidade());
+		}
+	}
 
 }
-
-	
-	

@@ -1,6 +1,8 @@
 package br.com.project.bean.view;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,9 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	private String url = "/cadastro/cad_produto.jsf?faces-redirect=true";
 	private String urlFind = "/cadastro/find_produto.jsf?faces-redirect=true";
 	
+	
 	private Produto objetoSelecionado = new Produto();
+	
 	
 	
 	@Autowired
@@ -100,15 +104,15 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	}
 	
 	@Override
-	public void excluir() throws Exception {
-				
+	public void excluir() throws Exception {		
 		if (objetoSelecionado.getProd_codigo() != null
 				&& objetoSelecionado.getProd_codigo() > 0) {
-			produtoController.delete(objetoSelecionado);
+			produtoController.delete(objetoSelecionado);			
 			list.remove(objetoSelecionado);
 			objetoSelecionado = new Produto();
 			sucesso();		
-			list.clear();
+			list.clear();		
+			
 		}
 		
 	}
@@ -118,8 +122,7 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 		objetoSelecionado = new Produto();
 		list.clear();
 		list.setTotalRegistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());
-		
-		
+		 
 		
 }
 	@Override
@@ -148,37 +151,57 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	}
 	
 	
-
-	
-	
 	@Override
 	public String condicaoAndParaPesquisa() throws Exception {
 		return "";
 	}
-
-	@Override
-	public void selecao() throws Exception {
-		if(value1 != false){
-			produtoController.delete(objetoSelecionado);
-			list.remove(objetoSelecionado);
-			objetoSelecionado = new Produto();
-			sucesso();		
-		}
-		
-		
-	}
-	private boolean value1;
-
-
-	public boolean isValue1() {
-		return value1;
-	}
-
-	public void setValue1(boolean value1) {
-		this.value1 = value1;
-	}  
+	
 	
 
-	
 
+    private boolean value2;
+ 
+ 
+    public boolean isValue2() {
+        return value2;
+    }
+ 
+    public void setValue2(boolean value2) {
+        this.value2 = value2;
+      
+    }
+     
+ 
+    
+    public void addMessage() throws Exception {
+        String summary = value2 ? "Checked" : "Unchecked";
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
+      
+    }
+    
+    @Override
+    public void selecao() throws Exception {   
+    	objetoSelecionado = new Produto();    	
+    	
+    	 for (Produto prod: list) {    		 
+    		 if(value2 == true){
+    		produtoController.delete(prod);
+    		list.remove(objetoSelecionado);
+    		sucesso();
+    		list.clear();
+    	 } 
+       }
+    	
+
+  }
+
+    
+
+
+		
+	
 }
+
+	
+
+

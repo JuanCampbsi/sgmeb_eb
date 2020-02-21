@@ -93,9 +93,6 @@
 						<f:param name="consultarInativos" value="#{cc.attrs.consultarInativos}"/>
 					</p:commandButton>
 					
-				
-					
-					
 				</h:panelGrid> 
 			</p:panel> 
 			
@@ -104,7 +101,7 @@
 			<p:dataTable styleClass="estiloIdCadastro" id="tableResult" rendered="true" 
 			    value="#{cc.attrs.managedBeanView.list}"
 				var="objeto" 
-				rows="10" 
+				rows="7" 
 				widgetVar="tableResult"
 				selectionMode="single" 
 				selection="#{cc.attrs.managedBeanView.objetoSelecionado}" 

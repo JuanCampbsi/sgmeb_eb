@@ -11,34 +11,42 @@
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title><ui:insert name="titulo">SGMEB</ui:insert></title>
-		<h:outputScript name="primefaces.js" library="primefaces" id="jsPrime"/>
-		<h:outputScript name="jquery.js" library="primefaces/jquery" id="jsJquery"/>
-		<h:outputScript name="jquery-plugins.js" library="primefaces/jquery" id="jsJqueryPlugin"/>
-		<h:outputScript name="jquery.cookie.js" library="javascript" id="jsJaqueryCookie"/>
-		<h:outputStylesheet name="jquery-ui.css" library="primefaces/jquery/ui" id="jsJqueryUi"/>
-		<h:outputStylesheet name="primefaces.css" library="primefaces" id="jdPrimeCss"/>
-		<h:outputScript name="jquery.maskMoney.min.js" library="javascript" id="jsMaskMoneySistema"/>
-		<h:outputScript name="jquery.maskedinput.js" library="javascript" id="jsMaskInputSistema"/>
-		<h:outputScript name="scripty.js" library="javascript" id="jsScriptSistema"/>
-		<h:outputScript name="jsf.js" library="javax.faces"/>
-		<h:outputScript name="googlechart.js" library="javascript"/> 
-		<h:outputScript name="deployJava.js"  library="javascript" />
+		<h:outputScript name="primefaces.js" library="primefaces" id="jsPrime" />
+		<h:outputScript name="jquery.js" library="primefaces/jquery"
+			id="jsJquery" />
+		<h:outputScript name="jquery-plugins.js" library="primefaces/jquery"
+			id="jsJqueryPlugin" />
+		<h:outputScript name="jquery.cookie.js" library="javascript"
+			id="jsJaqueryCookie" />
+		<h:outputStylesheet name="jquery-ui.css"
+			library="primefaces/jquery/ui" id="jsJqueryUi" />
+		<h:outputStylesheet name="primefaces.css" library="primefaces"
+			id="jdPrimeCss" />
+		<h:outputScript name="jquery.maskMoney.min.js" library="javascript"
+			id="jsMaskMoneySistema" />
+		<h:outputScript name="jquery.maskedinput.js" library="javascript"
+			id="jsMaskInputSistema" />
+		<h:outputScript name="scripty.js" library="javascript"
+			id="jsScriptSistema" />
+		<h:outputScript name="jsf.js" library="javax.faces" />
+		<h:outputScript name="googlechart.js" library="javascript" />
+		<h:outputScript name="deployJava.js" library="javascript" />
 	</h:head>
 	<h:form id="formTemplate" prependId="false">
 		<h:outputStylesheet name="estilo.css" library="css"
 			id="cssStiloSistema" />
 		<h:body styleClass="corpofundo">
 			<script type="text/javascript" charset="UTF-8">
-			$.noConflict();
-	 	  	localeData_pt_br();
-		    initTamplete();
-			ocultarMenu();  
-			
-			$(document).keydown(function(e) {
-				if (e.which == 116) {
-					return false;
-				}
-			});
+				$.noConflict();
+				localeData_pt_br();
+				initTamplete();
+				ocultarMenu();
+
+				$(document).keydown(function(e) {
+					if (e.which == 116) {
+						return false;
+					}
+				});
 
 				/*$(window).bind('beforeunload', function(e){// peder confirmação para atualizar ou sair da pagina
 					e = e || window.event;
@@ -46,8 +54,7 @@
 					
 					if(e) e.returnValue = message;
 						return message;	
-				});*/		
-				
+				});*/
 			</script>
 			<ui:include src="/templates/barraProgresso.xhtml" />
 			<div id="msgError" class="espacoMensagem">
@@ -59,39 +66,23 @@
 			<div id="container">
 				<div id="topo">
 					<span style="position: absolute; left: -10px; top: -17px"
-						id="spanLogo">
-						 <p:graphicImage library="img"
-							name="image.png" id="logoImg" styleClass="bordaImagem" 
-							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"/>						
-					</span>
-					
-						<span style="position: absolute; left: 977px; top: -16px; " id="spanLogo3">
-						 <p:graphicImage library="img"
-							name="medicoslogo.png" id="logoImg3" style=" width:120px;"
-						/>	
-						
-						</span>				
-					
-						<span style="position: absolute; left: 960px; top: 15px; " id="spanLogo5">
-						 <h:graphicImage library="img"
-							name="logobia2.png" id="logoImg5" style=" width:40px;"
-						/>	
-					</span>
-					
-						<span style="position: absolute; left: 915px; top: 15px; " id="spanLogo6">
-						 <p:graphicImage library="img"
-							name="logobda.png" id="logoImg6" style=" width:40px;"
-						/>	
-					</span>
-					
-						<span style="position: absolute; left: 840px; top: 3px; " id="spanLogo4">
-						 <p:graphicImage library="img"
-							name="mapa.png" id="logoImg4" style=" width:70px;"
-						/>							
-					</span>
-					
-					
-					 <span id="dadoslogin"> Usuário:
+						id="spanLogo"> <p:graphicImage library="img"
+							name="image.png" id="logoImg" styleClass="bordaImagem"
+							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');" />
+					</span> <span style="position: absolute; left: 977px; top: -16px;"
+						id="spanLogo3"> <p:graphicImage library="img"
+							name="medicoslogo.png" id="logoImg3" style=" width:120px;" />
+
+					</span> <span style="position: absolute; left: 960px; top: 15px;"
+						id="spanLogo5"> <h:graphicImage library="img"
+							name="logobia2.png" id="logoImg5" style=" width:40px;" />
+					</span> <span style="position: absolute; left: 915px; top: 15px;"
+						id="spanLogo6"> <p:graphicImage library="img"
+							name="logobda.png" id="logoImg6" style=" width:40px;" />
+					</span> <span style="position: absolute; left: 840px; top: 3px;"
+						id="spanLogo4"> <p:graphicImage library="img"
+							name="mapa.png" id="logoImg4" style=" width:70px;" />
+					</span> <span id="dadoslogin"> Usuário:
 						#{entidadeBeanView.entidadeLogadoSecurity} <br id="quebraUser" />
 						Último login: <h:outputLabel
 							value="#{entidadeBeanView.ultimoAcesso}" id="saidaUltimoAcesso">
@@ -132,11 +123,12 @@
 					</a>
 				</div>
 
-				<p:dialog widgetVar="alterarSenhaDialog" id="alterarSenhaDialog" styleClass="estiloDialog2"
-					width="370" modal="true" resizable="false" height="170"
-					header="Alterar senha" appendToBody="false" dynamic="true">
-				<ui:include src="/cadastro/dialog_alterar_senha.xhtml"/>				
-			</p:dialog>
+				<p:dialog widgetVar="alterarSenhaDialog" id="alterarSenhaDialog"
+					styleClass="estiloDialog2" width="370" modal="true"
+					resizable="false" height="170" header="Alterar senha"
+					appendToBody="false" dynamic="true">
+					<ui:include src="/cadastro/dialog_alterar_senha.xhtml" />
+				</p:dialog>
 
 
 
@@ -172,26 +164,32 @@
 						</sec:ifAnyGranted>
 
 
+
+						<sec:ifAnyGranted roles="MEDICO_ACESSAR,RECEITUARIO_GERAR, ADMIN">
+							<p:menuitem value="Realizar Consulta" id="realizaConsulta"
+								onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_consulta')"
+								ajax="true" />
+						</sec:ifAnyGranted>
+
+
+
+
 						<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">
-							<p:submenu label="Manual" id="subMenuManual"
-								styleClass="meumenu">
-								
+							<p:submenu label="Manual" id="subMenuManual" styleClass="meumenu">
+
 								<p:menuitem value="Usuário Padrão" id="menumanualuserpadrao"
-							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"
-							ajax="true" />
-							
-							<p:menuitem value="Usuário Administrador" id="menumanual"
-							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"
-							ajax="true" />
-								
-								
-								</p:submenu></sec:ifAnyGranted>
-								
-						<sec:ifAnyGranted roles="MEDICO_ACESSAR, ADMIN">		
-						<p:menuitem value="Realizar Consulta" id="realizaConsulta"
-							onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_consulta')"
-							ajax="true" />
-							</sec:ifAnyGranted>
+									onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"
+									ajax="true" />
+
+								<p:menuitem value="Usuário Administrador" id="menumanual"
+									onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');"
+									ajax="true" />
+
+
+							</p:submenu>
+						</sec:ifAnyGranted>
+
+
 
 
 
@@ -201,8 +199,8 @@
 
 						<p:menuitem value="Alterar senha" id="menualterarsenha"
 							onclick="alterarSenha('#{request.contextPath}');" ajax="true" />
-							
-							
+
+
 
 
 						<p:menuitem value="Início" id="menuinicio"
@@ -218,9 +216,9 @@
 					</p:tieredMenu>
 				</div>
 			</div>
-			
-		
-			
+
+
+
 		</h:body>
 	</h:form>
 	<script type="text/javascript" charset="UTF-8">

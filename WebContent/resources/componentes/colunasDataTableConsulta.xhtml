@@ -9,7 +9,7 @@
 	xmlns:composite="http://java.sun.com/jsf/composite">
 
 
-<p:column  styleClass="estiloIdCadastro" style="width:80px;">
+<p:column  styleClass="estiloIdCadastro" style="width:60px;">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Código" styleClass="cabecalho"></h:outputText>
@@ -21,7 +21,7 @@
 <p:column styleClass="estiloIdCadastro5" style="width:150px;">
 	<center>
 		<f:facet name="header">
-			<h:outputText value="Data" styleClass="cabecalho"></h:outputText>
+			<h:outputText value="Data da Consulta" styleClass="cabecalho"></h:outputText>
 		</f:facet>
 		
 		<h:outputText value="#{objeto.cons_data}">
@@ -39,7 +39,7 @@
 	</center>
 </p:column>
 
-<p:column  styleClass="estiloIdCadastro">
+<p:column  styleClass="estiloIdCadastro"  style="width:160px;">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Nome de Guerra" styleClass="cabecalho"></h:outputText>
@@ -58,6 +58,20 @@
 </p:column>
 
 
+<p:column styleClass="estiloIdCadastro"  style="width:150px;">
+	<center>
+		<f:facet name="header">
+			<h:outputText value="Gerar Receituário" styleClass="cabecalho"></h:outputText>
+		</f:facet>
+		<h:commandLink immediate="true">
+			<f:setPropertyActionListener
+				target="#{receituarioBeanView.tipoRelatorio}" value="1" />
+			<p:fileDownload value="#{receituarioBeanView.arquivoReport}" />
+			<h:graphicImage library="img" name="add_16.png" />
+			<f:param name="cons_id" value="#{objeto.cons_id}" />
+		</h:commandLink>
+	</center>
+</p:column>
 
 
 <sec:ifAnyGranted roles="MEDICO_EXCLUIR, ADMIN">

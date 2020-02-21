@@ -126,6 +126,24 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 				.createQuery(query.toString()).list();
 		return lista;
 	}
+	
+	/**
+	 * Busca a lista unico por classe informada TestUnit ok
+	 */
+	public List<T> finListaUnica(Class<T> entidade, Object atributo, Object valor) throws Exception {
+		validaSessionFactory();
+		StringBuilder query = new StringBuilder();
+		query.append("select distinct(entity) from ").
+		append(entidade.getSimpleName()).
+		append(" entity where entity. ").append(atributo).append(" = '").append(valor).append("'");
+		
+		
+		List<T> lista = sessionFactory.getCurrentSession()
+				.createQuery(query.toString()).list();
+		return lista;
+	}
+
+	
 
 	/**
 	 * TestUnit ok
@@ -224,6 +242,8 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		return obj;
 
 	}
+	
+	
 
 	public T findUninqueByProperty(Class<T> entidade, Object valor,
 			String atributo, String condicao) throws Exception {
@@ -239,6 +259,10 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		return obj;
 
 	}
+	
+	
+
+	
 
 	/**
 	 * TestUnit Ok
