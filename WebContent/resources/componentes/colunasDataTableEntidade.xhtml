@@ -7,6 +7,32 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:sec="http://www.springframework.org/security/facelets/tags"
 	xmlns:composite="http://java.sun.com/jsf/composite">
+	
+	
+	<p:column styleClass="estiloIdCodigo"  >
+
+<f:facet name="header">	
+			<h:outputLabel for="Excluir" id="labelExcluirPaciente" >				
+				<p:commandLink action="#{entidadeBeanView.removerMarcados}"
+				id="buttonColunaSelecionarPaciente" ajax="true" immediate="true"
+				partialSubmit="true" process="@this"  update="tableResult">
+				<h:graphicImage library="img" name="icone-excluir.png"
+					style="width:35px;" />	
+				 	<f:param name="ent_codigo" value="#{objeto.ent_codigo}" />
+				</p:commandLink>				
+				</h:outputLabel>  
+	</f:facet>
+
+	<center>	
+		<f:facet name="header">
+			<h:outputText styleClass="cabecalho" />
+		</f:facet>		
+		<p:selectBooleanCheckbox>		
+            <p:ajax listener="#{entidadeBeanView.addRemover}"/>            
+            <f:param name="ent_codigo" value="#{objeto.ent_codigo}" />
+        </p:selectBooleanCheckbox>		
+	</center>
+</p:column>
 
 
 <p:column  styleClass="estiloIdCadastro" style="width:70px;">

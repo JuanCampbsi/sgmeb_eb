@@ -28,6 +28,7 @@ public class CarregamentoLazyListForObject<T> extends LazyDataModel<T> {
 	private int totalRegistroConsulta = 0;
 
 	private String query = null;
+	
 
 	private Controller controller = (Controller) ContextLoaderListenerGsmebUtils
 			.getBean(Controller.class);
@@ -67,6 +68,7 @@ public class CarregamentoLazyListForObject<T> extends LazyDataModel<T> {
 	public void remove(T objetoSelecionado) {
 		this.list.remove(objetoSelecionado);
 	}
+
 
 	public void clear() {
 		this.query = null;

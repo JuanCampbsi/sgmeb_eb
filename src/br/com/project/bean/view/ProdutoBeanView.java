@@ -1,9 +1,12 @@
 package br.com.project.bean.view;
 
-import javax.faces.application.FacesMessage;
+import java.util.HashSet;
+import java.util.Iterator;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.component.selectbooleancheckbox.SelectBooleanCheckbox;
 import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -20,7 +23,7 @@ import br.com.project.model.classes.Produto;
 
 
 @Controller
-@Scope("session")
+@Scope("view")
 @ManagedBean(name = "produtoBeanView")
 public class ProdutoBeanView extends BeanManagedViewAbstract {
 	private static final long serialVersionUID = 1L;
@@ -33,6 +36,7 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	private Produto objetoSelecionado = new Produto();
 	
 	
+	private HashSet<Long> idRemover = new HashSet<Long>();
 	
 	@Autowired
 	private ContextoBean contextoBean;
@@ -158,40 +162,44 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	
 	
 
+    
+    public void addRemover(javax.faces.event.AjaxBehaviorEvent behaviorEvent) throws Exception {
+       
+    	boolean valorSelecionado = (boolean ) ((SelectBooleanCheckbox)behaviorEvent.getSource()).getValue();
+    	
+    	String	prod_codigo = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("prod_codigo");
 
-    private boolean value2;
- 
- 
-    public boolean isValue2() {
-        return value2;
-    }
- 
-    public void setValue2(boolean value2) {
-        this.value2 = value2;
-      
-    }
-     
- 
-    
-    public void addMessage() throws Exception {
-        String summary = value2 ? "Checked" : "Unchecked";
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(summary));
-      
+    	if (valorSelecionado) {
+	      idRemover.add(Long.parseLong(prod_codigo));
+	     
+    	}else {
+    		Iterator ids = idRemover.iterator();
+    		
+    		while (ids.hasNext()) {
+    			if (Long.parseLong(prod_codigo) == Long.parseLong(ids.next().toString())) {
+    				ids.remove();
+    				break;
+    				
+    			}
+    		}
+    	}
+    	
+    	
     }
     
-    @Override
-    public void selecao() throws Exception {   
-    	objetoSelecionado = new Produto();    	
-    	
-    	 for (Produto prod: list) {    		 
-    		 if(value2 == true){
-    		produtoController.delete(prod);
-    		list.remove(objetoSelecionado);
-    		sucesso();
-    		list.clear();
-    	 } 
-       }
-    	
+	  public void removerMarcados () throws Exception {
+		  for (Long id : idRemover) {
+			  
+		     Produto produto = produtoController.findById(getClassImplement(), id);
+    	     produtoController.delete(produto);
+    	    
+		}
+		idRemover.clear();
+		setarVariaveisNulas();
+		
+		
+	  }
+	    	
 
   }
 
@@ -200,7 +208,6 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 
 		
 	
-}
 
 	
 

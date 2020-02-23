@@ -1,11 +1,15 @@
 package br.com.project.bean.view;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletResponse;
 
+import org.primefaces.component.selectbooleancheckbox.SelectBooleanCheckbox;
 import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -33,6 +37,8 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	private String url = "/cadastro/cad_paciente.jsf?faces-redirect=true";
 	private String urlFind = "/cadastro/find_paciente.jsf?faces-redirect=true";
 	private EntidadeAtualizaSenhaBean entidadeAtualizaSenhaBean = new EntidadeAtualizaSenhaBean();
+	
+	private HashSet<Long> idRemover = new HashSet<Long>();
 	
 	
 	@Override
@@ -220,5 +226,40 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		}
 
 	}
+	
+	public void addRemover(javax.faces.event.AjaxBehaviorEvent behaviorEvent) throws Exception {
+	       
+    	boolean valorSelecionado = (boolean ) ((SelectBooleanCheckbox)behaviorEvent.getSource()).getValue();
+    	
+    	String	ent_codigo = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("ent_codigo");
+
+    	if (valorSelecionado) {
+	      idRemover.add(Long.parseLong(ent_codigo));
+    	}else {
+    		Iterator ids = idRemover.iterator();
+    		
+    		while (ids.hasNext()) {
+    			if (Long.parseLong(ent_codigo) == Long.parseLong(ids.next().toString())) {
+    				ids.remove();
+    				break;
+    			}
+    		}
+    	}
+    	
+    }
+    
+	  public void removerMarcados () throws Exception {
+		  for (Long id : idRemover) {
+			  
+		     Entidade entidade = entidadeController.findById(getClassImplement(), id);
+    	     entidadeController.delete(entidade);
+		}
+		  
+		  idRemover.clear();
+			setarVariaveisNulas();
+			
+	  }
+	
+	
 
 }

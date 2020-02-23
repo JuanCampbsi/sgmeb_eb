@@ -7,29 +7,30 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:sec="http://www.springframework.org/security/facelets/tags"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
- 
-
+	
+	
+	
 <p:column styleClass="estiloIdCodigo"  >
 
 <f:facet name="header">	
 			<h:outputLabel for="Excluir" id="labelExcluir" >				
-				<p:commandLink action="#{produtoBeanView.selecao}"
+				<p:commandLink action="#{produtoBeanView.removerMarcados}"
 				id="buttonColunaSelecionar" ajax="true" immediate="true"
-				partialSubmit="true" process="@this" update="tableResult">
+				partialSubmit="true" process="@this"  update="tableResult">
 				<h:graphicImage library="img" name="icone-excluir.png"
 					style="width:35px;" />	
 				 	<f:param name="prod_codigo" value="#{objeto.prod_codigo}" />
 				</p:commandLink>				
-				</h:outputLabel>
+				</h:outputLabel>  
 	</f:facet>
  <p:growl id="msg" />
 	<center>	
 		<f:facet name="header">
 			<h:outputText styleClass="cabecalho" />
 		</f:facet>		
-		<p:selectBooleanCheckbox value="#{produtoBeanView.value2}"   >		
-            <p:ajax update="msg" listener="#{produtoBeanView.addMessage}"/>            
-          
+		<p:selectBooleanCheckbox>		
+            <p:ajax listener="#{produtoBeanView.addRemover}"/>            
+            <f:param name="prod_codigo" value="#{objeto.prod_codigo}" />
         </p:selectBooleanCheckbox>		
 	</center>
 </p:column>
