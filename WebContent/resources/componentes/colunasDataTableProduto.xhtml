@@ -29,7 +29,7 @@
 			<h:outputText styleClass="cabecalho" />
 		</f:facet>		
 		<p:selectBooleanCheckbox>		
-            <p:ajax listener="#{produtoBeanView.addRemover}"/>            
+            <p:ajax listener="#{produtoBeanView.addRemover}" resetValues="false" />            
             <f:param name="prod_codigo" value="#{objeto.prod_codigo}" />
         </p:selectBooleanCheckbox>		
 	</center>

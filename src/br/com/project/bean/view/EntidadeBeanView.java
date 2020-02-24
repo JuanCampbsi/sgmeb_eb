@@ -27,7 +27,7 @@ import br.com.project.geral.controller.EntidadeController;
 import br.com.project.model.classes.Entidade;
 
 @Controller
-@Scope(value = "session")
+@Scope("view")
 @ManagedBean(name = "entidadeBeanView")
 public class EntidadeBeanView extends BeanManagedViewAbstract {
 
@@ -231,7 +231,8 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	       
     	boolean valorSelecionado = (boolean ) ((SelectBooleanCheckbox)behaviorEvent.getSource()).getValue();
     	
-    	String	ent_codigo = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("ent_codigo");
+    	String	ent_codigo = FacesContext.getCurrentInstance().getExternalContext().
+    			getRequestParameterMap().get("ent_codigo");
 
     	if (valorSelecionado) {
 	      idRemover.add(Long.parseLong(ent_codigo));
@@ -253,10 +254,13 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 			  
 		     Entidade entidade = entidadeController.findById(getClassImplement(), id);
     	     entidadeController.delete(entidade);
+    	     
+    	     
 		}
-		  
-		  idRemover.clear();
-			setarVariaveisNulas();
+		  sucesso();
+		  redirecionarFindEntidade();
+		  	
+			
 			
 	  }
 	

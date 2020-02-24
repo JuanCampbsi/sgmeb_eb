@@ -20,31 +20,26 @@ import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.geral.controller.ProdutoController;
 import br.com.project.model.classes.Produto;
 
-
-
 @Controller
 @Scope("view")
 @ManagedBean(name = "produtoBeanView")
 public class ProdutoBeanView extends BeanManagedViewAbstract {
 	private static final long serialVersionUID = 1L;
-	
+
 	private CarregamentoLazyListForObject<Produto> list = new CarregamentoLazyListForObject<Produto>();
 	private String url = "/cadastro/cad_produto.jsf?faces-redirect=true";
 	private String urlFind = "/cadastro/find_produto.jsf?faces-redirect=true";
-	
-	
+
 	private Produto objetoSelecionado = new Produto();
-	
-	
+
 	private HashSet<Long> idRemover = new HashSet<Long>();
-	
+
 	@Autowired
 	private ContextoBean contextoBean;
 
 	@Autowired
-	private  ProdutoController produtoController;
+	private ProdutoController produtoController;
 
-	
 	@Override
 	public StreamedContent getArquivoReport() throws Exception {
 		super.setNomeRelatorioJasper("report_produto");
@@ -54,20 +49,19 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 				.finList(getClassImplement()));
 		return super.getArquivoReport();
 	}
-	
+
 	public CarregamentoLazyListForObject<Produto> getList() throws Exception {
 		return list;
 	}
 
-	
 	public ProdutoController getProdutoController() {
 		return produtoController;
 	}
-	
+
 	public void setProdutoController(ProdutoController produtoController) {
 		this.produtoController = produtoController;
 	}
-	
+
 	@Override
 	protected Class<Produto> getClassImplement() {
 		return Produto.class;
@@ -85,16 +79,16 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	public void setObjetoSelecionado(Produto objetoSelecionado) {
 		this.objetoSelecionado = objetoSelecionado;
 	}
+
 	@Override
 	@RequestMapping(value = { "**/find_produto" }, method = RequestMethod.POST)
-	public void setarVariaveisNulas() throws Exception {					
+	public void setarVariaveisNulas() throws Exception {
 		valorPesquisa = "";
 		list.clear();
-		objetoSelecionado = new Produto();		
-		
-		
+		objetoSelecionado = new Produto();
+
 	}
-	
+
 	@Override
 	public void saveNotReturn() throws Exception {
 		objetoSelecionado.isInvalido();
@@ -106,29 +100,30 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 			sucesso();
 		}
 	}
-	
+
 	@Override
-	public void excluir() throws Exception {		
+	public void excluir() throws Exception {
 		if (objetoSelecionado.getProd_codigo() != null
 				&& objetoSelecionado.getProd_codigo() > 0) {
-			produtoController.delete(objetoSelecionado);			
+			produtoController.delete(objetoSelecionado);
 			list.remove(objetoSelecionado);
 			objetoSelecionado = new Produto();
-			sucesso();		
-			list.clear();		
-			
+			sucesso();
+			list.clear();
+
 		}
-		
+
 	}
-	
+
 	@Override
 	public void consultaEntidade() throws Exception {
 		objetoSelecionado = new Produto();
 		list.clear();
-		list.setTotalRegistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());
-		 
+		list.setTotalRegistroConsulta(super.totalRegistroConsulta(),
+				super.getSqlLazyQuery());
 		
-}
+	}
+
 	@Override
 	public String novo() throws Exception {
 		setarVariaveisNulas();
@@ -149,66 +144,56 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public String redirecionarFindEntidade() throws Exception {
-		setarVariaveisNulas();		
-		objetoSelecionado = new Produto();		
+		setarVariaveisNulas();
 		return urlFind;
 	}
-	
-	
+
 	@Override
 	public String condicaoAndParaPesquisa() throws Exception {
 		return "";
 	}
-	
-	
 
-    
-    public void addRemover(javax.faces.event.AjaxBehaviorEvent behaviorEvent) throws Exception {
-       
-    	boolean valorSelecionado = (boolean ) ((SelectBooleanCheckbox)behaviorEvent.getSource()).getValue();
-    	
-    	String	prod_codigo = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("prod_codigo");
+	public void addRemover(javax.faces.event.AjaxBehaviorEvent behaviorEvent)
+			throws Exception {
 
-    	if (valorSelecionado) {
-	      idRemover.add(Long.parseLong(prod_codigo));
-	     
-    	}else {
-    		Iterator ids = idRemover.iterator();
-    		
-    		while (ids.hasNext()) {
-    			if (Long.parseLong(prod_codigo) == Long.parseLong(ids.next().toString())) {
-    				ids.remove();
-    				break;
-    				
-    			}
-    		}
-    	}
-    	
-    	
-    }
-    
-	  public void removerMarcados () throws Exception {
-		  for (Long id : idRemover) {
-			  
-		     Produto produto = produtoController.findById(getClassImplement(), id);
-    	     produtoController.delete(produto);
-    	    
+		boolean valorSelecionado = (boolean) ((SelectBooleanCheckbox) behaviorEvent
+				.getSource()).getValue();
+
+		String prod_codigo = FacesContext.getCurrentInstance()
+				.getExternalContext().getRequestParameterMap()
+				.get("prod_codigo");
+
+		if (valorSelecionado) {
+			idRemover.add(Long.parseLong(prod_codigo));
+			
+		} else {
+			Iterator ids = idRemover.iterator();
+
+			while (ids.hasNext()) {
+				if (Long.parseLong(prod_codigo) == Long.parseLong(ids.next()
+						.toString())) {
+					ids.remove();
+					break;
+				
+				}
+			}
 		}
-		idRemover.clear();
-		setarVariaveisNulas();
-		
-		
-	  }
-	    	
 
-  }
-
-    
-
-
-		
-	
+	}
 
 	
+	public void removerMarcados() throws Exception {
+		for (Long id : idRemover) {
 
+			Produto produto = produtoController.findById(getClassImplement(),id);
+			produtoController.delete(produto);
 
+		}
+		sucesso();
+		redirecionarFindEntidade();
+		
+		
+		
+	}
+
+}

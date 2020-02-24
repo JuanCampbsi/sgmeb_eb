@@ -14,7 +14,7 @@
 <f:facet name="header">	
 			<h:outputLabel for="Excluir" id="labelExcluirPaciente" >				
 				<p:commandLink action="#{entidadeBeanView.removerMarcados}"
-				id="buttonColunaSelecionarPaciente" ajax="true" immediate="true"
+				id="buttonColunaSelecionar" ajax="true" immediate="true"
 				partialSubmit="true" process="@this"  update="tableResult">
 				<h:graphicImage library="img" name="icone-excluir.png"
 					style="width:35px;" />	
@@ -22,13 +22,13 @@
 				</p:commandLink>				
 				</h:outputLabel>  
 	</f:facet>
-
+<p:growl id="msg" />
 	<center>	
 		<f:facet name="header">
 			<h:outputText styleClass="cabecalho" />
 		</f:facet>		
 		<p:selectBooleanCheckbox>		
-            <p:ajax listener="#{entidadeBeanView.addRemover}"/>            
+            <p:ajax listener="#{entidadeBeanView.addRemover}" resetValues="false"/>            
             <f:param name="ent_codigo" value="#{objeto.ent_codigo}" />
         </p:selectBooleanCheckbox>		
 	</center>
