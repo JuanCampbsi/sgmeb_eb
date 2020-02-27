@@ -27,7 +27,7 @@ import br.com.project.geral.controller.EntidadeController;
 import br.com.project.model.classes.Entidade;
 
 @Controller
-@Scope("view")
+@Scope(value = "session")
 @ManagedBean(name = "entidadeBeanView")
 public class EntidadeBeanView extends BeanManagedViewAbstract {
 
@@ -39,6 +39,8 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	private EntidadeAtualizaSenhaBean entidadeAtualizaSenhaBean = new EntidadeAtualizaSenhaBean();
 	
 	private HashSet<Long> idRemover = new HashSet<Long>();
+	
+	
 	
 	
 	@Override
@@ -134,7 +136,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	@Override
 	public void excluir() throws Exception {
 		if (objetoSelecionado.getEnt_codigo() != null
-				&& objetoSelecionado.getEnt_codigo() > 0) {
+				&& objetoSelecionado.getEnt_codigo() > 0) {			
 			entidadeController.delete(objetoSelecionado);
 			list.remove(objetoSelecionado);
 			objetoSelecionado = new Entidade();
@@ -237,7 +239,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
     	if (valorSelecionado) {
 	      idRemover.add(Long.parseLong(ent_codigo));
     	}else {
-    		Iterator ids = idRemover.iterator();
+    		Iterator<Long> ids = idRemover.iterator();
     		
     		while (ids.hasNext()) {
     			if (Long.parseLong(ent_codigo) == Long.parseLong(ids.next().toString())) {

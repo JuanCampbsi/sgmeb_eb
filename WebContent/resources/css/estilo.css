@@ -10,6 +10,13 @@
 	padding: 8% 0 0;
 	margin: auto;
 }
+ .ui-outputlabel {
+        font-weight: bold;
+    }
+ 
+    .ui-orderlist .ui-orderlist-list {
+        height: auto;
+    }
 
 .form {
 	position: relative;

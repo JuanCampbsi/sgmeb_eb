@@ -9,16 +9,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	
 	
-	
-<p:column styleClass="estiloIdCodigo"  >
+<sec:ifAnyGranted roles="PRODUTO_EXCLUIR, ADMIN">	
+<p:column styleClass="estiloIdCodigo"  style="width:70px;" >
 
 <f:facet name="header">	
 			<h:outputLabel for="Excluir" id="labelExcluir" >				
-				<p:commandLink action="#{produtoBeanView.removerMarcados}"
+				<p:commandLink action="#{produtoProdutoBeanView.removerMarcados}"
 				id="buttonColunaSelecionar" ajax="true" immediate="true"
+				onclick="if(!confirm('Confirma a exclusão do produto : #{objeto.prod_nome}?')) return false;"
 				partialSubmit="true" process="@this"  update="tableResult">
 				<h:graphicImage library="img" name="icone-excluir.png"
-					style="width:35px;" />	
+					style="width:25px;" />	
 				 	<f:param name="prod_codigo" value="#{objeto.prod_codigo}" />
 				</p:commandLink>				
 				</h:outputLabel>  
@@ -29,11 +30,12 @@
 			<h:outputText styleClass="cabecalho" />
 		</f:facet>		
 		<p:selectBooleanCheckbox>		
-            <p:ajax listener="#{produtoBeanView.addRemover}" resetValues="false" />            
+            <p:ajax listener="#{produtoProdutoBeanView.addRemover}" resetValues="false" />            
             <f:param name="prod_codigo" value="#{objeto.prod_codigo}" />
         </p:selectBooleanCheckbox>		
 	</center>
 </p:column>
+</sec:ifAnyGranted>
 
 <p:column styleClass="estiloIdCodigo">
 	<center>
@@ -111,45 +113,6 @@
 </p:column>
 
 
-<sec:ifAnyGranted roles="PRODUTO_EXCLUIR, ADMIN">
-	<p:column style="width:50px;">
-		<center>
-			<f:facet name="header">
-				<h:outputText value="Excluir" styleClass="cabecalho"></h:outputText>
-			</f:facet>
-
-			<c:choose>
-				<c:when test="${isCadastro == false}">
-					<p:commandLink action="#{produtoBeanView.excluir}"
-						id="buttonColunaExcluir" ajax="true" immediate="true"
-						partialSubmit="true" process="@this" update="tableResult"
-						onfocus="addFocoAoCampo('principioAtivo');"
-						onclick="if(!confirm('Confirma a exclusão da produto : #{objeto.prod_nome}?')) return false;">
-						<h:graphicImage library="img" name="excluir16.png"
-							styleClass="bordaImagem" />
-
-						<f:setPropertyActionListener
-							target="#{produtoBeanView.objetoSelecionado}" value="#{objeto}" />
-					</p:commandLink>
-				</c:when>
-				<c:otherwise>
-					<p:commandLink action="#{produtoBeanView.excluir}"
-						id="buttonColunaExcluir" ajax="false" immediate="true"
-						partialSubmit="true" process="@this" update="tableResult"
-						onfocus="addFocoAoCampo('principioAtivo');"
-						onclick="if(!confirm('Confirma a exclusão da produto : #{objeto.prod_nome}?')) return false;">
-						<h:graphicImage library="img" name="excluir16.png"
-							styleClass="bordaImagem" />
-
-						<f:setPropertyActionListener
-							target="#{produtoBeanView.objetoSelecionado}" value="#{objeto}" />
-					</p:commandLink>
-				</c:otherwise>
-			</c:choose>
-		</center>
-	</p:column>
-</sec:ifAnyGranted>
-
 <sec:ifAnyGranted roles="PRODUTO_EDITAR, ADMIN">
 	<p:column style="width:50px;">
 		<center>
@@ -160,7 +123,7 @@
 				ajax="true" id="editarProduto"
 				oncomplete="addFocoAoCampo('principioAtivo');">
 				<h:graphicImage library="img" name="editar16.png"
-					styleClass="bordaImagem" />
+					styleClass="bordaImagem" style="width:20px;"/>
 				<f:setPropertyActionListener value="#{objeto}"
 					target="#{produtoBeanView.objetoSelecionado}" />
 				<f:param name="produtoEdit" value="#{objeto.prod_codigo}" />

@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
+import org.primefaces.component.selectbooleancheckbox.SelectBooleanCheckbox;
 import org.primefaces.model.DualListModel;
 import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +44,9 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 	private DualListModel<Permissao> listMenu = new DualListModel<Permissao>();
 
 	private Entidade objetoSelecionado = new Entidade();
+	
+	private HashSet<Long> idRemover = new HashSet<Long>();
+	
 
 	@Autowired
 	private ContextoBean contextoBean;
@@ -242,5 +248,43 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 				+ TipoCadastro.TIPO_CADASTRO_USUARIO.name() + "' "
 				+ consultarInativos();
 	}
+	
+	public void addRemover(javax.faces.event.AjaxBehaviorEvent behaviorEvent) throws Exception {
+	       
+    	boolean valorSelecionado = (boolean ) ((SelectBooleanCheckbox)behaviorEvent.getSource()).getValue();
+    	
+    	String	ent_codigo = FacesContext.getCurrentInstance().getExternalContext().
+    			getRequestParameterMap().get("ent_codigo");
+
+    	if (valorSelecionado) {
+	      idRemover.add(Long.parseLong(ent_codigo));
+    	}else {
+    		Iterator<Long> ids = idRemover.iterator();
+    		
+    		while (ids.hasNext()) {
+    			if (Long.parseLong(ent_codigo) == Long.parseLong(ids.next().toString())) {
+    				ids.remove();
+    				break;
+    			}
+    		}
+    	}
+    	
+    }
+    
+	  public void removerMarcados () throws Exception {
+		  for (Long id : idRemover) {
+			  
+		     Entidade entidade = entidadeController.findById(getClassImplement(), id);
+    	     entidadeController.delete(entidade);
+    	     
+    	     
+		}
+		  sucesso();
+		  redirecionarFindEntidade();
+		  	
+			
+			
+	  }
+	
 
 }

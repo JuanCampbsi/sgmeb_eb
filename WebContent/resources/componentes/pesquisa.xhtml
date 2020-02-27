@@ -55,7 +55,8 @@
 		 	
 			<p:panel id="panelPesquisa" header="#{cc.attrs.nomePesquisa}" 
 				widgetVar="panelPesquisa" styleClass="estiloIdCadastro">
-				<h:panelGrid id="panelGridPesquisa" columns="7">
+				<h:panelGrid id="panelGridPesquisa" columns="7"  columnClasses="ui-g-12 ui-md-2,ui-g-12 
+				ui-md-4,ui-g-12 ui-md-2,ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
 					<h:outputLabel for="campo" id="labelCampo" value="Campo :"/>
 					<p:selectOneMenu style="width: 150px;" id="campo" onchange="addMascaraPesquisa(this.value);"
 						value="#{cc.attrs.managedBeanView.campoPesquisaSelecionado}">

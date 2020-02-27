@@ -19,7 +19,8 @@
 					styleClass="estiloIdCadastro3" />
 				<br />
 				<hr
-					style="height: 2px; border: none; color: #000; background-color: #8FBC8F; margin-top: 0px; margin-bottom: 0px;" />
+					style="height: 2px; border: none; color: #000; background-color: 
+					#8FBC8F; margin-top: 0px; margin-bottom: 0px;" />
 				<br />
 
 
@@ -31,9 +32,9 @@
 
 
 					<h:outputLabel id="labelPativo" for="prod_nomee" value="Nome:  "
-						styleClass="estiloIdCadastro" />
+						styleClass="estiloIdCadastro"  />
 					<p:inputText id="prod_nomee" styleClass="estyleInputNome"
-						required="true" maxlength="100"
+						required="true" maxlength="100" style="width: 380px;"
 						requiredMessage="Informe o campo Nome do Produto."
 						value="#{produtoBeanView.objetoSelecionado.prod_nome}" />
 					<p:message for="prod_nomee" />
@@ -41,7 +42,7 @@
 					<h:outputLabel id="labelDescricao" for="prodDescricao"
 						value="Descrição: " styleClass="estiloIdCadastro" />
 					<p:inputText id="prodDescricao" styleClass="estyleInputNome"
-						required="true" maxlength="100"
+						required="true" maxlength="100" style="width: 380px;"
 						requiredMessage="Informe o campo descrição."
 						value="#{produtoBeanView.objetoSelecionado.descricao_prod}" />
 					<p:message for="prodDescricao" />
@@ -49,7 +50,7 @@
 					<h:outputLabel id="labelTipo" for="prodTipo" value="Tipo: "
 						styleClass="estiloIdCadastro" />
 					<p:inputText id="prodTipo" styleClass="estyleInputNome"
-						required="true" maxlength="100"
+						required="true" maxlength="100" style="width: 280px;"
 						requiredMessage="Informe o campo do tipo."
 						value="#{produtoBeanView.objetoSelecionado.prod_tipo}" />
 					<p:message for="prodTipo" />
@@ -57,7 +58,7 @@
 					<h:outputLabel id="labelSerie" for="prodSerie" value="Série: "
 						styleClass="estiloIdCadastro" />
 					<p:inputText id="prodSerie" styleClass="estyleInputNome"
-						required="true" maxlength="100"
+						required="true" maxlength="100" style="width: 280px;"
 						requiredMessage="Informe o campo da Série."
 						value="#{produtoBeanView.objetoSelecionado.serie_prod}" />
 					<p:message for="prodSerie" />

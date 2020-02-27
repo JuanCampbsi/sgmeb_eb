@@ -39,7 +39,7 @@
 					<h:outputLabel id="labelnguerra" for="nomeGuerra"
 						value="Nome de Guerra : " styleClass="estiloIdCadastro" />
 					<p:inputText id="nGuerra" styleClass="estyleInputNome"
-						required="true" maxlength="100"
+						required="true" maxlength="100" style="width:250px;"
 						requiredMessage="Informe o Nome de Guerra"
 						value="#{entidadeBeanView.objetoSelecionado.ent_n_guerra}" />
 					<p:message for="nGuerra" />
@@ -62,7 +62,7 @@
 
 					<h:outputLabel id="labelidade" for="idadeP" value="Idade : "
 						styleClass="estiloIdCadastro" />
-					<p:inputMask id="PaIdade" mask="99" styleClass="estyleInputNome"
+					<p:inputText id="PaIdade" styleClass="estyleInputNome"
 						required="true" maxlength="100" requiredMessage="Informe a Idade"
 						value="#{entidadeBeanView.objetoSelecionado.ent_idade}" />
 						
@@ -121,6 +121,11 @@
 			
 			var id = getValorElementPorIdJQuery('labelidade');
 			$(id).keypress(permitNumber);
+			
+			gerenciaTeclaEnter();
+			permitirApenasNumero('PaIdade')
+			permitirApenasNumero('PaPeso')
+			permitirApenasNumero('PaAltura')
 			
 		</script>
 

@@ -8,16 +8,18 @@
 	xmlns:sec="http://www.springframework.org/security/facelets/tags"
 	xmlns:composite="http://java.sun.com/jsf/composite">
 	
-	
-	<p:column styleClass="estiloIdCodigo"  >
+
+<sec:ifAnyGranted roles="PACIENTE_EXCLUIR, ADMIN">	
+<p:column styleClass="estiloIdCodigo"  style="width:70px;">
 
 <f:facet name="header">	
 			<h:outputLabel for="Excluir" id="labelExcluirPaciente" >				
-				<p:commandLink action="#{entidadeBeanView.removerMarcados}"
+				<p:commandLink action="#{entidadeEntidadeBeanView.removerMarcados}"
 				id="buttonColunaSelecionar" ajax="true" immediate="true"
+				onclick="if(!confirm('Confirma a exclusão do Paciente : #{objeto.ent_nome}?')) return false;"
 				partialSubmit="true" process="@this"  update="tableResult">
 				<h:graphicImage library="img" name="icone-excluir.png"
-					style="width:35px;" />	
+					style="width:25px;" />	
 				 	<f:param name="ent_codigo" value="#{objeto.ent_codigo}" />
 				</p:commandLink>				
 				</h:outputLabel>  
@@ -28,12 +30,12 @@
 			<h:outputText styleClass="cabecalho" />
 		</f:facet>		
 		<p:selectBooleanCheckbox>		
-            <p:ajax listener="#{entidadeBeanView.addRemover}" resetValues="false"/>            
+            <p:ajax listener="#{entidadeEntidadeBeanView.addRemover}" resetValues="false"/>            
             <f:param name="ent_codigo" value="#{objeto.ent_codigo}" />
         </p:selectBooleanCheckbox>		
 	</center>
 </p:column>
-
+</sec:ifAnyGranted>
 
 <p:column  styleClass="estiloIdCadastro" style="width:70px;">
 	<center>
@@ -96,44 +98,7 @@
 	</center>
 </p:column>
 
-<sec:ifAnyGranted roles="PACIENTE_EXCLUIR, ADMIN">
-	<p:column style="width:90px;">
-		<center>
-			<f:facet name="header">
-				<h:outputText value="Excluir" styleClass="cabecalho"></h:outputText>
-			</f:facet>
 
-			<c:choose>
-				<c:when test="${isCadastro == false}">
-					<p:commandLink action="#{entidadeBeanView.excluir}"
-						id="buttonColunaExcluir" ajax="true" immediate="true"
-						partialSubmit="true" process="@this" update="tableResult"
-						onfocus="addFocoAoCampo('cidadeNome');"
-						onclick="if(!confirm('Confirma a exclusão da cidade : #{objeto.ent_nome}?')) return false;">
-						<h:graphicImage library="img" name="excluir16.png"
-							styleClass="bordaImagem" />
-
-						<f:setPropertyActionListener
-							target="#{entidadeBeanView.objetoSelecionado}" value="#{objeto}" />
-					</p:commandLink>
-				</c:when>
-				<c:otherwise>
-					<p:commandLink action="#{entidadeBeanView.excluir}"
-						id="buttonColunaExcluir" ajax="false" immediate="true"
-						partialSubmit="true" process="@this" update="tableResult"
-						onfocus="addFocoAoCampo('pacienteNome');"
-						onclick="if(!confirm('Confirma a exclusão do Paciente : #{objeto.ent_nome}?')) return false;">
-						<h:graphicImage library="img" name="excluir16.png"
-							styleClass="bordaImagem" />
-
-						<f:setPropertyActionListener
-							target="#{entidadeBeanView.objetoSelecionado}" value="#{objeto}" />
-					</p:commandLink>
-				</c:otherwise>
-			</c:choose>
-		</center>
-	</p:column>
-</sec:ifAnyGranted>
 
 <sec:ifAnyGranted roles="PACIENTE_EDITAR, ADMIN">
 	<p:column style="width:90px;">
@@ -145,7 +110,7 @@
 				ajax="true" id="editarPaciente"
 				oncomplete="addFocoAoCampo('cidadeNome');">
 				<h:graphicImage library="img" name="editar16.png"
-					styleClass="bordaImagem" />
+					styleClass="bordaImagem" style="width:20px;"/>
 				<f:setPropertyActionListener value="#{objeto}"
 					target="#{entidadeBeanView.objetoSelecionado}" />
 				<f:param name="entidadeEdit" value="#{objeto.ent_codigo}" />

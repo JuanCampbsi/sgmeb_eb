@@ -63,26 +63,33 @@
 				<p:tooltip id="toolTipFocus" globalSelector="a,:input,:button"
 					showEvent="focus" hideEvent="blur" />
 			</div>
-			<div id="container">
-				<div id="topo">
-					<span style="position: absolute; left: -10px; top: -17px"
-						id="spanLogo"> <p:graphicImage library="img"
-							name="image.png" id="logoImg" styleClass="bordaImagem"
+			
+			  
+             
+			<div id="container" class="ui-fluid" >
+				<div id="topo"  class="ui-g-4">
+					<span style="position: absolute; left: -15px; top:-20px" id="spanLogo"> 
+						<p:graphicImage library="img" name="image.png" id="logoImg" styleClass="bordaImagem"
 							onclick="redirecionarPagina('#{request.contextPath}','/restrito/principal');" />
-					</span> <span style="position: absolute; left: 977px; top: -16px;"
-						id="spanLogo3"> <p:graphicImage library="img"
-							name="medicoslogo.png" id="logoImg3" style=" width:120px;" />
-
-					</span> <span style="position: absolute; left: 960px; top: 15px;"
-						id="spanLogo5"> <h:graphicImage library="img"
-							name="logobia2.png" id="logoImg5" style=" width:40px;" />
-					</span> <span style="position: absolute; left: 915px; top: 15px;"
-						id="spanLogo6"> <p:graphicImage library="img"
-							name="logobda.png" id="logoImg6" style=" width:40px;" />
-					</span> <span style="position: absolute; left: 840px; top: 3px;"
-						id="spanLogo4"> <p:graphicImage library="img"
-							name="mapa.png" id="logoImg4" style=" width:70px;" />
-					</span> <span id="dadoslogin"> Usuário:
+					</span>
+					
+						<span style=" position: absolute; left:220px; top: -15px;" id="spanLogo6">
+						 <p:graphicImage library="img" name="medicoslogo.png" id="logoImg3" style=" width:120px;" />
+					</span>
+					
+					<span style=" position: absolute; left: 310px; top: 15px;" id="spanLogo5">
+					 <h:graphicImage library="img" name="logobia2.png" id="logoImg5" style=" width:40px;" />
+					</span>
+					 
+					<span style=" position: absolute; left:360px; top: 15px;" id="spanLogo7">
+					<p:graphicImage library="img" name="logobda.png" id="logoImg6" style=" width:40px;" />
+					</span> 
+					
+					 <span style=" position: absolute; left: 400px; top: 3px;" id="spanLogo4">
+					  <p:graphicImage library="img"	name="mapa.png" id="logoImg4" style=" width:70px;" />							
+					</span>
+					
+					 <span id="dadoslogin"> Usuário:
 						#{entidadeBeanView.entidadeLogadoSecurity} <br id="quebraUser" />
 						Último login: <h:outputLabel
 							value="#{entidadeBeanView.ultimoAcesso}" id="saidaUltimoAcesso">
@@ -99,6 +106,7 @@
 					</a>
 					</span>
 				</div>
+				
 
 
 				<div id="menu">
