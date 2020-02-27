@@ -58,7 +58,25 @@
 
 					</h:outputLabel>
 					<br />
-
+					
+					
+					
+							<h:outputLabel for="ent_endereco" id="labelEndereco"
+								value="Endereço : " />	
+							<p:inputText id="ent_endereco" styleClass="estyleInputNome" style="width: 450px;"
+							required="true" maxlength="100" requiredMessage="Informe o Endereço"
+							value="#{entidadeBeanView.objetoSelecionado.ent_endereco}" />							
+							<p:message for="ent_endereco" />
+							
+							
+							<h:outputLabel for="ent_cpf" id="labelCpf"
+								value="CPF : " />	
+							<p:inputMask id="entcpf" mask="999.999.999-99" styleClass="estyleInputNome" 
+							required="true" maxlength="11" requiredMessage="Informe o Cpf"
+							value="#{entidadeBeanView.objetoSelecionado.ent_cpf}" />							
+							<p:message for="ent_endereco" />
+					
+					
 
 					<h:outputLabel id="labelidade" for="idadeP" value="Idade : "
 						styleClass="estiloIdCadastro" />
@@ -71,7 +89,7 @@
 
 					<h:outputLabel id="labelpeso" for="pesoP" value="Peso : "
 						styleClass="estiloIdCadastro" />
-					<p:inputText id="PaPeso" styleClass="estyleInputNome"
+					<p:inputMask id="PaPeso" mask="9,999  centímetros" styleClass="estyleInputNome"
 						required="true" maxlength="100" requiredMessage="Informe o Peso"
 						value="#{entidadeBeanView.objetoSelecionado.ent_peso}" />
 					<p:message for="PaPeso" />

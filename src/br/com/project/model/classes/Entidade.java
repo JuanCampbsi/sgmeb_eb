@@ -82,7 +82,19 @@ public class Entidade implements Serializable {
 	private String ent_nome;
 
 	@Column(nullable = true)
-	private String ent_idade;
+	private String ent_idade;	
+
+	@Column(length = 100)
+	private String ent_endereco;	
+
+	@Column(length = 11)
+	private String ent_cpf;	
+	
+	@Column(length = 15)
+	private String ent_celular;
+
+	@Column(length = 11)
+	private String ent_idtmilitar;
 
 	@IdentificaCampoPesquisa(descricaoCampo = "Nome de Guerra", campoConsulta = "ent_n_guerra")
 	@Column(nullable = true)
@@ -149,64 +161,6 @@ public class Entidade implements Serializable {
 	public void setAcessos(Set<String> acessos) {
 		this.acessos = acessos;
 	}
-
-	/*
-	 * 
-	 * @IdentificaCampoPesquisa(descricaoCampo = "Graduacao", campoConsulta =
-	 * "grad_codigo.grad_grad")
-	 * 
-	 * @ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE,
-	 * CascadeType.PERSIST })
-	 * 
-	 * @ForeignKey(name = "grad_codigo_fk")
-	 * 
-	 * @JoinColumn(name = "grad_codigo") private Graduacao grad_codigo = new
-	 * Graduacao();
-	 * 
-	 * 
-	 * public Graduacao getGrad_codigo() { return grad_codigo; }
-	 * 
-	 * public void setGrad_codigo(Graduacao grad_codigo) { this.grad_codigo =
-	 * grad_codigo; }
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * @Enumerated(EnumType.STRING) private TipoCadastro ent_tipo;
-	 * 
-	 * @Enumerated(EnumType.STRING) private TipoPessoa ent_tipopessoa;
-	 * 
-	 * 
-	 * 
-	 * @Column(nullable = true) private int ent_idade;
-	 * 
-	 * @Column(nullable = true) private String ent_genero;
-	 * 
-	 * @Column(nullable = true) private String ent_posto;
-	 * 
-	 * @Column(nullable = true) private String ent_grad;
-	 * 
-	 * 
-	 * 
-	 * @Column(nullable = true) private String ent_coren;
-	 * 
-	 * @Column(nullable = true) private String ent_profissao;
-	 * 
-	 * @IdentificaCampoPesquisa(descricaoCampo = "CRM", campoConsulta = "crm",
-	 * principal = 1)
-	 * 
-	 * @Column(nullable = false, length = 25) private String ent_crm;
-	 * 
-	 * @Column(nullable = false, length = 20) private float ent_imc;
-	 * 
-	 * 
-	 * @Version
-	 * 
-	 * @Column(name = "versionNum") private int versionNum;
-	 */
-
 	
 
 	public int getVersionNum() {
@@ -322,6 +276,38 @@ public class Entidade implements Serializable {
 		this.ent_ultimoacesso = ent_ultimoacesso;
 	}
 	
+	public String getEnt_endereco() {
+		return ent_endereco;
+	}
+
+	public void setEnt_endereco(String ent_endereco) {
+		this.ent_endereco = ent_endereco;
+	}
+
+	public String getEnt_cpf() {
+		return ent_cpf;
+	}
+
+	public void setEnt_cpf(String ent_cpf) {
+		this.ent_cpf = ent_cpf;
+	}
+
+	public String getEnt_celular() {
+		return ent_celular;
+	}
+
+	public void setEnt_celular(String ent_celular) {
+		this.ent_celular = ent_celular;
+	}
+
+	public String getEnt_idtmilitar() {
+		return ent_idtmilitar;
+	}
+
+	public void setEnt_idtmilitar(String ent_idtmilitar) {
+		this.ent_idtmilitar = ent_idtmilitar;
+	}
+
 	public JSONObject getJson() {
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		map.put("ent_codigo", ent_codigo);
@@ -362,10 +348,14 @@ public class Entidade implements Serializable {
 				+ ent_mudarsenha + ", ent_inativo=" + ent_inativo
 				+ ", ent_datacadastro=" + ent_datacadastro
 				+ ", ent_ultimoacesso=" + ent_ultimoacesso + ", ent_nome="
-				+ ent_nome + ", ent_idade=" + ent_idade + ", ent_n_guerra="
-				+ ent_n_guerra + ", ent_peso=" + ent_peso + ", ent_altura="
-				+ ent_altura + ", ent_tipo=" + ent_tipo + ", graduacao="
-				+ graduacao + "]";
+				+ ent_nome + ", ent_idade=" + ent_idade + ", ent_endereco="
+				+ ent_endereco + ", ent_cpf=" + ent_cpf + ", ent_celular="
+				+ ent_celular + ", ent_idtmilitar=" + ent_idtmilitar
+				+ ", ent_n_guerra=" + ent_n_guerra + ", ent_peso=" + ent_peso
+				+ ", ent_altura=" + ent_altura + ", ent_tipo=" + ent_tipo
+				+ ", graduacao=" + graduacao + ", acessos=" + acessos + "]";
 	}
+
+	
 
 }

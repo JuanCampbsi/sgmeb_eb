@@ -126,7 +126,6 @@
 	
 	<bean id="entidadeController" class="br.com.project.geral.controller.EntidadeController" />
 	<bean id="consultaController" class="br.com.project.geral.controller.ConsultaController" />	
-	<bean id="receituarioController" class="br.com.project.geral.controller.ReceituarioController" />
 	<bean id="graduacaoController" class="br.com.project.geral.controller.GraduacaoController" />
 	<bean id="produtoController" class="br.com.project.geral.controller.ProdutoController" />
 <!-- <bean id="controller" class="br.com.framework.controller.crud.Controller"/> -->
@@ -136,7 +135,6 @@
 	<bean id="repositoryLogin" class="br.com.dao.implementacao.DaoLogin" />
 	<bean id="repositoryConsulta" class="br.com.dao.implementacao.DaoConsulta" />	
 	<bean id="repositoryEntidade" class="br.com.dao.implementacao.DaoEntidade" />
-	<bean id="repositoryReceituario" class="br.com.dao.implementacao.DaoReceituario" />
 	<bean id="repositoryGraduacao" class="br.com.dao.implementacao.DaoGraduacao" />
 	<bean id="repositoryProduto" class="br.com.dao.implementacao.DaoProduto" />
 	
@@ -145,7 +143,6 @@
 	<!-- Services -->
 	<bean id="srvLogin" class="br.com.srv.implementacao.SrvLoginImpl" />
 	<bean id="srvEntidade" class="br.com.srv.implementacao.SrvEntidadeImpl" />	
-	<bean id="srvReceituario" class="br.com.srv.implementacao.SrvReceituarioImpl" />
 	<bean id="srvGraduacao" class="br.com.srv.implementacao.SrvGraduacaoImpl" />
 	<bean id="srvProduto" class="br.com.srv.implementacao.SrvProdutoImpl" />
 	<bean id="srvConsulta" class="br.com.srv.implementacao.SvrConsultaImpl" />
