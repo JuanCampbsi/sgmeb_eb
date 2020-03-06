@@ -89,14 +89,14 @@
 
 					<h:outputLabel id="labelpeso" for="pesoP" value="Peso : "
 						styleClass="estiloIdCadastro" />
-					<p:inputMask id="PaPeso" mask="9,999  centímetros" styleClass="estyleInputNome"
+					<p:inputMask id="PaPeso" mask="99,999      Kg" styleClass="estyleInputNome"
 						required="true" maxlength="100" requiredMessage="Informe o Peso"
 						value="#{entidadeBeanView.objetoSelecionado.ent_peso}" />
 					<p:message for="PaPeso" />
 
 					<h:outputLabel id="labelaltura" for="alturaP" value="Altura : "
 						styleClass="estiloIdCadastro" />
-					<p:inputText id="PaAltura" styleClass="estyleInputNome"
+					<p:inputMask id="PaAltura" mask="9999     cm" styleClass="estyleInputNome"
 						required="true" maxlength="100" requiredMessage="Informe a Altura"
 						value="#{entidadeBeanView.objetoSelecionado.ent_altura}" />
 					<p:message for="PaAltura" />
