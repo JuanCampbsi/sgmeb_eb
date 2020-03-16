@@ -87,13 +87,16 @@ public class Entidade implements Serializable {
 	@Column(length = 100)
 	private String ent_endereco;	
 
-	@Column(length = 11)
+	@Column(unique = true)
 	private String ent_cpf;	
 	
 	@Column(length = 15)
 	private String ent_celular;
+	
+	@Column(length = 9)
+	private String ent_cep;
 
-	@Column(length = 11)
+	@Column(unique = true)
 	private String ent_idtmilitar;
 
 	@IdentificaCampoPesquisa(descricaoCampo = "Nome de Guerra", campoConsulta = "ent_n_guerra")
@@ -185,6 +188,14 @@ public class Entidade implements Serializable {
 
 	public String getEnt_peso() {
 		return ent_peso;
+	}
+
+	public String getEnt_cep() {
+		return ent_cep;
+	}
+
+	public void setEnt_cep(String ent_cep) {
+		this.ent_cep = ent_cep;
 	}
 
 	public void setEnt_peso(String ent_peso) {
@@ -350,12 +361,14 @@ public class Entidade implements Serializable {
 				+ ", ent_ultimoacesso=" + ent_ultimoacesso + ", ent_nome="
 				+ ent_nome + ", ent_idade=" + ent_idade + ", ent_endereco="
 				+ ent_endereco + ", ent_cpf=" + ent_cpf + ", ent_celular="
-				+ ent_celular + ", ent_idtmilitar=" + ent_idtmilitar
-				+ ", ent_n_guerra=" + ent_n_guerra + ", ent_peso=" + ent_peso
-				+ ", ent_altura=" + ent_altura + ", ent_tipo=" + ent_tipo
-				+ ", graduacao=" + graduacao + ", acessos=" + acessos + "]";
+				+ ent_celular + ", ent_cep=" + ent_cep + ", ent_idtmilitar="
+				+ ent_idtmilitar + ", ent_n_guerra=" + ent_n_guerra
+				+ ", ent_peso=" + ent_peso + ", ent_altura=" + ent_altura
+				+ ", ent_tipo=" + ent_tipo + ", graduacao=" + graduacao
+				+ ", acessos=" + acessos + "]";
 	}
 
+	
 	
 
 }

@@ -25,6 +25,7 @@ import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.enums.TipoCadastro;
 import br.com.project.geral.controller.EntidadeController;
 import br.com.project.model.classes.Entidade;
+import br.com.project.util.all.Messagens;
 
 @Controller
 @Scope(value = "session")
@@ -126,10 +127,24 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		objetoSelecionado.setEnt_tipo(TipoCadastro.TIPO_CADASTRO_PACIENTE);
 		if (validarCampoObrigatorio(objetoSelecionado)) {
 			list.clear();
+		
+		if(entidadeController.existeIdt(objetoSelecionado.getEnt_idtmilitar())){
+				
+				Messagens.msgSeverityInfor("Identidade já existe cadastrado!");	
+			
+				return;
+		}
+			
+		if(entidadeController.existeCpf(objetoSelecionado.getEnt_cpf())){
+			
+			Messagens.msgSeverityInfor("CPF já existe cadastrado!");	
+			
+		}else {
 			objetoSelecionado = entidadeController.merge(objetoSelecionado);
 			list.add(objetoSelecionado);
 			objetoSelecionado = new Entidade();
 			sucesso();
+			}
 		}
 	}
 

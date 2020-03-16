@@ -19,6 +19,7 @@ import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.geral.controller.ProdutoController;
 import br.com.project.model.classes.Produto;
+import br.com.project.util.all.Messagens;
 
 @Controller
 @Scope(value = "session")
@@ -92,12 +93,20 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 	@Override
 	public void saveNotReturn() throws Exception {
 		objetoSelecionado.isInvalido();
+		objetoSelecionado.isInvalido60();
 		if (validarCampoObrigatorio(objetoSelecionado)) {
 			list.clear();
+			
+			if(produtoController.existeSerie(objetoSelecionado.getSerie_prod())){
+				
+				Messagens.msgSeverityInfor("Este produto já existe cadastrado!");	
+				
+			}else {
 			objetoSelecionado = produtoController.merge(objetoSelecionado);
 			list.add(objetoSelecionado);
 			objetoSelecionado = new Produto();
 			sucesso();
+		}
 		}
 	}
 

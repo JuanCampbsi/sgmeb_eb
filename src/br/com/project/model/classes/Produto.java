@@ -41,7 +41,7 @@ public class Produto implements Serializable {
 	@Column(nullable = true)
 	private String descricao_prod;
 
-	@Column(nullable = true)
+	@Column(unique = true)
 	private String serie_prod;
 
 	@Column(nullable = false, updatable = false)
@@ -188,6 +188,16 @@ public class Produto implements Serializable {
 	public void setDiferencaEmDias(Double diferencaEmDias) {
 		this.diferencaEmDias = diferencaEmDias;
 	}
+	private Double diferencaEmDiasMaior;
+	
+
+	public Double getDiferencaEmDiasMaior() {
+		return diferencaEmDiasMaior;
+	}
+
+	public void setDiferencaEmDiasMaior(Double diferencaEmDiasMaior) {
+		this.diferencaEmDiasMaior = diferencaEmDiasMaior;
+	}
 
 	public double validar() throws Exception {
 
@@ -201,7 +211,13 @@ public class Produto implements Serializable {
 																	// horas
 																	// restantes
 		result = dif + (horasRestantes / 24d); // transforma as horas restantes
-												// em fração de dias
+		// em fração de dias
+		
+		if(result < 60){
+		this.setDiferencaEmDiasMaior(result);
+		}else{
+			this.setDiferencaEmDiasMaior((double)61);
+		}
 
 		if (result < 30) {
 			this.setDiferencaEmDias(result);			
@@ -222,6 +238,18 @@ public class Produto implements Serializable {
 
 	@Transient
 	public boolean isInvalido() throws Exception {
+		validar();
+		return !this.isValido();
+	}
+	
+	@Transient
+	public boolean isValido60() {
+		return getDiferencaEmDias() == 61;
+
+	}
+
+	@Transient
+	public boolean isInvalido60() throws Exception {
 		validar();
 		return !this.isValido();
 	}

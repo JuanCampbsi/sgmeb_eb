@@ -69,6 +69,17 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements
 						+ TipoCadastro.TIPO_CADASTRO_PACIENTE.name() + "'");
 	}
 
+	public boolean existeCpf(String ent_cpf) throws Exception {
+		
+		return super.findListByQueryDinamica("from Entidade where ent_cpf = '"+ ent_cpf + "'").size() > 0;
+	
+	}
+
+	public boolean existeIdt(String ent_idtmilitar) throws Exception {
+		return super.findListByQueryDinamica("from Entidade where ent_idtmilitar = '"+ ent_idtmilitar + "'").size() > 0;
+		
+	}
+
 	
 	
 

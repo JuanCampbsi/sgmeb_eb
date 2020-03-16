@@ -24,4 +24,8 @@ public class ProdutoController extends ImplementacaoCrud<Produto> implements
 		this.repositoryProduto = repositoryProduto;
 	}
 
+	public boolean existeSerie(String serie_prod) throws Exception {
+		return super.findListByQueryDinamica("from Produto where serie_prod = '"+ serie_prod + "'").size() > 0;
+	}
+
 }

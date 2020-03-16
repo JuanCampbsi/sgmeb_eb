@@ -28,7 +28,7 @@
 				
 					<h:outputLabel id="labelnome" for="nomePaciente"
 						value="Nome Completo : " styleClass="estiloIdCadastro"/>
-					<p:inputText id="pacienteNome" styleClass="estyleInputNome"  style="width: 350px;"
+					<p:inputText id="pacienteNome" styleClass="estyleInputNome"  style="width: 450px;"
 						required="true" maxlength="100"
 						requiredMessage="Informe o Nome de Paciente"
 						value="#{entidadeBeanView.objetoSelecionado.ent_nome}" />
@@ -68,38 +68,104 @@
 							value="#{entidadeBeanView.objetoSelecionado.ent_endereco}" />							
 							<p:message for="ent_endereco" />
 							
+							<p:column>
+						<p:row>
+							<h:outputLabel for="ent_cep" id="labelEnt_cep" value="CEP : " />
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:inputMask id="ent_cep" mask="99999-999" style="width: 200px;"
+								value="#{entidadeBeanView.objetoSelecionado.ent_cep}"
+								required="false" requiredMessage="Informe o campo cep."
+								maxlength="100" styleClass="estiloIdCastro" />
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:message for="ent_cep" />
+						</p:row>
+					</p:column>
 							
+						
 							<h:outputLabel for="ent_cpf" id="labelCpf"
 								value="CPF : " />	
-							<p:inputMask id="entcpf" mask="999.999.999-99" styleClass="estyleInputNome" 
-							required="true" maxlength="11" requiredMessage="Informe o Cpf"
+							<p:inputMask id="entcpf" mask="999.999.999-99" styleClass="estyleInputNome"
+							required="true" maxlength="12" requiredMessage="Informe o CPF" style="width: 200px;"
 							value="#{entidadeBeanView.objetoSelecionado.ent_cpf}" />							
-							<p:message for="ent_endereco" />
-					
+							<p:message for="entcpf" />
+							
+							<h:outputLabel for="ent_idt" id="labelIdt"
+								value="Identidade Militar : " />	
+							<p:inputMask id="entidt" mask="9999999999-9" styleClass="estyleInputNome" style="width: 200px;"
+							required="true" maxlength="12" requiredMessage="Informe a Identidade Militar"
+							value="#{entidadeBeanView.objetoSelecionado.ent_idtmilitar}" />							
+							<p:message for="entidt" />
+				
+				
+				<p:column>
+						<p:row>
+							<h:outputLabel for="ent_fone" id="labelEnt_fone"
+								value="Telefone : " />
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:inputMask id="ent_fone" mask="(99)9999-9999" style="width: 200px;"
+								value="#{entidadeBeanView.objetoSelecionado.ent_celular}"
+								required="false" requiredMessage="Informe o campo telefone."
+								maxlength="100" styleClass="estiloIdCastro" />
+						</p:row>
+					</p:column>
+					<p:column>
+						<p:row>
+							<p:message for="ent_fone" />
+						</p:row>
+					</p:column>
+				
 					
 
 					<h:outputLabel id="labelidade" for="idadeP" value="Idade : "
 						styleClass="estiloIdCadastro" />
-					<p:inputText id="PaIdade" styleClass="estyleInputNome"
-						required="true" maxlength="100" requiredMessage="Informe a Idade"
-						value="#{entidadeBeanView.objetoSelecionado.ent_idade}" />
-						
-						
+					<p:inputText id="PaIdade" styleClass="estyleInputNome" style="width: 200px;"
+						required="true" maxlength="3" requiredMessage="Informe a Idade"
+						value="#{entidadeBeanView.objetoSelecionado.ent_idade}" />						
 					<p:message for="PaIdade" />
+					
 
 					<h:outputLabel id="labelpeso" for="pesoP" value="Peso : "
 						styleClass="estiloIdCadastro" />
-					<p:inputMask id="PaPeso" mask="99,999      Kg" styleClass="estyleInputNome"
+					<p:inputMask id="PaPeso" mask="99,999" styleClass="estyleInputNome" style="width: 200px;"
 						required="true" maxlength="100" requiredMessage="Informe o Peso"
 						value="#{entidadeBeanView.objetoSelecionado.ent_peso}" />
 					<p:message for="PaPeso" />
 
 					<h:outputLabel id="labelaltura" for="alturaP" value="Altura : "
 						styleClass="estiloIdCadastro" />
-					<p:inputMask id="PaAltura" mask="9999     cm" styleClass="estyleInputNome"
+					<p:inputMask id="PaAltura" mask="9,999" styleClass="estyleInputNome" style="width: 200px;"
 						required="true" maxlength="100" requiredMessage="Informe a Altura"
 						value="#{entidadeBeanView.objetoSelecionado.ent_altura}" />
 					<p:message for="PaAltura" />
+					
+					
+					<p:column rendered="#{entidadeBeanView.objetoSelecionado.ent_codigo != null}">
+						<p:row>
+							<h:outputLabel for="ent_inativo" value="Inativo : "
+								id="labelInativo" />
+						</p:row>
+					</p:column>
+					<p:column rendered="#{entidadeBeanView.objetoSelecionado.ent_codigo != null}">
+						<p:row>
+							<p:selectBooleanCheckbox id="ent_inativo"
+								value="#{entidadeBeanView.objetoSelecionado.ent_inativo}" />
+						</p:row>
+					</p:column>
+					<p:column rendered="#{entidadeBeanView.objetoSelecionado.ent_codigo != null}">
+						<p:row>
+							<p:message for="ent_inativo" />
+						</p:row>
+					</p:column>
+               
 
 
 
