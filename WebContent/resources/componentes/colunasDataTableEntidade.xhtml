@@ -73,7 +73,7 @@
 	</center>
 </p:column>
 
-<p:column  styleClass="estiloIdCadastro">
+<p:column  styleClass="estiloIdCadastro" style="width:80px">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Idade" styleClass="cabecalho"></h:outputText>
@@ -81,7 +81,7 @@
 		<h:outputText value="#{objeto.ent_idade}" />
 	</center>
 </p:column>
-<p:column  styleClass="estiloIdCadastro">
+<p:column  styleClass="estiloIdCadastro" style="width:80px">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Peso (Kg)" styleClass="cabecalho"></h:outputText>
@@ -89,7 +89,18 @@
 		<h:outputText value="#{objeto.ent_peso}" />
 	</center>
 </p:column>
-<p:column  styleClass="estiloIdCadastro">
+
+<p:column  styleClass="estiloIdCadastro" style="width:150px">
+	<center>
+		<f:facet name="header">
+			<h:outputText value="Ativo/Inativo" styleClass="cabecalho"></h:outputText>
+		</f:facet>
+		<h:outputText value="INATIVO" style="color:red"  rendered="#{objeto.ent_inativo}" />
+		<h:outputText value="ATIVO" style="color:green" rendered="#{objeto.ent_inativo eq 'false'}" />
+	</center>
+</p:column>
+
+<p:column  styleClass="estiloIdCadastro" style="width:80px">
 	<center>
 		<f:facet name="header">
 			<h:outputText value="Altura (m)" styleClass="cabecalho"></h:outputText>

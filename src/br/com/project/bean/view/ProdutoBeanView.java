@@ -138,10 +138,23 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 		setarVariaveisNulas();
 		return url;
 	}
+	
+	@Override
+	public void saveNotReturnAtual() throws Exception {
+		if (validarCampoObrigatorio(objetoSelecionado)) {
+			list.clear();
+			objetoSelecionado = produtoController.merge(objetoSelecionado);
+			list.add(objetoSelecionado);
+			objetoSelecionado = new Produto();
+			sucesso();
+		}
+		
+	}
+	
 
 	@Override
 	public void saveEdit() throws Exception {
-		saveNotReturn();
+		saveNotReturnAtual();
 	}
 
 	@Override

@@ -27,6 +27,7 @@ import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.enums.TipoCadastro;
 import br.com.project.geral.controller.EntidadeController;
 import br.com.project.model.classes.Entidade;
+import br.com.project.util.all.Messagens;
 
 @Controller
 @Scope(value = "session")
@@ -192,10 +193,16 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 		objetoSelecionado.setEnt_tipo(TipoCadastro.TIPO_CADASTRO_USUARIO);
 		if (validarCampoObrigatorio(objetoSelecionado)) {
 			list.clear();
+			if(entidadeController.existeUser(objetoSelecionado.getEnt_login())){
+				
+				Messagens.msgSeverityInfor("Este Login já existe cadastrado!");	
+				
+			}else {
 			objetoSelecionado = entidadeController.merge(objetoSelecionado);
 			list.add(objetoSelecionado);
 			objetoSelecionado = new Entidade();
 			sucesso();
+		}
 		}
 	}
 
@@ -226,7 +233,7 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public void saveEdit() throws Exception {
-		saveNotReturn();
+		saveNotReturnAtual();
 	}
 
 	@Override
@@ -285,6 +292,18 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 			
 			
 	  }
+
+	@Override
+	public void saveNotReturnAtual() throws Exception {
+		if (validarCampoObrigatorio(objetoSelecionado)) {
+			list.clear();
+			objetoSelecionado = entidadeController.merge(objetoSelecionado);
+			list.add(objetoSelecionado);
+			objetoSelecionado = new Entidade();
+			sucesso();
+		}
+		
+	}
 	
 
 }

@@ -56,7 +56,6 @@
 </p:column>
 
 
-
 <p:column  styleClass="estiloIdCadastro" style="width:150px;">
 	<center>
 		<f:facet name="header">
@@ -66,6 +65,7 @@
 	</center>
 </p:column>
 
+
 <p:column  styleClass="estiloIdCadastro" style="width:70px;">
 	<center>
 		<f:facet name="header">
@@ -74,6 +74,17 @@
 		<h:outputText value="#{objeto.graduacao.grad_grad}" />
 	</center>
 </p:column >
+
+
+<p:column  styleClass="estiloIdCadastro" style="width:90px">
+	<center>
+		<f:facet name="header">
+			<h:outputText value="Ativo/Inativo" styleClass="cabecalho"></h:outputText>
+		</f:facet>
+		<h:outputText value="INATIVO" style="color:red"  rendered="#{objeto.ent_inativo}" />
+		<h:outputText value="ATIVO" style="color:green" rendered="#{objeto.ent_inativo eq 'false'}" />
+	</center>
+</p:column>
 
  <sec:ifAnyGranted roles="ADMIN">	
 	   <p:column style="width:70px;">

@@ -43,6 +43,7 @@ public class Produto implements Serializable {
 
 	@Column(unique = true)
 	private String serie_prod;
+	
 
 	@Column(nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -51,6 +52,7 @@ public class Produto implements Serializable {
 	@Version
 	@Column(name = "versionNum")
 	private int versionNum;
+
 
 	public Long getProd_codigo() {
 		return prod_codigo;
@@ -188,6 +190,8 @@ public class Produto implements Serializable {
 	public void setDiferencaEmDias(Double diferencaEmDias) {
 		this.diferencaEmDias = diferencaEmDias;
 	}
+	
+	
 	private Double diferencaEmDiasMaior;
 	
 
@@ -213,14 +217,9 @@ public class Produto implements Serializable {
 		result = dif + (horasRestantes / 24d); // transforma as horas restantes
 		// em fração de dias
 		
-		if(result < 60){
-		this.setDiferencaEmDiasMaior(result);
-		}else{
-			this.setDiferencaEmDiasMaior((double)61);
-		}
-
+		
 		if (result < 30) {
-			this.setDiferencaEmDias(result);			
+			this.setDiferencaEmDias((double) 1);			
 			
 
 		} else {
@@ -229,6 +228,33 @@ public class Produto implements Serializable {
 		}
 		return diferencaEmDias;
 	}
+	
+	
+	public double validar60() throws Exception {
+
+		double result = 0;
+		long diferenca = getValidade_prod().getTime()
+				- getData_atual().getTime();
+		double dif = (diferenca / 1000) / 60 / 60 / 24; // resultado é diferença
+														// entre as datas em
+														// dias
+		long horasRestantes = (diferenca / 1000) / 60 / 60 % 24; // calcula as
+																	// horas
+																	// restantes
+		result = dif + (horasRestantes / 24d); // transforma as horas restantes
+		// em fração de dias
+		
+		if(result < 60){
+			this.setDiferencaEmDiasMaior((double)6);
+		
+		}else{
+			this.setDiferencaEmDiasMaior((double)61);
+			
+		}
+
+		return diferencaEmDiasMaior;
+	}
+	
 
 	@Transient
 	public boolean isValido() {
@@ -236,6 +262,7 @@ public class Produto implements Serializable {
 
 	}
 
+	
 	@Transient
 	public boolean isInvalido() throws Exception {
 		validar();
@@ -244,14 +271,14 @@ public class Produto implements Serializable {
 	
 	@Transient
 	public boolean isValido60() {
-		return getDiferencaEmDias() == 61;
+		return getDiferencaEmDiasMaior() == 61;
 
 	}
 
 	@Transient
 	public boolean isInvalido60() throws Exception {
-		validar();
-		return !this.isValido();
+		validar60();
+		return !this.isValido60();
 	}
 
 	

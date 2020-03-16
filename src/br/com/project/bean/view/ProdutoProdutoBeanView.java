@@ -121,4 +121,10 @@ public class ProdutoProdutoBeanView extends BeanManagedViewAbstract {
 		
 	}
 
+	@Override
+	public void saveNotReturnAtual() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

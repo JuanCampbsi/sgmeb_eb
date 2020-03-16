@@ -135,4 +135,10 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 	        context.addCallbackParam("loggedIn", loggedIn);
 	}
 
+	@Override
+	public void saveNotReturnAtual() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

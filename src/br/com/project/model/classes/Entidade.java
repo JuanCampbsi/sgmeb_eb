@@ -40,6 +40,7 @@ import br.com.project.acessos.Permissao;
 import br.com.project.annotation.IdentificaCampoPesquisa;
 import br.com.project.enums.TipoCadastro;
 
+@SuppressWarnings("deprecation")
 @Audited
 @Entity
 @Table(name = "entidade")
@@ -119,7 +120,7 @@ public class Entidade implements Serializable {
 	@ForeignKey(name = "grad_codigo_fk")
 	private Graduacao graduacao = new Graduacao();
 	
-	@SuppressWarnings("deprecation")
+	
 	@CollectionOfElements
 	@ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
 	@JoinTable(name = "entidadeacesso", uniqueConstraints = { @UniqueConstraint(name = "unique_acesso_entidade_key", columnNames = {

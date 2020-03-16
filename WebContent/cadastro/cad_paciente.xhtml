@@ -148,23 +148,31 @@
 					<p:message for="PaAltura" />
 					
 					
-					<p:column rendered="#{entidadeBeanView.objetoSelecionado.ent_codigo != null}">
+					<tr />
+					<p />
+
+
+					<p:column
+						rendered="#{entidadeBeanView.objetoSelecionado.ent_codigo != null}">
 						<p:row>
 							<h:outputLabel for="ent_inativo" value="Inativo : "
 								id="labelInativo" />
 						</p:row>
 					</p:column>
-					<p:column rendered="#{entidadeBeanView.objetoSelecionado.ent_codigo != null}">
+					<p:column
+						rendered="#{entidadeBeanView.objetoSelecionado.ent_codigo != null}">
 						<p:row>
 							<p:selectBooleanCheckbox id="ent_inativo"
 								value="#{entidadeBeanView.objetoSelecionado.ent_inativo}" />
 						</p:row>
 					</p:column>
-					<p:column rendered="#{entidadeBeanView.objetoSelecionado.ent_codigo != null}">
+					<p:column
+						rendered="#{entidadeBeanView.objetoSelecionado.ent_codigo != null}">
 						<p:row>
 							<p:message for="ent_inativo" />
 						</p:row>
 					</p:column>
+
                
 
 

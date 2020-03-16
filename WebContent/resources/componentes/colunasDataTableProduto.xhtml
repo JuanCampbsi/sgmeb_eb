@@ -42,8 +42,15 @@
 		<f:facet name="header">
 			<h:outputText value="Código" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.prod_codigo}"
-			style="#{objeto.invalido ?  'color: red' : ''}" />
+		
+		<h:outputText value="#{objeto.prod_codigo}" style="#{objeto.invalido ? 'color: red' : ''}" 
+			rendered="#{objeto.invalido eq 'true'}"/>
+			
+		<h:outputText value="#{objeto.prod_codigo}" style="#{objeto.invalido60 ? 'color: #D2691E' : ''}" 
+			rendered="#{objeto.invalido eq 'false'}"/>
+			
+			
+			
 	</center>
 </p:column>
 
@@ -53,8 +60,12 @@
 		<f:facet name="header">
 			<h:outputText value="Nome" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText id="texto" value="#{objeto.prod_nome}"
-			style="#{objeto.invalido ?  'color: red' : ''}" />
+					
+		<h:outputText value="#{objeto.prod_nome}" style="#{objeto.invalido ? 'color: red' : ''}" 
+			rendered="#{objeto.invalido eq 'true'}"/>
+			
+		<h:outputText value="#{objeto.prod_nome}" style="#{objeto.invalido60 ? 'color: #D2691E' : ''}" 
+			rendered="#{objeto.invalido eq 'false'}"/>
 
 	</center>
 </p:column>
@@ -66,10 +77,14 @@
 		<f:facet name="header">
 			<h:outputText value="Tipo" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.prod_tipo}"
-			style="#{objeto.invalido ? 'color: red' : ''}"
+	
+		 <h:outputText value="#{objeto.prod_tipo}" style="#{objeto.invalido ? 'color: red' : ''}" 
+			rendered="#{objeto.invalido eq 'true'}"/>
 			
-			 />
+		<h:outputText value="#{objeto.prod_tipo}" style="#{objeto.invalido60 ? 'color: #D2691E' : ''}" 
+			rendered="#{objeto.invalido eq 'false'}"/>
+			 
+			 
 	</center>
 </p:column>
 
@@ -78,23 +93,43 @@
 		<f:facet name="header">
 			<h:outputText value="Descrição" styleClass="cabecalho"></h:outputText>
 		</f:facet>
-		<h:outputText value="#{objeto.descricao_prod}"
-			style="#{objeto.invalido ?  'color: red' : ''}">
 
-		</h:outputText>
+		 <h:outputText value="#{objeto.descricao_prod}" style="#{objeto.invalido ? 'color: red' : ''}" 
+			rendered="#{objeto.invalido eq 'true'}"/>
+			
+		<h:outputText value="#{objeto.descricao_prod}" style="#{objeto.invalido60 ? 'color: #D2691E' : ''}" 
+			rendered="#{objeto.invalido eq 'false'}"/>
 
 	</center>
 </p:column>
 
-<p:column styleClass="estiloIdCadastro5">
+<p:column styleClass="estiloIdCadastro5" style="width:150px">
 	<center>
 		<f:facet name="header">
-			<h:outputText value="Ações" styleClass="cabecalho" />
-		</f:facet>
-		<h:graphicImage library="img" name="venceu.gif"
-			rendered="#{objeto.invalido}" styleClass="bordaGif" />
-		<h:graphicImage library="img" name="setaverdadeiro.gif"
-			rendered="#{objeto.valido}" styleClass="bordaGif" />
+			<h:outputText value="Ações" styleClass="cabecalho"  />
+		</f:facet>		
+		
+		<h:outputText value="30 Dias fora!" style="#{objeto.invalido ? 'color: red' : ''}" 
+			rendered="#{objeto.invalido eq 'true'}"/>
+			
+		<h:graphicImage library="img" name="rel.ogio.gif" 
+			rendered="#{objeto.invalido}" styleClass="bordaGif" />	
+	
+			
+		<h:outputText value="Válido  "  
+		rendered="#{objeto.invalido60 eq 'false'}"	/>
+		
+			
+		<h:graphicImage library="img" name="setaverdadeiro.gif" 
+			rendered="#{objeto.invalido60 eq 'false'}" styleClass="bordaGif" />	
+		
+		<h:outputText value=" 60 Dias fora!"  style="#{objeto.isInvalido60() ? 'color: #D2691E' : ''}" 
+		rendered="#{objeto.invalido eq 'false'}" >			
+		<h:graphicImage library="img" name="am.pulheta.gif" 
+			rendered="#{objeto.invalido60 eq 'true'}" styleClass="bordaGif" />	
+		</h:outputText>
+		
+		
 	</center>
 </p:column>
 
@@ -106,11 +141,20 @@
 		</f:facet>
 
 		<h:outputText value="#{objeto.validade_prod}"
-			style="#{objeto.invalido ?  'color: red' : ''}">
+			style="#{objeto.invalido ? 'color: red' : ''}" 
+			rendered="#{objeto.invalido eq 'true'}"> 
 
 			<h:outputText value="--" style="color:#F5F5DC;" />
 			<f:convertDateTime pattern="dd/MM/yyyy" />
 		</h:outputText>
+		
+		<h:outputText value="#{objeto.validade_prod}"
+			style="#{objeto.invalido60 ? 'color: #D2691E' : ''}" 
+			rendered="#{objeto.invalido eq 'false'}"> 
+
+			<h:outputText value="--" style="color:#F5F5DC;" />
+			<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:outputText>
 	</center>
 </p:column>
 

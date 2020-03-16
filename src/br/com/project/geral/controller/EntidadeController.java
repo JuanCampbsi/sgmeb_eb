@@ -80,6 +80,10 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements
 		
 	}
 
+	public boolean existeUser(String ent_login) throws Exception {
+		return super.findListByQueryDinamica("from Entidade where ent_login = '"+ ent_login + "'").size() > 0;
+	}
+
 	
 	
 

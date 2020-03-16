@@ -56,4 +56,10 @@ public class GraduacaoBeanView extends BeanManagedViewAbstract {
 		return null;
 	}
 
+	@Override
+	public void saveNotReturnAtual() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

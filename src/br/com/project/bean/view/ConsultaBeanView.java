@@ -207,4 +207,10 @@ public class ConsultaBeanView extends BeanManagedViewAbstract {
 		sucesso();
 	
 	}
+
+	@Override
+	public void saveNotReturnAtual() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 }
