@@ -3,10 +3,12 @@ package br.com.project.bean.view;
 import java.util.HashSet;
 import java.util.Iterator;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.component.selectbooleancheckbox.SelectBooleanCheckbox;
+import org.primefaces.context.RequestContext;
 import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -132,6 +134,9 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 				super.getSqlLazyQuery());
 		
 	}
+	
+	
+	
 
 	@Override
 	public String novo() throws Exception {
@@ -218,5 +223,33 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 		
 		
 	}
+	
+	
+	
+	@javax.persistence.Transient
+	private int total ;
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	
+	public void chart_draw(){
+		RequestContext.getCurrentInstance().update("chart_script");
+		
+		
+		
+	}
+
+	@PostConstruct
+	 public void init() throws Exception{		
+		total =	total +1;
+		
+		
+	 }
+	
 
 }

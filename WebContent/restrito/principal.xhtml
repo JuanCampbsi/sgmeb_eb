@@ -9,17 +9,18 @@
 <ui:composition template="/templates/templatePrincipal.xhtml">
 	<ui:define name="corpo">
 		<p:panel id="panelPageInicial">
-<!-- 
-				<script type="text/javascript">
+  	
+  	
+  	<!-- 	<script type="text/javascript">
 				   
 	  				  google.load("visualization", "1.1", {packages:["bar"]});
 				    	
 				      function drawChart() {
 				    	  var dataChar;
 				    		  $.ajax(
-								    {  type: "POST",
-								    	url: "gerarGraficoInicial",
-								    	data: { total: "0" }
+								    {  type: "GET",
+								    	url: "gerarGraficoInicial"
+								    	
 								    }).always(function(resposta) {
 								    	alert(resposta);
 								    resposta = JSON.parse(resposta);
@@ -42,12 +43,7 @@
 				   }
 				      
 				  google.setOnLoadCallback(drawChart); //  chama funcção drawChart()  
-	   		 	</script>
-  
-  
-		
-  -->
-  
+	   		 	</script>  -->
   	
 			
 			
@@ -78,6 +74,7 @@
 			   }
       
     </script>
+  
   
    <div id="chart_inicial" style="width: 100%; height: 500px;"></div>
 

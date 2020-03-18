@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_produto" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="58ccb8c9-e25c-4831-8870-226edaa809b2">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="91"/>
 	<property name="ireport.y" value="2"/>
 	<parameter name="REPORT_PARAMETERS_IMG" class="java.lang.String"/>
 	<queryString>
@@ -32,6 +32,9 @@
 		<fieldDescription><![CDATA[validade_prod]]></fieldDescription>
 	</field>
 	<field name="prod_prazo" class="java.lang.String">
+		<fieldDescription><![CDATA[prod_prazo]]></fieldDescription>
+	</field>
+	<field name="prod_prazo_1" class="java.lang.String">
 		<fieldDescription><![CDATA[prod_prazo]]></fieldDescription>
 	</field>
 	<background>
@@ -136,15 +139,22 @@
 				<reportElement mode="Transparent" x="493" y="0" width="85" height="25" backcolor="#FFFFFF" uuid="13b8424c-1560-4f66-9da1-d5ba238d9405"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="578" y="5" width="224" height="20" uuid="c8ac6aa5-2534-4df4-95f3-7e99e19d837f"/>
+				<reportElement x="578" y="5" width="103" height="20" uuid="c8ac6aa5-2534-4df4-95f3-7e99e19d837f"/>
 				<textElement textAlignment="Center">
 					<font fontName="SansSerif" size="12" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Descrição]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement mode="Transparent" x="578" y="0" width="224" height="25" backcolor="#FFFFFF" uuid="97179d71-a6f8-49c7-bb07-42b6a0a74801"/>
+				<reportElement mode="Transparent" x="578" y="0" width="103" height="25" backcolor="#FFFFFF" uuid="97179d71-a6f8-49c7-bb07-42b6a0a74801"/>
 			</rectangle>
+			<staticText>
+				<reportElement x="681" y="0" width="119" height="24" uuid="2c1320d4-a566-417b-977f-df2fc7256b29"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Prazo/Vencimento]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<detail>
@@ -174,7 +184,7 @@
 				<reportElement mode="Transparent" x="578" y="0" width="224" height="25" backcolor="#FFFFFF" uuid="ecca8297-075d-4e2d-bded-310afc69a4c2"/>
 			</rectangle>
 			<textField>
-				<reportElement x="578" y="0" width="224" height="25" uuid="46feeb8b-89d0-41ac-a91c-6e24b58cd589"/>
+				<reportElement x="578" y="0" width="103" height="25" uuid="46feeb8b-89d0-41ac-a91c-6e24b58cd589"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{descricao_prod}]]></textFieldExpression>
 			</textField>
@@ -212,6 +222,14 @@
 				<reportElement x="493" y="0" width="85" height="25" uuid="15ab51cb-f960-4928-bbed-2b5a5d2e2871"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{serie_prod}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="681" y="0" width="121" height="25" backcolor="#FFFFFF" uuid="785937ab-b231-4840-b42a-f476e46deef2"/>
+			</rectangle>
+			<textField>
+				<reportElement x="683" y="0" width="117" height="26" uuid="39bece35-f41b-4d9d-8099-e904cf10eadf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{prod_prazo}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
