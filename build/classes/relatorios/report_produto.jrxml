@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_produto" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="58ccb8c9-e25c-4831-8870-226edaa809b2">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="3"/>
+	<property name="ireport.y" value="2"/>
 	<parameter name="REPORT_PARAMETERS_IMG" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
@@ -30,6 +30,9 @@
 	</field>
 	<field name="validade_prod" class="java.util.Date">
 		<fieldDescription><![CDATA[validade_prod]]></fieldDescription>
+	</field>
+	<field name="prod_prazo" class="java.lang.String">
+		<fieldDescription><![CDATA[prod_prazo]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>

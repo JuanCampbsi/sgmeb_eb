@@ -12,5 +12,8 @@ public class DaoProduto extends ImplementacaoCrud<Produto> implements
 		RepositoryProduto {
 
 	private static final long serialVersionUID = 1L;
+	
+	
+	
 
 }

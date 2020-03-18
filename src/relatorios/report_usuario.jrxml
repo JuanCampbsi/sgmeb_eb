@@ -22,6 +22,9 @@
 	<field name="ent_datacadastro" class="java.util.Date">
 		<fieldDescription><![CDATA[ent_datacadastro]]></fieldDescription>
 	</field>
+	<field name="texto_ativo" class="java.lang.String">
+		<fieldDescription><![CDATA[texto_ativo]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -74,27 +77,20 @@
 				<text><![CDATA[Nome Completo]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement mode="Transparent" x="154" y="0" width="209" height="25" backcolor="#FFFFFF" uuid="1878dd5c-2e12-448b-be41-3edb324f0b87"/>
+				<reportElement mode="Transparent" x="154" y="0" width="200" height="25" backcolor="#FFFFFF" uuid="1878dd5c-2e12-448b-be41-3edb324f0b87"/>
 			</rectangle>
-			<staticText>
-				<reportElement x="363" y="0" width="63" height="26" uuid="83e11a9f-2f26-4e72-a33f-edb3828732a9"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[P/Grad]]></text>
-			</staticText>
 			<rectangle>
-				<reportElement mode="Transparent" x="363" y="0" width="63" height="25" backcolor="#FFFFFF" uuid="ff333db0-b3a6-47f4-9da2-1223e4c64d78"/>
+				<reportElement mode="Transparent" x="354" y="0" width="47" height="25" backcolor="#FFFFFF" uuid="ff333db0-b3a6-47f4-9da2-1223e4c64d78"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="426" y="0" width="130" height="26" uuid="8850f727-bddf-428a-9a8e-d92d586b6f90"/>
+				<reportElement x="401" y="0" width="74" height="26" uuid="8850f727-bddf-428a-9a8e-d92d586b6f90"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Login]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement mode="Transparent" x="426" y="0" width="129" height="25" backcolor="#FFFFFF" uuid="bdd6644e-a668-4c14-b583-7bb3e54947cb"/>
+				<reportElement mode="Transparent" x="401" y="0" width="74" height="25" backcolor="#FFFFFF" uuid="bdd6644e-a668-4c14-b583-7bb3e54947cb"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="47" y="0" width="109" height="25" uuid="f3632e5f-099f-4742-899f-f9bbea9b2497"/>
@@ -102,6 +98,23 @@
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Data/Cadastro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="354" y="0" width="47" height="25" uuid="83e11a9f-2f26-4e72-a33f-edb3828732a9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[P/Grad]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="475" y="0" width="80" height="25" backcolor="#FFFFFF" uuid="ad379492-93cf-499f-a1d5-0a0dc1b24a4a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="475" y="1" width="80" height="25" uuid="b82aa220-5db6-4fb4-aebc-020e3ac48eae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ativo/Inativo]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
@@ -116,7 +129,7 @@
 				<textFieldExpression><![CDATA[$F{ent_codigo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="426" y="0" width="126" height="20" uuid="0264825a-4b0f-47d6-87e7-d791f78580fa"/>
+				<reportElement x="401" y="0" width="74" height="20" uuid="0264825a-4b0f-47d6-87e7-d791f78580fa"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ent_login}]]></textFieldExpression>
 			</textField>
@@ -131,7 +144,7 @@
 				<textFieldExpression><![CDATA[$F{ent_datacadastro}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="363" y="0" width="63" height="20" uuid="b538ff41-2b89-4a13-b378-bd534e605a6d"/>
+				<reportElement x="354" y="0" width="47" height="20" uuid="b538ff41-2b89-4a13-b378-bd534e605a6d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{graduacao}.getGrad_grad()]]></textFieldExpression>
 			</textField>
@@ -139,14 +152,22 @@
 				<reportElement mode="Transparent" x="47" y="0" width="107" height="20" backcolor="#FFFFFF" uuid="259a2b83-f43a-4b0f-ae6d-f49dc71c16c7"/>
 			</rectangle>
 			<rectangle>
-				<reportElement mode="Transparent" x="154" y="0" width="209" height="20" backcolor="#FFFFFF" uuid="ff9c5648-eac3-4630-9bd6-d0367299de03"/>
+				<reportElement mode="Transparent" x="154" y="0" width="200" height="20" backcolor="#FFFFFF" uuid="ff9c5648-eac3-4630-9bd6-d0367299de03"/>
 			</rectangle>
 			<rectangle>
-				<reportElement mode="Transparent" x="363" y="0" width="63" height="20" backcolor="#FFFFFF" uuid="8775f19a-c2f9-4180-8a09-65e0b7af50b9"/>
+				<reportElement mode="Transparent" x="354" y="0" width="47" height="20" backcolor="#FFFFFF" uuid="8775f19a-c2f9-4180-8a09-65e0b7af50b9"/>
 			</rectangle>
 			<rectangle>
-				<reportElement mode="Transparent" x="426" y="0" width="129" height="20" backcolor="#FFFFFF" uuid="86c7e39b-ed7c-46e3-84fc-f42b872a2cad"/>
+				<reportElement mode="Transparent" x="401" y="0" width="74" height="20" backcolor="#FFFFFF" uuid="86c7e39b-ed7c-46e3-84fc-f42b872a2cad"/>
 			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="475" y="0" width="80" height="20" backcolor="#FFFFFF" uuid="bb703a21-505e-4b5a-8e88-bcc1474d0ede"/>
+			</rectangle>
+			<textField>
+				<reportElement x="475" y="-1" width="80" height="22" uuid="aeb64e81-5457-4ed1-be9d-9c5530c9026a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{texto_ativo}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<lastPageFooter>

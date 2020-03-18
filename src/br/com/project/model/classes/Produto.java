@@ -40,6 +40,9 @@ public class Produto implements Serializable {
 
 	@Column(nullable = true)
 	private String descricao_prod;
+	
+	@Column(nullable = true)
+	private String prod_prazo;
 
 	@Column(unique = true)
 	private String serie_prod;
@@ -53,6 +56,14 @@ public class Produto implements Serializable {
 	@Column(name = "versionNum")
 	private int versionNum;
 
+
+	public String getProd_prazo() {
+		return prod_prazo;
+	}
+
+	public void setProd_prazo(String prod_prazo) {
+		this.prod_prazo = prod_prazo;
+	}
 
 	public Long getProd_codigo() {
 		return prod_codigo;
@@ -220,11 +231,11 @@ public class Produto implements Serializable {
 		
 		if (result < 30) {
 			this.setDiferencaEmDias((double) 1);			
-			
+			this.setProd_prazo("30 Dias/Vencimento");
 
 		} else {
 			this.setDiferencaEmDias((double) 31);
-			
+			this.setProd_prazo("Valido");
 		}
 		return diferencaEmDias;
 	}
@@ -246,10 +257,10 @@ public class Produto implements Serializable {
 		
 		if(result < 60){
 			this.setDiferencaEmDiasMaior((double)6);
-		
+			this.setProd_prazo("60 Dias/Vencimento");
 		}else{
 			this.setDiferencaEmDiasMaior((double)61);
-			
+			this.setProd_prazo("Valido");
 		}
 
 		return diferencaEmDiasMaior;

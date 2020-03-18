@@ -8,5 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Repository
 public  interface RepositoryProduto extends Serializable {
+	
 
+
+	
 }

@@ -173,7 +173,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public void saveEdit() throws Exception {
-		saveNotReturn();
+		saveNotReturnAtual();
 	}
 
 	@Override
@@ -283,7 +283,13 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public void saveNotReturnAtual() throws Exception {
-		// TODO Auto-generated method stub
+		if (validarCampoObrigatorio(objetoSelecionado)) {
+			list.clear();
+			objetoSelecionado = entidadeController.merge(objetoSelecionado);
+			list.add(objetoSelecionado);
+			objetoSelecionado = new Entidade();
+			sucesso();
+		}
 		
 	}
 	

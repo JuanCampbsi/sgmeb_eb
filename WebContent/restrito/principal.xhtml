@@ -9,10 +9,80 @@
 <ui:composition template="/templates/templatePrincipal.xhtml">
 	<ui:define name="corpo">
 		<p:panel id="panelPageInicial">
+<!-- 
+				<script type="text/javascript">
+				   
+	  				  google.load("visualization", "1.1", {packages:["bar"]});
+				    	
+				      function drawChart() {
+				    	  var dataChar;
+				    		  $.ajax(
+								    {  type: "POST",
+								    	url: "gerarGraficoInicial",
+								    	data: { total: "0" }
+								    }).always(function(resposta) {
+								    	alert(resposta);
+								    resposta = JSON.parse(resposta);
 
+								    dataChar = google.visualization.arrayToDataTable(resposta);
+				        
+				
+					        var options = {
+					          chart: {
+					            title: 'Média do valor dos títulos processados nos últimos 7 dias.',
+					           
+					          },
+					          bars: 'vertical' 
+					        };
+					
+					        var chart = new google.charts.Bar(document.getElementById('chart_inicial'));
+					        chart.draw(dataChar, options);
+					        
+						});
+				   }
+				      
+				  google.setOnLoadCallback(drawChart); //  chama funcção drawChart()  
+	   		 	</script>
+  
+  
 		
+  -->
+  
+  	
+			
+			
+			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   			 <script type="text/javascript">
+     			 google.charts.load("current", {packages:["corechart"]});
+     		 google.charts.setOnLoadCallback(drawChart);
+     		   function drawChart() {
+     			  var data = google.visualization.arrayToDataTable([
+     		    ['Task', 'Hours per Day'],
+     		      ['Valido',     11],
+     			  ['30 dias fora!',      2],
+     			   ['60 dias fora!',  2]
+     			 
+     			    ]);
 
-			<div id="chart_inicial" style="width: 100%; height: 500px;"></div>
+			
+     			 var options = {
+     					 title: 'Média dos Produtos.',
+     			        };
+
+     			        var chart = new google.visualization.PieChart(document.getElementById('chart_inicial'));
+
+				
+				        chart.draw(data, options);
+				        
+				
+			   }
+      
+    </script>
+  
+   <div id="chart_inicial" style="width: 100%; height: 500px;"></div>
+
+
+			
 
 		</p:panel>
 	</ui:define>

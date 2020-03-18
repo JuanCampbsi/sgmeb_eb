@@ -85,19 +85,19 @@ public class Entidade implements Serializable {
 	@Column(nullable = true)
 	private String ent_idade;	
 
-	@Column(length = 100)
+	@Column(length = 100, nullable = true)
 	private String ent_endereco;	
 
-	@Column(unique = true)
+	@Column(unique = true, nullable = true)
 	private String ent_cpf;	
 	
-	@Column(length = 15)
+	@Column(length = 15, nullable = true)
 	private String ent_celular;
 	
-	@Column(length = 9)
+	@Column(length = 9, nullable = true)
 	private String ent_cep;
 
-	@Column(unique = true)
+	@Column(unique = true,nullable = true )
 	private String ent_idtmilitar;
 
 	@IdentificaCampoPesquisa(descricaoCampo = "Nome de Guerra", campoConsulta = "ent_n_guerra")
@@ -106,6 +106,9 @@ public class Entidade implements Serializable {
 
 	@Column(nullable = true)
 	private String ent_peso;
+	
+	@Column(nullable = true)
+	private String texto_ativo;
 
 	@Column(nullable = true)
 	private String ent_altura;
@@ -162,6 +165,14 @@ public class Entidade implements Serializable {
 		return retorno;
 	}
 	
+	public String getTexto_ativo() {
+		return texto_ativo;
+	}
+
+	public void setTexto_ativo(String texto_ativo) {
+		this.texto_ativo = texto_ativo;
+	}
+
 	public void setAcessos(Set<String> acessos) {
 		this.acessos = acessos;
 	}
@@ -269,6 +280,12 @@ public class Entidade implements Serializable {
 	}
 
 	public void setEnt_inativo(Boolean ent_inativo) {
+		if (this.ent_inativo == false){
+			this.setTexto_ativo("INATIVO");
+		}  if (this.ent_inativo == true){
+			this.setTexto_ativo("ATIVO");
+		}
+		
 		this.ent_inativo = ent_inativo;
 	}
 
