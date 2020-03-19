@@ -1,14 +1,6 @@
 package br.com.project.geral.controller;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
 import javax.annotation.Resource;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.framework.implementacao.crud.ImplementacaoCrud;
 import br.com.framework.interfac.crud.InterfaceCrud;
@@ -37,9 +29,9 @@ public class ProdutoController extends ImplementacaoCrud<Produto> implements
 	}
 	
 
-	
+	/*
 
-	@RequestMapping("**/gerarGraficoInicial")
+	@RequestMapping("/gerarGraficoInicial")
 	public @ResponseBody String gerarGraficoInicial(@RequestParam(value = "total") int total){
 		
 		List<Map<String, Object>> totalConsultaGrafico = getTotalConsultaGrafico(total);
@@ -83,7 +75,7 @@ public class ProdutoController extends ImplementacaoCrud<Produto> implements
 	}
 	
 	
-	
+	*/
 	
 	
 	
