@@ -1,5 +1,5 @@
 package br.com.project.geral.controller;
-
+/*
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,4 +50,4 @@ public class ProdutoGraficoController implements Serializable  {
 	
 	
 
-}
+}*/

@@ -16,16 +16,17 @@
 				    	
 				      function drawChart() {
 				    	  var dataChar;
+				    	
 				    		  $.ajax(
+				    				 
 								    {  type: "GET",
 								    	url: "gerarGraficoInicial"
 								    	
 								    }).always(function(resposta) {
-								    	console.log(resposta);
-								    resposta = JSON.parse(resposta);
-
-								    dataChar = google.visualization.arrayToDataTable(resposta);
-				        
+								    	console.log(resposta);  
+								    	var resposta= JSON.parse(JSON.stringify(resposta));
+								    	dataChar = google.visualization.arrayToDataTable(resposta);
+								    
 				
 					        var options = {
 					          chart: {
