@@ -292,16 +292,10 @@ public class Produto implements Serializable {
 		validar60();
 		return !this.isValido60();
 	}
-	@javax.persistence.Transient
-	int total;
+	
+	
 
 
-	public int getTotal() {
-		return total=15;
-	}
-
-	public void setTotal(int total) {
-		this.total = total;
-	}
+	
 
 }

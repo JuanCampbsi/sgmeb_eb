@@ -10,43 +10,61 @@
 	<ui:define name="corpo">
 		<p:panel id="panelPageInicial">		
 		
-		<p:pieChart value="#{GraficoLinhaMB.model}" legendPosition="w" 
-		style="width: 100%; height: 450px;"/>
-  
-		
+			<script type="text/javascript">
+				   
+	  				  google.load("visualization", "1.1", {packages:["bar"]});
+				    	
+				      function drawChart() {
+				    	  
+				    	  $.get("produto/grafico", function(data){
+				    	    	 resposta = JSON.parse(data);
+				    	    	 
+				    	      var data = google.visualization.arrayToDataTable(resposta);
+				
+					        var options = {
+					          chart: {
+					        	  title: 'Média dos Produtos.',
+					           
+					          },
+					          bars: 'vertical' 
+					        };
+					
+					        var chart = new google.charts.Bar(document.getElementById('chart_inicial'));
+					        chart.draw(dataChar, options);
+					        
+						});
+				   }
+				      
+				  google.setOnLoadCallback(drawChart); //  chama funcção drawChart()  
+	   		 	</script>  
+	
+	 <div id="chart_inicial" style="width: 100%; height: 500px;"></div>
 			<!--
-		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-   			 <script type="text/javascript">
-     			 google.charts.load("current", {packages:["corechart"]});
-     		 google.charts.setOnLoadCallback(drawChart);
-     		   function drawChart() {
-     			  var data = google.visualization.arrayToDataTable([
-     		    ['Task', 'Hours per Day'],
-     		      ['Valido',     11],
-     			  ['30 dias fora!',      2],
-     			   ['60 dias fora!',  2]
-     			 
-     			    ]);
-
+		
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   	 <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+     google.charts.setOnLoadCallback(drawChart);
+     		 
+     function drawChart() {
+     $.get("produto/grafico", function(data){
+    	 resposta = JSON.parse(data);
+    	 
+      var data = google.visualization.arrayToDataTable(resposta);
+     
 			
      			 var options = {
      					 title: 'Média dos Produtos.',
      			        };
 
-     			        var chart = new google.visualization.PieChart(document.getElementById('chart_inicial'));
-
-				
+     			        var chart = new google.visualization.PieChart(document.getElementById('chart_inicial'));				
 				        chart.draw(data, options);
 				        
-				
+     		 	 });
 			   }
       
     </script>
-		
-			
-  	
-				
-   
+  
   	
   	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
    			 <script type="text/javascript">
@@ -112,7 +130,7 @@
 				      
 				  google.setOnLoadCallback(drawChart); //  chama funcção drawChart()  
 	   		 	</script>  
-	   		 	 <div id="chart_inicial" style="width: 100%; height: 500px;"></div>
+	   		 	
 	   		 	
   -->
   

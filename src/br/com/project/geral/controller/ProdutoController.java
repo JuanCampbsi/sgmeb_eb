@@ -2,10 +2,10 @@ package br.com.project.geral.controller;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +16,8 @@ import br.com.project.model.classes.Produto;
 import br.com.repository.interfaces.RepositoryProduto;
 import br.com.srv.interfaces.SrvProduto;
 
+@Controller
+@RequestMapping(value= "/produto")
 public class ProdutoController extends ImplementacaoCrud<Produto> implements
 		InterfaceCrud<Produto> {
 	private static final long serialVersionUID = 1L;
@@ -38,55 +40,31 @@ public class ProdutoController extends ImplementacaoCrud<Produto> implements
 	
 
 	
-
-	
-	@RequestMapping(value="/gerarGraficoInicial", method = RequestMethod.GET)
-	public @ResponseBody String gerarGraficoInicial( ){
+	@RequestMapping(value="grafico", method = RequestMethod.GET)
+	public @ResponseBody String grafico(){
 		
-		List<Map<String, Object>> totalConsultaGrafico = getTotalConsultaGrafico();
+		String sql = "select count (1) as quantidade, prod_prazo as situacao"+
+		"from produto"+
+		"where cast(validade_prod as date) >= (current_date - 30)"+
+		"group by prod_prazo";
 		
-		int totalLinhas = totalConsultaGrafico.size() + 1;
+		List<Object[]> lista = getSession().getSessionFactory().getCurrentSession().createSQLQuery(sql).list();
 		
-		boolean semDados = false;
-		if (totalLinhas <= 1){
-			totalLinhas++;
-			semDados = true;  
-		}
-		
-		String[] dados = new String[totalLinhas];
+		Object[] retorno = new Object[lista.size() + 1];
 		int cont = 0;
+		retorno[cont] = "[\"" + "Valido"+ "\"," + "\"" + "Quantidade " + "\"]";
+		cont ++;
 		
-		dados[cont] = "[\"" + "30 dias na rota!"+"\"]";
-		cont++;
-		
-		for (Map<String, Object> map : totalConsultaGrafico) {
-			dados[cont] = "[\"" +  (String) map.get("situacao") +  "\"," + "\"" + 
-		map.get("quantidade") +  "\"," +  "\"" +  map.get("prod_prazo") +  "\"]";
-			cont++;
+		for (Object[] object : lista) {
+			retorno[cont] = "[\"" + object[1]+ "\"," + "\"" + object[0] + "\"]";
+			cont ++;
 		}
 		
-		if (semDados){
-			dados[cont] = "[\""  + 0  +    "\"]";
-		}
 		
-		return Arrays.toString(dados);
-	}
-
-	
-	private List<Map<String, Object>> getTotalConsultaGrafico() {
-		StringBuilder sql = new StringBuilder();		
-		sql.append("	select count (1) as quantidade, prod_prazo as situacao");
-
-		sql.append("from produto");
-
-		sql.append("where cast(validade_prod as date) >= (current_date - 30"); 
-		sql.append("group by prod_prazo");
-		return super.getSimpleJdbcTemplate().queryForList(sql.toString());
+		return Arrays.toString(retorno);
 	}
 	
-	
-	
-	
+		
 	
 	
 

@@ -127,6 +127,8 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		return lista;
 	}
 	
+	
+	
 	/**
 	 * Busca a lista unico por classe informada TestUnit ok
 	 */
