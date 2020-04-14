@@ -8,11 +8,10 @@
 
 <ui:composition template="/templates/templatePrincipal.xhtml">
 	<ui:define name="corpo">
-		<p:panel id="panelPageInicial">
+		<p:panel id="panelPageInicial">		
 		
-		
-		
-		<p:pieChart value="#{GraficoLinhaMB.model}" legendPosition="w" />
+		<p:pieChart value="#{GraficoLinhaMB.model}" legendPosition="w" 
+		style="width: 100%; height: 450px;"/>
   
 		
 			<!--
@@ -113,10 +112,11 @@
 				      
 				  google.setOnLoadCallback(drawChart); //  chama funcção drawChart()  
 	   		 	</script>  
+	   		 	 <div id="chart_inicial" style="width: 100%; height: 500px;"></div>
+	   		 	
   -->
   
-   <div id="chart_inicial" style="width: 100%; height: 500px;"></div>
-
+  
 
 			
 

@@ -7,25 +7,30 @@ import javax.faces.bean.ManagedBean;
 
 import org.primefaces.model.chart.PieChartModel;
 
+import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
+import br.com.project.model.classes.Produto;
+
 
   
 @ManagedBean(name="GraficoLinhaMB")
 public class ProdutoGraficoController implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
+	private Produto objetoSelecionado = new Produto();
+	
+	private CarregamentoLazyListForObject<Produto> list = new CarregamentoLazyListForObject<Produto>();
 	
 	private PieChartModel model;
 	public ProdutoGraficoController() {
-		 	 model = new PieChartModel();
-		 	 model.set("Brand 1", 540);
-		 	 model.set("Brand 2", 325);
-		 	 model.set("Brand 3", 702);
-		 	 model.set("Brand 4", 421);
+	
 	}
 	public PieChartModel getModel() {
+		objetoSelecionado = new Produto();		
+	 	 model = new PieChartModel();
+	 	 model.set("Válido 1", objetoSelecionado.getTotal());
+	 	 model.set("30 dias fora! 2", 20);
+	 	 model.set("60 dias fora! 3", 15);
 		 	 return model;
 	}
 

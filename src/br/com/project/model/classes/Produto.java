@@ -232,6 +232,7 @@ public class Produto implements Serializable {
 		if (result < 30) {
 			this.setDiferencaEmDias((double) 1);			
 			this.setProd_prazo("30 Dias/Vencimento");
+			
 
 		} else {
 			this.setDiferencaEmDias((double) 31);
@@ -291,7 +292,16 @@ public class Produto implements Serializable {
 		validar60();
 		return !this.isValido60();
 	}
-	
+	@javax.persistence.Transient
+	int total;
 
+
+	public int getTotal() {
+		return total=15;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
 
 }
