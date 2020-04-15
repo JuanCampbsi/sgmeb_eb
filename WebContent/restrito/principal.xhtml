@@ -10,13 +10,14 @@
 	<ui:define name="corpo">
 		<p:panel id="panelPageInicial">		
 		
+	
 			<script type="text/javascript">
 				   
 	  				  google.load("visualization", "1.1", {packages:["bar"]});
 				    	
 				      function drawChart() {
-				    	  
-				    	  $.get("produto/grafico", function(data){
+				    	 
+				    	  $.get("grafico", function(data){
 				    	    	 resposta = JSON.parse(data);
 				    	    	 
 				    	      var data = google.visualization.arrayToDataTable(resposta);

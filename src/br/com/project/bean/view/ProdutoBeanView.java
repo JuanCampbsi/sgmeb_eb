@@ -59,6 +59,8 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 		return produtoController;
 	}
 
+	
+
 	public void setProdutoController(ProdutoController produtoController) {
 		this.produtoController = produtoController;
 	}

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
-import br.com.project.geral.controller.ProdutoController;
+import br.com.project.geral.controller.ProdutoControllerGrafico;
 import br.com.project.model.classes.Produto;
 
 
@@ -25,7 +25,7 @@ public class ProdutoGraficoController extends BeanManagedViewAbstract {
 	private ContextoBean contextoBean;
 
 	@Autowired
-	private ProdutoController produtoController;
+	private ProdutoControllerGrafico produtoControllerGrafico;
 	
 	private CarregamentoLazyListForObject<Produto> list = new CarregamentoLazyListForObject<Produto>();
 	

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
-import br.com.project.geral.controller.ProdutoController;
+import br.com.project.geral.controller.ProdutoControllerGrafico;
 import br.com.project.model.classes.Produto;
 
 /*
@@ -39,18 +39,18 @@ public class ProdutoProdutoBeanView extends BeanManagedViewAbstract {
 	private ContextoBean contextoBean;
 
 	@Autowired
-	private ProdutoController produtoController;
+	private ProdutoControllerGrafico produtoControllerGrafico;
 
 	public CarregamentoLazyListForObject<Produto> getList() throws Exception {
 		return list;
 	}
 
-	public ProdutoController getProdutoController() {
-		return produtoController;
+	public ProdutoControllerGrafico getProdutoController() {
+		return produtoControllerGrafico;
 	}
 
-	public void setProdutoController(ProdutoController produtoController) {
-		this.produtoController = produtoController;
+	public void setProdutoController(ProdutoControllerGrafico produtoControllerGrafico) {
+		this.produtoControllerGrafico = produtoControllerGrafico;
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class ProdutoProdutoBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	protected InterfaceCrud<Produto> getController() {
-		return produtoController;
+		return produtoControllerGrafico;
 	}
 
 	public Produto getObjetoSelecionado() {
@@ -109,8 +109,8 @@ public class ProdutoProdutoBeanView extends BeanManagedViewAbstract {
 	public void removerMarcados() throws Exception {
 		for (Long id : idRemover) {
 
-			Produto produto = produtoController.findById(getClassImplement(),id);
-			produtoController.delete(produto);
+			Produto produto = produtoControllerGrafico.findById(getClassImplement(),id);
+			produtoControllerGrafico.delete(produto);
 			
 
 		}
