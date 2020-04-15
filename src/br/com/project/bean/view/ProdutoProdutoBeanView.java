@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
-import br.com.project.geral.controller.ProdutoControllerGrafico;
+import br.com.project.geral.controller.ProdutoController;
 import br.com.project.model.classes.Produto;
 
 /*
@@ -39,17 +39,17 @@ public class ProdutoProdutoBeanView extends BeanManagedViewAbstract {
 	private ContextoBean contextoBean;
 
 	@Autowired
-	private ProdutoControllerGrafico produtoControllerGrafico;
+	private ProdutoController produtoControllerGrafico;
 
 	public CarregamentoLazyListForObject<Produto> getList() throws Exception {
 		return list;
 	}
 
-	public ProdutoControllerGrafico getProdutoController() {
+	public ProdutoController getProdutoController() {
 		return produtoControllerGrafico;
 	}
 
-	public void setProdutoController(ProdutoControllerGrafico produtoControllerGrafico) {
+	public void setProdutoController(ProdutoController produtoControllerGrafico) {
 		this.produtoControllerGrafico = produtoControllerGrafico;
 	}
 

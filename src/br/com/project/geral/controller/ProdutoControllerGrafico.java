@@ -2,13 +2,11 @@ package br.com.project.geral.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
-import javax.mail.Session;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +22,7 @@ import br.com.srv.interfaces.SrvProduto;
 @Controller
 @Scope(value = "request")
 @ManagedBean(name = "produtografico")
+//@RequestMapping(value="/produtoGrafico")
 public class ProdutoControllerGrafico extends ImplementacaoCrud<Produto> implements
 		InterfaceCrud<Produto> {
 	private static final long serialVersionUID = 1L;
@@ -32,30 +31,6 @@ public class ProdutoControllerGrafico extends ImplementacaoCrud<Produto> impleme
 	@Resource
 	private RepositoryProduto repositoryProduto;
 	
-	private static SessionFactory sessionFactory = buildSessionFactory();
-	
-	private static SessionFactory buildSessionFactory() {
-		try {
-			if (sessionFactory == null) {
-				sessionFactory = (new Configuration()).configure()
-						.buildSessionFactory();
-			}
-			return sessionFactory;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new ExceptionInInitializerError(
-					"Erro ao criar conexão SessionFactory");
-		}
-	}
-	
-	/**
-	 * Retorna o sessionFactory corrente.
-	 * @return sessionFactory
-	 */
-	public static SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
 
 
 	public void setSrvProduto(SrvProduto srvProduto) {
@@ -71,36 +46,50 @@ public class ProdutoControllerGrafico extends ImplementacaoCrud<Produto> impleme
 	}
 	
 
-	
-	
-	@RequestMapping("**/grafico") 
-	//@RequestMapping(value="grafico", method = RequestMethod.GET)
+	//@RequestMapping("**/grafico" ) 	
+	@RequestMapping(value="**/grafico", method = RequestMethod.GET)
 	public @ResponseBody String grafico(){
-		
-		String sql = "select count (1) as quantidade, prod_prazo as situacao"+
-		"from produto"+
-		"where cast(validade_prod as date) >= (current_date - 30)"+
-		"group by prod_prazo";
-		
-		
-		List<Object[]> lista = getSessionFactory().getCurrentSession().createSQLQuery(sql).list();
+	
+	List<Map<String, Object>> 	lista = getValidadeGrafico();
+	//List<Object[]> lista = HibernateUtil.getSessionFactory().getCurrentSession().createSQLQuery(sql).list();
 	
 		
-		Object[] retorno = new Object[lista.size() + 1];
-		int cont = 0;
-		retorno[cont] = "[\"" + "Valido"+ "\"," + "\"" + "Quantidade " + "\"]";
-		cont ++;
+		int retorno = lista.size() + 1;
 		
-		for (Object[] object : lista) {
-			retorno[cont] = "[\"" + object[1]+ "\"," + "\"" + object[0] + "\"]";
+		String[] dados = new String[retorno];
+		int cont = 0;
+		
+		boolean semDados = false;
+		if(semDados){
+			dados[cont ++] = "[\"" + "Sem Dados"+ "\"," + "\"" + "Total" + "\"]";
+		}else{
+			dados[cont] = "[\"" + "Estado" + "\"," + "\"" + "Total ." + "\"]";
 			cont ++;
+			
+			for (Map<String, Object>  objeto : lista) {
+				dados[cont] = "[\"" + objeto.get("situacao")+ "\"," + "\"" + objeto.get("quantidade") + "\"]";
+				cont ++;
+			}
+			
 		}
 		
 		
-		return Arrays.toString(retorno);
-	}
-	
 		
+		
+		
+		return Arrays.toString(dados);
+	}
+
+	private List<Map<String, Object>> getValidadeGrafico(){
+	StringBuilder sql = new StringBuilder();
+	
+	sql.append("select count (1) as quantidade, prod_prazo as situacao ");
+	sql.append("from produto where cast(validade_prod as date) >= (current_date - 30) ");
+	sql.append("group by prod_prazo order by quantidade asc ");	
+
+	return super.getJdbcTemplate().queryForList(sql.toString());
+	
+	}
 	
 	
 
