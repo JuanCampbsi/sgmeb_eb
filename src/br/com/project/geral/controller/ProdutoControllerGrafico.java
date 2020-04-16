@@ -22,7 +22,6 @@ import br.com.srv.interfaces.SrvProduto;
 @Controller
 @Scope(value = "request")
 @ManagedBean(name = "produtografico")
-//@RequestMapping(value="/produtoGrafico")
 public class ProdutoControllerGrafico extends ImplementacaoCrud<Produto> implements
 		InterfaceCrud<Produto> {
 	private static final long serialVersionUID = 1L;
@@ -46,13 +45,12 @@ public class ProdutoControllerGrafico extends ImplementacaoCrud<Produto> impleme
 	}
 	
 
-	//@RequestMapping("**/grafico" ) 	
+		
 	@RequestMapping(value="**/grafico", method = RequestMethod.GET)
 	public @ResponseBody String grafico(){
 	
 	List<Map<String, Object>> 	lista = getValidadeGrafico();
-	//List<Object[]> lista = HibernateUtil.getSessionFactory().getCurrentSession().createSQLQuery(sql).list();
-	
+		
 		
 		int retorno = lista.size() + 1;
 		
@@ -72,9 +70,6 @@ public class ProdutoControllerGrafico extends ImplementacaoCrud<Produto> impleme
 			}
 			
 		}
-		
-		
-		
 		
 		
 		return Arrays.toString(dados);

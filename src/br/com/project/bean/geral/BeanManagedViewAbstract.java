@@ -83,6 +83,15 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 		sql.append(campoPesquisaSelecionado.getCampoBanco());
 		return sql.toString();
 	}
+	//Order by Produto
+	protected String getSqlLazyQueryy() throws Exception {
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select entity from ");
+		sql.append(getQueryConsulta());
+		sql.append(" order by prod_prazo asc .");
+		sql.append(campoPesquisaSelecionado.getCampoBanco());
+		return sql.toString();
+	}
 
 	protected int totalRegistroConsulta() throws Exception {
 		Query query = getController().obterQuery(

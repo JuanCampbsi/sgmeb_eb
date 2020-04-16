@@ -108,8 +108,10 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 			list.add(objetoSelecionado);
 			objetoSelecionado = new Produto();
 			sucesso();
+			redirecionarFindEntidade();
 		}
 		}
+		
 	}
 
 	@Override
@@ -131,7 +133,7 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 		objetoSelecionado = new Produto();
 		list.clear();
 		list.setTotalRegistroConsulta(super.totalRegistroConsulta(),
-				super.getSqlLazyQuery());
+				super.getSqlLazyQueryy());
 		
 	}
 	
