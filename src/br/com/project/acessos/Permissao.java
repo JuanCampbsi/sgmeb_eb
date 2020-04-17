@@ -48,11 +48,11 @@ public enum Permissao {
 	PACIENTE_GERAR("PACIENTE_GERAR", "Paciente - Gerar"),
 	
 	//GERA RECEITUARIO
-	RECEITUARIO_GERAR("RECEITUARIO_GERAR", "Receituario - Gerar"),
+	RECEITUARIO_GERAR("RECEITUARIO_GERAR", "Receituario - Gerar");
 	
 	
 	
-	APPLET_FILE_LOCAL("APPLET_FILE_LOCAL", "Habilitar - Applet");
+	
 	
 	private String valor = "";
 	private String descricao = "";

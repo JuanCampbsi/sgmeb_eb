@@ -162,7 +162,7 @@
 										action="#{entidadeBeanView.redirecionarFindEntidade}" />
 								</sec:ifAnyGranted>
 
-								<sec:ifAnyGranted roles="PRODUTO_ACESSAR, ADMIN">
+								<sec:ifAnyGranted roles="PRODUTO_ACESSAR, ESTOQUE_GERAR, ADMIN">
 									<p:menuitem value="Produtos" id="menuprodutos"
 										onclick="redirecionarPage('#{request.contextPath}','/cadastro/', 'find_produto')"
 										ajax="true" />
@@ -200,7 +200,7 @@
 
 
 
-
+						<sec:ifAnyGranted roles="ADMIN">
 						<p:menuitem value="Impressão local web" id="menuImpressaoLocalWeb"
 							onclick="invocaApplet('#{request.contextPath}');" ajax="true"
 							async="false" oncomplete="PF('statusDialog').hide()" />
@@ -208,7 +208,7 @@
 						<p:menuitem value="Alterar senha" id="menualterarsenha"
 							onclick="alterarSenha('#{request.contextPath}');" ajax="true" />
 
-
+						</sec:ifAnyGranted>
 
 
 						<p:menuitem value="Início" id="menuinicio"

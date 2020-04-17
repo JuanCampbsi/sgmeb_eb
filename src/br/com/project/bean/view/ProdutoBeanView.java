@@ -108,11 +108,12 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 			list.add(objetoSelecionado);
 			objetoSelecionado = new Produto();
 			sucesso();
-			redirecionarFindEntidade();
+			
 		}
 		}
 		
 	}
+	
 
 	@Override
 	public void excluir() throws Exception {
@@ -137,8 +138,6 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 		
 	}
 	
-	
-	
 
 	@Override
 	public String novo() throws Exception {
@@ -154,14 +153,16 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 			list.add(objetoSelecionado);
 			objetoSelecionado = new Produto();
 			sucesso();
+			
 		}
 		
 	}
 	
 
 	@Override
-	public void saveEdit() throws Exception {
+	public void saveEdit() throws Exception {		
 		saveNotReturnAtual();
+		objetoSelecionado = new Produto();
 	}
 
 	@Override
@@ -173,6 +174,7 @@ public class ProdutoBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public String redirecionarFindEntidade() throws Exception {
+		objetoSelecionado = new Produto();
 		setarVariaveisNulas();
 		return urlFind;
 	}
