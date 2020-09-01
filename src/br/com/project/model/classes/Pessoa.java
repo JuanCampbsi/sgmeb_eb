@@ -43,9 +43,9 @@ import br.com.project.enums.TipoCadastro;
 @SuppressWarnings("deprecation")
 @Audited
 @Entity
-@Table(name = "entidade")
+@Table(name = "pessoa")
 @SequenceGenerator(name = "entidade_seq", sequenceName = "entidade_seq", initialValue = 1, allocationSize = 1)
-public class Entidade implements Serializable {
+public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -280,11 +280,11 @@ public class Entidade implements Serializable {
 	}
 
 	public void setEnt_inativo(Boolean ent_inativo) {
-		if (this.ent_inativo == false){
-			this.setTexto_ativo("INATIVO");
-		}  if (this.ent_inativo == true){
+		 if (this.ent_inativo == true){
 			this.setTexto_ativo("ATIVO");
-		}
+		}else if (this.ent_inativo == false){
+			this.setTexto_ativo("INATIVO");
+		} 
 		
 		this.ent_inativo = ent_inativo;
 	}
@@ -361,7 +361,7 @@ public class Entidade implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Entidade other = (Entidade) obj;
+		Pessoa other = (Pessoa) obj;
 		if (ent_codigo == null) {
 			if (other.ent_codigo != null)
 				return false;

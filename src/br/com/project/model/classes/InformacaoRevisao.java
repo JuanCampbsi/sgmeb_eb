@@ -30,14 +30,14 @@ public class InformacaoRevisao extends DefaultRevisionEntity implements
 	
 	@ForeignKey(name = "pessoa_fk")
 	@JoinColumn(nullable = false, name = "pessoa")
-	private Entidade entidade;
+	private Pessoa pessoa;
 
-	public Entidade getPessoa() {
-		return entidade;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setPessoa(Entidade entidade) {
-		this.entidade = entidade;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 }

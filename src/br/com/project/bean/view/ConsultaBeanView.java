@@ -21,7 +21,7 @@ import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.geral.controller.ConsultaController;
 import br.com.project.geral.controller.EntidadeController;
 import br.com.project.model.classes.Consulta;
-import br.com.project.model.classes.Entidade;
+import br.com.project.model.classes.Pessoa;
 
 @Controller
 @Scope(value = "session")
@@ -161,9 +161,9 @@ public class ConsultaBeanView extends BeanManagedViewAbstract {
 	public void addPacienteFunc(@RequestParam Long codEntidade)
 			throws Exception {
 		if (codEntidade != null && codEntidade > 0) {
-			Entidade entidade = entidadeController.findPaciente(codEntidade);
-			objetoSelecionado.setEntidade(entidade != null ? entidade
-					: new Entidade());
+			Pessoa pessoa = entidadeController.findPaciente(codEntidade);
+			objetoSelecionado.setEntidade(pessoa != null ? pessoa
+					: new Pessoa());
 		}
 	}
 	

@@ -50,15 +50,15 @@ public class Consulta implements Serializable {
 	@Basic
 	@ManyToOne(fetch = FetchType.EAGER)
 	@ForeignKey(name = "pessoa_codigo_fk")
-	@JoinColumn(name = "entidade", nullable = false)
-	private Entidade entidade = new Entidade();
+	@JoinColumn(name = "pessoa", nullable = false)
+	private Pessoa pessoa = new Pessoa();
 
-	public Entidade getEntidade() {
-		return entidade;
+	public Pessoa getEntidade() {
+		return pessoa;
 	}
 
-	public void setEntidade(Entidade entidade) {
-		this.entidade = entidade;
+	public void setEntidade(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	@Version
@@ -134,7 +134,7 @@ public class Consulta implements Serializable {
 	public String toString() {
 		return "Consulta [cons_id=" + cons_id + ", cons_data=" + cons_data
 				+ ", sit_paci=" + sit_paci + ", presc_paci=" + presc_paci
-				+ ", hist_cons=" + ", entidade=" + entidade + "]";
+				+ ", hist_cons=" + ", entidade=" + pessoa + "]";
 	}
 
 }

@@ -118,8 +118,7 @@
 				<h:outputText value="Editar" styleClass="cabecalho"></h:outputText>
 			</f:facet>
 			<p:commandLink immediate="true" action="#{entidadeBeanView.editar}"
-				ajax="true" id="editarPaciente"
-				oncomplete="addFocoAoCampo('cidadeNome');">
+				ajax="true" id="editarPaciente">
 				<h:graphicImage library="img" name="editar16.png"
 					styleClass="bordaImagem" style="width:20px;"/>
 				<f:setPropertyActionListener value="#{objeto}"

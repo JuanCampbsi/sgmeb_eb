@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_consulta" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ccd25c40-34ad-41ea-bb76-30a65766dc4f">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="96"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="table 2">
 		<box>
@@ -91,14 +91,14 @@
 	<field name="cons_data" class="java.util.Date">
 		<fieldDescription><![CDATA[cons_data]]></fieldDescription>
 	</field>
-	<field name="entidade" class="br.com.project.model.classes.Entidade">
-		<fieldDescription><![CDATA[entidade]]></fieldDescription>
-	</field>
 	<field name="presc_paci" class="java.lang.String">
 		<fieldDescription><![CDATA[presc_paci]]></fieldDescription>
 	</field>
 	<field name="sit_paci" class="java.lang.String">
 		<fieldDescription><![CDATA[sit_paci]]></fieldDescription>
+	</field>
+	<field name="entidade" class="br.com.project.model.classes.Pessoa">
+		<fieldDescription><![CDATA[entidade]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -212,20 +212,6 @@
 				<textFieldExpression><![CDATA[$F{cons_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="48" y="0" width="87" height="80" uuid="086684df-1592-4e7e-ab02-62da0c2998f6"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{entidade}.getEnt_n_guerra()]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="135" y="0" width="47" height="80" uuid="208fe9fd-b7c5-40f9-9c9e-572c7193f7be"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{entidade}.getGraduacao().getGrad_grad()]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="182" y="0" width="65" height="80" uuid="36761260-7eaa-46c1-be38-0e2e03329476"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{cons_data}]]></textFieldExpression>
@@ -251,6 +237,16 @@
 					<textFieldExpression><![CDATA[$F{sit_paci}]]></textFieldExpression>
 				</textField>
 			</elementGroup>
+			<textField>
+				<reportElement x="135" y="0" width="47" height="80" uuid="63da9f1d-e4bb-434b-b0ad-9bc431d80289"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{entidade}.getGraduacao().getGrad_grad()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="48" y="0" width="87" height="80" uuid="f7835e9e-5e10-4b40-a720-8cd7921fb14a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{entidade}.getEnt_n_guerra()]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<lastPageFooter>

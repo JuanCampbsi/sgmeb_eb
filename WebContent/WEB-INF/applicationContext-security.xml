@@ -49,13 +49,13 @@
 				users-by-username-query="SELECT ent_login as username
 												,ent_senha as password
 												,'true' as enable
-									   		FROM entidade
+									   		FROM pessoa
 									   	   WHERE ent_inativo = false 
 									         and upper(ent_login) = upper(?)"
 
 				authorities-by-username-query="SELECT u.ent_login as username
 													 ,p.esa_codigo as authority 
-											 	FROM entidade u 
+											 	FROM pessoa u 
 											  	join entidadeacesso p on u.ent_codigo = p.ent_codigo 
 											   WHERE u.ent_inativo = false
 											     AND upper(u.ent_login) = upper(?)" />

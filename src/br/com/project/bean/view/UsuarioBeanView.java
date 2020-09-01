@@ -26,7 +26,7 @@ import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.enums.TipoCadastro;
 import br.com.project.geral.controller.EntidadeController;
-import br.com.project.model.classes.Entidade;
+import br.com.project.model.classes.Pessoa;
 import br.com.project.util.all.Messagens;
 
 @Controller
@@ -36,7 +36,7 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 
 	private static final long serialVersionUID = 1L;
 
-	private CarregamentoLazyListForObject<Entidade> list = new CarregamentoLazyListForObject<Entidade>();
+	private CarregamentoLazyListForObject<Pessoa> list = new CarregamentoLazyListForObject<Pessoa>();
 
 	private String url = "/cadastro/cad_usuario.jsf?faces-redirect=true";
 	private String urlFind = "/cadastro/find_usuario.jsf?faces-redirect=true";
@@ -44,7 +44,7 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 	private List<Permissao> listSelecionado = new ArrayList<Permissao>();
 	private DualListModel<Permissao> listMenu = new DualListModel<Permissao>();
 
-	private Entidade objetoSelecionado = new Entidade();
+	private Pessoa objetoSelecionado = new Pessoa();
 	
 	private HashSet<Long> idRemover = new HashSet<Long>();
 	
@@ -59,7 +59,7 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 	public StreamedContent getArquivoReport() throws Exception {
 		super.setNomeRelatorioJasper("report_usuario");
 		super.setNomeRelatorioSaida("report_usuario");
-		List<?> list = entidadeController.findListByProperty(Entidade.class, "ent_tipo", "TIPO_CADASTRO_USUARIO");
+		List<?> list = entidadeController.findListByProperty(Pessoa.class, "ent_tipo", "TIPO_CADASTRO_USUARIO");
 		super.setListDataBeanColletionReport(list); 
 		return super.getArquivoReport();
 	}
@@ -142,7 +142,7 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 		return retorno;
 	}
 
-	public CarregamentoLazyListForObject<Entidade> getList() throws Exception {
+	public CarregamentoLazyListForObject<Pessoa> getList() throws Exception {
 		return list;
 	}
 
@@ -163,20 +163,20 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 	}
 
 	@Override
-	protected Class<Entidade> getClassImplement() {
-		return Entidade.class;
+	protected Class<Pessoa> getClassImplement() {
+		return Pessoa.class;
 	}
 
 	@Override
-	protected InterfaceCrud<Entidade> getController() {
+	protected InterfaceCrud<Pessoa> getController() {
 		return entidadeController;
 	}
 
-	public Entidade getObjetoSelecionado() {
+	public Pessoa getObjetoSelecionado() {
 		return objetoSelecionado;
 	}
 
-	public void setObjetoSelecionado(Entidade objetoSelecionado) {
+	public void setObjetoSelecionado(Pessoa objetoSelecionado) {
 		this.objetoSelecionado = objetoSelecionado;
 	}
 
@@ -185,12 +185,13 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 	public void setarVariaveisNulas() throws Exception {
 		valorPesquisa = "";
 		list.clear();
-		objetoSelecionado = new Entidade();
+		objetoSelecionado = new Pessoa();
 	}
 
 	@Override
 	public void saveNotReturn() throws Exception {
 		objetoSelecionado.setEnt_tipo(TipoCadastro.TIPO_CADASTRO_USUARIO);
+		objetoSelecionado.setEnt_inativo(true);
 		if (validarCampoObrigatorio(objetoSelecionado)) {
 			list.clear();
 			if(entidadeController.existeUser(objetoSelecionado.getEnt_login())){
@@ -200,7 +201,7 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 			}else {
 			objetoSelecionado = entidadeController.merge(objetoSelecionado);
 			list.add(objetoSelecionado);
-			objetoSelecionado = new Entidade();
+			objetoSelecionado = new Pessoa();
 			sucesso();
 		}
 		}
@@ -212,14 +213,14 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 				&& objetoSelecionado.getEnt_codigo() > 0) {
 			entidadeController.delete(objetoSelecionado);
 			list.remove(objetoSelecionado);
-			objetoSelecionado = new Entidade();
+			objetoSelecionado = new Pessoa();
 			sucesso();
 		}
 	}
 
 	@Override
 	public void consultaEntidade() throws Exception {
-		objetoSelecionado = new Entidade();
+		objetoSelecionado = new Pessoa();
 		list.clear();
 		list.setTotalRegistroConsulta(super.totalRegistroConsulta(),
 				super.getSqlLazyQuery());
@@ -281,8 +282,8 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 	  public void removerMarcados () throws Exception {
 		  for (Long id : idRemover) {
 			  
-		     Entidade entidade = entidadeController.findById(getClassImplement(), id);
-    	     entidadeController.delete(entidade);
+		     Pessoa pessoa = entidadeController.findById(getClassImplement(), id);
+    	     entidadeController.delete(pessoa);
     	     
     	     
 		}
@@ -299,7 +300,7 @@ public class UsuarioBeanView extends BeanManagedViewAbstract {
 			list.clear();
 			objetoSelecionado = entidadeController.merge(objetoSelecionado);
 			list.add(objetoSelecionado);
-			objetoSelecionado = new Entidade();
+			objetoSelecionado = new Pessoa();
 			sucesso();
 		}
 		

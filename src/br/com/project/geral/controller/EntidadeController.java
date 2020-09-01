@@ -10,13 +10,13 @@ import org.springframework.stereotype.Controller;
 import br.com.framework.implementacao.crud.ImplementacaoCrud;
 import br.com.framework.interfac.crud.InterfaceCrud;
 import br.com.project.enums.TipoCadastro;
-import br.com.project.model.classes.Entidade;
+import br.com.project.model.classes.Pessoa;
 import br.com.repository.interfaces.RepositoryEntidade;
 import br.com.srv.interfaces.SrvEntidade;
 
 @Controller
-public class EntidadeController extends ImplementacaoCrud<Entidade> implements
-		InterfaceCrud<Entidade> {
+public class EntidadeController extends ImplementacaoCrud<Pessoa> implements
+		InterfaceCrud<Pessoa> {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -42,8 +42,8 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements
 		this.repositoryEntidade = repositoryEntidade;
 	}
 
-	public Entidade findUserLogado(String userLogado) throws Exception {
-		return super.findUninqueByProperty(Entidade.class, userLogado,
+	public Pessoa findUserLogado(String userLogado) throws Exception {
+		return super.findUninqueByProperty(Pessoa.class, userLogado,
 				"ent_login", " and entity.ent_inativo is false ");
 	}
 
@@ -63,25 +63,25 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements
 	
 	
 	
-	public Entidade findPaciente(Long codEntidade) throws Exception {
-		return findUninqueByPropertyId(Entidade.class, codEntidade,
+	public Pessoa findPaciente(Long codEntidade) throws Exception {
+		return findUninqueByPropertyId(Pessoa.class, codEntidade,
 				"ent_codigo", " and entity.ent_inativo is false and entity.ent_nome = '"
 						+ TipoCadastro.TIPO_CADASTRO_PACIENTE.name() + "'");
 	}
 
 	public boolean existeCpf(String ent_cpf) throws Exception {
 		
-		return super.findListByQueryDinamica("from Entidade where ent_cpf = '"+ ent_cpf + "'").size() > 0;
+		return super.findListByQueryDinamica("from Pessoa where ent_cpf = '"+ ent_cpf + "'").size() > 0;
 	
 	}
 
 	public boolean existeIdt(String ent_idtmilitar) throws Exception {
-		return super.findListByQueryDinamica("from Entidade where ent_idtmilitar = '"+ ent_idtmilitar + "'").size() > 0;
+		return super.findListByQueryDinamica("from Pessoa where ent_idtmilitar = '"+ ent_idtmilitar + "'").size() > 0;
 		
 	}
 
 	public boolean existeUser(String ent_login) throws Exception {
-		return super.findListByQueryDinamica("from Entidade where ent_login = '"+ ent_login + "'").size() > 0;
+		return super.findListByQueryDinamica("from Pessoa where ent_login = '"+ ent_login + "'").size() > 0;
 	}
 
 	

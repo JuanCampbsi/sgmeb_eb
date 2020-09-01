@@ -24,7 +24,7 @@ import br.com.project.bean.geral.EntidadeAtualizaSenhaBean;
 import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.enums.TipoCadastro;
 import br.com.project.geral.controller.EntidadeController;
-import br.com.project.model.classes.Entidade;
+import br.com.project.model.classes.Pessoa;
 import br.com.project.util.all.Messagens;
 
 @Controller
@@ -34,7 +34,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 
 	private static final long serialVersionUID = 1L;
 
-	private CarregamentoLazyListForObject<Entidade> list = new CarregamentoLazyListForObject<Entidade>();
+	private CarregamentoLazyListForObject<Pessoa> list = new CarregamentoLazyListForObject<Pessoa>();
 	private String url = "/cadastro/cad_paciente.jsf?faces-redirect=true";
 	private String urlFind = "/cadastro/find_paciente.jsf?faces-redirect=true";
 	private EntidadeAtualizaSenhaBean entidadeAtualizaSenhaBean = new EntidadeAtualizaSenhaBean();
@@ -48,7 +48,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	public StreamedContent getArquivoReport() throws Exception {
 		super.setNomeRelatorioJasper("report_paciente");
 		super.setNomeRelatorioSaida("report_paciente");
-		List<?> list = entidadeController.findListByProperty(Entidade.class, "ent_tipo", "TIPO_CADASTRO_PACIENTE");
+		List<?> list = entidadeController.findListByProperty(Pessoa.class, "ent_tipo", "TIPO_CADASTRO_PACIENTE");
 		super.setListDataBeanColletionReport(list); 
 		return super.getArquivoReport();
 	}
@@ -63,7 +63,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	}
 
 
-	private Entidade objetoSelecionado = new Entidade();
+	private Pessoa objetoSelecionado = new Pessoa();
 
 	@Autowired
 	private ContextoBean contextoBean;
@@ -73,7 +73,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 
 
 
-	public CarregamentoLazyListForObject<Entidade> getList() throws Exception {
+	public CarregamentoLazyListForObject<Pessoa> getList() throws Exception {
 		return list;
 	}
 
@@ -94,22 +94,22 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	}
 
 	@Override
-	protected Class<Entidade> getClassImplement() {
-		return Entidade.class;
+	protected Class<Pessoa> getClassImplement() {
+		return Pessoa.class;
 	}
 
 	@Override
-	protected InterfaceCrud<Entidade> getController() {
+	protected InterfaceCrud<Pessoa> getController() {
 		return entidadeController;
 	}
 
 
 
-	public Entidade getObjetoSelecionado() {
+	public Pessoa getObjetoSelecionado() {
 		return objetoSelecionado;
 	}
 
-	public void setObjetoSelecionado(Entidade objetoSelecionado) {
+	public void setObjetoSelecionado(Pessoa objetoSelecionado) {
 		this.objetoSelecionado = objetoSelecionado;
 	}
 
@@ -118,13 +118,14 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	public void setarVariaveisNulas() throws Exception {
 		valorPesquisa = "";
 		list.clear();
-		objetoSelecionado = new Entidade();
+		objetoSelecionado = new Pessoa();
 		entidadeAtualizaSenhaBean = new EntidadeAtualizaSenhaBean();
 	}
 
 	@Override
 	public void saveNotReturn() throws Exception {
 		objetoSelecionado.setEnt_tipo(TipoCadastro.TIPO_CADASTRO_PACIENTE);
+		objetoSelecionado.setEnt_inativo(true);
 		if (validarCampoObrigatorio(objetoSelecionado)) {
 			list.clear();
 		
@@ -142,7 +143,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		}else {
 			objetoSelecionado = entidadeController.merge(objetoSelecionado);
 			list.add(objetoSelecionado);
-			objetoSelecionado = new Entidade();
+			objetoSelecionado = new Pessoa();
 			sucesso();
 			}
 		}
@@ -154,14 +155,14 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 				&& objetoSelecionado.getEnt_codigo() > 0) {			
 			entidadeController.delete(objetoSelecionado);
 			list.remove(objetoSelecionado);
-			objetoSelecionado = new Entidade();
+			objetoSelecionado = new Pessoa();
 			sucesso();
 		}
 	}
 
 	@Override
 	public void consultaEntidade() throws Exception {
-		objetoSelecionado = new Entidade();
+		objetoSelecionado = new Pessoa();
 		list.clear();
 		list.setTotalRegistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());
 }
@@ -200,7 +201,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	
 	
 	public void updateSenha() throws Exception {
-		Entidade entidadeLogada = contextoBean.getEntidadeLogada();
+		Pessoa entidadeLogada = contextoBean.getEntidadeLogada();
 		if (!entidadeAtualizaSenhaBean.getSenhaAtual().equals(
 				entidadeLogada.getEnt_senha())) {
 			addMsg("A senha atual não é válida");
@@ -217,7 +218,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 			entidadeLogada.setEnt_senha(entidadeAtualizaSenhaBean
 					.getNovaSenha());
 			entidadeController.saveOrUpdate(entidadeLogada);
-			entidadeLogada = entidadeController.findById(Entidade.class,
+			entidadeLogada = entidadeController.findById(Pessoa.class,
 					entidadeLogada.getEnt_codigo());
 			if (entidadeLogada.getEnt_senha().equals(
 					entidadeAtualizaSenhaBean.getNovaSenha())) {
@@ -236,10 +237,10 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	public void findEntidade(HttpServletResponse httpServletResponse,
 			@RequestParam(value = "codEntidade") Long codEntidade)
 			throws Exception {
-		Entidade entidade = entidadeController.findPaciente(codEntidade);
-		if (entidade != null) {
+		Pessoa pessoa = entidadeController.findPaciente(codEntidade);
+		if (pessoa != null) {
 			httpServletResponse.getWriter()
-					.write(entidade.getJson().toString());
+					.write(pessoa.getJson().toString());
 		}
 
 	}
@@ -269,8 +270,8 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	  public void removerMarcados () throws Exception {
 		  for (Long id : idRemover) {
 			  
-		     Entidade entidade = entidadeController.findById(getClassImplement(), id);
-    	     entidadeController.delete(entidade);
+		     Pessoa pessoa = entidadeController.findById(getClassImplement(), id);
+    	     entidadeController.delete(pessoa);
     	     
     	     
 		}
@@ -287,7 +288,7 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 			list.clear();
 			objetoSelecionado = entidadeController.merge(objetoSelecionado);
 			list.add(objetoSelecionado);
-			objetoSelecionado = new Entidade();
+			objetoSelecionado = new Pessoa();
 			sucesso();
 		}
 		

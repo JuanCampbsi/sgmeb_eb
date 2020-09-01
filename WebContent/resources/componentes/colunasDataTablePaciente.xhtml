@@ -50,7 +50,6 @@
 					<p:commandLink action="#{entidadeBeanView.excluir}"
 						id="buttonColunaExcluir" ajax="true" immediate="true"
 						partialSubmit="true" process="@this" update="tableResult"
-						onfocus="addFocoAoCampo('cidadeNome');"
 						onclick="if(!confirm('Confirma a exclusão da cidade : #{objeto.ent_nome}?')) return false;">
 						<h:graphicImage library="img" name="excluir16.png"
 							styleClass="bordaImagem" />
