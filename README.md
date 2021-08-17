@@ -18,7 +18,7 @@ Brazilian Army Medical Management and Inventory Control System
 
 <p align="center">
   <kbd>
-    <img width="300" style="border-radius: 5px" height="450" src="https://media.giphy.com/media/eAGARwXoWvVIvWD7gl/giphy.gif" alt="Intro">
+    <img width="750" style="border-radius: 5px" height="380" src="https://media.giphy.com/media/vHu8uuENJcns9w0Vqb/giphy.gif" alt="Intro">
   </kbd>
 
 </p>
